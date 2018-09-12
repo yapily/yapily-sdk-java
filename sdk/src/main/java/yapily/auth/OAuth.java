@@ -18,7 +18,7 @@ import yapily.Pair;
 import java.util.Map;
 import java.util.List;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-09-12T17:16:29.039Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-09-12T17:29:25.799Z")
 public class OAuth implements Authentication {
   private String accessToken;
 

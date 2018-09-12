@@ -19,6 +19,12 @@ public class Constants {
     public static final String APPLICATION_SECRET = "6fea428c-0f30-4870-8e54-c8c4de11701a";
 
     /**
+     * Personal access token for connecting to your real Starling account via API. Viewable in
+     * Starling's developer console (https://developer.starlingbank.com/personal/list)
+     */
+    public static final String STARLING_PERSONAL_ACCESS_TOKEN = "REPLACE WITH YOUR ACCESS TOKEN";
+
+    /**
      * Provide your callback URL to redirect the customer back to, following the institution's
      * authorisation
      */

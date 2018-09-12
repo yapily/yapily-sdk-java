@@ -1,6 +1,7 @@
 package yapily.examples;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,6 +14,8 @@ import yapily.Configuration;
 import yapily.auth.HttpBasicAuth;
 import static yapily.examples.Constants.APPLICATION_ID;
 import static yapily.examples.Constants.APPLICATION_SECRET;
+import static yapily.examples.Constants.STARLING_PERSONAL_ACCESS_TOKEN;
+
 import yapily.sdk.Account;
 import yapily.sdk.AccountsApi;
 import yapily.sdk.ApiListResponseOfAccount;
@@ -78,7 +81,7 @@ public class ExampleAccountDetailsWithToken {
                                "] with GET /users/{userUuid}/consents?institutionId={institutionId}");
 
             CreateConsentApiKey createConsentApiKey = new CreateConsentApiKey();
-            createConsentApiKey.setApiKey("{{your-personal-api-key}}");
+            createConsentApiKey.setApiKey(STARLING_PERSONAL_ACCESS_TOKEN);
             createConsentApiKey.setInstitutionId(institutionId);
 
             consentsApi.addConsentUsingPOST(userUuid,createConsentApiKey);
@@ -105,12 +108,22 @@ public class ExampleAccountDetailsWithToken {
             if (accountOpt.isPresent()) {
                 System.out.println("Request account transactions with GET /accounts/{accountId}/transactions");
                 ApiListResponseOfTransaction transactionsResponse =
-                        transactionsApi.getTransactionsUsingGET(consent.getConsentToken(), accountOpt.get().getId(),new ArrayList<>());
+                        transactionsApi.getTransactionsUsingGET(consent.getConsentToken(), accountOpt.get().getId(), Collections.emptyList());
 
                 List<Transaction> transactions = transactionsResponse.getData();
 
                 System.out.println("Transactions:");
                 System.out.println(gson.toJson(transactions));
+
+                // Get transactions with merchant details
+                System.out.println("Request account transactions (with merchants) using GET /accounts/{accountId}/transactions");
+                ApiListResponseOfTransaction transactionsWithMerchantsResponse =
+                        transactionsApi.getTransactionsUsingGET(consent.getConsentToken(), accountOpt.get().getId(), Collections.singletonList("merchant"));
+
+                List<Transaction> transactionsWithMerchants = transactionsWithMerchantsResponse.getData();
+
+                System.out.println("Transactions (including merchant info):");
+                System.out.println(gson.toJson(transactionsWithMerchants));
             }
 
             // Get identity
