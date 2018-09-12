@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<project
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0">
+    <repositories>
+        <repository>
+            <id>yapily-repo</id>
+            <name>yapily-repo</name>
+            <url>http://maven.yapily.com/</url>
+        </repository>
+        <repository>
+            <id>Maven Central</id>
+            <url>http://central.maven.org/maven2</url>
+        </repository>
+    </repositories>
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>yapily</groupId>
+    <artifactId>yapily-sdk-examples</artifactId>
+    <version>0.1.1</version>
+    <name>yapily-sdk-examples</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <yapily-sdk-version>0.0.32</yapily-sdk-version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>yapily</groupId>
+            <artifactId>yapily-sdk</artifactId>
+            <version>${yapily-sdk-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.1</version>
+        </dependency>
+        <dependency>
+        	<groupId>com.google.code.gson</groupId>
+        	<artifactId>gson</artifactId>
+        	<version>2.8.2</version>
+        </dependency>
+    </dependencies>
+
+</project>

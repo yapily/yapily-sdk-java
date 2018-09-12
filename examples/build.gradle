@@ -1,0 +1,28 @@
+group 'yapily'
+version '0.1.1'
+artifactId 'yapily-sdk-examples'
+
+buildscript {
+  repositories {
+    mavenCentral()
+    mavenLocal()
+  }
+}
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+  mavenLocal()
+  mavenCentral()
+  maven {
+    url "http://maven.yapily.com/"
+  }
+}
+
+dependencies {
+  compile group: 'yapily', name: 'yapily-sdk', version: '0.0.28'
+  compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.1'
+  compile group: 'com.google.code.gson', name: 'gson', version: '2.8.2'
+}
