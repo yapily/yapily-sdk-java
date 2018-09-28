@@ -7,15 +7,17 @@ import yapily.Pair;
 
 import javax.ws.rs.core.GenericType;
 
+import yapily.sdk.AccountAuthorisationRequest;
 import yapily.sdk.ApiListResponseOfAccount;
 import yapily.sdk.ApiResponseOfAccount;
+import yapily.sdk.ApiResponseOfAuthorisationRequestResponse;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-09-21T11:21:46.844Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-09-28T15:24:12.600Z")
 public class AccountsApi {
   private ApiClient apiClient;
 
@@ -127,5 +129,46 @@ public class AccountsApi {
 
     GenericType<ApiListResponseOfAccount> localVarReturnType = new GenericType<ApiListResponseOfAccount>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+      }
+  /**
+   * Initiate a new account request for user to authorize
+   * 
+   * @param accountAuthRequest accountAuthRequest (required)
+   * @return ApiResponseOfAuthorisationRequestResponse
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponseOfAuthorisationRequestResponse initiateAccountRequestUsingPOST(AccountAuthorisationRequest accountAuthRequest) throws ApiException {
+    Object localVarPostBody = accountAuthRequest;
+    
+    // verify the required parameter 'accountAuthRequest' is set
+    if (accountAuthRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'accountAuthRequest' when calling initiateAccountRequestUsingPOST");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/account-auth-requests";
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json;charset=UTF-8"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "basicAuth" };
+
+    GenericType<ApiResponseOfAuthorisationRequestResponse> localVarReturnType = new GenericType<ApiResponseOfAuthorisationRequestResponse>() {};
+    return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
 }

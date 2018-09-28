@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 **reference** | **String** |  |  [optional]
 **amount** | [**BigDecimal**](BigDecimal.md) |  |  [optional]
 **currency** | **String** |  |  [optional]
-**authUrl** | **String** |  |  [optional]
 
 
 <a name="StatusEnum"></a>
@@ -21,6 +20,7 @@ PENDING | &quot;PENDING&quot;
 FAILED | &quot;FAILED&quot;
 DECLINED | &quot;DECLINED&quot;
 COMPLETED | &quot;COMPLETED&quot;
+EXPIRED | &quot;EXPIRED&quot;
 UNKNOWN | &quot;UNKNOWN&quot;
 
 

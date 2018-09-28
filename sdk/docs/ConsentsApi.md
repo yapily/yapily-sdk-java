@@ -5,13 +5,14 @@ All URIs are relative to *https://api.yapily.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**addConsentUsingPOST**](ConsentsApi.md#addConsentUsingPOST) | **POST** /users/{userUuid}/consents | Post consent
-[**deleteUsingDELETE**](ConsentsApi.md#deleteUsingDELETE) | **DELETE** /users/{userUuid}/consents/{consentToken} | Delete consent
+[**deleteUsingDELETE**](ConsentsApi.md#deleteUsingDELETE) | **DELETE** /consents/{consentId} | Delete consent
+[**getConsentByIdUsingGET**](ConsentsApi.md#getConsentByIdUsingGET) | **GET** /consents/{consentId} | Get consent
 [**getUserConsentsUsingGET**](ConsentsApi.md#getUserConsentsUsingGET) | **GET** /users/{userUuid}/consents | Get user consents
 
 
 <a name="addConsentUsingPOST"></a>
 # **addConsentUsingPOST**
-> Consent addConsentUsingPOST(userUuid, createConsentApiKey)
+> Consent addConsentUsingPOST(userUuid, createConsentAccessToken)
 
 Post consent
 
@@ -33,9 +34,9 @@ basicAuth.setPassword("YOUR PASSWORD");
 
 ConsentsApi apiInstance = new ConsentsApi();
 String userUuid = "userUuid_example"; // String | userUuid
-CreateConsentApiKey createConsentApiKey = new CreateConsentApiKey(); // CreateConsentApiKey | createConsentApiKey
+CreateConsentAccessToken createConsentAccessToken = new CreateConsentAccessToken(); // CreateConsentAccessToken | createConsentAccessToken
 try {
-    Consent result = apiInstance.addConsentUsingPOST(userUuid, createConsentApiKey);
+    Consent result = apiInstance.addConsentUsingPOST(userUuid, createConsentAccessToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ConsentsApi#addConsentUsingPOST");
@@ -48,7 +49,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userUuid** | **String**| userUuid |
- **createConsentApiKey** | [**CreateConsentApiKey**](CreateConsentApiKey.md)| createConsentApiKey |
+ **createConsentAccessToken** | [**CreateConsentAccessToken**](CreateConsentAccessToken.md)| createConsentAccessToken |
 
 ### Return type
 
@@ -65,7 +66,7 @@ Name | Type | Description  | Notes
 
 <a name="deleteUsingDELETE"></a>
 # **deleteUsingDELETE**
-> Object deleteUsingDELETE(userUuid, consentToken)
+> Object deleteUsingDELETE(consentId)
 
 Delete consent
 
@@ -86,10 +87,9 @@ basicAuth.setUsername("YOUR USERNAME");
 basicAuth.setPassword("YOUR PASSWORD");
 
 ConsentsApi apiInstance = new ConsentsApi();
-String userUuid = "userUuid_example"; // String | userUuid
-String consentToken = "consentToken_example"; // String | consentToken
+String consentId = "consentId_example"; // String | consentId
 try {
-    Object result = apiInstance.deleteUsingDELETE(userUuid, consentToken);
+    Object result = apiInstance.deleteUsingDELETE(consentId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ConsentsApi#deleteUsingDELETE");
@@ -101,12 +101,63 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userUuid** | **String**| userUuid |
- **consentToken** | **String**| consentToken |
+ **consentId** | **String**| consentId |
 
 ### Return type
 
 **Object**
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json;charset=UTF-8
+
+<a name="getConsentByIdUsingGET"></a>
+# **getConsentByIdUsingGET**
+> ApiResponseOfConsent getConsentByIdUsingGET(consentId)
+
+Get consent
+
+### Example
+```java
+// Import classes:
+//import yapily.ApiClient;
+//import yapily.ApiException;
+//import yapily.Configuration;
+//import yapily.auth.*;
+//import yapily.sdk.ConsentsApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure HTTP basic authorization: basicAuth
+HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
+basicAuth.setUsername("YOUR USERNAME");
+basicAuth.setPassword("YOUR PASSWORD");
+
+ConsentsApi apiInstance = new ConsentsApi();
+String consentId = "consentId_example"; // String | consentId
+try {
+    ApiResponseOfConsent result = apiInstance.getConsentByIdUsingGET(consentId);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling ConsentsApi#getConsentByIdUsingGET");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **consentId** | **String**| consentId |
+
+### Return type
+
+[**ApiResponseOfConsent**](ApiResponseOfConsent.md)
 
 ### Authorization
 

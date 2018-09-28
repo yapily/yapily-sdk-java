@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>yapily</groupId>
     <artifactId>yapily-sdk</artifactId>
-    <version>0.0.32</version>
+    <version>0.0.33</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "yapily:yapily-sdk:0.0.32"
+compile "yapily:yapily-sdk:0.0.33"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/yapily-sdk-0.0.32.jar
+* target/yapily-sdk-0.0.33.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -99,13 +99,15 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AccountsApi* | [**getAccountUsingGET**](docs/AccountsApi.md#getAccountUsingGET) | **GET** /accounts/{accountId} | Get account
 *AccountsApi* | [**getAccountsUsingGET**](docs/AccountsApi.md#getAccountsUsingGET) | **GET** /accounts | Get accounts
+*AccountsApi* | [**initiateAccountRequestUsingPOST**](docs/AccountsApi.md#initiateAccountRequestUsingPOST) | **POST** /account-auth-requests | Initiate a new account request for user to authorize
 *ApplicationUsersApi* | [**addUserUsingPOST**](docs/ApplicationUsersApi.md#addUserUsingPOST) | **POST** /users | Add an application user
 *ApplicationUsersApi* | [**deleteUserUsingDELETE**](docs/ApplicationUsersApi.md#deleteUserUsingDELETE) | **DELETE** /users/{userUuid} | Delete an application user
 *ApplicationUsersApi* | [**getUserUsingGET**](docs/ApplicationUsersApi.md#getUserUsingGET) | **GET** /users/{userUuid} | Get an application user
 *ApplicationUsersApi* | [**getUsersUsingGET**](docs/ApplicationUsersApi.md#getUsersUsingGET) | **GET** /users | Get application users
 *ApplicationsApi* | [**getApplicationMeUsingGET**](docs/ApplicationsApi.md#getApplicationMeUsingGET) | **GET** /me | Returns the details of the application that owns the request credentials
 *ConsentsApi* | [**addConsentUsingPOST**](docs/ConsentsApi.md#addConsentUsingPOST) | **POST** /users/{userUuid}/consents | Post consent
-*ConsentsApi* | [**deleteUsingDELETE**](docs/ConsentsApi.md#deleteUsingDELETE) | **DELETE** /users/{userUuid}/consents/{consentToken} | Delete consent
+*ConsentsApi* | [**deleteUsingDELETE**](docs/ConsentsApi.md#deleteUsingDELETE) | **DELETE** /consents/{consentId} | Delete consent
+*ConsentsApi* | [**getConsentByIdUsingGET**](docs/ConsentsApi.md#getConsentByIdUsingGET) | **GET** /consents/{consentId} | Get consent
 *ConsentsApi* | [**getUserConsentsUsingGET**](docs/ConsentsApi.md#getUserConsentsUsingGET) | **GET** /users/{userUuid}/consents | Get user consents
 *IdentityApi* | [**getIdentityUsingGET**](docs/IdentityApi.md#getIdentityUsingGET) | **GET** /identity | Get identity
 *InstitutionsApi* | [**getFeatureDetailsUsingGET**](docs/InstitutionsApi.md#getFeatureDetailsUsingGET) | **GET** /features | Retrieve details for Yapily&#39;s institution features
@@ -113,9 +115,8 @@ Class | Method | HTTP request | Description
 *InstitutionsApi* | [**getInstitutionsUsingGET**](docs/InstitutionsApi.md#getInstitutionsUsingGET) | **GET** /institutions | Retrieves the list of institutions available in Yapily
 *InstitutionsOpenDataApi* | [**getATMDataUsingGET**](docs/InstitutionsOpenDataApi.md#getATMDataUsingGET) | **GET** /institutions/{institutionId}/atms | Retrieves data about all ATMs of the selected institution
 *InstitutionsOpenDataApi* | [**getPersonalCurrentAccountsUsingGET**](docs/InstitutionsOpenDataApi.md#getPersonalCurrentAccountsUsingGET) | **GET** /institutions/{institutionId}/personal-current-accounts | Retrieves details of personal current accounts for an institution
-*PaymentsApi* | [**createPaymentInitiationUsingPOST**](docs/PaymentsApi.md#createPaymentInitiationUsingPOST) | **POST** /initiate-payment-sortcode | Initiate a new single payment for user to authorise
+*PaymentsApi* | [**createPaymentInitiationUsingPOST**](docs/PaymentsApi.md#createPaymentInitiationUsingPOST) | **POST** /payment-sortcode-auth-requests | Initiate a new single payment for user to authorise
 *PaymentsApi* | [**createPaymentUsingPOST**](docs/PaymentsApi.md#createPaymentUsingPOST) | **POST** /payment-sortcode | Create a new single payment
-*PaymentsApi* | [**getPaymentInitiationStatusUsingGET**](docs/PaymentsApi.md#getPaymentInitiationStatusUsingGET) | **GET** /payment-initiations/{paymentId} | Get status of a payment initiation
 *PaymentsApi* | [**getPaymentStatusUsingGET**](docs/PaymentsApi.md#getPaymentStatusUsingGET) | **GET** /payments/{paymentId} | Get status of a payment
 *TransactionsApi* | [**getTransactionsUsingGET**](docs/TransactionsApi.md#getTransactionsUsingGET) | **GET** /accounts/{accountId}/transactions | Get account transactions
 *TransfersApi* | [**transferUsingPUT**](docs/TransfersApi.md#transferUsingPUT) | **PUT** /accounts/{accountId}/transfer | Transfer money from one account to another account accessible with the same consent
@@ -138,12 +139,16 @@ Class | Method | HTTP request | Description
  - [ATMPostalAddress](docs/ATMPostalAddress.md)
  - [ATMSite](docs/ATMSite.md)
  - [Account](docs/Account.md)
+ - [AccountAuthorisationRequest](docs/AccountAuthorisationRequest.md)
+ - [AccountRequest](docs/AccountRequest.md)
  - [AgeEligibility](docs/AgeEligibility.md)
  - [ApiListResponseOfAccount](docs/ApiListResponseOfAccount.md)
  - [ApiListResponseOfFeatureDetails](docs/ApiListResponseOfFeatureDetails.md)
  - [ApiListResponseOfInstitution](docs/ApiListResponseOfInstitution.md)
  - [ApiListResponseOfTransaction](docs/ApiListResponseOfTransaction.md)
  - [ApiResponseOfAccount](docs/ApiResponseOfAccount.md)
+ - [ApiResponseOfAuthorisationRequestResponse](docs/ApiResponseOfAuthorisationRequestResponse.md)
+ - [ApiResponseOfConsent](docs/ApiResponseOfConsent.md)
  - [ApiResponseOfIdentity](docs/ApiResponseOfIdentity.md)
  - [ApiResponseOfListOfATMOpenDataResponse](docs/ApiResponseOfListOfATMOpenDataResponse.md)
  - [ApiResponseOfListOfPersonalCurrentAccountData](docs/ApiResponseOfListOfPersonalCurrentAccountData.md)
@@ -151,10 +156,11 @@ Class | Method | HTTP request | Description
  - [ApiResponseOfTransferResponse](docs/ApiResponseOfTransferResponse.md)
  - [Application](docs/Application.md)
  - [ApplicationUser](docs/ApplicationUser.md)
+ - [AuthorisationRequestResponse](docs/AuthorisationRequestResponse.md)
  - [Consent](docs/Consent.md)
  - [CoreProduct](docs/CoreProduct.md)
  - [Country](docs/Country.md)
- - [CreateConsentApiKey](docs/CreateConsentApiKey.md)
+ - [CreateConsentAccessToken](docs/CreateConsentAccessToken.md)
  - [CreditCheck](docs/CreditCheck.md)
  - [CreditInterest](docs/CreditInterest.md)
  - [CreditInterestCreditInterestEligibility](docs/CreditInterestCreditInterestEligibility.md)
@@ -193,7 +199,9 @@ Class | Method | HTTP request | Description
  - [PersonalCurrentAccountPCA](docs/PersonalCurrentAccountPCA.md)
  - [PersonalCurrentAccountPCAMarketingState](docs/PersonalCurrentAccountPCAMarketingState.md)
  - [ResidencyEligibility](docs/ResidencyEligibility.md)
+ - [ResponseListMeta](docs/ResponseListMeta.md)
  - [ResponseMeta](docs/ResponseMeta.md)
+ - [SortCodePaymentAuthRequest](docs/SortCodePaymentAuthRequest.md)
  - [SortCodePaymentRequest](docs/SortCodePaymentRequest.md)
  - [Transaction](docs/Transaction.md)
  - [TransferRequest](docs/TransferRequest.md)

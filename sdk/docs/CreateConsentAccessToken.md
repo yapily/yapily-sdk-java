@@ -1,10 +1,11 @@
 
-# CreateConsentApiKey
+# CreateConsentAccessToken
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**apiKey** | **String** |  | 
+**accessToken** | **String** |  | 
+**refreshToken** | **String** |  | 
 **institutionId** | **String** |  | 
 
 

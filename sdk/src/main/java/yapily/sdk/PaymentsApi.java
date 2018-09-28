@@ -7,7 +7,9 @@ import yapily.Pair;
 
 import javax.ws.rs.core.GenericType;
 
+import yapily.sdk.ApiResponseOfAuthorisationRequestResponse;
 import yapily.sdk.ApiResponseOfPaymentResponse;
+import yapily.sdk.SortCodePaymentAuthRequest;
 import yapily.sdk.SortCodePaymentRequest;
 
 import java.util.ArrayList;
@@ -15,7 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-09-21T11:21:46.844Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-09-28T15:24:12.600Z")
 public class PaymentsApi {
   private ApiClient apiClient;
 
@@ -38,23 +40,15 @@ public class PaymentsApi {
   /**
    * Initiate a new single payment for user to authorise
    * 
-   * @param institution institution (required)
-   * @param paymentRequest paymentRequest (optional)
-   * @param userUuid user-uuid (optional)
-   * @param paramCallback callback (optional)
-   * @return ApiResponseOfPaymentResponse
+   * @param paymentAuthRequest paymentAuthRequest (optional)
+   * @return ApiResponseOfAuthorisationRequestResponse
    * @throws ApiException if fails to make API call
    */
-  public ApiResponseOfPaymentResponse createPaymentInitiationUsingPOST(String institution, SortCodePaymentRequest paymentRequest, String userUuid, String paramCallback) throws ApiException {
-    Object localVarPostBody = paymentRequest;
-    
-    // verify the required parameter 'institution' is set
-    if (institution == null) {
-      throw new ApiException(400, "Missing the required parameter 'institution' when calling createPaymentInitiationUsingPOST");
-    }
+  public ApiResponseOfAuthorisationRequestResponse createPaymentInitiationUsingPOST(SortCodePaymentAuthRequest paymentAuthRequest) throws ApiException {
+    Object localVarPostBody = paymentAuthRequest;
     
     // create path and map variables
-    String localVarPath = "/initiate-payment-sortcode";
+    String localVarPath = "/payment-sortcode-auth-requests";
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -62,13 +56,7 @@ public class PaymentsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    if (institution != null)
-      localVarHeaderParams.put("institution", apiClient.parameterToString(institution));
-if (userUuid != null)
-      localVarHeaderParams.put("user-uuid", apiClient.parameterToString(userUuid));
-if (paramCallback != null)
-      localVarHeaderParams.put("callback", apiClient.parameterToString(paramCallback));
-
+    
     
     final String[] localVarAccepts = {
       "application/json;charset=UTF-8"
@@ -82,7 +70,7 @@ if (paramCallback != null)
 
     String[] localVarAuthNames = new String[] { "basicAuth" };
 
-    GenericType<ApiResponseOfPaymentResponse> localVarReturnType = new GenericType<ApiResponseOfPaymentResponse>() {};
+    GenericType<ApiResponseOfAuthorisationRequestResponse> localVarReturnType = new GenericType<ApiResponseOfAuthorisationRequestResponse>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
   /**
@@ -128,56 +116,6 @@ if (paramCallback != null)
 
     GenericType<ApiResponseOfPaymentResponse> localVarReturnType = new GenericType<ApiResponseOfPaymentResponse>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * Get status of a payment initiation
-   * 
-   * @param institution institution (required)
-   * @param paymentId paymentId (required)
-   * @return ApiResponseOfPaymentResponse
-   * @throws ApiException if fails to make API call
-   */
-  public ApiResponseOfPaymentResponse getPaymentInitiationStatusUsingGET(String institution, String paymentId) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'institution' is set
-    if (institution == null) {
-      throw new ApiException(400, "Missing the required parameter 'institution' when calling getPaymentInitiationStatusUsingGET");
-    }
-    
-    // verify the required parameter 'paymentId' is set
-    if (paymentId == null) {
-      throw new ApiException(400, "Missing the required parameter 'paymentId' when calling getPaymentInitiationStatusUsingGET");
-    }
-    
-    // create path and map variables
-    String localVarPath = "/payment-initiations/{paymentId}"
-      .replaceAll("\\{" + "paymentId" + "\\}", apiClient.escapeString(paymentId.toString()));
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    if (institution != null)
-      localVarHeaderParams.put("institution", apiClient.parameterToString(institution));
-
-    
-    final String[] localVarAccepts = {
-      "application/json;charset=UTF-8"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "basicAuth" };
-
-    GenericType<ApiResponseOfPaymentResponse> localVarReturnType = new GenericType<ApiResponseOfPaymentResponse>() {};
-    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
   /**
    * Get status of a payment

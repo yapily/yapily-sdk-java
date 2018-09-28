@@ -4,15 +4,14 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**senderAccountId** | **String** |  |  [optional]
-**name** | **String** |  |  [optional]
-**amount** | [**BigDecimal**](BigDecimal.md) |  |  [optional]
-**currency** | **String** |  |  [optional]
-**reference** | **String** |  |  [optional]
-**country** | **String** |  |  [optional]
-**paymentReferenceId** | **String** |  |  [optional]
-**accountNumber** | **String** |  |  [optional]
-**sortCode** | **String** |  |  [optional]
+**senderAccountId** | **String** |  | 
+**name** | **String** |  | 
+**amount** | [**BigDecimal**](BigDecimal.md) |  | 
+**currency** | **String** |  | 
+**reference** | **String** |  | 
+**country** | **String** |  | 
+**accountNumber** | **String** |  | 
+**sortCode** | **String** |  | 
 
 
 

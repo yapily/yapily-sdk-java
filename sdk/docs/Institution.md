@@ -4,14 +4,23 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**countries** | [**List&lt;Country&gt;**](Country.md) |  |  [optional]
-**credentialsType** | [**CredentialsTypeEnum**](#CredentialsTypeEnum) |  |  [optional]
-**environmentType** | [**EnvironmentTypeEnum**](#EnvironmentTypeEnum) |  |  [optional]
-**features** | [**List&lt;FeaturesEnum&gt;**](#List&lt;FeaturesEnum&gt;) |  |  [optional]
-**fullName** | **String** |  |  [optional]
 **id** | **String** |  |  [optional]
-**media** | [**List&lt;Media&gt;**](Media.md) |  |  [optional]
 **name** | **String** |  |  [optional]
+**fullName** | **String** |  |  [optional]
+**countries** | [**List&lt;Country&gt;**](Country.md) |  |  [optional]
+**environmentType** | [**EnvironmentTypeEnum**](#EnvironmentTypeEnum) |  |  [optional]
+**credentialsType** | [**CredentialsTypeEnum**](#CredentialsTypeEnum) |  |  [optional]
+**media** | [**List&lt;Media&gt;**](Media.md) |  |  [optional]
+**features** | [**List&lt;FeaturesEnum&gt;**](#List&lt;FeaturesEnum&gt;) |  |  [optional]
+
+
+<a name="EnvironmentTypeEnum"></a>
+## Enum: EnvironmentTypeEnum
+Name | Value
+---- | -----
+SANDBOX | &quot;SANDBOX&quot;
+MOCK | &quot;MOCK&quot;
+LIVE | &quot;LIVE&quot;
 
 
 <a name="CredentialsTypeEnum"></a>
@@ -28,19 +37,12 @@ OPEN_BANKING_KEY_SECRET_SANDBOX | &quot;OPEN_BANKING_KEY_SECRET_SANDBOX&quot;
 API_KEY | &quot;API_KEY&quot;
 
 
-<a name="EnvironmentTypeEnum"></a>
-## Enum: EnvironmentTypeEnum
-Name | Value
----- | -----
-SANDBOX | &quot;SANDBOX&quot;
-MOCK | &quot;MOCK&quot;
-LIVE | &quot;LIVE&quot;
-
-
 <a name="List<FeaturesEnum>"></a>
 ## Enum: List&lt;FeaturesEnum&gt;
 Name | Value
 ---- | -----
+INITIATE_ACCOUNT_REQUEST | &quot;INITIATE_ACCOUNT_REQUEST&quot;
+ACCOUNT_REQUEST_DETAILS | &quot;ACCOUNT_REQUEST_DETAILS&quot;
 ACCOUNTS | &quot;ACCOUNTS&quot;
 ACCOUNT | &quot;ACCOUNT&quot;
 ACCOUNT_TRANSACTIONS | &quot;ACCOUNT_TRANSACTIONS&quot;
