@@ -25,7 +25,7 @@ import yapily.sdk.ApplicationUser;
 import yapily.sdk.ApplicationUsersApi;
 import yapily.sdk.Consent;
 import yapily.sdk.ConsentsApi;
-import yapily.sdk.CreateConsentApiKey;
+import yapily.sdk.CreateConsentAccessToken;
 import yapily.sdk.Identity;
 import yapily.sdk.IdentityApi;
 import yapily.sdk.NewApplicationUser;
@@ -80,8 +80,8 @@ public class ExampleAccountDetailsWithToken {
             System.out.println("Reading user consents filtered by institution [" + institutionId +
                                "] with GET /users/{userUuid}/consents?institutionId={institutionId}");
 
-            CreateConsentApiKey createConsentApiKey = new CreateConsentApiKey();
-            createConsentApiKey.setApiKey(STARLING_PERSONAL_ACCESS_TOKEN);
+            CreateConsentAccessToken createConsentApiKey = new CreateConsentAccessToken();
+            createConsentApiKey.setAccessToken(STARLING_PERSONAL_ACCESS_TOKEN);
             createConsentApiKey.setInstitutionId(institutionId);
 
             consentsApi.addConsentUsingPOST(userUuid,createConsentApiKey);
