@@ -4,7 +4,6 @@ import java.awt.Desktop;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URI;
-import java.util.UUID;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -28,6 +27,10 @@ import yapily.sdk.SortCodePaymentRequest;
 
 public class ExamplePayment {
 
+    /**
+     * The recipient of the payment
+     */
+
     public static void main(String[] args) throws Exception {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -41,7 +44,10 @@ public class ExamplePayment {
         final ApplicationUsersApi usersApi = new ApplicationUsersApi();
 
         NewApplicationUser user = new NewApplicationUser();
-        user.setReferenceId("Bojack");
+        /**
+         * Add a unique identifier for your user
+         */
+        user.setReferenceId("bojack123");
         usersApi.addUserUsingPOST(user);
 
         System.out.println("Adding new user [Bojack] with POST /users");
@@ -87,6 +93,8 @@ public class ExamplePayment {
 
                 ApiResponseOfPaymentResponse response = paymentsApi.createPaymentUsingPOST(consentToken,sortCodePaymentRequest);
 
+                System.out.println("Payment submitted");
+
                 PaymentResponse.StatusEnum status = response.getData().getStatus();
 
                 while (status == PaymentResponse.StatusEnum.PENDING) {
@@ -95,7 +103,7 @@ public class ExamplePayment {
                     Thread.sleep(1000);
                 }
 
-                System.out.println("Payment executed status: "+status);
+                System.out.println("Payment was executed with status: "+status);
 
             } catch (final IOException e) {
                 e.printStackTrace();
@@ -113,10 +121,12 @@ public class ExamplePayment {
 
     private static SortCodePaymentRequest sortCodePaymentRequest() {
         SortCodePaymentRequest sortCodePaymentRequest = new SortCodePaymentRequest();
-        sortCodePaymentRequest.setSenderAccountId(UUID.randomUUID().toString());
         sortCodePaymentRequest.setName("name");
         sortCodePaymentRequest.setAmount(new BigDecimal("2.9"));
-        sortCodePaymentRequest.setReference(UUID.randomUUID().toString().replace("-",""));
+
+        String reference = "Up to 35 characters";
+
+        sortCodePaymentRequest.setReference(reference);
         sortCodePaymentRequest.setCountry("GB");
         sortCodePaymentRequest.setCurrency("GBP");
         sortCodePaymentRequest.setAccountNumber("accountNumber");
