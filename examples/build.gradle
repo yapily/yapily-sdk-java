@@ -22,7 +22,7 @@ repositories {
 }
 
 dependencies {
-  compile group: 'yapily', name: 'yapily-sdk', version: '0.0.28'
+  compile group: 'yapily', name: 'yapily-sdk', version: '0.0.37'
   compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.1'
   compile group: 'com.google.code.gson', name: 'gson', version: '2.8.2'
 }
