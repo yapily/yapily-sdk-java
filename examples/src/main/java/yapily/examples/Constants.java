@@ -5,7 +5,6 @@ public class Constants {
     /**
      * Yapily Auth API url and parameters
      */
-    static final String YAPILY_AUTH_BASE_URL = "https://auth.yapily.com/direct";
     static final String PARAMETER_INSTITUTION_ID = "institution";
     static final String PARAMETER_APPLICATION_ID = "application";
     static final String PARAMETER_USER_ID = "user";

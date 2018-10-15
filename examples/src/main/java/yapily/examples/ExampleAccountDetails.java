@@ -4,9 +4,7 @@ import static yapily.examples.Constants.APPLICATION_ID;
 import static yapily.examples.Constants.APPLICATION_SECRET;
 import static yapily.examples.Constants.PARAMETER_APPLICATION_ID;
 import static yapily.examples.Constants.PARAMETER_CALLBACK_URL;
-import static yapily.examples.Constants.PARAMETER_INSTITUTION_ID;
 import static yapily.examples.Constants.PARAMETER_USER_ID;
-import static yapily.examples.Constants.YAPILY_AUTH_BASE_URL;
 
 import java.awt.Desktop;
 import java.io.IOException;
@@ -15,10 +13,8 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 import org.apache.http.NameValuePair;
-import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.message.BasicNameValuePair;
 
 import com.google.gson.Gson;
@@ -29,9 +25,12 @@ import yapily.ApiException;
 import yapily.Configuration;
 import yapily.auth.HttpBasicAuth;
 import yapily.sdk.Account;
+import yapily.sdk.AccountAuthorisationRequest;
+import yapily.sdk.AccountRequest;
 import yapily.sdk.AccountsApi;
 import yapily.sdk.ApiListResponseOfAccount;
 import yapily.sdk.ApiListResponseOfTransaction;
+import yapily.sdk.ApiResponseOfAuthorisationRequestResponse;
 import yapily.sdk.ApiResponseOfIdentity;
 import yapily.sdk.ApplicationUser;
 import yapily.sdk.ApplicationUsersApi;
@@ -85,17 +84,25 @@ public class ExampleAccountDetails {
             String institutionId = "bbva-sandbox";
             String userUuid = applicationUser.getUuid();
 
+            // Get accounts
+            final AccountsApi accountsApi = new AccountsApi();
+            AccountAuthorisationRequest accountAuthorisationRequest = new AccountAuthorisationRequest();
+            accountAuthorisationRequest.setUserUuid(userUuid);
+            accountAuthorisationRequest.setInstitutionId(institutionId);
+            /**
+             * Use the defaults
+             */
+            accountAuthorisationRequest.setAccountRequest(new AccountRequest());
+            ApiResponseOfAuthorisationRequestResponse authorizationResponse = accountsApi.initiateAccountRequestUsingPOST(accountAuthorisationRequest);
+            String directUrl = authorizationResponse.getData().getAuthorisationUrl();
+
             // Send applicationUser to authentication for an institution and add a callback with credentials
-            final URI directUrl = generateAuthDirectURL(APPLICATION_ID,
-                                                        userUuid,
-                                                        institutionId,
-                                                        Constants.CALLBACK_URL);
             System.out.println("Auth url: " + directUrl);
 
             if (Desktop.isDesktopSupported()) {
                 try {
                     System.out.println("Opening browser with auth url.");
-                    Desktop.getDesktop().browse(directUrl);
+                    Desktop.getDesktop().browse(new URI(directUrl));
 
                     // After authentication, you should be redirected to a static page that can be closed
                     System.out.println("After completing the authentication, press Enter to continue: [enter]");
@@ -103,6 +110,7 @@ public class ExampleAccountDetails {
 
                     // Get user consents
                     final ConsentsApi consentsApi = new ConsentsApi();
+                    List<Consent> consents = consentsApi.getUserConsentsUsingGET(userUuid, institutionId);
 
                     System.out.println("Reading user consents filtered by institution [" + institutionId +
                                        "] with GET /users/{userUuid}/consents?institutionId={institutionId}");
@@ -110,9 +118,6 @@ public class ExampleAccountDetails {
                                                  .stream()
                                                  .findFirst()
                                                  .orElseThrow(() -> new RuntimeException(String.format("No consent token present for user %s", userUuid)));
-
-                    // Get accounts
-                    final AccountsApi accountsApi = new AccountsApi();
 
                     System.out.println("Request banking accounts with GET /accounts");
                     ApiListResponseOfAccount accountsResponse = accountsApi.getAccountsUsingGET(consent.getConsentToken());
@@ -152,7 +157,7 @@ public class ExampleAccountDetails {
                         if (e.getCode() == 404) System.out.println(e.getMessage());
                     }
 
-                } catch (final IOException e) {
+                } catch (final IOException | URISyntaxException e) {
                     e.printStackTrace();
                 }
             }
@@ -161,19 +166,6 @@ public class ExampleAccountDetails {
         }
     }
 
-    private static URI generateAuthDirectURL(String applicationUuid,
-                                             String userUuid,
-                                             String institutionId,
-                                             String callbackUrl) throws ApiException {
-        try {
-            final URIBuilder uriBuilder = new URIBuilder(YAPILY_AUTH_BASE_URL);
-            uriBuilder.addParameter(PARAMETER_INSTITUTION_ID, institutionId);
-            uriBuilder.addParameters(uriParameters(applicationUuid, userUuid, callbackUrl));
-            return uriBuilder.build();
-        } catch (final URISyntaxException e) {
-            throw new ApiException(e);
-        }
-    }
 
     private static List<NameValuePair> uriParameters(String applicationUuid,
                                                      String userUuid,

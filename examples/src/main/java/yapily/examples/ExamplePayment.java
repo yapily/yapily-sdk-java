@@ -123,10 +123,7 @@ public class ExamplePayment {
         SortCodePaymentRequest sortCodePaymentRequest = new SortCodePaymentRequest();
         sortCodePaymentRequest.setName("name");
         sortCodePaymentRequest.setAmount(new BigDecimal("2.9"));
-
-        String reference = "Up to 35 characters";
-
-        sortCodePaymentRequest.setReference(reference);
+        sortCodePaymentRequest.setReference("Up to 35 characters");
         sortCodePaymentRequest.setCountry("GB");
         sortCodePaymentRequest.setCurrency("GBP");
         sortCodePaymentRequest.setAccountNumber("accountNumber");

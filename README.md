@@ -9,8 +9,8 @@ to any financial institution integrated by Yapily.
 To connect to the Yapily API, you will need to register your 
 application at [https://dashboard.yapily.com]().
 
-These application credentials can then be used to authorise all
-your API requests.
+Specify the financial institutions you want to work with and save your application. You will then be prompted to download your application credentials. 
+These application credentials can then be used to authorise your requests against the [yapily API](https://docs.yapily.com/#get-started).
 
 ## Installation
 
@@ -41,7 +41,7 @@ Dependency:
    <dependency>
        <groupId>yapily</groupId>
        <artifactId>yapily-sdk-java</artifactId>
-       <version>0.0.4-SNAPSHOT</version>
+       <version>0.0.37</version>
    </dependency>
 </dependencies>
 ```
@@ -73,53 +73,133 @@ library JAR to be included in your project.
 
 ## Usage
 
-Sample usage of the SDK can be seen in the `examples` folder.
+Sample usages of the SDK can be seen in the `examples` folder.
+
+- Configure the default api client
+
+```java
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+// Configure the API authentication
+HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
+// Replace these demo constants with your application credentials
+basicAuth.setUsername(APPLICATION_ID);
+basicAuth.setPassword(APPLICATION_SECRET);
+```
+
+- Or configure a new one for multiple application cases 
+
+```java
+ApiClient applicationClient = new ApiClient();
+// Configure the API authentication
+HttpBasicAuth basicAuth = (HttpBasicAuth) applicationClient.getAuthentication("basicAuth");
+// Replace these demo constants with your application credentials
+basicAuth.setUsername(APPLICATION_ID);
+basicAuth.setPassword(APPLICATION_SECRET);
+InstitutionsApi institutionsApi = new InstitutionsApi();
+institutionsApi.setApiClient(applicationClient);
+```
 
 - Retrieve a list of available financial institutions to connect to
 
 ```java
-InstitutionsApi institutionsApi = new InstitutionsApi.Builder().standard().build();
-List<Institution> institutionList = institutionsApi.listInstitutions();
+InstitutionsApi institutionsApi = new InstitutionsApi();
+List<Institution> institutions = institutionsApi.getInstitutionsUsingGET().getData();
 ```
 
 - Creating users and retrieving users for your application registered in the Yapily Dashboard
 ```java
-UsersApi usersApi = new UsersApi.Builder().standard().build();
-usersApi.createUser("Bojack");
+final ApplicationUsersApi usersApi = new ApplicationUsersApi();
+NewApplicationUser user = new NewApplicationUser();
+user.setReferenceId("Bojack");
+usersApi.addUserUsingPOST(user);
+
 List<ApplicationUser> users = usersApi.listUsers();
 ```
 
-- Receiving an authorisation URL your users to log into their institution
+- Create an authorization url in order for your users to give consent on accessing their account data. 
 
 ```java
-Auth auth = new Auth();
-URI directUrl = auth.authDirectURL(applicationId, userUuid, institutionId, YOUR_CALLBACK_URL, "account");
+final AccountsApi accountsApi = new AccountsApi();
+AccountAuthorisationRequest accountAuthorisationRequest = new AccountAuthorisationRequest();
+accountAuthorisationRequest.setUserUuid(userUuid);
+accountAuthorisationRequest.setInstitutionId(institutionId);
+/**
+* Use the defaults
+*/
+accountAuthorisationRequest.setAccountRequest(new AccountRequest());
+ApiResponseOfAuthorisationRequestResponse authorizationResponse = accountsApi.initiateAccountRequestUsingPOST(accountAuthorisationRequest);
+String directUrl = authorizationResponse.getData().getAuthorisationUrl();
 ```
 
-- Receiving consents issued by your user authorizing
+- Receive consents issued by your user by authorizing to a specific institution
 ```java
-List<Consent> allConsents = usersApi.listConsents(YOUR_USER_ID);
+// Get user consents
+final ConsentsApi consentsApi = new ConsentsApi();
+List<Consent> consents = consentsApi.getUserConsentsUsingGET(userUuid, institutionId);
+
 ```
  
-- Returning user account details
+- Return user account details using the consent the user has given
 
 ```java
-AccountsApi accountsApi = new AccountsApi.Builder().standard().withConsentToken(YOUR_CONSENT_TOKEN).build();
-List<Account> accounts = accountsApi.listAccounts(userUuid, institutionId);
+String consentToken = consent.getConsentToken();
+ApiListResponseOfAccount accountsResponse = accountsApi.getAccountsUsingGET(consentToken);
+List<Account> accounts = accountsResponse.getData();
 ```
 
-- Returning user transaction details
+- Return user transaction details, using an account the user has given consent to.
 
 ```java
-TransactionsApi transactionsApi = new TransactionsApi.Builder().standard().withConsentToken(YOUR_CONSENT_TOKEN).build();
-List<Transaction> transactions = transactionsApi.listTransactions(userUuid, accountId, institutionId);
+String consentToken = consent.getConsentToken();
+ApiListResponseOfTransaction transactionsResponse = transactionsApi.getTransactionsUsingGET(consentToken, accountId, new ArrayList<>());
+List<Transaction> transactions = transactionsResponse.getData();
 ```
 
-- Returning user identity details
+- Return user identity details
 ```java
-IdentitiesApi identitiesApi = new IdentitiesApi.Builder().standard().withConsentToken(YOUR_CONSENT_TOKEN).build();
-Identity identity = identitiesApi.getIdentity(userUuid, institutionId);
+String consentToken = consent.getConsentToken();
+IdentityApi identityApi = new IdentityApi();
+ApiResponseOfIdentity identityResp = identityApi.getIdentityUsingGET(consentToken); 
+Identity identity = identityResp.getData();
 ```
+
+- Create an authorization url in order for your users to give consent on executing a payment. 
+
+```java
+SortCodePaymentRequest sortCodePaymentRequest = new SortCodePaymentRequest();
+sortCodePaymentRequest.setName("name");
+sortCodePaymentRequest.setAmount(new BigDecimal("2.9"));
+sortCodePaymentRequest.setReference("Up to 35 characters");
+sortCodePaymentRequest.setCountry("GB");
+sortCodePaymentRequest.setCurrency("GBP");
+sortCodePaymentRequest.setAccountNumber("accountNumber");
+sortCodePaymentRequest.setSortCode("123456");
+
+SortCodePaymentAuthRequest authRequest = new SortCodePaymentAuthRequest();
+sortCodePaymentAuthRequest.setInstitutionId(institutionId);
+sortCodePaymentAuthRequest.setUserUuid(userUUID);
+sortCodePaymentAuthRequest.setPaymentRequest(sortCodePaymentRequest);
+
+PaymentsApi paymentsApi = new PaymentsApi();
+ApiResponseOfAuthorisationRequestResponse authorizationResponse = paymentsApi.createPaymentInitiationUsingPOST(authRequest);
+String url = authorizationResponse.getData().getAuthorisationUrl();
+
+```
+
+- Submit a payment request using the consent given by the user
+
+```java
+String consentToken = consent.getConsentToken();
+ApiResponseOfPaymentResponse response = paymentsApi.createPaymentUsingPOST(consentToken,sortCodePaymentRequest);
+```
+
+- Check the payment status;
+```java
+String consentToken = consent.getConsentToken();
+String paymentId =  paymentResponse.getData().getId();
+ApiResponseOfPaymentResponse apiResponseOfPaymentResponse = paymentsApi.getPaymentStatusUsingGET(paymentId, consentToken);
+```
+
 
 ## Further information
 
