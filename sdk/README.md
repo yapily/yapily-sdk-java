@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>yapily</groupId>
     <artifactId>yapily-sdk</artifactId>
-    <version>0.0.37</version>
+    <version>0.0.38</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "yapily:yapily-sdk:0.0.37"
+compile "yapily:yapily-sdk:0.0.38"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/yapily-sdk-0.0.37.jar
+* target/yapily-sdk-0.0.38.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -169,6 +169,7 @@ Class | Method | HTTP request | Description
  - [Eligibility](docs/Eligibility.md)
  - [EligibilityOtherEligibility](docs/EligibilityOtherEligibility.md)
  - [FeatureDetails](docs/FeatureDetails.md)
+ - [FilterAndSort](docs/FilterAndSort.md)
  - [IDVerificationCheck](docs/IDVerificationCheck.md)
  - [Identity](docs/Identity.md)
  - [IdentityAddress](docs/IdentityAddress.md)
@@ -177,6 +178,7 @@ Class | Method | HTTP request | Description
  - [Media](docs/Media.md)
  - [Merchant](docs/Merchant.md)
  - [NewApplicationUser](docs/NewApplicationUser.md)
+ - [Next](docs/Next.md)
  - [OtherApplicationFrequency](docs/OtherApplicationFrequency.md)
  - [OtherBankInterestType](docs/OtherBankInterestType.md)
  - [OtherCalculationFrequency](docs/OtherCalculationFrequency.md)
@@ -193,6 +195,7 @@ Class | Method | HTTP request | Description
  - [OverdraftOverdraftFeesCharges1](docs/OverdraftOverdraftFeesCharges1.md)
  - [OverdraftOverdraftTierBand](docs/OverdraftOverdraftTierBand.md)
  - [OverdraftOverdraftTierBandSet](docs/OverdraftOverdraftTierBandSet.md)
+ - [Pagination](docs/Pagination.md)
  - [PaymentResponse](docs/PaymentResponse.md)
  - [PersonalCurrentAccountBrand](docs/PersonalCurrentAccountBrand.md)
  - [PersonalCurrentAccountData](docs/PersonalCurrentAccountData.md)

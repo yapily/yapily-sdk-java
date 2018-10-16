@@ -19,32 +19,18 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.math.BigDecimal;
 import java.time.OffsetDateTime;
-import yapily.sdk.Merchant;
 
 /**
- * Transaction
+ * Next
  */
 @Data
-public class Transaction {
-  @JsonProperty("id")
-  private String id = null;
+public class Next {
+  @JsonProperty("before")
+  private OffsetDateTime before = null;
 
-  @JsonProperty("date")
-  private OffsetDateTime date = null;
-
-  @JsonProperty("amount")
-  private BigDecimal amount = null;
-
-  @JsonProperty("currency")
-  private String currency = null;
-
-  @JsonProperty("description")
-  private String description = null;
-
-  @JsonProperty("merchant")
-  private Merchant merchant = null;
+  @JsonProperty("from")
+  private OffsetDateTime from = null;
 
 }
 

@@ -1,5 +1,5 @@
 # Yapily Java SDK
-[![GitHub version](https://d25lcipzij17d.cloudfront.net/badge.svg?id=gh&type=6&v=0.0.37&x2=0)](http://badge.fury.io/gh/boennemann%2Fbadges)
+[![GitHub version](https://d25lcipzij17d.cloudfront.net/badge.svg?id=gh&type=6&v=0.0.38&x2=0)](http://badge.fury.io/gh/boennemann%2Fbadges)
 
 This SDK can be used as a module or an example of how to connect
 to any financial institution integrated by Yapily.
@@ -10,7 +10,7 @@ To connect to the Yapily API, you will need to register your
 application at [https://dashboard.yapily.com]().
 
 Specify the financial institutions you want to work with and save your application. You will then be prompted to download your application credentials. 
-These application credentials can then be used to authorise your requests against the [Yapily API](https://docs.yapily.com/#get-started).
+These application credentials can then be used to authorise your requests against the [yapily API](https://docs.yapily.com/#get-started).
 
 ## Installation
 
@@ -41,7 +41,7 @@ Dependency:
    <dependency>
        <groupId>yapily</groupId>
        <artifactId>yapily-sdk-java</artifactId>
-       <version>0.0.37</version>
+       <version>0.0.38</version>
    </dependency>
 </dependencies>
 ```
@@ -62,7 +62,7 @@ repositories {
 Dependency:
 
 ```groovy
-compile group: 'yapily', name: 'yapily-sdk-java', version: '0.0.37'
+compile group: 'yapily', name: 'yapily-sdk-java', version: '0.0.38'
 ```
 
 #### Download JAR
@@ -193,7 +193,7 @@ String consentToken = consent.getConsentToken();
 ApiResponseOfPaymentResponse response = paymentsApi.createPaymentUsingPOST(consentToken,sortCodePaymentRequest);
 ```
 
-- Check the payment status
+- Check the payment status;
 ```java
 String consentToken = consent.getConsentToken();
 String paymentId =  paymentResponse.getData().getId();

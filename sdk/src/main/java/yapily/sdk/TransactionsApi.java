@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-10-15T14:56:27.824Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-10-16T14:37:58.479Z")
 public class TransactionsApi {
   private ApiClient apiClient;
 
@@ -40,10 +40,14 @@ public class TransactionsApi {
    * @param consent Consent Token (required)
    * @param accountId accountId (required)
    * @param with with (optional)
+   * @param from from (optional)
+   * @param before before (optional)
+   * @param limit limit (optional)
+   * @param sort sort (optional)
    * @return ApiListResponseOfTransaction
    * @throws ApiException if fails to make API call
    */
-  public ApiListResponseOfTransaction getTransactionsUsingGET(String consent, String accountId, List<String> with) throws ApiException {
+  public ApiListResponseOfTransaction getTransactionsUsingGET(String consent, String accountId, List<String> with, String from, String before, Integer limit, String sort) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'consent' is set
@@ -66,6 +70,10 @@ public class TransactionsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
     localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "with", with));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "from", from));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "before", before));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "sort", sort));
 
     if (consent != null)
       localVarHeaderParams.put("consent", apiClient.parameterToString(consent));

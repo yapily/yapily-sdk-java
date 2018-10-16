@@ -19,36 +19,33 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.util.ArrayList;
-import java.util.List;
-import yapily.sdk.OtherResidencyType;
+import java.time.OffsetDateTime;
 
 /**
- * Countries in which an accountholder can reside and, therefore, be eligible to open an account
+ * FilterAndSort
  */
-@ApiModel(description = "Countries in which an accountholder can reside and, therefore, be eligible to open an account")
 @Data
-public class ResidencyEligibility {
-  @JsonProperty("Notes")
-  private List<String> notes = null;
+public class FilterAndSort {
+  @JsonProperty("before")
+  private OffsetDateTime before = null;
 
-  @JsonProperty("OtherResidencyType")
-  private OtherResidencyType otherResidencyType = null;
+  @JsonProperty("from")
+  private OffsetDateTime from = null;
 
-  @JsonProperty("ResidencyIncluded")
-  private List<String> residencyIncluded = null;
+  @JsonProperty("limit")
+  private Integer limit = null;
 
   /**
-   * Gets or Sets residencyType
+   * Gets or Sets sort
    */
-  public enum ResidencyTypeEnum {
-    HOUSEHOLDER("Householder"),
+  public enum SortEnum {
+    DATE("date"),
     
-    OTHER("Other");
+    _DATE("-date");
 
     private String value;
 
-    ResidencyTypeEnum(String value) {
+    SortEnum(String value) {
       this.value = value;
     }
 
@@ -63,8 +60,8 @@ public class ResidencyEligibility {
     }
 
     @JsonCreator
-    public static ResidencyTypeEnum fromValue(String text) {
-      for (ResidencyTypeEnum b : ResidencyTypeEnum.values()) {
+    public static SortEnum fromValue(String text) {
+      for (SortEnum b : SortEnum.values()) {
         if (String.valueOf(b.value).equals(text)) {
           return b;
         }
@@ -73,8 +70,8 @@ public class ResidencyEligibility {
     }
   }
 
-  @JsonProperty("ResidencyType")
-  private ResidencyTypeEnum residencyType = null;
+  @JsonProperty("sort")
+  private SortEnum sort = null;
 
 }
 
