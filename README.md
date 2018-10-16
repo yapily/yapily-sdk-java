@@ -193,7 +193,7 @@ String consentToken = consent.getConsentToken();
 ApiResponseOfPaymentResponse response = paymentsApi.createPaymentUsingPOST(consentToken,sortCodePaymentRequest);
 ```
 
-- Check the payment status;
+- Check the payment status
 ```java
 String consentToken = consent.getConsentToken();
 String paymentId =  paymentResponse.getData().getId();
