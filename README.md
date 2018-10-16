@@ -10,7 +10,7 @@ To connect to the Yapily API, you will need to register your
 application at [https://dashboard.yapily.com]().
 
 Specify the financial institutions you want to work with and save your application. You will then be prompted to download your application credentials. 
-These application credentials can then be used to authorise your requests against the [yapily API](https://docs.yapily.com/#get-started).
+These application credentials can then be used to authorise your requests against the [Yapily API](https://docs.yapily.com/#get-started).
 
 ## Installation
 
