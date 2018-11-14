@@ -19,17 +19,21 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.util.ArrayList;
-import java.util.List;
-import yapily.sdk.PersonalCurrentAccountBrand;
+import yapily.sdk.Address;
 
 /**
- * PersonalCurrentAccountData
+ * MerchantInfo
  */
 @Data
-public class PersonalCurrentAccountData {
-  @JsonProperty("Brand")
-  private List<PersonalCurrentAccountBrand> brand = null;
+public class MerchantInfo {
+  @JsonProperty("categoryCode")
+  private String categoryCode = null;
+
+  @JsonProperty("customerId")
+  private String customerId = null;
+
+  @JsonProperty("address")
+  private Address address = null;
 
 }
 

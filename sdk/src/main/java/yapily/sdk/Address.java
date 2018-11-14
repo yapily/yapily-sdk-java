@@ -21,15 +21,32 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
-import yapily.sdk.PersonalCurrentAccountBrand;
 
 /**
- * PersonalCurrentAccountData
+ * Address
  */
 @Data
-public class PersonalCurrentAccountData {
-  @JsonProperty("Brand")
-  private List<PersonalCurrentAccountBrand> brand = null;
+public class Address {
+  @JsonProperty("addressLines")
+  private List<String> addressLines = new ArrayList<>();
+
+  @JsonProperty("streetName")
+  private String streetName = null;
+
+  @JsonProperty("buildingNumber")
+  private String buildingNumber = null;
+
+  @JsonProperty("postCode")
+  private String postCode = null;
+
+  @JsonProperty("townName")
+  private String townName = null;
+
+  @JsonProperty("county")
+  private List<String> county = new ArrayList<>();
+
+  @JsonProperty("country")
+  private String country = null;
 
 }
 

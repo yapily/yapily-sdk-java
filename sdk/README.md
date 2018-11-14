@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>yapily</groupId>
     <artifactId>yapily-sdk</artifactId>
-    <version>0.0.38</version>
+    <version>0.0.40</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "yapily:yapily-sdk:0.0.38"
+compile "yapily:yapily-sdk:0.0.40"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/yapily-sdk-0.0.38.jar
+* target/yapily-sdk-0.0.40.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -141,6 +141,7 @@ Class | Method | HTTP request | Description
  - [Account](docs/Account.md)
  - [AccountAuthorisationRequest](docs/AccountAuthorisationRequest.md)
  - [AccountRequest](docs/AccountRequest.md)
+ - [Address](docs/Address.md)
  - [AgeEligibility](docs/AgeEligibility.md)
  - [ApiListResponseOfAccount](docs/ApiListResponseOfAccount.md)
  - [ApiListResponseOfFeatureDetails](docs/ApiListResponseOfFeatureDetails.md)
@@ -177,6 +178,7 @@ Class | Method | HTTP request | Description
  - [InstitutionConsent](docs/InstitutionConsent.md)
  - [Media](docs/Media.md)
  - [Merchant](docs/Merchant.md)
+ - [MerchantInfo](docs/MerchantInfo.md)
  - [NewApplicationUser](docs/NewApplicationUser.md)
  - [Next](docs/Next.md)
  - [OtherApplicationFrequency](docs/OtherApplicationFrequency.md)

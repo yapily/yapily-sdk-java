@@ -50,6 +50,8 @@ import yapily.sdk.TransactionsApi;
  */
 public class ExampleAccountDetails {
 
+    private static final String INSTITUTION_ID = "bbva-sandbox";
+
     public static void main(String[] args) {
         System.out.println("Institution authorisation flow and banking requests using Yapily API!");
 
@@ -71,7 +73,6 @@ public class ExampleAccountDetails {
 
             NewApplicationUser user = new NewApplicationUser();
             user.setReferenceId("Bojack");
-            usersApi.addUserUsingPOST(user);
 
             System.out.println("Adding new user [Bojack] with POST /users");
             final ApplicationUser applicationUser = usersApi.addUserUsingPOST(user);
@@ -81,14 +82,13 @@ public class ExampleAccountDetails {
             System.out.println(gson.toJson(applicationUser));
 
             // Set user and institution id variables
-            String institutionId = "bbva-sandbox";
             String userUuid = applicationUser.getUuid();
 
             // Get accounts
             final AccountsApi accountsApi = new AccountsApi();
             AccountAuthorisationRequest accountAuthorisationRequest = new AccountAuthorisationRequest();
             accountAuthorisationRequest.setUserUuid(userUuid);
-            accountAuthorisationRequest.setInstitutionId(institutionId);
+            accountAuthorisationRequest.setInstitutionId(INSTITUTION_ID);
             /**
              * Use the defaults
              */
@@ -105,16 +105,16 @@ public class ExampleAccountDetails {
                     Desktop.getDesktop().browse(new URI(directUrl));
 
                     // After authentication, you should be redirected to a static page that can be closed
-                    System.out.println("After completing the authentication, press Enter to continue: [enter]");
+                    System.out.println("After completing authentication, press Enter to continue: [enter]");
                     System.in.read();
 
                     // Get user consents
                     final ConsentsApi consentsApi = new ConsentsApi();
-                    List<Consent> consents = consentsApi.getUserConsentsUsingGET(userUuid, institutionId);
+                    List<Consent> consents = consentsApi.getUserConsentsUsingGET(userUuid, INSTITUTION_ID);
 
-                    System.out.println("Reading user consents filtered by institution [" + institutionId +
+                    System.out.println("Reading user consents filtered by institution [" + INSTITUTION_ID +
                                        "] with GET /users/{userUuid}/consents?institutionId={institutionId}");
-                    Consent consent = consentsApi.getUserConsentsUsingGET(userUuid, institutionId)
+                    Consent consent = consentsApi.getUserConsentsUsingGET(userUuid, INSTITUTION_ID)
                                                  .stream()
                                                  .findFirst()
                                                  .orElseThrow(() -> new RuntimeException(String.format("No consent token present for user %s", userUuid)));

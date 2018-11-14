@@ -40,7 +40,10 @@ import yapily.sdk.TransactionsApi;
  */
 public class ExampleAccountDetailsWithToken {
 
+    private static final String INSTITUTION_ID = "starling-personal-access";
+
     public static void main(String[] args) {
+
         System.out.println("Institution authorisation flow and banking requests using Yapily API!");
 
         try {
@@ -61,7 +64,6 @@ public class ExampleAccountDetailsWithToken {
 
             NewApplicationUser user = new NewApplicationUser();
             user.setReferenceId("Bojack");
-            usersApi.addUserUsingPOST(user);
 
             System.out.println("Adding new user [Bojack] with POST /users");
             final ApplicationUser applicationUser = usersApi.addUserUsingPOST(user);
@@ -70,23 +72,22 @@ public class ExampleAccountDetailsWithToken {
             System.out.println("Created user:");
             System.out.println(gson.toJson(applicationUser));
 
-            // Set user and institution id variables
-            String institutionId = "starling-personal-access";
+            // Set user id variable
             String userUuid = applicationUser.getUuid();
 
             // Get user consents
             final ConsentsApi consentsApi = new ConsentsApi();
 
-            System.out.println("Reading user consents filtered by institution [" + institutionId +
+            System.out.println("Reading user consents filtered by institution [" + INSTITUTION_ID +
                                "] with GET /users/{userUuid}/consents?institutionId={institutionId}");
 
             CreateConsentAccessToken createConsentApiKey = new CreateConsentAccessToken();
             createConsentApiKey.setAccessToken(STARLING_PERSONAL_ACCESS_TOKEN);
-            createConsentApiKey.setInstitutionId(institutionId);
+            createConsentApiKey.setInstitutionId(INSTITUTION_ID);
 
             consentsApi.addConsentUsingPOST(userUuid,createConsentApiKey);
 
-            Consent consent = consentsApi.getUserConsentsUsingGET(userUuid, institutionId)
+            Consent consent = consentsApi.getUserConsentsUsingGET(userUuid, INSTITUTION_ID)
                                          .stream()
                                          .findFirst()
                                          .orElseThrow(() -> new RuntimeException(String.format("No consent token present for user %s", userUuid)));

@@ -27,9 +27,7 @@ import yapily.sdk.SortCodePaymentRequest;
 
 public class ExamplePayment {
 
-    /**
-     * The recipient of the payment
-     */
+    private static final String INSTITUTION_ID = "forgerock-sandbox";
 
     public static void main(String[] args) throws Exception {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
@@ -57,13 +55,12 @@ public class ExamplePayment {
         System.out.println("Created user:");
         System.out.println(gson.toJson(applicationUser));
 
-        // Set user and institution id variables
-        String institutionId = "forgerock-sandbox";
+        // Set user variable
         String userUuid = applicationUser.getUuid();
 
         PaymentsApi paymentsApi = new PaymentsApi();
 
-        SortCodePaymentAuthRequest authRequest = sortCodePaymentRequest(userUuid,institutionId);
+        SortCodePaymentAuthRequest authRequest = sortCodePaymentRequest(userUuid,INSTITUTION_ID);
         SortCodePaymentRequest sortCodePaymentRequest = authRequest.getPaymentRequest();
 
         ApiResponseOfAuthorisationRequestResponse authorizationResponse = paymentsApi.createPaymentInitiationUsingPOST(authRequest);
@@ -76,15 +73,15 @@ public class ExamplePayment {
                 Desktop.getDesktop().browse(url);
 
                 // After authentication, you should be redirected to a static page that can be closed
-                System.out.println("After completing the authentication, press Enter to continue: [enter]");
+                System.out.println("After completing authentication, press Enter to continue: [enter]");
                 System.in.read();
 
                 // Get user consents
                 final ConsentsApi consentsApi = new ConsentsApi();
 
-                System.out.println("Reading user consents filtered by institution [" + institutionId +
+                System.out.println("Reading user consents filtered by institution [" + INSTITUTION_ID +
                                        "] with GET /users/{userUuid}/consents?institutionId={institutionId}");
-                Consent consent = consentsApi.getUserConsentsUsingGET(userUuid, institutionId)
+                Consent consent = consentsApi.getUserConsentsUsingGET(userUuid, INSTITUTION_ID)
                                              .stream()
                                              .findFirst()
                                              .orElseThrow(() -> new RuntimeException(String.format("No consent token present for user %s", userUuid)));
