@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-12-13T14:15:45.465Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-12-24T11:56:00.233Z")
 public class PaymentsApi {
   private ApiClient apiClient;
 
@@ -40,12 +40,17 @@ public class PaymentsApi {
   /**
    * Initiate a new single payment for user to authorise
    * 
-   * @param paymentAuthRequest paymentAuthRequest (optional)
+   * @param paymentAuthRequest paymentAuthRequest (required)
    * @return ApiResponseOfAuthorisationRequestResponse
    * @throws ApiException if fails to make API call
    */
   public ApiResponseOfAuthorisationRequestResponse createPaymentInitiationUsingPOST(SortCodePaymentAuthRequest paymentAuthRequest) throws ApiException {
     Object localVarPostBody = paymentAuthRequest;
+    
+    // verify the required parameter 'paymentAuthRequest' is set
+    if (paymentAuthRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'paymentAuthRequest' when calling createPaymentInitiationUsingPOST");
+    }
     
     // create path and map variables
     String localVarPath = "/payment-sortcode-auth-requests";
@@ -77,7 +82,7 @@ public class PaymentsApi {
    * Create a new single payment
    * 
    * @param consent Consent Token (required)
-   * @param paymentRequest paymentRequest (optional)
+   * @param paymentRequest paymentRequest (required)
    * @return ApiResponseOfPaymentResponse
    * @throws ApiException if fails to make API call
    */
@@ -87,6 +92,11 @@ public class PaymentsApi {
     // verify the required parameter 'consent' is set
     if (consent == null) {
       throw new ApiException(400, "Missing the required parameter 'consent' when calling createPaymentUsingPOST");
+    }
+    
+    // verify the required parameter 'paymentRequest' is set
+    if (paymentRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'paymentRequest' when calling createPaymentUsingPOST");
     }
     
     // create path and map variables
