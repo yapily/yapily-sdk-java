@@ -29,6 +29,10 @@ HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basic
 basicAuth.setUsername("YOUR USERNAME");
 basicAuth.setPassword("YOUR PASSWORD");
 
+// Configure OAuth2 access token for authorization: tokenAuth
+OAuth tokenAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
+tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
+
 TransactionsApi apiInstance = new TransactionsApi();
 String consent = "consent_example"; // String | Consent Token
 String accountId = "accountId_example"; // String | accountId
@@ -64,7 +68,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[basicAuth](../README.md#basicAuth)
+[basicAuth](../README.md#basicAuth), [tokenAuth](../README.md#tokenAuth)
 
 ### HTTP request headers
 

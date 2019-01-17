@@ -32,6 +32,10 @@ HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basic
 basicAuth.setUsername("YOUR USERNAME");
 basicAuth.setPassword("YOUR PASSWORD");
 
+// Configure OAuth2 access token for authorization: tokenAuth
+OAuth tokenAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
+tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
+
 ApplicationUsersApi apiInstance = new ApplicationUsersApi();
 NewApplicationUser newApplicationUser = new NewApplicationUser(); // NewApplicationUser | newApplicationUser
 try {
@@ -55,7 +59,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[basicAuth](../README.md#basicAuth)
+[basicAuth](../README.md#basicAuth), [tokenAuth](../README.md#tokenAuth)
 
 ### HTTP request headers
 
@@ -84,6 +88,10 @@ HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basic
 basicAuth.setUsername("YOUR USERNAME");
 basicAuth.setPassword("YOUR PASSWORD");
 
+// Configure OAuth2 access token for authorization: tokenAuth
+OAuth tokenAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
+tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
+
 ApplicationUsersApi apiInstance = new ApplicationUsersApi();
 String userUuid = "userUuid_example"; // String | userUuid
 try {
@@ -107,7 +115,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[basicAuth](../README.md#basicAuth)
+[basicAuth](../README.md#basicAuth), [tokenAuth](../README.md#tokenAuth)
 
 ### HTTP request headers
 
@@ -136,6 +144,10 @@ HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basic
 basicAuth.setUsername("YOUR USERNAME");
 basicAuth.setPassword("YOUR PASSWORD");
 
+// Configure OAuth2 access token for authorization: tokenAuth
+OAuth tokenAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
+tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
+
 ApplicationUsersApi apiInstance = new ApplicationUsersApi();
 String userUuid = "userUuid_example"; // String | userUuid
 try {
@@ -159,7 +171,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[basicAuth](../README.md#basicAuth)
+[basicAuth](../README.md#basicAuth), [tokenAuth](../README.md#tokenAuth)
 
 ### HTTP request headers
 
@@ -188,6 +200,10 @@ HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basic
 basicAuth.setUsername("YOUR USERNAME");
 basicAuth.setPassword("YOUR PASSWORD");
 
+// Configure OAuth2 access token for authorization: tokenAuth
+OAuth tokenAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
+tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
+
 ApplicationUsersApi apiInstance = new ApplicationUsersApi();
 try {
     List<ApplicationUser> result = apiInstance.getUsersUsingGET();
@@ -207,7 +223,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[basicAuth](../README.md#basicAuth)
+[basicAuth](../README.md#basicAuth), [tokenAuth](../README.md#tokenAuth)
 
 ### HTTP request headers
 

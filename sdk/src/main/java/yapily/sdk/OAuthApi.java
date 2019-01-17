@@ -7,7 +7,7 @@ import yapily.Pair;
 
 import javax.ws.rs.core.GenericType;
 
-import yapily.sdk.ApiResponseOfIdentity;
+import yapily.sdk.YapilyAccessToken;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,14 +15,14 @@ import java.util.List;
 import java.util.Map;
 
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-17T17:07:16.256Z")
-public class IdentityApi {
+public class OAuthApi {
   private ApiClient apiClient;
 
-  public IdentityApi() {
+  public OAuthApi() {
     this(Configuration.getDefaultApiClient());
   }
 
-  public IdentityApi(ApiClient apiClient) {
+  public OAuthApi(ApiClient apiClient) {
     this.apiClient = apiClient;
   }
 
@@ -35,22 +35,22 @@ public class IdentityApi {
   }
 
   /**
-   * Get identity
+   * Retrieve Access Token
    * 
-   * @param consent Consent Token (required)
-   * @return ApiResponseOfIdentity
+   * @param grantType Grant type (required)
+   * @return YapilyAccessToken
    * @throws ApiException if fails to make API call
    */
-  public ApiResponseOfIdentity getIdentityUsingGET(String consent) throws ApiException {
+  public YapilyAccessToken oauthToken(Object grantType) throws ApiException {
     Object localVarPostBody = null;
     
-    // verify the required parameter 'consent' is set
-    if (consent == null) {
-      throw new ApiException(400, "Missing the required parameter 'consent' when calling getIdentityUsingGET");
+    // verify the required parameter 'grantType' is set
+    if (grantType == null) {
+      throw new ApiException(400, "Missing the required parameter 'grantType' when calling oauthToken");
     }
     
     // create path and map variables
-    String localVarPath = "/identity";
+    String localVarPath = "/oauth/token";
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -58,23 +58,23 @@ public class IdentityApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    if (consent != null)
-      localVarHeaderParams.put("consent", apiClient.parameterToString(consent));
-
     
+    if (grantType != null)
+      localVarFormParams.put("grant_type", grantType);
+
     final String[] localVarAccepts = {
-      "application/json;charset=UTF-8"
+      "application/json", "application/xml"
     };
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      "application/json"
+      "application/x-www-form-urlencoded"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "tokenAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth" };
 
-    GenericType<ApiResponseOfIdentity> localVarReturnType = new GenericType<ApiResponseOfIdentity>() {};
-    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    GenericType<YapilyAccessToken> localVarReturnType = new GenericType<YapilyAccessToken>() {};
+    return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
 }

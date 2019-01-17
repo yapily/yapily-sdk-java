@@ -30,6 +30,10 @@ HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basic
 basicAuth.setUsername("YOUR USERNAME");
 basicAuth.setPassword("YOUR PASSWORD");
 
+// Configure OAuth2 access token for authorization: tokenAuth
+OAuth tokenAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
+tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
+
 InstitutionsOpenDataApi apiInstance = new InstitutionsOpenDataApi();
 String institutionId = "institutionId_example"; // String | institutionId
 try {
@@ -53,7 +57,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[basicAuth](../README.md#basicAuth)
+[basicAuth](../README.md#basicAuth), [tokenAuth](../README.md#tokenAuth)
 
 ### HTTP request headers
 
@@ -82,6 +86,10 @@ HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basic
 basicAuth.setUsername("YOUR USERNAME");
 basicAuth.setPassword("YOUR PASSWORD");
 
+// Configure OAuth2 access token for authorization: tokenAuth
+OAuth tokenAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
+tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
+
 InstitutionsOpenDataApi apiInstance = new InstitutionsOpenDataApi();
 String institutionId = "institutionId_example"; // String | institutionId
 try {
@@ -105,7 +113,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[basicAuth](../README.md#basicAuth)
+[basicAuth](../README.md#basicAuth), [tokenAuth](../README.md#tokenAuth)
 
 ### HTTP request headers
 

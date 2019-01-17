@@ -31,6 +31,10 @@ HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basic
 basicAuth.setUsername("YOUR USERNAME");
 basicAuth.setPassword("YOUR PASSWORD");
 
+// Configure OAuth2 access token for authorization: tokenAuth
+OAuth tokenAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
+tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
+
 InstitutionsApi apiInstance = new InstitutionsApi();
 try {
     ApiListResponseOfFeatureDetails result = apiInstance.getFeatureDetailsUsingGET();
@@ -50,7 +54,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[basicAuth](../README.md#basicAuth)
+[basicAuth](../README.md#basicAuth), [tokenAuth](../README.md#tokenAuth)
 
 ### HTTP request headers
 
@@ -79,6 +83,10 @@ HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basic
 basicAuth.setUsername("YOUR USERNAME");
 basicAuth.setPassword("YOUR PASSWORD");
 
+// Configure OAuth2 access token for authorization: tokenAuth
+OAuth tokenAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
+tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
+
 InstitutionsApi apiInstance = new InstitutionsApi();
 String institutionId = "institutionId_example"; // String | institutionId
 try {
@@ -102,7 +110,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[basicAuth](../README.md#basicAuth)
+[basicAuth](../README.md#basicAuth), [tokenAuth](../README.md#tokenAuth)
 
 ### HTTP request headers
 
@@ -131,6 +139,10 @@ HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basic
 basicAuth.setUsername("YOUR USERNAME");
 basicAuth.setPassword("YOUR PASSWORD");
 
+// Configure OAuth2 access token for authorization: tokenAuth
+OAuth tokenAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
+tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
+
 InstitutionsApi apiInstance = new InstitutionsApi();
 try {
     ApiListResponseOfInstitution result = apiInstance.getInstitutionsUsingGET();
@@ -150,7 +162,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[basicAuth](../README.md#basicAuth)
+[basicAuth](../README.md#basicAuth), [tokenAuth](../README.md#tokenAuth)
 
 ### HTTP request headers
 

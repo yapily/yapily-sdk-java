@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-11T04:49:21.708Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-17T17:07:16.256Z")
 public class InstitutionsOpenDataApi {
   private ApiClient apiClient;
 
@@ -72,7 +72,7 @@ public class InstitutionsOpenDataApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth", "tokenAuth" };
 
     GenericType<ApiResponseOfListOfATMOpenDataResponse> localVarReturnType = new GenericType<ApiResponseOfListOfATMOpenDataResponse>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -114,7 +114,7 @@ public class InstitutionsOpenDataApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth", "tokenAuth" };
 
     GenericType<ApiResponseOfListOfPersonalCurrentAccountData> localVarReturnType = new GenericType<ApiResponseOfListOfPersonalCurrentAccountData>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);

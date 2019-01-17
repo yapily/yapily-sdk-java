@@ -14,8 +14,7 @@
 package yapily.sdk;
 
 import yapily.ApiException;
-import yapily.sdk.ApiResponseOfTransferResponse;
-import yapily.sdk.TransferRequest;
+import yapily.sdk.YapilyAccessToken;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -25,16 +24,16 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * API tests for TransfersApi
+ * API tests for OAuthApi
  */
 @Ignore
-public class TransfersApiTest {
+public class OAuthApiTest {
 
-    private final TransfersApi api = new TransfersApi();
+    private final OAuthApi api = new OAuthApi();
 
     
     /**
-     * Transfer money from one account to another account accessible with the same consent
+     * Retrieve Access Token
      *
      * 
      *
@@ -42,11 +41,9 @@ public class TransfersApiTest {
      *          if the Api call fails
      */
     @Test
-    public void transferUsingPUTTest() throws ApiException {
-        String consent = null;
-        String accountId = null;
-        TransferRequest transferRequest = null;
-        ApiResponseOfTransferResponse response = api.transferUsingPUT(consent, accountId, transferRequest);
+    public void oauthTokenTest() throws ApiException {
+        Object grantType = null;
+        YapilyAccessToken response = api.oauthToken(grantType);
 
         // TODO: test validations
     }

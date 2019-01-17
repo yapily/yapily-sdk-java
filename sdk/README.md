@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>yapily</groupId>
     <artifactId>yapily-sdk</artifactId>
-    <version>0.0.57</version>
+    <version>0.0.59</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "yapily:yapily-sdk:0.0.57"
+compile "yapily:yapily-sdk:0.0.59"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/yapily-sdk-0.0.57.jar
+* target/yapily-sdk-0.0.59.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -75,6 +75,10 @@ public class AccountsApiExample {
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
         basicAuth.setUsername("YOUR USERNAME");
         basicAuth.setPassword("YOUR PASSWORD");
+
+        // Configure OAuth2 access token for authorization: tokenAuth
+        OAuth tokenAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
+        tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
         AccountsApi apiInstance = new AccountsApi();
         String consent = "consent_example"; // String | Consent Token
@@ -105,6 +109,8 @@ Class | Method | HTTP request | Description
 *ApplicationUsersApi* | [**getUserUsingGET**](docs/ApplicationUsersApi.md#getUserUsingGET) | **GET** /users/{userUuid} | Get an application user
 *ApplicationUsersApi* | [**getUsersUsingGET**](docs/ApplicationUsersApi.md#getUsersUsingGET) | **GET** /users | Get application users
 *ApplicationsApi* | [**getApplicationMeUsingGET**](docs/ApplicationsApi.md#getApplicationMeUsingGET) | **GET** /me | Returns the details of the application that owns the request credentials
+*ApplicationsApi* | [**getJwksUsingGET**](docs/ApplicationsApi.md#getJwksUsingGET) | **GET** /jwks | JSON Web Key Set (JWKS) for authenticated application
+*ApplicationsApi* | [**revokeTokensUsingPOST**](docs/ApplicationsApi.md#revokeTokensUsingPOST) | **POST** /revoke-tokens | Revoke existing access tokens for application, which will also generate a new public key discoverable via /jwks
 *ConsentsApi* | [**addConsentUsingPOST**](docs/ConsentsApi.md#addConsentUsingPOST) | **POST** /users/{userUuid}/consents | Post consent
 *ConsentsApi* | [**deleteUsingDELETE**](docs/ConsentsApi.md#deleteUsingDELETE) | **DELETE** /consents/{consentId} | Delete consent
 *ConsentsApi* | [**getConsentByIdUsingGET**](docs/ConsentsApi.md#getConsentByIdUsingGET) | **GET** /consents/{consentId} | Get consent
@@ -115,6 +121,7 @@ Class | Method | HTTP request | Description
 *InstitutionsApi* | [**getInstitutionsUsingGET**](docs/InstitutionsApi.md#getInstitutionsUsingGET) | **GET** /institutions | Retrieves the list of institutions available in Yapily
 *InstitutionsOpenDataApi* | [**getATMDataUsingGET**](docs/InstitutionsOpenDataApi.md#getATMDataUsingGET) | **GET** /institutions/{institutionId}/atms | Retrieves data about all ATMs of the selected institution
 *InstitutionsOpenDataApi* | [**getPersonalCurrentAccountsUsingGET**](docs/InstitutionsOpenDataApi.md#getPersonalCurrentAccountsUsingGET) | **GET** /institutions/{institutionId}/personal-current-accounts | Retrieves details of personal current accounts for an institution
+*OAuthApi* | [**oauthToken**](docs/OAuthApi.md#oauthToken) | **POST** /oauth/token | Retrieve Access Token
 *PaymentsApi* | [**createPaymentInitiationUsingPOST**](docs/PaymentsApi.md#createPaymentInitiationUsingPOST) | **POST** /payment-sortcode-auth-requests | Initiate a new single payment for user to authorise
 *PaymentsApi* | [**createPaymentUsingPOST**](docs/PaymentsApi.md#createPaymentUsingPOST) | **POST** /payment-sortcode | Create a new single payment
 *PaymentsApi* | [**getPaymentStatusUsingGET**](docs/PaymentsApi.md#getPaymentStatusUsingGET) | **GET** /payments/{paymentId} | Get status of a payment
@@ -204,6 +211,7 @@ Class | Method | HTTP request | Description
  - [PersonalCurrentAccountPCA](docs/PersonalCurrentAccountPCA.md)
  - [PersonalCurrentAccountPCAMarketingState](docs/PersonalCurrentAccountPCAMarketingState.md)
  - [ResidencyEligibility](docs/ResidencyEligibility.md)
+ - [ResponseEntity](docs/ResponseEntity.md)
  - [ResponseListMeta](docs/ResponseListMeta.md)
  - [ResponseMeta](docs/ResponseMeta.md)
  - [SortCodePaymentAuthRequest](docs/SortCodePaymentAuthRequest.md)
@@ -211,6 +219,7 @@ Class | Method | HTTP request | Description
  - [Transaction](docs/Transaction.md)
  - [TransferRequest](docs/TransferRequest.md)
  - [TransferResponse](docs/TransferResponse.md)
+ - [YapilyAccessToken](docs/YapilyAccessToken.md)
 
 
 ## Documentation for Authorization
@@ -219,6 +228,13 @@ Authentication schemes defined for the API:
 ### basicAuth
 
 - **Type**: HTTP basic authentication
+
+### tokenAuth
+
+- **Type**: OAuth
+- **Flow**: application
+- **Authorization URL**: 
+- **Scopes**: N/A
 
 
 ## Recommendation

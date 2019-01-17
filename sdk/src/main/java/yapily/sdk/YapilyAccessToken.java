@@ -21,19 +21,24 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * Other calculation frequency which is not available in the standard code set.
+ * YapilyAccessToken
  */
-@ApiModel(description = "Other calculation frequency which is not available in the standard code set.")
 @Data
-public class OtherCalculationFrequency {
-  @JsonProperty("Code")
-  private String code = null;
+public class YapilyAccessToken {
+  @JsonProperty("access_token")
+  private String accessToken = null;
 
-  @JsonProperty("Description")
-  private String description = null;
+  @JsonProperty("expires_in")
+  private Integer expiresIn = null;
 
-  @JsonProperty("Name")
-  private String name = null;
+  @JsonProperty("jti")
+  private String jti = null;
+
+  @JsonProperty("scope")
+  private String scope = null;
+
+  @JsonProperty("token_type")
+  private String tokenType = null;
 
 }
 
