@@ -1,7 +1,7 @@
 package yapily.examples;
 
+import yapily.auth.OAuth;
 import static yapily.examples.Constants.APPLICATION_ID;
-import static yapily.examples.Constants.APPLICATION_SECRET;
 import static yapily.examples.Constants.PARAMETER_APPLICATION_ID;
 import static yapily.examples.Constants.PARAMETER_CALLBACK_URL;
 import static yapily.examples.Constants.PARAMETER_USER_ID;
@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,8 +23,6 @@ import com.google.gson.GsonBuilder;
 
 import yapily.ApiClient;
 import yapily.ApiException;
-import yapily.Configuration;
-import yapily.auth.HttpBasicAuth;
 import yapily.sdk.Account;
 import yapily.sdk.AccountAuthorisationRequest;
 import yapily.sdk.AccountRequest;
@@ -56,15 +55,12 @@ public class ExampleAccountDetails {
         System.out.println("Institution authorisation flow and banking requests using Yapily API!");
 
         try {
-
             // Set access credentials
-            ApiClient defaultClient = Configuration.getDefaultApiClient();
+            ApiClient defaultClient = new ApiClient();
 
-            // Configure HTTP basic authorization: basicAuth
-            HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-            // Replace these demo constants with your application credentials
-            basicAuth.setUsername(APPLICATION_ID);
-            basicAuth.setPassword(APPLICATION_SECRET);
+            // Configure Token authorization: tokenAuth
+            OAuth oAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
+            oAuth.setAccessToken(AuthorizationUtils.createAccessToken());
 
             System.out.println("Configured application credentials for API: " + defaultClient.getBasePath());
 
@@ -129,11 +125,12 @@ public class ExampleAccountDetails {
                     // Get transactions
                     final TransactionsApi transactionsApi = new TransactionsApi();
 
+
                     Optional<Account> accountOpt = accounts.stream().findFirst();
                     if (accountOpt.isPresent()) {
                         System.out.println("Request account transactions with GET /accounts/{accountId}/transactions");
                         ApiListResponseOfTransaction transactionsResponse =
-                                transactionsApi.getTransactionsUsingGET(consent.getConsentToken(), accountOpt.get().getId(),new ArrayList<>());
+                                transactionsApi.getTransactionsUsingGET(consent.getConsentToken(), accountOpt.get().getId(), Collections.emptyList(), "1980-01-01T00:00:00.000Z", "2100-01-01T00:00:00.000Z", 10, null);
 
                         List<Transaction> transactions = transactionsResponse.getData();
 

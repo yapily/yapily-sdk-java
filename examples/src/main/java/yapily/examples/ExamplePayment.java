@@ -9,10 +9,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import yapily.ApiClient;
-import yapily.Configuration;
-import yapily.auth.HttpBasicAuth;
-import static yapily.examples.Constants.APPLICATION_ID;
-import static yapily.examples.Constants.APPLICATION_SECRET;
+import yapily.auth.OAuth;
 import yapily.sdk.ApiResponseOfAuthorisationRequestResponse;
 import yapily.sdk.ApiResponseOfPaymentResponse;
 import yapily.sdk.ApplicationUser;
@@ -30,12 +27,11 @@ public class ExamplePayment {
     private static final String INSTITUTION_ID = "forgerock-sandbox";
 
     public static void main(String[] args) throws Exception {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // Set access credentials
+        ApiClient defaultClient = new ApiClient();
 
-        HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        // Replace these demo constants with your application credentials
-        basicAuth.setUsername(APPLICATION_ID);
-        basicAuth.setPassword(APPLICATION_SECRET);
+        OAuth oAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
+        oAuth.setAccessToken(AuthorizationUtils.createAccessToken());
 
         System.out.println("Configured application credentials for API: " + defaultClient.getBasePath());
 
