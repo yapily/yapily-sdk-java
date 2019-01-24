@@ -19,16 +19,24 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import yapily.sdk.ATMGeographicCoordinates;
+import yapily.sdk.Duration;
 
 /**
- * Geographic location of the ATM specified by geographic coordinates or UTM coordinates.
+ * TemporalUnit
  */
-@ApiModel(description = "Geographic location of the ATM specified by geographic coordinates or UTM coordinates.")
 @Data
-public class ATMGeoLocation {
-  @JsonProperty("GeographicCoordinates")
-  private ATMGeographicCoordinates geographicCoordinates = null;
+public class TemporalUnit {
+  @JsonProperty("dateBased")
+  private Boolean dateBased = null;
+
+  @JsonProperty("duration")
+  private Duration duration = null;
+
+  @JsonProperty("durationEstimated")
+  private Boolean durationEstimated = null;
+
+  @JsonProperty("timeBased")
+  private Boolean timeBased = null;
 
 }
 
