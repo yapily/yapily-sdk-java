@@ -13,7 +13,7 @@
 
 package yapily;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-02-19T10:44:36.983Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-02-19T16:43:20.015Z")
 public class StringUtil {
   /**
    * Check if the given array contains the given value (with case-insensitive comparison).
