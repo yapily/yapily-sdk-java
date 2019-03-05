@@ -9,12 +9,14 @@ Name | Type | Description | Notes
 **institutionId** | **String** |  |  [optional]
 **status** | [**StatusEnum**](#StatusEnum) |  |  [optional]
 **createdAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
+**transactionFrom** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
+**timeToExpireInMillis** | **Long** | Deprecated. Use &#x60;timeToExpire&#x60; instead. |  [optional]
+**transactionTo** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
 **expiresAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
 **timeToExpire** | **String** | Represent Java Time Duration as String |  [optional]
-**timeToExpireInMillis** | **Long** | Deprecated. Use &#x60;timeToExpire&#x60; instead. |  [optional]
 **featureScope** | [**List&lt;FeatureScopeEnum&gt;**](#List&lt;FeatureScopeEnum&gt;) |  |  [optional]
-**authorisationUrl** | **String** |  |  [optional]
 **consentToken** | **String** |  |  [optional]
+**authorisationUrl** | **String** |  |  [optional]
 
 
 <a name="StatusEnum"></a>
