@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **institutionId** | **String** |  | 
 **callback** | **String** |  | 
 **accountRequest** | [**AccountRequest**](AccountRequest.md) |  |  [optional]
+**oneTimeToken** | **Boolean** |  | 
 
 
 

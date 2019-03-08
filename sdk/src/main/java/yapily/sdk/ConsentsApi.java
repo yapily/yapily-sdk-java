@@ -10,13 +10,14 @@ import javax.ws.rs.core.GenericType;
 import yapily.sdk.ApiResponseOfConsent;
 import yapily.sdk.Consent;
 import yapily.sdk.CreateConsentAccessToken;
+import yapily.sdk.OneTimeTokenRequest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-06T17:51:43.949Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-08T09:19:54.317Z")
 public class ConsentsApi {
   private ApiClient apiClient;
 
@@ -167,6 +168,47 @@ public class ConsentsApi {
 
     GenericType<ApiResponseOfConsent> localVarReturnType = new GenericType<ApiResponseOfConsent>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+      }
+  /**
+   * Post one time token
+   * 
+   * @param oneTimeToken oneTimeToken (required)
+   * @return Consent
+   * @throws ApiException if fails to make API call
+   */
+  public Consent getConsentBySingleAccessConsentUsingPOST(OneTimeTokenRequest oneTimeToken) throws ApiException {
+    Object localVarPostBody = oneTimeToken;
+    
+    // verify the required parameter 'oneTimeToken' is set
+    if (oneTimeToken == null) {
+      throw new ApiException(400, "Missing the required parameter 'oneTimeToken' when calling getConsentBySingleAccessConsentUsingPOST");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/consents/one-time-token";
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json;charset=UTF-8"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "basicAuth", "tokenAuth" };
+
+    GenericType<Consent> localVarReturnType = new GenericType<Consent>() {};
+    return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
   /**
    * Get user consents

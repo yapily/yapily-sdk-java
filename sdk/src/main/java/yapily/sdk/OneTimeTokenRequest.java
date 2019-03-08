@@ -19,22 +19,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import yapily.sdk.FilterAndSort;
-import yapily.sdk.Next;
 
 /**
- * Pagination
+ * OneTimeTokenRequest
  */
 @Data
-public class Pagination {
-  @JsonProperty("next")
-  private Next next = null;
-
-  @JsonProperty("self")
-  private FilterAndSort self = null;
-
-  @JsonProperty("totalCount")
-  private Integer totalCount = null;
+public class OneTimeTokenRequest {
+  @JsonProperty("oneTimeToken")
+  private String oneTimeToken = null;
 
 }
 

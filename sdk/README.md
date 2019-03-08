@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>yapily</groupId>
     <artifactId>yapily-sdk</artifactId>
-    <version>0.0.90</version>
+    <version>0.0.92</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "yapily:yapily-sdk:0.0.90"
+compile "yapily:yapily-sdk:0.0.92"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/yapily-sdk-0.0.90.jar
+* target/yapily-sdk-0.0.92.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -114,6 +114,7 @@ Class | Method | HTTP request | Description
 *ConsentsApi* | [**addConsentUsingPOST**](docs/ConsentsApi.md#addConsentUsingPOST) | **POST** /users/{userUuid}/consents | Post consent
 *ConsentsApi* | [**deleteUsingDELETE**](docs/ConsentsApi.md#deleteUsingDELETE) | **DELETE** /consents/{consentId} | Delete consent
 *ConsentsApi* | [**getConsentByIdUsingGET**](docs/ConsentsApi.md#getConsentByIdUsingGET) | **GET** /consents/{consentId} | Get consent
+*ConsentsApi* | [**getConsentBySingleAccessConsentUsingPOST**](docs/ConsentsApi.md#getConsentBySingleAccessConsentUsingPOST) | **POST** /consents/one-time-token | Post one time token
 *ConsentsApi* | [**getUserConsentsUsingGET**](docs/ConsentsApi.md#getUserConsentsUsingGET) | **GET** /users/{userUuid}/consents | Get user consents
 *IdentityApi* | [**getIdentityUsingGET**](docs/IdentityApi.md#getIdentityUsingGET) | **GET** /identity | Get identity
 *InstitutionsApi* | [**getFeatureDetailsUsingGET**](docs/InstitutionsApi.md#getFeatureDetailsUsingGET) | **GET** /features | Retrieve details for Yapily&#39;s institution features
@@ -188,6 +189,7 @@ Class | Method | HTTP request | Description
  - [MerchantInfo](docs/MerchantInfo.md)
  - [NewApplicationUser](docs/NewApplicationUser.md)
  - [Next](docs/Next.md)
+ - [OneTimeTokenRequest](docs/OneTimeTokenRequest.md)
  - [OtherApplicationFrequency](docs/OtherApplicationFrequency.md)
  - [OtherBankInterestType](docs/OtherBankInterestType.md)
  - [OtherCalculationFrequency](docs/OtherCalculationFrequency.md)
