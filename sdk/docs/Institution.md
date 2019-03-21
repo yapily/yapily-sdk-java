@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **credentialsType** | [**CredentialsTypeEnum**](#CredentialsTypeEnum) |  |  [optional]
 **media** | [**List&lt;Media&gt;**](Media.md) |  |  [optional]
 **features** | [**List&lt;FeaturesEnum&gt;**](#List&lt;FeaturesEnum&gt;) |  |  [optional]
+**monitoring** | [**Map&lt;String, MonitoringFeatureStatus&gt;**](MonitoringFeatureStatus.md) |  |  [optional]
 
 
 <a name="EnvironmentTypeEnum"></a>

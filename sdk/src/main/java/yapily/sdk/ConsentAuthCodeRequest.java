@@ -19,26 +19,17 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import yapily.sdk.Account;
-import yapily.sdk.ResponseListMeta;
 
 /**
- * ApiListResponseOfAccount
+ * ConsentAuthCodeRequest
  */
 @Data
-public class ApiListResponseOfAccount {
-  @JsonProperty("meta")
-  private ResponseListMeta meta = null;
+public class ConsentAuthCodeRequest {
+  @JsonProperty("authCode")
+  private String authCode = null;
 
-  @JsonProperty("data")
-  private List<Account> data = null;
-
-  @JsonProperty("links")
-  private Map<String, String> links = null;
+  @JsonProperty("authState")
+  private String authState = null;
 
 }
 

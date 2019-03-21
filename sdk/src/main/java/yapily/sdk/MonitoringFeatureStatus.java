@@ -22,30 +22,31 @@ import io.swagger.annotations.ApiModelProperty;
 import java.time.OffsetDateTime;
 
 /**
- * FilterAndSort
+ * MonitoringFeatureStatus
  */
 @Data
-public class FilterAndSort {
-  @JsonProperty("before")
-  private OffsetDateTime before = null;
+public class MonitoringFeatureStatus {
+  @JsonProperty("lastTested")
+  private OffsetDateTime lastTested = null;
 
-  @JsonProperty("from")
-  private OffsetDateTime from = null;
-
-  @JsonProperty("limit")
-  private Integer limit = null;
+  @JsonProperty("span")
+  private String span = null;
 
   /**
-   * Gets or Sets sort
+   * Gets or Sets status
    */
-  public enum SortEnum {
-    DATE("date"),
+  public enum StatusEnum {
+    UP("Up"),
     
-    _DATE("-date");
+    DOWN("Down"),
+    
+    WARNING("Warning"),
+    
+    UNKNOWN("Unknown");
 
     private String value;
 
-    SortEnum(String value) {
+    StatusEnum(String value) {
       this.value = value;
     }
 
@@ -60,8 +61,8 @@ public class FilterAndSort {
     }
 
     @JsonCreator
-    public static SortEnum fromValue(String text) {
-      for (SortEnum b : SortEnum.values()) {
+    public static StatusEnum fromValue(String text) {
+      for (StatusEnum b : StatusEnum.values()) {
         if (String.valueOf(b.value).equals(text)) {
           return b;
         }
@@ -70,8 +71,8 @@ public class FilterAndSort {
     }
   }
 
-  @JsonProperty("sort")
-  private SortEnum sort = null;
+  @JsonProperty("status")
+  private StatusEnum status = null;
 
 }
 

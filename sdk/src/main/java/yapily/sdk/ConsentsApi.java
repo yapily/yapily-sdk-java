@@ -9,6 +9,7 @@ import javax.ws.rs.core.GenericType;
 
 import yapily.sdk.ApiResponseOfConsent;
 import yapily.sdk.Consent;
+import yapily.sdk.ConsentAuthCodeRequest;
 import yapily.sdk.CreateConsentAccessToken;
 import yapily.sdk.OneTimeTokenRequest;
 
@@ -17,7 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-20T18:03:24.047Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-21T09:47:54.729Z")
 public class ConsentsApi {
   private ApiClient apiClient;
 
@@ -61,6 +62,47 @@ public class ConsentsApi {
     // create path and map variables
     String localVarPath = "/users/{userUuid}/consents"
       .replaceAll("\\{" + "userUuid" + "\\}", apiClient.escapeString(userUuid.toString()));
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json;charset=UTF-8"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "basicAuth", "tokenAuth" };
+
+    GenericType<Consent> localVarReturnType = new GenericType<Consent>() {};
+    return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+      }
+  /**
+   * Post auth-code and auth-state
+   * 
+   * @param consentByAuthCode consentByAuthCode (required)
+   * @return Consent
+   * @throws ApiException if fails to make API call
+   */
+  public Consent createConsentWithCodeUsingPOST(ConsentAuthCodeRequest consentByAuthCode) throws ApiException {
+    Object localVarPostBody = consentByAuthCode;
+    
+    // verify the required parameter 'consentByAuthCode' is set
+    if (consentByAuthCode == null) {
+      throw new ApiException(400, "Missing the required parameter 'consentByAuthCode' when calling createConsentWithCodeUsingPOST");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/consent-auth-code";
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -185,7 +227,7 @@ public class ConsentsApi {
     }
     
     // create path and map variables
-    String localVarPath = "/consents/one-time-token";
+    String localVarPath = "/consent-one-time-token";
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
