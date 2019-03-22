@@ -6,14 +6,15 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  |  [optional]
 **userUuid** | **String** |  |  [optional]
+**referenceId** | **String** |  |  [optional]
 **institutionId** | **String** |  |  [optional]
 **status** | [**StatusEnum**](#StatusEnum) |  |  [optional]
 **createdAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
 **transactionFrom** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
-**timeToExpireInMillis** | **Long** | Deprecated. Use &#x60;timeToExpire&#x60; instead. |  [optional]
 **transactionTo** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
 **expiresAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
-**timeToExpire** | **String** | Represent Java Time Duration as String |  [optional]
+**timeToExpireInMillis** | **Long** | Deprecated. Use &#x60;timeToExpire&#x60; instead. |  [optional]
+**timeToExpire** | **String** | ISO 8601 duration |  [optional]
 **featureScope** | [**List&lt;FeatureScopeEnum&gt;**](#List&lt;FeatureScopeEnum&gt;) |  |  [optional]
 **consentToken** | **String** |  |  [optional]
 
