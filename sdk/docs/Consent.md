@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 Name | Value
 ---- | -----
 AWAITING_AUTHORIZATION | &quot;AWAITING_AUTHORIZATION&quot;
+AWAITING_RE_AUTHORIZATION | &quot;AWAITING_RE_AUTHORIZATION&quot;
 AUTHORIZED | &quot;AUTHORIZED&quot;
 REJECTED | &quot;REJECTED&quot;
 REVOKED | &quot;REVOKED&quot;
