@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **before** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
 **from** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
 **limit** | **Integer** |  |  [optional]
+**offset** | **Integer** |  |  [optional]
 **sort** | [**SortEnum**](#SortEnum) |  |  [optional]
 
 
