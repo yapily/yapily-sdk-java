@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="getTransactionsUsingGET"></a>
 # **getTransactionsUsingGET**
-> ApiListResponseOfTransaction getTransactionsUsingGET(consent, accountId, with, from, before, limit, sort, offset)
+> ClientBasedApiListResponseOfTransaction getTransactionsUsingGET(consent, accountId, with, from, before, limit, sort, offset)
 
 Get account transactions
 
@@ -43,7 +43,7 @@ Integer limit = 56; // Integer | limit
 String sort = "sort_example"; // String | sort
 Integer offset = 56; // Integer | offset
 try {
-    ApiListResponseOfTransaction result = apiInstance.getTransactionsUsingGET(consent, accountId, with, from, before, limit, sort, offset);
+    ClientBasedApiListResponseOfTransaction result = apiInstance.getTransactionsUsingGET(consent, accountId, with, from, before, limit, sort, offset);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling TransactionsApi#getTransactionsUsingGET");
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApiListResponseOfTransaction**](ApiListResponseOfTransaction.md)
+[**ClientBasedApiListResponseOfTransaction**](ClientBasedApiListResponseOfTransaction.md)
 
 ### Authorization
 

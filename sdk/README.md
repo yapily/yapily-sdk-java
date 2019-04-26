@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>yapily</groupId>
     <artifactId>yapily-sdk</artifactId>
-    <version>0.0.103</version>
+    <version>0.0.105</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "yapily:yapily-sdk:0.0.103"
+compile "yapily:yapily-sdk:0.0.105"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/yapily-sdk-0.0.103.jar
+* target/yapily-sdk-0.0.105.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -152,10 +152,8 @@ Class | Method | HTTP request | Description
  - [AccountRequest](docs/AccountRequest.md)
  - [Address](docs/Address.md)
  - [AgeEligibility](docs/AgeEligibility.md)
- - [ApiListResponseOfAccount](docs/ApiListResponseOfAccount.md)
  - [ApiListResponseOfFeatureDetails](docs/ApiListResponseOfFeatureDetails.md)
  - [ApiListResponseOfInstitution](docs/ApiListResponseOfInstitution.md)
- - [ApiListResponseOfTransaction](docs/ApiListResponseOfTransaction.md)
  - [ApiResponseOfAccount](docs/ApiResponseOfAccount.md)
  - [ApiResponseOfAuthorisationRequestResponse](docs/ApiResponseOfAuthorisationRequestResponse.md)
  - [ApiResponseOfConsent](docs/ApiResponseOfConsent.md)
@@ -167,6 +165,8 @@ Class | Method | HTTP request | Description
  - [Application](docs/Application.md)
  - [ApplicationUser](docs/ApplicationUser.md)
  - [AuthorisationRequestResponse](docs/AuthorisationRequestResponse.md)
+ - [ClientBasedApiListResponseOfAccount](docs/ClientBasedApiListResponseOfAccount.md)
+ - [ClientBasedApiListResponseOfTransaction](docs/ClientBasedApiListResponseOfTransaction.md)
  - [Consent](docs/Consent.md)
  - [ConsentAuthCodeRequest](docs/ConsentAuthCodeRequest.md)
  - [CoreProduct](docs/CoreProduct.md)
