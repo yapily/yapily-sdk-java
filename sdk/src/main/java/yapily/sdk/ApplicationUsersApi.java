@@ -7,6 +7,7 @@ import yapily.Pair;
 
 import javax.ws.rs.core.GenericType;
 
+import yapily.sdk.ApiResponseOfUserDeleteResponse;
 import yapily.sdk.ApplicationUser;
 import yapily.sdk.NewApplicationUser;
 
@@ -15,7 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-30T11:55:58.731Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-05-03T09:12:54.133Z")
 public class ApplicationUsersApi {
   private ApiClient apiClient;
 
@@ -80,10 +81,10 @@ public class ApplicationUsersApi {
    * Delete an application user
    * 
    * @param userUuid userUuid (required)
-   * @return Object
+   * @return ApiResponseOfUserDeleteResponse
    * @throws ApiException if fails to make API call
    */
-  public Object deleteUserUsingDELETE(String userUuid) throws ApiException {
+  public ApiResponseOfUserDeleteResponse deleteUserUsingDELETE(String userUuid) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'userUuid' is set
@@ -115,7 +116,7 @@ public class ApplicationUsersApi {
 
     String[] localVarAuthNames = new String[] { "basicAuth", "tokenAuth" };
 
-    GenericType<Object> localVarReturnType = new GenericType<Object>() {};
+    GenericType<ApiResponseOfUserDeleteResponse> localVarReturnType = new GenericType<ApiResponseOfUserDeleteResponse>() {};
     return apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
   /**

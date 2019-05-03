@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 
 <a name="deleteUserUsingDELETE"></a>
 # **deleteUserUsingDELETE**
-> Object deleteUserUsingDELETE(userUuid)
+> ApiResponseOfUserDeleteResponse deleteUserUsingDELETE(userUuid)
 
 Delete an application user
 
@@ -95,7 +95,7 @@ tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 ApplicationUsersApi apiInstance = new ApplicationUsersApi();
 String userUuid = "userUuid_example"; // String | userUuid
 try {
-    Object result = apiInstance.deleteUserUsingDELETE(userUuid);
+    ApiResponseOfUserDeleteResponse result = apiInstance.deleteUserUsingDELETE(userUuid);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ApplicationUsersApi#deleteUserUsingDELETE");
@@ -111,7 +111,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**Object**
+[**ApiResponseOfUserDeleteResponse**](ApiResponseOfUserDeleteResponse.md)
 
 ### Authorization
 

@@ -8,6 +8,7 @@ import yapily.Pair;
 import javax.ws.rs.core.GenericType;
 
 import yapily.sdk.ApiResponseOfConsent;
+import yapily.sdk.ApiResponseOfConsentDeleteResponse;
 import yapily.sdk.Consent;
 import yapily.sdk.ConsentAuthCodeRequest;
 import yapily.sdk.CreateConsentAccessToken;
@@ -18,7 +19,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-30T11:55:58.731Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-05-03T09:12:54.133Z")
 public class ConsentsApi {
   private ApiClient apiClient;
 
@@ -131,10 +132,11 @@ public class ConsentsApi {
    * Delete consent
    * 
    * @param consentId consentId (required)
-   * @return Object
+   * @param forceDelete forceDelete (optional)
+   * @return ApiResponseOfConsentDeleteResponse
    * @throws ApiException if fails to make API call
    */
-  public Object deleteUsingDELETE(String consentId) throws ApiException {
+  public ApiResponseOfConsentDeleteResponse deleteUsingDELETE(String consentId, Boolean forceDelete) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'consentId' is set
@@ -151,6 +153,7 @@ public class ConsentsApi {
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "forceDelete", forceDelete));
 
     
     
@@ -166,7 +169,7 @@ public class ConsentsApi {
 
     String[] localVarAuthNames = new String[] { "basicAuth", "tokenAuth" };
 
-    GenericType<Object> localVarReturnType = new GenericType<Object>() {};
+    GenericType<ApiResponseOfConsentDeleteResponse> localVarReturnType = new GenericType<ApiResponseOfConsentDeleteResponse>() {};
     return apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
   /**

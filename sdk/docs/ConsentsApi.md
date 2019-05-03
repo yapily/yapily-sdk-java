@@ -128,7 +128,7 @@ Name | Type | Description  | Notes
 
 <a name="deleteUsingDELETE"></a>
 # **deleteUsingDELETE**
-> Object deleteUsingDELETE(consentId)
+> ApiResponseOfConsentDeleteResponse deleteUsingDELETE(consentId, forceDelete)
 
 Delete consent
 
@@ -154,8 +154,9 @@ tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 ConsentsApi apiInstance = new ConsentsApi();
 String consentId = "consentId_example"; // String | consentId
+Boolean forceDelete = true; // Boolean | forceDelete
 try {
-    Object result = apiInstance.deleteUsingDELETE(consentId);
+    ApiResponseOfConsentDeleteResponse result = apiInstance.deleteUsingDELETE(consentId, forceDelete);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ConsentsApi#deleteUsingDELETE");
@@ -168,10 +169,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consentId** | **String**| consentId |
+ **forceDelete** | **Boolean**| forceDelete | [optional]
 
 ### Return type
 
-**Object**
+[**ApiResponseOfConsentDeleteResponse**](ApiResponseOfConsentDeleteResponse.md)
 
 ### Authorization
 

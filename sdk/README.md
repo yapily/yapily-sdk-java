@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>yapily</groupId>
     <artifactId>yapily-sdk</artifactId>
-    <version>0.0.105</version>
+    <version>0.0.106</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "yapily:yapily-sdk:0.0.105"
+compile "yapily:yapily-sdk:0.0.106"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/yapily-sdk-0.0.105.jar
+* target/yapily-sdk-0.0.106.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -157,11 +157,13 @@ Class | Method | HTTP request | Description
  - [ApiResponseOfAccount](docs/ApiResponseOfAccount.md)
  - [ApiResponseOfAuthorisationRequestResponse](docs/ApiResponseOfAuthorisationRequestResponse.md)
  - [ApiResponseOfConsent](docs/ApiResponseOfConsent.md)
+ - [ApiResponseOfConsentDeleteResponse](docs/ApiResponseOfConsentDeleteResponse.md)
  - [ApiResponseOfIdentity](docs/ApiResponseOfIdentity.md)
  - [ApiResponseOfListOfATMOpenDataResponse](docs/ApiResponseOfListOfATMOpenDataResponse.md)
  - [ApiResponseOfListOfPersonalCurrentAccountData](docs/ApiResponseOfListOfPersonalCurrentAccountData.md)
  - [ApiResponseOfPaymentResponse](docs/ApiResponseOfPaymentResponse.md)
  - [ApiResponseOfTransferResponse](docs/ApiResponseOfTransferResponse.md)
+ - [ApiResponseOfUserDeleteResponse](docs/ApiResponseOfUserDeleteResponse.md)
  - [Application](docs/Application.md)
  - [ApplicationUser](docs/ApplicationUser.md)
  - [AuthorisationRequestResponse](docs/AuthorisationRequestResponse.md)
@@ -169,6 +171,7 @@ Class | Method | HTTP request | Description
  - [ClientBasedApiListResponseOfTransaction](docs/ClientBasedApiListResponseOfTransaction.md)
  - [Consent](docs/Consent.md)
  - [ConsentAuthCodeRequest](docs/ConsentAuthCodeRequest.md)
+ - [ConsentDeleteResponse](docs/ConsentDeleteResponse.md)
  - [CoreProduct](docs/CoreProduct.md)
  - [Country](docs/Country.md)
  - [CreateConsentAccessToken](docs/CreateConsentAccessToken.md)
@@ -224,6 +227,7 @@ Class | Method | HTTP request | Description
  - [Transaction](docs/Transaction.md)
  - [TransferRequest](docs/TransferRequest.md)
  - [TransferResponse](docs/TransferResponse.md)
+ - [UserDeleteResponse](docs/UserDeleteResponse.md)
  - [YapilyAccessToken](docs/YapilyAccessToken.md)
 
 

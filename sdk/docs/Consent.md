@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  |  [optional]
 **userUuid** | **String** |  |  [optional]
+**applicationUserId** | **String** |  |  [optional]
 **referenceId** | **String** |  |  [optional]
 **institutionId** | **String** |  |  [optional]
 **status** | [**StatusEnum**](#StatusEnum) |  |  [optional]

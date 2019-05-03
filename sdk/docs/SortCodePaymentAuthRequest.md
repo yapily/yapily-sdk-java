@@ -4,14 +4,13 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**referencedBased** | **Boolean** |  |  [optional]
-**userUuid** | **String** |  | 
-**referenceId** | **String** |  | 
+**userUuid** | **String** |  |  [optional]
+**applicationUserId** | **String** |  |  [optional]
 **forwardParameters** | **List&lt;String&gt;** |  |  [optional]
 **institutionId** | **String** |  | 
-**paymentRequest** | [**SortCodePaymentRequest**](SortCodePaymentRequest.md) |  | 
 **callback** | **String** |  | 
 **oneTimeToken** | **Boolean** |  | 
+**paymentRequest** | [**SortCodePaymentRequest**](SortCodePaymentRequest.md) |  | 
 
 
 

@@ -4,14 +4,13 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**referencedBased** | **Boolean** |  |  [optional]
-**userUuid** | **String** |  | 
-**referenceId** | **String** |  | 
+**userUuid** | **String** |  |  [optional]
+**applicationUserId** | **String** |  |  [optional]
 **forwardParameters** | **List&lt;String&gt;** |  |  [optional]
-**accountRequest** | [**AccountRequest**](AccountRequest.md) |  |  [optional]
 **institutionId** | **String** |  | 
 **callback** | **String** |  | 
 **oneTimeToken** | **Boolean** |  | 
+**accountRequest** | [**AccountRequest**](AccountRequest.md) |  |  [optional]
 
 
 

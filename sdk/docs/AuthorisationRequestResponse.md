@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  |  [optional]
 **userUuid** | **String** |  |  [optional]
+**applicationUserId** | **String** |  |  [optional]
 **referenceId** | **String** |  |  [optional]
 **institutionId** | **String** |  |  [optional]
 **status** | [**StatusEnum**](#StatusEnum) |  |  [optional]
@@ -15,9 +16,9 @@ Name | Type | Description | Notes
 **expiresAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
 **timeToExpireInMillis** | **Long** | Deprecated. Use &#x60;timeToExpire&#x60; instead. |  [optional]
 **timeToExpire** | **String** | ISO 8601 duration |  [optional]
-**authorisationUrl** | **String** |  |  [optional]
 **featureScope** | [**List&lt;FeatureScopeEnum&gt;**](#List&lt;FeatureScopeEnum&gt;) |  |  [optional]
 **consentToken** | **String** |  |  [optional]
+**authorisationUrl** | **String** |  |  [optional]
 
 
 <a name="StatusEnum"></a>
