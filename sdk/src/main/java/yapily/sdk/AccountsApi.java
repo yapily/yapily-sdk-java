@@ -8,16 +8,16 @@ import yapily.Pair;
 import javax.ws.rs.core.GenericType;
 
 import yapily.sdk.AccountAuthorisationRequest;
+import yapily.sdk.ApiListResponseOfAccount;
 import yapily.sdk.ApiResponseOfAccount;
 import yapily.sdk.ApiResponseOfAuthorisationRequestResponse;
-import yapily.sdk.ClientBasedApiListResponseOfAccount;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-05-16T10:45:56.117Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-05-16T17:40:53.097Z")
 public class AccountsApi {
   private ApiClient apiClient;
 
@@ -91,10 +91,10 @@ public class AccountsApi {
    * Get accounts
    * 
    * @param consent Consent Token (required)
-   * @return ClientBasedApiListResponseOfAccount
+   * @return ApiListResponseOfAccount
    * @throws ApiException if fails to make API call
    */
-  public ClientBasedApiListResponseOfAccount getAccountsUsingGET(String consent) throws ApiException {
+  public ApiListResponseOfAccount getAccountsUsingGET(String consent) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'consent' is set
@@ -127,7 +127,7 @@ public class AccountsApi {
 
     String[] localVarAuthNames = new String[] { "basicAuth", "tokenAuth" };
 
-    GenericType<ClientBasedApiListResponseOfAccount> localVarReturnType = new GenericType<ClientBasedApiListResponseOfAccount>() {};
+    GenericType<ApiListResponseOfAccount> localVarReturnType = new GenericType<ApiListResponseOfAccount>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
   /**

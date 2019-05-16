@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 
 <a name="getAccountsUsingGET"></a>
 # **getAccountsUsingGET**
-> ClientBasedApiListResponseOfAccount getAccountsUsingGET(consent)
+> ApiListResponseOfAccount getAccountsUsingGET(consent)
 
 Get accounts
 
@@ -96,7 +96,7 @@ tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 AccountsApi apiInstance = new AccountsApi();
 String consent = "consent_example"; // String | Consent Token
 try {
-    ClientBasedApiListResponseOfAccount result = apiInstance.getAccountsUsingGET(consent);
+    ApiListResponseOfAccount result = apiInstance.getAccountsUsingGET(consent);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AccountsApi#getAccountsUsingGET");
@@ -112,7 +112,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ClientBasedApiListResponseOfAccount**](ClientBasedApiListResponseOfAccount.md)
+[**ApiListResponseOfAccount**](ApiListResponseOfAccount.md)
 
 ### Authorization
 

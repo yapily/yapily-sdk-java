@@ -27,10 +27,10 @@ import yapily.sdk.Account;
 import yapily.sdk.ResponseListMeta;
 
 /**
- * ClientBasedApiListResponseOfAccount
+ * ApiListResponseOfAccount
  */
 @Data
-public class ClientBasedApiListResponseOfAccount {
+public class ApiListResponseOfAccount {
   @JsonProperty("meta")
   private ResponseListMeta meta = null;
 

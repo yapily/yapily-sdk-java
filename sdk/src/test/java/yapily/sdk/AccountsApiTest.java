@@ -15,9 +15,9 @@ package yapily.sdk;
 
 import yapily.ApiException;
 import yapily.sdk.AccountAuthorisationRequest;
+import yapily.sdk.ApiListResponseOfAccount;
 import yapily.sdk.ApiResponseOfAccount;
 import yapily.sdk.ApiResponseOfAuthorisationRequestResponse;
-import yapily.sdk.ClientBasedApiListResponseOfAccount;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -63,7 +63,7 @@ public class AccountsApiTest {
     @Test
     public void getAccountsUsingGETTest() throws ApiException {
         String consent = null;
-        ClientBasedApiListResponseOfAccount response = api.getAccountsUsingGET(consent);
+        ApiListResponseOfAccount response = api.getAccountsUsingGET(consent);
 
         // TODO: test validations
     }
