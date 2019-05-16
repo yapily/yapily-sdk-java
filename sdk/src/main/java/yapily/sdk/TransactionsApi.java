@@ -7,14 +7,14 @@ import yapily.Pair;
 
 import javax.ws.rs.core.GenericType;
 
-import yapily.sdk.ClientBasedApiListResponseOfTransaction;
+import yapily.sdk.ApiListResponseOfTransaction;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-05-14T10:27:28.689Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-05-16T08:36:13.951Z")
 public class TransactionsApi {
   private ApiClient apiClient;
 
@@ -45,10 +45,10 @@ public class TransactionsApi {
    * @param limit limit (optional)
    * @param sort sort (optional)
    * @param offset offset (optional)
-   * @return ClientBasedApiListResponseOfTransaction
+   * @return ApiListResponseOfTransaction
    * @throws ApiException if fails to make API call
    */
-  public ClientBasedApiListResponseOfTransaction getTransactionsUsingGET(String consent, String accountId, List<String> with, String from, String before, Integer limit, String sort, Integer offset) throws ApiException {
+  public ApiListResponseOfTransaction getTransactionsUsingGET(String consent, String accountId, List<String> with, String from, String before, Integer limit, String sort, Integer offset) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'consent' is set
@@ -93,7 +93,7 @@ public class TransactionsApi {
 
     String[] localVarAuthNames = new String[] { "basicAuth", "tokenAuth" };
 
-    GenericType<ClientBasedApiListResponseOfTransaction> localVarReturnType = new GenericType<ClientBasedApiListResponseOfTransaction>() {};
+    GenericType<ApiListResponseOfTransaction> localVarReturnType = new GenericType<ApiListResponseOfTransaction>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
 }

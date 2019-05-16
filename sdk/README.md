@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>yapily</groupId>
     <artifactId>yapily-sdk</artifactId>
-    <version>0.0.107</version>
+    <version>0.0.109</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "yapily:yapily-sdk:0.0.107"
+compile "yapily:yapily-sdk:0.0.109"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/yapily-sdk-0.0.107.jar
+* target/yapily-sdk-0.0.109.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -154,6 +154,7 @@ Class | Method | HTTP request | Description
  - [AgeEligibility](docs/AgeEligibility.md)
  - [ApiListResponseOfFeatureDetails](docs/ApiListResponseOfFeatureDetails.md)
  - [ApiListResponseOfInstitution](docs/ApiListResponseOfInstitution.md)
+ - [ApiListResponseOfTransaction](docs/ApiListResponseOfTransaction.md)
  - [ApiResponseOfAccount](docs/ApiResponseOfAccount.md)
  - [ApiResponseOfAuthorisationRequestResponse](docs/ApiResponseOfAuthorisationRequestResponse.md)
  - [ApiResponseOfConsent](docs/ApiResponseOfConsent.md)
@@ -168,7 +169,6 @@ Class | Method | HTTP request | Description
  - [ApplicationUser](docs/ApplicationUser.md)
  - [AuthorisationRequestResponse](docs/AuthorisationRequestResponse.md)
  - [ClientBasedApiListResponseOfAccount](docs/ClientBasedApiListResponseOfAccount.md)
- - [ClientBasedApiListResponseOfTransaction](docs/ClientBasedApiListResponseOfTransaction.md)
  - [Consent](docs/Consent.md)
  - [ConsentAuthCodeRequest](docs/ConsentAuthCodeRequest.md)
  - [ConsentDeleteResponse](docs/ConsentDeleteResponse.md)
