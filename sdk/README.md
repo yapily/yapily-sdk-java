@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>yapily</groupId>
     <artifactId>yapily-sdk</artifactId>
-    <version>0.0.110</version>
+    <version>0.0.111</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "yapily:yapily-sdk:0.0.110"
+compile "yapily:yapily-sdk:0.0.111"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/yapily-sdk-0.0.110.jar
+* target/yapily-sdk-0.0.111.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -127,6 +127,9 @@ Class | Method | HTTP request | Description
 *PaymentsApi* | [**createPaymentInitiationUsingPOST**](docs/PaymentsApi.md#createPaymentInitiationUsingPOST) | **POST** /payment-sortcode-auth-requests | Initiate a new single payment for user to authorise
 *PaymentsApi* | [**createPaymentUsingPOST**](docs/PaymentsApi.md#createPaymentUsingPOST) | **POST** /payment-sortcode | Create a new single payment
 *PaymentsApi* | [**getPaymentStatusUsingGET**](docs/PaymentsApi.md#getPaymentStatusUsingGET) | **GET** /payments/{paymentId} | Get status of a payment
+*StatementsApi* | [**getStatementFileUsingGET**](docs/StatementsApi.md#getStatementFileUsingGET) | **GET** /accounts/{accountId}/statements/{statementId}/file | Get account statement file
+*StatementsApi* | [**getStatementUsingGET**](docs/StatementsApi.md#getStatementUsingGET) | **GET** /accounts/{accountId}/statements/{statementId} | Get account statement
+*StatementsApi* | [**getStatementsUsingGET**](docs/StatementsApi.md#getStatementsUsingGET) | **GET** /accounts/{accountId}/statements | Get account statements
 *TransactionsApi* | [**getTransactionsUsingGET**](docs/TransactionsApi.md#getTransactionsUsingGET) | **GET** /accounts/{accountId}/transactions | Get account transactions
 *TransfersApi* | [**transferUsingPUT**](docs/TransfersApi.md#transferUsingPUT) | **PUT** /accounts/{accountId}/transfer | Transfer money from one account to another account accessible with the same consent
 
@@ -149,14 +152,22 @@ Class | Method | HTTP request | Description
  - [ATMSite](docs/ATMSite.md)
  - [Account](docs/Account.md)
  - [AccountAuthorisationRequest](docs/AccountAuthorisationRequest.md)
+ - [AccountBalance](docs/AccountBalance.md)
+ - [AccountIdentification](docs/AccountIdentification.md)
+ - [AccountName](docs/AccountName.md)
  - [AccountRequest](docs/AccountRequest.md)
+ - [AccountStatement](docs/AccountStatement.md)
  - [Address](docs/Address.md)
+ - [AddressDetails](docs/AddressDetails.md)
  - [AgeEligibility](docs/AgeEligibility.md)
+ - [Amount](docs/Amount.md)
  - [ApiListResponseOfAccount](docs/ApiListResponseOfAccount.md)
+ - [ApiListResponseOfAccountStatement](docs/ApiListResponseOfAccountStatement.md)
  - [ApiListResponseOfFeatureDetails](docs/ApiListResponseOfFeatureDetails.md)
  - [ApiListResponseOfInstitution](docs/ApiListResponseOfInstitution.md)
  - [ApiListResponseOfTransaction](docs/ApiListResponseOfTransaction.md)
  - [ApiResponseOfAccount](docs/ApiResponseOfAccount.md)
+ - [ApiResponseOfAccountStatement](docs/ApiResponseOfAccountStatement.md)
  - [ApiResponseOfAuthorisationRequestResponse](docs/ApiResponseOfAuthorisationRequestResponse.md)
  - [ApiResponseOfConsent](docs/ApiResponseOfConsent.md)
  - [ApiResponseOfConsentDeleteResponse](docs/ApiResponseOfConsentDeleteResponse.md)
@@ -169,6 +180,8 @@ Class | Method | HTTP request | Description
  - [Application](docs/Application.md)
  - [ApplicationUser](docs/ApplicationUser.md)
  - [AuthorisationRequestResponse](docs/AuthorisationRequestResponse.md)
+ - [Balance](docs/Balance.md)
+ - [ChargeDetails](docs/ChargeDetails.md)
  - [Consent](docs/Consent.md)
  - [ConsentAuthCodeRequest](docs/ConsentAuthCodeRequest.md)
  - [ConsentDeleteResponse](docs/ConsentDeleteResponse.md)
@@ -180,6 +193,8 @@ Class | Method | HTTP request | Description
  - [CreditInterestCreditInterestEligibility](docs/CreditInterestCreditInterestEligibility.md)
  - [CreditInterestTierBand](docs/CreditInterestTierBand.md)
  - [CreditInterestTierBandSet](docs/CreditInterestTierBandSet.md)
+ - [CreditLine](docs/CreditLine.md)
+ - [CurrencyExchange](docs/CurrencyExchange.md)
  - [Eligibility](docs/Eligibility.md)
  - [EligibilityOtherEligibility](docs/EligibilityOtherEligibility.md)
  - [FeatureDetails](docs/FeatureDetails.md)
@@ -187,8 +202,12 @@ Class | Method | HTTP request | Description
  - [IDVerificationCheck](docs/IDVerificationCheck.md)
  - [Identity](docs/Identity.md)
  - [IdentityAddress](docs/IdentityAddress.md)
+ - [InputStream](docs/InputStream.md)
+ - [InputStreamResource](docs/InputStreamResource.md)
  - [Institution](docs/Institution.md)
  - [InstitutionConsent](docs/InstitutionConsent.md)
+ - [IsoBankTransactionCode](docs/IsoBankTransactionCode.md)
+ - [IsoCodeDetails](docs/IsoCodeDetails.md)
  - [Media](docs/Media.md)
  - [Merchant](docs/Merchant.md)
  - [MerchantInfo](docs/MerchantInfo.md)
@@ -218,15 +237,19 @@ Class | Method | HTTP request | Description
  - [PersonalCurrentAccountData](docs/PersonalCurrentAccountData.md)
  - [PersonalCurrentAccountPCA](docs/PersonalCurrentAccountPCA.md)
  - [PersonalCurrentAccountPCAMarketingState](docs/PersonalCurrentAccountPCAMarketingState.md)
+ - [ProprietaryBankTransactionCode](docs/ProprietaryBankTransactionCode.md)
  - [ResidencyEligibility](docs/ResidencyEligibility.md)
  - [ResponseEntity](docs/ResponseEntity.md)
  - [ResponseListMeta](docs/ResponseListMeta.md)
  - [ResponseMeta](docs/ResponseMeta.md)
  - [SortCodePaymentAuthRequest](docs/SortCodePaymentAuthRequest.md)
  - [SortCodePaymentRequest](docs/SortCodePaymentRequest.md)
+ - [StatementReference](docs/StatementReference.md)
  - [Transaction](docs/Transaction.md)
  - [TransferRequest](docs/TransferRequest.md)
  - [TransferResponse](docs/TransferResponse.md)
+ - [URI](docs/URI.md)
+ - [URL](docs/URL.md)
  - [UserDeleteResponse](docs/UserDeleteResponse.md)
  - [YapilyAccessToken](docs/YapilyAccessToken.md)
 
