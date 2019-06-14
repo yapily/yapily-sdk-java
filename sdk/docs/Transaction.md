@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** | Transaction Id returned by the institution if present |  [optional]
 **date** | [**OffsetDateTime**](OffsetDateTime.md) | Transaction date as defined by the institution |  [optional]
-**bookingDateTime** | [**OffsetDateTime**](OffsetDateTime.md) | The actual or expected booking (settled) timestamp |  [optional]
-**valueDateTime** | [**OffsetDateTime**](OffsetDateTime.md) | Definition varies according to the institution |  [optional]
+**bookingDateTime** | [**OffsetDateTime**](OffsetDateTime.md) | Date and (if available) time that transaction is posted |  [optional]
+**valueDateTime** | [**OffsetDateTime**](OffsetDateTime.md) | The actual or expected date and time transaction is cleared |  [optional]
 **status** | [**StatusEnum**](#StatusEnum) | The status of the transaction |  [optional]
 **amount** | [**BigDecimal**](BigDecimal.md) | Deprecated. Use the amount value in &#x60;transactionAmount&#x60; instead |  [optional]
 **currency** | **String** | Deprecated. Use the currency value in &#x60;transactionAmount&#x60; instead |  [optional]
