@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **authorisedIndicator** | **Boolean** |  |  [optional]
 **bufferAmount** | **String** |  |  [optional]
 **identification** | **String** |  |  [optional]
+**minimumArrangedOverdraftAmount** | **String** |  |  [optional]
 **notes** | **List&lt;String&gt;** |  |  [optional]
 **overdraftFeesCharges** | [**List&lt;OverdraftOverdraftFeesCharges1&gt;**](OverdraftOverdraftFeesCharges1.md) |  |  [optional]
 **overdraftTierBand** | [**List&lt;OverdraftOverdraftTierBand&gt;**](OverdraftOverdraftTierBand.md) |  |  [optional]

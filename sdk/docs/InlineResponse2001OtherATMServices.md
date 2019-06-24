@@ -1,10 +1,11 @@
 
-# ATMSite
+# InlineResponse2001OtherATMServices
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**identification** | **String** |  |  [optional]
+**code** | **String** |  |  [optional]
+**description** | **String** |  |  [optional]
 **name** | **String** |  |  [optional]
 
 

@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **otherFeeRateType** | [**OtherFeeRateType**](OtherFeeRateType.md) |  |  [optional]
 **otherFeeType** | [**OtherFeeType**](OtherFeeType.md) |  |  [optional]
 **overdraftControlIndicator** | **Boolean** |  |  [optional]
-**overdraftFeeApplicableRange** | [**OverdraftFeeApplicableRange**](OverdraftFeeApplicableRange.md) |  |  [optional]
+**overdraftFeeChargeCap** | [**OverdraftOverdraftFeeChargeCap**](OverdraftOverdraftFeeChargeCap.md) |  |  [optional]
 
 
 <a name="ApplicationFrequencyEnum"></a>
@@ -96,6 +96,7 @@ SURCHARGE | &quot;Surcharge&quot;
 TEMPOVERDRAFT | &quot;TempOverdraft&quot;
 UNAUTHORISEDBORROWING | &quot;UnauthorisedBorrowing&quot;
 UNAUTHORISEDPAIDTRANS | &quot;UnauthorisedPaidTrans&quot;
+OTHER | &quot;Other&quot;
 UNAUTHORISEDUNPAIDTRANS | &quot;UnauthorisedUnpaidTrans&quot;
 
 

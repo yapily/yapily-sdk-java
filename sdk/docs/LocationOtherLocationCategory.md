@@ -1,5 +1,5 @@
 
-# ATMOpenDataOtherATMServices
+# LocationOtherLocationCategory
 
 ## Properties
 Name | Type | Description | Notes

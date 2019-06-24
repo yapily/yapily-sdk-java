@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AER** | **String** |  |  [optional]
 **applicationFrequency** | [**ApplicationFrequencyEnum**](#ApplicationFrequencyEnum) |  |  [optional]
+**bankInterestRate** | **String** |  |  [optional]
 **bankInterestRateType** | [**BankInterestRateTypeEnum**](#BankInterestRateTypeEnum) |  |  [optional]
 **calculationFrequency** | [**CalculationFrequencyEnum**](#CalculationFrequencyEnum) |  |  [optional]
 **depositInterestAppliedCoverage** | [**DepositInterestAppliedCoverageEnum**](#DepositInterestAppliedCoverageEnum) |  |  [optional]

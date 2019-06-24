@@ -1,5 +1,5 @@
 
-# ATMPostalAddress
+# PostalAddress1
 
 ## Properties
 Name | Type | Description | Notes
@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **buildingNumber** | **String** |  |  [optional]
 **country** | **String** |  |  [optional]
 **countrySubDivision** | **List&lt;String&gt;** |  |  [optional]
-**geoLocation** | [**ATMGeoLocation**](ATMGeoLocation.md) |  |  [optional]
+**geoLocation** | [**GeoLocation1**](GeoLocation1.md) |  |  [optional]
 **postCode** | **String** |  |  [optional]
 **streetName** | **String** |  |  [optional]
 **townName** | **String** |  |  [optional]

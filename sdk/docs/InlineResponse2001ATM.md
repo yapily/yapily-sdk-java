@@ -1,40 +1,25 @@
 
-# ATMOpenDataATM
+# InlineResponse2001ATM
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**atMServices** | [**List&lt;AtMServicesEnum&gt;**](#List&lt;AtMServicesEnum&gt;) |  |  [optional]
 **access24HoursIndicator** | **Boolean** |  |  [optional]
 **accessibility** | [**List&lt;AccessibilityEnum&gt;**](#List&lt;AccessibilityEnum&gt;) |  |  [optional]
-**branch** | [**ATMBranch**](ATMBranch.md) |  |  [optional]
+**branch** | [**Branch**](Branch.md) |  |  [optional]
 **identification** | **String** |  |  [optional]
-**location** | [**ATMLocation**](ATMLocation.md) |  |  [optional]
+**location** | [**Location**](Location.md) |  |  [optional]
 **minimumPossibleAmount** | **String** |  |  [optional]
-**note** | **String** |  |  [optional]
-**otherATMServices** | [**List&lt;ATMOpenDataOtherATMServices&gt;**](ATMOpenDataOtherATMServices.md) |  |  [optional]
-**otherAccessibility** | [**List&lt;ATMOpenDataOtherAccessibility&gt;**](ATMOpenDataOtherAccessibility.md) |  |  [optional]
-**services** | [**List&lt;ServicesEnum&gt;**](#List&lt;ServicesEnum&gt;) |  |  [optional]
+**note** | **List&lt;String&gt;** |  |  [optional]
+**otherATMServices** | [**List&lt;InlineResponse2001OtherATMServices&gt;**](InlineResponse2001OtherATMServices.md) |  |  [optional]
+**otherAccessibility** | [**List&lt;InlineResponse2001OtherAccessibility&gt;**](InlineResponse2001OtherAccessibility.md) |  |  [optional]
 **supportedCurrencies** | **List&lt;String&gt;** |  |  [optional]
 **supportedLanguages** | **List&lt;String&gt;** |  |  [optional]
 
 
-<a name="List<AccessibilityEnum>"></a>
-## Enum: List&lt;AccessibilityEnum&gt;
-Name | Value
----- | -----
-AUDIOCASHMACHINE | &quot;AudioCashMachine&quot;
-AUTOMATICDOORS | &quot;AutomaticDoors&quot;
-EXTERNALRAMP | &quot;ExternalRamp&quot;
-INDUCTIONLOOP | &quot;InductionLoop&quot;
-INTERNALRAMP | &quot;InternalRamp&quot;
-LEVELACCESS | &quot;LevelAccess&quot;
-LOWERLEVELCOUNTER | &quot;LowerLevelCounter&quot;
-OTHER | &quot;Other&quot;
-WHEELCHAIRACCESS | &quot;WheelchairAccess&quot;
-
-
-<a name="List<ServicesEnum>"></a>
-## Enum: List&lt;ServicesEnum&gt;
+<a name="List<AtMServicesEnum>"></a>
+## Enum: List&lt;AtMServicesEnum&gt;
 Name | Value
 ---- | -----
 BALANCE | &quot;Balance&quot;
@@ -54,6 +39,21 @@ PINACTIVATION | &quot;PINActivation&quot;
 PINCHANGE | &quot;PINChange&quot;
 PINUNBLOCK | &quot;PINUnblock&quot;
 MINISTATEMENT | &quot;MiniStatement&quot;
+
+
+<a name="List<AccessibilityEnum>"></a>
+## Enum: List&lt;AccessibilityEnum&gt;
+Name | Value
+---- | -----
+AUDIOCASHMACHINE | &quot;AudioCashMachine&quot;
+AUTOMATICDOORS | &quot;AutomaticDoors&quot;
+EXTERNALRAMP | &quot;ExternalRamp&quot;
+INDUCTIONLOOP | &quot;InductionLoop&quot;
+INTERNALRAMP | &quot;InternalRamp&quot;
+LEVELACCESS | &quot;LevelAccess&quot;
+LOWERLEVELCOUNTER | &quot;LowerLevelCounter&quot;
+OTHER | &quot;Other&quot;
+WHEELCHAIRACCESS | &quot;WheelchairAccess&quot;
 
 
 

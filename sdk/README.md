@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>yapily</groupId>
     <artifactId>yapily-sdk</artifactId>
-    <version>0.0.115</version>
+    <version>0.0.116</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "yapily:yapily-sdk:0.0.115"
+compile "yapily:yapily-sdk:0.0.116"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/yapily-sdk-0.0.115.jar
+* target/yapily-sdk-0.0.116.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -116,6 +116,7 @@ Class | Method | HTTP request | Description
 *ConsentsApi* | [**deleteUsingDELETE**](docs/ConsentsApi.md#deleteUsingDELETE) | **DELETE** /consents/{consentId} | Delete consent
 *ConsentsApi* | [**getConsentByIdUsingGET**](docs/ConsentsApi.md#getConsentByIdUsingGET) | **GET** /consents/{consentId} | Get consent
 *ConsentsApi* | [**getConsentBySingleAccessConsentUsingPOST**](docs/ConsentsApi.md#getConsentBySingleAccessConsentUsingPOST) | **POST** /consent-one-time-token | Post one time token
+*ConsentsApi* | [**getConsentsUsingGET**](docs/ConsentsApi.md#getConsentsUsingGET) | **GET** /consents | Get consents
 *ConsentsApi* | [**getUserConsentsUsingGET**](docs/ConsentsApi.md#getUserConsentsUsingGET) | **GET** /users/{userUuid}/consents | Get user consents
 *IdentityApi* | [**getIdentityUsingGET**](docs/IdentityApi.md#getIdentityUsingGET) | **GET** /identity | Get identity
 *InstitutionsApi* | [**getFeatureDetailsUsingGET**](docs/InstitutionsApi.md#getFeatureDetailsUsingGET) | **GET** /features | Retrieve details for Yapily&#39;s institution features
@@ -136,20 +137,10 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
- - [ATMBranch](docs/ATMBranch.md)
- - [ATMGeoLocation](docs/ATMGeoLocation.md)
- - [ATMGeographicCoordinates](docs/ATMGeographicCoordinates.md)
- - [ATMLocation](docs/ATMLocation.md)
- - [ATMLocationOtherLocationCategory](docs/ATMLocationOtherLocationCategory.md)
  - [ATMMapServiceLinks](docs/ATMMapServiceLinks.md)
  - [ATMOpenData](docs/ATMOpenData.md)
- - [ATMOpenDataATM](docs/ATMOpenDataATM.md)
  - [ATMOpenDataBrand](docs/ATMOpenDataBrand.md)
- - [ATMOpenDataOtherATMServices](docs/ATMOpenDataOtherATMServices.md)
- - [ATMOpenDataOtherAccessibility](docs/ATMOpenDataOtherAccessibility.md)
  - [ATMOpenDataResponse](docs/ATMOpenDataResponse.md)
- - [ATMPostalAddress](docs/ATMPostalAddress.md)
- - [ATMSite](docs/ATMSite.md)
  - [Account](docs/Account.md)
  - [AccountAuthorisationRequest](docs/AccountAuthorisationRequest.md)
  - [AccountBalance](docs/AccountBalance.md)
@@ -163,6 +154,7 @@ Class | Method | HTTP request | Description
  - [Amount](docs/Amount.md)
  - [ApiListResponseOfAccount](docs/ApiListResponseOfAccount.md)
  - [ApiListResponseOfAccountStatement](docs/ApiListResponseOfAccountStatement.md)
+ - [ApiListResponseOfConsent](docs/ApiListResponseOfConsent.md)
  - [ApiListResponseOfFeatureDetails](docs/ApiListResponseOfFeatureDetails.md)
  - [ApiListResponseOfInstitution](docs/ApiListResponseOfInstitution.md)
  - [ApiListResponseOfTransaction](docs/ApiListResponseOfTransaction.md)
@@ -181,6 +173,7 @@ Class | Method | HTTP request | Description
  - [ApplicationUser](docs/ApplicationUser.md)
  - [AuthorisationRequestResponse](docs/AuthorisationRequestResponse.md)
  - [Balance](docs/Balance.md)
+ - [Branch](docs/Branch.md)
  - [ChargeDetails](docs/ChargeDetails.md)
  - [Consent](docs/Consent.md)
  - [ConsentAuthCodeRequest](docs/ConsentAuthCodeRequest.md)
@@ -199,15 +192,22 @@ Class | Method | HTTP request | Description
  - [EligibilityOtherEligibility](docs/EligibilityOtherEligibility.md)
  - [FeatureDetails](docs/FeatureDetails.md)
  - [FilterAndSort](docs/FilterAndSort.md)
+ - [GeoLocation1](docs/GeoLocation1.md)
+ - [GeographicCoordinates1](docs/GeographicCoordinates1.md)
  - [IDVerificationCheck](docs/IDVerificationCheck.md)
  - [Identity](docs/Identity.md)
  - [IdentityAddress](docs/IdentityAddress.md)
+ - [InlineResponse2001ATM](docs/InlineResponse2001ATM.md)
+ - [InlineResponse2001OtherATMServices](docs/InlineResponse2001OtherATMServices.md)
+ - [InlineResponse2001OtherAccessibility](docs/InlineResponse2001OtherAccessibility.md)
  - [InputStream](docs/InputStream.md)
  - [InputStreamResource](docs/InputStreamResource.md)
  - [Institution](docs/Institution.md)
  - [InstitutionConsent](docs/InstitutionConsent.md)
  - [IsoBankTransactionCode](docs/IsoBankTransactionCode.md)
  - [IsoCodeDetails](docs/IsoCodeDetails.md)
+ - [Location](docs/Location.md)
+ - [LocationOtherLocationCategory](docs/LocationOtherLocationCategory.md)
  - [Media](docs/Media.md)
  - [Merchant](docs/Merchant.md)
  - [MerchantInfo](docs/MerchantInfo.md)
@@ -223,7 +223,6 @@ Class | Method | HTTP request | Description
  - [OtherResidencyType](docs/OtherResidencyType.md)
  - [OtherType](docs/OtherType.md)
  - [Overdraft](docs/Overdraft.md)
- - [OverdraftFeeApplicableRange](docs/OverdraftFeeApplicableRange.md)
  - [OverdraftOtherFeeType](docs/OverdraftOtherFeeType.md)
  - [OverdraftOverdraftFeeChargeCap](docs/OverdraftOverdraftFeeChargeCap.md)
  - [OverdraftOverdraftFeeChargeDetail](docs/OverdraftOverdraftFeeChargeDetail.md)
@@ -237,11 +236,13 @@ Class | Method | HTTP request | Description
  - [PersonalCurrentAccountData](docs/PersonalCurrentAccountData.md)
  - [PersonalCurrentAccountPCA](docs/PersonalCurrentAccountPCA.md)
  - [PersonalCurrentAccountPCAMarketingState](docs/PersonalCurrentAccountPCAMarketingState.md)
+ - [PostalAddress1](docs/PostalAddress1.md)
  - [ProprietaryBankTransactionCode](docs/ProprietaryBankTransactionCode.md)
  - [ResidencyEligibility](docs/ResidencyEligibility.md)
  - [ResponseEntity](docs/ResponseEntity.md)
  - [ResponseListMeta](docs/ResponseListMeta.md)
  - [ResponseMeta](docs/ResponseMeta.md)
+ - [Site](docs/Site.md)
  - [SortCodePaymentAuthRequest](docs/SortCodePaymentAuthRequest.md)
  - [SortCodePaymentRequest](docs/SortCodePaymentRequest.md)
  - [StatementReference](docs/StatementReference.md)

@@ -7,6 +7,7 @@ import yapily.Pair;
 
 import javax.ws.rs.core.GenericType;
 
+import yapily.sdk.ApiListResponseOfConsent;
 import yapily.sdk.ApiResponseOfConsent;
 import yapily.sdk.ApiResponseOfConsentDeleteResponse;
 import yapily.sdk.Consent;
@@ -19,7 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-06-21T13:20:02.852Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-06-24T17:26:26.439Z")
 public class ConsentsApi {
   private ApiClient apiClient;
 
@@ -256,14 +257,55 @@ public class ConsentsApi {
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
   /**
+   * Get consents
+   * 
+   * @param filterApplicationUserId Filter consents by applicationUserId (optional)
+   * @param filterUserUuid Filter consents by userUuid (optional)
+   * @param filterInstitution Use this parameter to filter consent by institution, using the Yapily institution Id (optional)
+   * @return ApiListResponseOfConsent
+   * @throws ApiException if fails to make API call
+   */
+  public ApiListResponseOfConsent getConsentsUsingGET(String filterApplicationUserId, String filterUserUuid, String filterInstitution) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // create path and map variables
+    String localVarPath = "/consents";
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter[applicationUserId]", filterApplicationUserId));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter[userUuid]", filterUserUuid));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter[institution]", filterInstitution));
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json;charset=UTF-8"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "basicAuth", "tokenAuth" };
+
+    GenericType<ApiListResponseOfConsent> localVarReturnType = new GenericType<ApiListResponseOfConsent>() {};
+    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+      }
+  /**
    * Get user consents
    * 
    * @param userUuid userUuid (required)
-   * @param institutionId institutionId (optional)
+   * @param filterInstitution Use this parameter to filter consent by institution, using the Yapily institution Id. This replaces the deprecated &#x60;institutionId&#x60; query param. (optional)
    * @return List&lt;Consent&gt;
    * @throws ApiException if fails to make API call
    */
-  public List<Consent> getUserConsentsUsingGET(String userUuid, String institutionId) throws ApiException {
+  public List<Consent> getUserConsentsUsingGET(String userUuid, String filterInstitution) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'userUuid' is set
@@ -280,7 +322,7 @@ public class ConsentsApi {
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "institutionId", institutionId));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter[institution]", filterInstitution));
 
     
     

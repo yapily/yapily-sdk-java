@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ATM** | [**List&lt;ATMOpenDataATM&gt;**](ATMOpenDataATM.md) |  |  [optional]
+**ATM** | [**List&lt;InlineResponse2001ATM&gt;**](InlineResponse2001ATM.md) |  |  [optional]
 **brandName** | **String** |  |  [optional]
 
 

@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**deleteUsingDELETE**](ConsentsApi.md#deleteUsingDELETE) | **DELETE** /consents/{consentId} | Delete consent
 [**getConsentByIdUsingGET**](ConsentsApi.md#getConsentByIdUsingGET) | **GET** /consents/{consentId} | Get consent
 [**getConsentBySingleAccessConsentUsingPOST**](ConsentsApi.md#getConsentBySingleAccessConsentUsingPOST) | **POST** /consent-one-time-token | Post one time token
+[**getConsentsUsingGET**](ConsentsApi.md#getConsentsUsingGET) | **GET** /consents | Get consents
 [**getUserConsentsUsingGET**](ConsentsApi.md#getUserConsentsUsingGET) | **GET** /users/{userUuid}/consents | Get user consents
 
 
@@ -296,9 +297,69 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json;charset=UTF-8
 
+<a name="getConsentsUsingGET"></a>
+# **getConsentsUsingGET**
+> ApiListResponseOfConsent getConsentsUsingGET(filterApplicationUserId, filterUserUuid, filterInstitution)
+
+Get consents
+
+### Example
+```java
+// Import classes:
+//import yapily.ApiClient;
+//import yapily.ApiException;
+//import yapily.Configuration;
+//import yapily.auth.*;
+//import yapily.sdk.ConsentsApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure HTTP basic authorization: basicAuth
+HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
+basicAuth.setUsername("YOUR USERNAME");
+basicAuth.setPassword("YOUR PASSWORD");
+
+// Configure OAuth2 access token for authorization: tokenAuth
+OAuth tokenAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
+tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
+
+ConsentsApi apiInstance = new ConsentsApi();
+String filterApplicationUserId = "filterApplicationUserId_example"; // String | Filter consents by applicationUserId
+String filterUserUuid = "filterUserUuid_example"; // String | Filter consents by userUuid
+String filterInstitution = "filterInstitution_example"; // String | Use this parameter to filter consent by institution, using the Yapily institution Id
+try {
+    ApiListResponseOfConsent result = apiInstance.getConsentsUsingGET(filterApplicationUserId, filterUserUuid, filterInstitution);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling ConsentsApi#getConsentsUsingGET");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **filterApplicationUserId** | **String**| Filter consents by applicationUserId | [optional]
+ **filterUserUuid** | **String**| Filter consents by userUuid | [optional]
+ **filterInstitution** | **String**| Use this parameter to filter consent by institution, using the Yapily institution Id | [optional]
+
+### Return type
+
+[**ApiListResponseOfConsent**](ApiListResponseOfConsent.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth), [tokenAuth](../README.md#tokenAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json;charset=UTF-8
+
 <a name="getUserConsentsUsingGET"></a>
 # **getUserConsentsUsingGET**
-> List&lt;Consent&gt; getUserConsentsUsingGET(userUuid, institutionId)
+> List&lt;Consent&gt; getUserConsentsUsingGET(userUuid, filterInstitution)
 
 Get user consents
 
@@ -324,9 +385,9 @@ tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 ConsentsApi apiInstance = new ConsentsApi();
 String userUuid = "userUuid_example"; // String | userUuid
-String institutionId = "institutionId_example"; // String | institutionId
+String filterInstitution = "filterInstitution_example"; // String | Use this parameter to filter consent by institution, using the Yapily institution Id. This replaces the deprecated `institutionId` query param.
 try {
-    List<Consent> result = apiInstance.getUserConsentsUsingGET(userUuid, institutionId);
+    List<Consent> result = apiInstance.getUserConsentsUsingGET(userUuid, filterInstitution);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ConsentsApi#getUserConsentsUsingGET");
@@ -339,7 +400,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userUuid** | **String**| userUuid |
- **institutionId** | **String**| institutionId | [optional]
+ **filterInstitution** | **String**| Use this parameter to filter consent by institution, using the Yapily institution Id. This replaces the deprecated &#x60;institutionId&#x60; query param. | [optional]
 
 ### Return type
 

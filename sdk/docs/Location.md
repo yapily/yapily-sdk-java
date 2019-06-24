@@ -1,13 +1,13 @@
 
-# ATMLocation
+# Location
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **locationCategory** | [**List&lt;LocationCategoryEnum&gt;**](#List&lt;LocationCategoryEnum&gt;) |  |  [optional]
-**otherLocationCategory** | [**List&lt;ATMLocationOtherLocationCategory&gt;**](ATMLocationOtherLocationCategory.md) |  |  [optional]
-**postalAddress** | [**ATMPostalAddress**](ATMPostalAddress.md) |  |  [optional]
-**site** | [**ATMSite**](ATMSite.md) |  |  [optional]
+**otherLocationCategory** | [**List&lt;LocationOtherLocationCategory&gt;**](LocationOtherLocationCategory.md) |  |  [optional]
+**postalAddress** | [**PostalAddress1**](PostalAddress1.md) |  |  [optional]
+**site** | [**Site**](Site.md) |  |  [optional]
 **mapServiceLinks** | [**ATMMapServiceLinks**](ATMMapServiceLinks.md) |  |  [optional]
 
 

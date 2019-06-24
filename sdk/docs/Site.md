@@ -1,11 +1,10 @@
 
-# ATMLocationOtherLocationCategory
+# Site
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**code** | **String** |  |  [optional]
-**description** | **String** |  |  [optional]
+**identification** | **String** |  |  [optional]
 **name** | **String** |  |  [optional]
 
 

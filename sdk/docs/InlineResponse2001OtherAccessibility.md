@@ -1,5 +1,5 @@
 
-# ATMOpenDataOtherAccessibility
+# InlineResponse2001OtherAccessibility
 
 ## Properties
 Name | Type | Description | Notes

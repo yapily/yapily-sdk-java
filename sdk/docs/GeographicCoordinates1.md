@@ -1,5 +1,5 @@
 
-# ATMGeographicCoordinates
+# GeographicCoordinates1
 
 ## Properties
 Name | Type | Description | Notes

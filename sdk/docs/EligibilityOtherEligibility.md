@@ -24,6 +24,7 @@ HALF_YEAR | &quot;Half Year&quot;
 MONTH | &quot;Month&quot;
 QUARTER | &quot;Quarter&quot;
 WEEK | &quot;Week&quot;
+ACADEMICTERM | &quot;AcademicTerm&quot;
 YEAR | &quot;Year&quot;
 
 

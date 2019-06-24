@@ -1,5 +1,5 @@
 
-# ATMBranch
+# Branch
 
 ## Properties
 Name | Type | Description | Notes
