@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-07-04T13:13:18.813Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-07-09T11:52:36.595Z")
 public class PaymentsApi {
   private ApiClient apiClient;
 
@@ -44,12 +44,12 @@ public class PaymentsApi {
    * @return ApiResponseOfAuthorisationRequestResponse
    * @throws ApiException if fails to make API call
    */
-  public ApiResponseOfAuthorisationRequestResponse createPaymentInitiationUsingPOST(SortCodePaymentAuthRequest paymentAuthRequest) throws ApiException {
+  public ApiResponseOfAuthorisationRequestResponse createPaymentAuthorisationWithSortCodeUsingPOST(SortCodePaymentAuthRequest paymentAuthRequest) throws ApiException {
     Object localVarPostBody = paymentAuthRequest;
     
     // verify the required parameter 'paymentAuthRequest' is set
     if (paymentAuthRequest == null) {
-      throw new ApiException(400, "Missing the required parameter 'paymentAuthRequest' when calling createPaymentInitiationUsingPOST");
+      throw new ApiException(400, "Missing the required parameter 'paymentAuthRequest' when calling createPaymentAuthorisationWithSortCodeUsingPOST");
     }
     
     // create path and map variables
@@ -86,17 +86,17 @@ public class PaymentsApi {
    * @return ApiResponseOfPaymentResponse
    * @throws ApiException if fails to make API call
    */
-  public ApiResponseOfPaymentResponse createPaymentUsingPOST(String consent, SortCodePaymentRequest paymentRequest) throws ApiException {
+  public ApiResponseOfPaymentResponse createPaymentWithSortCodeUsingPOST(String consent, SortCodePaymentRequest paymentRequest) throws ApiException {
     Object localVarPostBody = paymentRequest;
     
     // verify the required parameter 'consent' is set
     if (consent == null) {
-      throw new ApiException(400, "Missing the required parameter 'consent' when calling createPaymentUsingPOST");
+      throw new ApiException(400, "Missing the required parameter 'consent' when calling createPaymentWithSortCodeUsingPOST");
     }
     
     // verify the required parameter 'paymentRequest' is set
     if (paymentRequest == null) {
-      throw new ApiException(400, "Missing the required parameter 'paymentRequest' when calling createPaymentUsingPOST");
+      throw new ApiException(400, "Missing the required parameter 'paymentRequest' when calling createPaymentWithSortCodeUsingPOST");
     }
     
     // create path and map variables

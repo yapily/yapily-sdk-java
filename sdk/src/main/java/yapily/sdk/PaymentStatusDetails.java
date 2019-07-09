@@ -19,20 +19,13 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 
 /**
- * TransferResponse
+ * PaymentStatusDetails
  */
 @Data
-public class TransferResponse {
-  @JsonProperty("fromAccountId")
-  private String fromAccountId = null;
-
-  @JsonProperty("toAccountId")
-  private String toAccountId = null;
-
+public class PaymentStatusDetails {
   /**
    * Gets or Sets status
    */
@@ -44,6 +37,8 @@ public class TransferResponse {
     DECLINED("DECLINED"),
     
     COMPLETED("COMPLETED"),
+    
+    EXPIRED("EXPIRED"),
     
     UNKNOWN("UNKNOWN");
 
@@ -77,17 +72,14 @@ public class TransferResponse {
   @JsonProperty("status")
   private StatusEnum status = null;
 
-  @JsonProperty("createdAt")
-  private OffsetDateTime createdAt = null;
+  @JsonProperty("statusReason")
+  private String statusReason = null;
 
-  @JsonProperty("reference")
-  private String reference = null;
+  @JsonProperty("statusReasonDescription")
+  private String statusReasonDescription = null;
 
-  @JsonProperty("balance")
-  private BigDecimal balance = null;
-
-  @JsonProperty("currency")
-  private String currency = null;
+  @JsonProperty("statusUpdateDate")
+  private OffsetDateTime statusUpdateDate = null;
 
 }
 

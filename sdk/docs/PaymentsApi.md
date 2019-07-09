@@ -4,14 +4,14 @@ All URIs are relative to *https://api.yapily.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createPaymentInitiationUsingPOST**](PaymentsApi.md#createPaymentInitiationUsingPOST) | **POST** /payment-sortcode-auth-requests | Initiate a new single payment for user to authorise
-[**createPaymentUsingPOST**](PaymentsApi.md#createPaymentUsingPOST) | **POST** /payment-sortcode | Create a new single payment
+[**createPaymentAuthorisationWithSortCodeUsingPOST**](PaymentsApi.md#createPaymentAuthorisationWithSortCodeUsingPOST) | **POST** /payment-sortcode-auth-requests | Initiate a new single payment for user to authorise
+[**createPaymentWithSortCodeUsingPOST**](PaymentsApi.md#createPaymentWithSortCodeUsingPOST) | **POST** /payment-sortcode | Create a new single payment
 [**getPaymentStatusUsingGET**](PaymentsApi.md#getPaymentStatusUsingGET) | **GET** /payments/{paymentId} | Get status of a payment
 
 
-<a name="createPaymentInitiationUsingPOST"></a>
-# **createPaymentInitiationUsingPOST**
-> ApiResponseOfAuthorisationRequestResponse createPaymentInitiationUsingPOST(paymentAuthRequest)
+<a name="createPaymentAuthorisationWithSortCodeUsingPOST"></a>
+# **createPaymentAuthorisationWithSortCodeUsingPOST**
+> ApiResponseOfAuthorisationRequestResponse createPaymentAuthorisationWithSortCodeUsingPOST(paymentAuthRequest)
 
 Initiate a new single payment for user to authorise
 
@@ -38,10 +38,10 @@ tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 PaymentsApi apiInstance = new PaymentsApi();
 SortCodePaymentAuthRequest paymentAuthRequest = new SortCodePaymentAuthRequest(); // SortCodePaymentAuthRequest | paymentAuthRequest
 try {
-    ApiResponseOfAuthorisationRequestResponse result = apiInstance.createPaymentInitiationUsingPOST(paymentAuthRequest);
+    ApiResponseOfAuthorisationRequestResponse result = apiInstance.createPaymentAuthorisationWithSortCodeUsingPOST(paymentAuthRequest);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling PaymentsApi#createPaymentInitiationUsingPOST");
+    System.err.println("Exception when calling PaymentsApi#createPaymentAuthorisationWithSortCodeUsingPOST");
     e.printStackTrace();
 }
 ```
@@ -65,9 +65,9 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json;charset=UTF-8
  - **Accept**: application/json;charset=UTF-8
 
-<a name="createPaymentUsingPOST"></a>
-# **createPaymentUsingPOST**
-> ApiResponseOfPaymentResponse createPaymentUsingPOST(consent, paymentRequest)
+<a name="createPaymentWithSortCodeUsingPOST"></a>
+# **createPaymentWithSortCodeUsingPOST**
+> ApiResponseOfPaymentResponse createPaymentWithSortCodeUsingPOST(consent, paymentRequest)
 
 Create a new single payment
 
@@ -95,10 +95,10 @@ PaymentsApi apiInstance = new PaymentsApi();
 String consent = "consent_example"; // String | Consent Token
 SortCodePaymentRequest paymentRequest = new SortCodePaymentRequest(); // SortCodePaymentRequest | paymentRequest
 try {
-    ApiResponseOfPaymentResponse result = apiInstance.createPaymentUsingPOST(consent, paymentRequest);
+    ApiResponseOfPaymentResponse result = apiInstance.createPaymentWithSortCodeUsingPOST(consent, paymentRequest);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling PaymentsApi#createPaymentUsingPOST");
+    System.err.println("Exception when calling PaymentsApi#createPaymentWithSortCodeUsingPOST");
     e.printStackTrace();
 }
 ```

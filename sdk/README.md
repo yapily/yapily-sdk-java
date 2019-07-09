@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>yapily</groupId>
     <artifactId>yapily-sdk</artifactId>
-    <version>0.0.120</version>
+    <version>0.0.122</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "yapily:yapily-sdk:0.0.120"
+compile "yapily:yapily-sdk:0.0.122"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/yapily-sdk-0.0.120.jar
+* target/yapily-sdk-0.0.122.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -125,8 +125,8 @@ Class | Method | HTTP request | Description
 *InstitutionsOpenDataApi* | [**getATMDataUsingGET**](docs/InstitutionsOpenDataApi.md#getATMDataUsingGET) | **GET** /institutions/{institutionId}/atms | Retrieves data about all ATMs of the selected institution
 *InstitutionsOpenDataApi* | [**getPersonalCurrentAccountsUsingGET**](docs/InstitutionsOpenDataApi.md#getPersonalCurrentAccountsUsingGET) | **GET** /institutions/{institutionId}/personal-current-accounts | Retrieves details of personal current accounts for an institution
 *OAuthApi* | [**oauthToken**](docs/OAuthApi.md#oauthToken) | **POST** /oauth/token | Retrieve Access Token
-*PaymentsApi* | [**createPaymentInitiationUsingPOST**](docs/PaymentsApi.md#createPaymentInitiationUsingPOST) | **POST** /payment-sortcode-auth-requests | Initiate a new single payment for user to authorise
-*PaymentsApi* | [**createPaymentUsingPOST**](docs/PaymentsApi.md#createPaymentUsingPOST) | **POST** /payment-sortcode | Create a new single payment
+*PaymentsApi* | [**createPaymentAuthorisationWithSortCodeUsingPOST**](docs/PaymentsApi.md#createPaymentAuthorisationWithSortCodeUsingPOST) | **POST** /payment-sortcode-auth-requests | Initiate a new single payment for user to authorise
+*PaymentsApi* | [**createPaymentWithSortCodeUsingPOST**](docs/PaymentsApi.md#createPaymentWithSortCodeUsingPOST) | **POST** /payment-sortcode | Create a new single payment
 *PaymentsApi* | [**getPaymentStatusUsingGET**](docs/PaymentsApi.md#getPaymentStatusUsingGET) | **GET** /payments/{paymentId} | Get status of a payment
 *StatementsApi* | [**getStatementFileUsingGET**](docs/StatementsApi.md#getStatementFileUsingGET) | **GET** /accounts/{accountId}/statements/{statementId}/file | Get account statement file
 *StatementsApi* | [**getStatementUsingGET**](docs/StatementsApi.md#getStatementUsingGET) | **GET** /accounts/{accountId}/statements/{statementId} | Get account statement
@@ -231,7 +231,9 @@ Class | Method | HTTP request | Description
  - [OverdraftOverdraftTierBand](docs/OverdraftOverdraftTierBand.md)
  - [OverdraftOverdraftTierBandSet](docs/OverdraftOverdraftTierBandSet.md)
  - [Pagination](docs/Pagination.md)
+ - [Payee](docs/Payee.md)
  - [PaymentResponse](docs/PaymentResponse.md)
+ - [PaymentStatusDetails](docs/PaymentStatusDetails.md)
  - [PersonalCurrentAccountBrand](docs/PersonalCurrentAccountBrand.md)
  - [PersonalCurrentAccountData](docs/PersonalCurrentAccountData.md)
  - [PersonalCurrentAccountPCA](docs/PersonalCurrentAccountPCA.md)

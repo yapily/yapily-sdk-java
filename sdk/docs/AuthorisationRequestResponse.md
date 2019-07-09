@@ -19,6 +19,9 @@ Name | Type | Description | Notes
 **featureScope** | [**List&lt;FeatureScopeEnum&gt;**](#List&lt;FeatureScopeEnum&gt;) |  |  [optional]
 **consentToken** | **String** |  |  [optional]
 **authorisationUrl** | **String** |  |  [optional]
+**startsAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
+**totalMaxAmount** | [**BigDecimal**](BigDecimal.md) |  |  [optional]
+**maxAmountPerRequest** | [**BigDecimal**](BigDecimal.md) |  |  [optional]
 
 
 <a name="StatusEnum"></a>
@@ -53,6 +56,8 @@ INITIATE_SINGLE_PAYMENT_SORTCODE | &quot;INITIATE_SINGLE_PAYMENT_SORTCODE&quot;
 EXISTING_PAYMENT_INITIATION_DETAILS | &quot;EXISTING_PAYMENT_INITIATION_DETAILS&quot;
 CREATE_SINGLE_PAYMENT_SORTCODE | &quot;CREATE_SINGLE_PAYMENT_SORTCODE&quot;
 EXISTING_PAYMENTS_DETAILS | &quot;EXISTING_PAYMENTS_DETAILS&quot;
+INITIATE_PAYMENT | &quot;INITIATE_PAYMENT&quot;
+CREATE_PAYMENT | &quot;CREATE_PAYMENT&quot;
 TRANSFER | &quot;TRANSFER&quot;
 OPEN_DATA_PERSONAL_CURRENT_ACCOUNTS | &quot;OPEN_DATA_PERSONAL_CURRENT_ACCOUNTS&quot;
 OPEN_DATA_ATMS | &quot;OPEN_DATA_ATMS&quot;

@@ -19,19 +19,30 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import yapily.sdk.ConsentDeleteResponse;
-import yapily.sdk.ResponseMeta;
+import java.util.ArrayList;
+import java.util.List;
+import yapily.sdk.AccountIdentification;
+import yapily.sdk.Address;
 
 /**
- * ApiResponseOfConsentDeleteResponse
+ * Payee
  */
 @Data
-public class ApiResponseOfConsentDeleteResponse {
-  @JsonProperty("meta")
-  private ResponseMeta meta = null;
+public class Payee {
+  @JsonProperty("name")
+  private String name = null;
 
-  @JsonProperty("data")
-  private ConsentDeleteResponse data = null;
+  @JsonProperty("address")
+  private Address address = null;
+
+  @JsonProperty("accountIdentifications")
+  private List<AccountIdentification> accountIdentifications = new ArrayList<>();
+
+  @JsonProperty("customerId")
+  private String customerId = null;
+
+  @JsonProperty("merchantCategoryCode")
+  private String merchantCategoryCode = null;
 
 }
 
