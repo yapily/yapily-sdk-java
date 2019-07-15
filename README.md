@@ -40,7 +40,7 @@ Dependency:
    <!-- other dependencies -->
    <dependency>
        <groupId>yapily</groupId>
-       <artifactId>yapily-sdk-java</artifactId>
+       <artifactId>yapily-sdk</artifactId>
        <version>0.0.125</version>
    </dependency>
 </dependencies>
