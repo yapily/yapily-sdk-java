@@ -18,7 +18,7 @@ import yapily.Pair;
 import java.util.Map;
 import java.util.List;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-07-11T16:29:05.151Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-07-15T13:33:48.764Z")
 public class ApiKeyAuth implements Authentication {
   private final String location;
   private final String paramName;
