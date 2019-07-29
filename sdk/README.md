@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>yapily</groupId>
     <artifactId>yapily-sdk</artifactId>
-    <version>0.0.125</version>
+    <version>0.0.126</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "yapily:yapily-sdk:0.0.125"
+compile "yapily:yapily-sdk:0.0.126"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/yapily-sdk-0.0.125.jar
+* target/yapily-sdk-0.0.126.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -104,6 +104,7 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**getAccountUsingGET**](docs/AccountsApi.md#getAccountUsingGET) | **GET** /accounts/{accountId} | Get account
 *AccountsApi* | [**getAccountsUsingGET**](docs/AccountsApi.md#getAccountsUsingGET) | **GET** /accounts | Get accounts
 *AccountsApi* | [**initiateAccountRequestUsingPOST**](docs/AccountsApi.md#initiateAccountRequestUsingPOST) | **POST** /account-auth-requests | Initiate a new account request for user to authorize
+*AccountsApi* | [**reAuthoriseAccountUsingPATCH**](docs/AccountsApi.md#reAuthoriseAccountUsingPATCH) | **PATCH** /account-auth-requests | Re-authorize account request
 *ApplicationUsersApi* | [**addUserUsingPOST**](docs/ApplicationUsersApi.md#addUserUsingPOST) | **POST** /users | Add an application user
 *ApplicationUsersApi* | [**deleteUserUsingDELETE**](docs/ApplicationUsersApi.md#deleteUserUsingDELETE) | **DELETE** /users/{userUuid} | Delete an application user
 *ApplicationUsersApi* | [**getUserUsingGET**](docs/ApplicationUsersApi.md#getUserUsingGET) | **GET** /users/{userUuid} | Get an application user
