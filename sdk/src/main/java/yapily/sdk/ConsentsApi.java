@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-07-30T14:20:32.627Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-08-07T10:11:23.116Z")
 public class ConsentsApi {
   private ApiClient apiClient;
 
@@ -260,12 +260,11 @@ public class ConsentsApi {
    * Get consents
    * 
    * @param filterApplicationUserId Filter consents by applicationUserId (optional)
-   * @param filterUserUuid Filter consents by userUuid (optional)
    * @param filterInstitution Use this parameter to filter consent by institution, using the Yapily institution Id (optional)
    * @return ApiListResponseOfConsent
    * @throws ApiException if fails to make API call
    */
-  public ApiListResponseOfConsent getConsentsUsingGET(String filterApplicationUserId, String filterUserUuid, String filterInstitution) throws ApiException {
+  public ApiListResponseOfConsent getConsentsUsingGET(List<String> filterApplicationUserId, List<String> filterInstitution) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -276,9 +275,8 @@ public class ConsentsApi {
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter[applicationUserId]", filterApplicationUserId));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter[userUuid]", filterUserUuid));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter[institution]", filterInstitution));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filter[applicationUserId]", filterApplicationUserId));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filter[institution]", filterInstitution));
 
     
     

@@ -299,7 +299,7 @@ Name | Type | Description  | Notes
 
 <a name="getConsentsUsingGET"></a>
 # **getConsentsUsingGET**
-> ApiListResponseOfConsent getConsentsUsingGET(filterApplicationUserId, filterUserUuid, filterInstitution)
+> ApiListResponseOfConsent getConsentsUsingGET(filterApplicationUserId, filterInstitution)
 
 Get consents
 
@@ -324,11 +324,10 @@ OAuth tokenAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
 tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 ConsentsApi apiInstance = new ConsentsApi();
-String filterApplicationUserId = "filterApplicationUserId_example"; // String | Filter consents by applicationUserId
-String filterUserUuid = "filterUserUuid_example"; // String | Filter consents by userUuid
-String filterInstitution = "filterInstitution_example"; // String | Use this parameter to filter consent by institution, using the Yapily institution Id
+List<String> filterApplicationUserId = Arrays.asList("filterApplicationUserId_example"); // List<String> | Filter consents by applicationUserId
+List<String> filterInstitution = Arrays.asList("filterInstitution_example"); // List<String> | Use this parameter to filter consent by institution, using the Yapily institution Id
 try {
-    ApiListResponseOfConsent result = apiInstance.getConsentsUsingGET(filterApplicationUserId, filterUserUuid, filterInstitution);
+    ApiListResponseOfConsent result = apiInstance.getConsentsUsingGET(filterApplicationUserId, filterInstitution);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ConsentsApi#getConsentsUsingGET");
@@ -340,9 +339,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filterApplicationUserId** | **String**| Filter consents by applicationUserId | [optional]
- **filterUserUuid** | **String**| Filter consents by userUuid | [optional]
- **filterInstitution** | **String**| Use this parameter to filter consent by institution, using the Yapily institution Id | [optional]
+ **filterApplicationUserId** | [**List&lt;String&gt;**](String.md)| Filter consents by applicationUserId | [optional]
+ **filterInstitution** | [**List&lt;String&gt;**](String.md)| Use this parameter to filter consent by institution, using the Yapily institution Id | [optional]
 
 ### Return type
 

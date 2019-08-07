@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>yapily</groupId>
     <artifactId>yapily-sdk</artifactId>
-    <version>0.0.126</version>
+    <version>0.0.127</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "yapily:yapily-sdk:0.0.126"
+compile "yapily:yapily-sdk:0.0.127"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/yapily-sdk-0.0.126.jar
+* target/yapily-sdk-0.0.127.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -106,9 +106,12 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**initiateAccountRequestUsingPOST**](docs/AccountsApi.md#initiateAccountRequestUsingPOST) | **POST** /account-auth-requests | Initiate a new account request for user to authorize
 *AccountsApi* | [**reAuthoriseAccountUsingPATCH**](docs/AccountsApi.md#reAuthoriseAccountUsingPATCH) | **PATCH** /account-auth-requests | Re-authorize account request
 *ApplicationUsersApi* | [**addUserUsingPOST**](docs/ApplicationUsersApi.md#addUserUsingPOST) | **POST** /users | Add an application user
-*ApplicationUsersApi* | [**deleteUserUsingDELETE**](docs/ApplicationUsersApi.md#deleteUserUsingDELETE) | **DELETE** /users/{userUuid} | Delete an application user
+*ApplicationUsersApi* | [**deleteUserUsingDELETE**](docs/ApplicationUsersApi.md#deleteUserUsingDELETE) | **DELETE** /users/{userUuid} | Delete an application user and sub-resources (including consent resources on institution APIs if they exist)
+*ApplicationUsersApi* | [**getDeleteUsersJobUsingGET**](docs/ApplicationUsersApi.md#getDeleteUsersJobUsingGET) | **GET** /delete-users/{job-id} | Get details of a user deletion job
+*ApplicationUsersApi* | [**getDeleteUsersJobsUsingGET**](docs/ApplicationUsersApi.md#getDeleteUsersJobsUsingGET) | **GET** /delete-users | Get details of all user deletion jobs
 *ApplicationUsersApi* | [**getUserUsingGET**](docs/ApplicationUsersApi.md#getUserUsingGET) | **GET** /users/{userUuid} | Get an application user
 *ApplicationUsersApi* | [**getUsersUsingGET**](docs/ApplicationUsersApi.md#getUsersUsingGET) | **GET** /users | Get application users
+*ApplicationUsersApi* | [**startDeleteUsersJobUsingPOST**](docs/ApplicationUsersApi.md#startDeleteUsersJobUsingPOST) | **POST** /delete-users | Start a job to delete application users by specifying their identifiers
 *ApplicationsApi* | [**getApplicationMeUsingGET**](docs/ApplicationsApi.md#getApplicationMeUsingGET) | **GET** /me | Returns the details of the application that owns the request credentials
 *ApplicationsApi* | [**getJwksUsingGET**](docs/ApplicationsApi.md#getJwksUsingGET) | **GET** /jwks | JSON Web Key Set (JWKS) for authenticated application
 *ApplicationsApi* | [**revokeTokensUsingPOST**](docs/ApplicationsApi.md#revokeTokensUsingPOST) | **POST** /revoke-tokens | Revoke existing access tokens for application, which will also generate a new public key discoverable via /jwks
@@ -155,6 +158,7 @@ Class | Method | HTTP request | Description
  - [Amount](docs/Amount.md)
  - [ApiListResponseOfAccount](docs/ApiListResponseOfAccount.md)
  - [ApiListResponseOfAccountStatement](docs/ApiListResponseOfAccountStatement.md)
+ - [ApiListResponseOfBulkUserDelete](docs/ApiListResponseOfBulkUserDelete.md)
  - [ApiListResponseOfConsent](docs/ApiListResponseOfConsent.md)
  - [ApiListResponseOfFeatureDetails](docs/ApiListResponseOfFeatureDetails.md)
  - [ApiListResponseOfInstitution](docs/ApiListResponseOfInstitution.md)
@@ -162,6 +166,7 @@ Class | Method | HTTP request | Description
  - [ApiResponseOfAccount](docs/ApiResponseOfAccount.md)
  - [ApiResponseOfAccountStatement](docs/ApiResponseOfAccountStatement.md)
  - [ApiResponseOfAuthorisationRequestResponse](docs/ApiResponseOfAuthorisationRequestResponse.md)
+ - [ApiResponseOfBulkUserDeleteDetails](docs/ApiResponseOfBulkUserDeleteDetails.md)
  - [ApiResponseOfConsent](docs/ApiResponseOfConsent.md)
  - [ApiResponseOfConsentDeleteResponse](docs/ApiResponseOfConsentDeleteResponse.md)
  - [ApiResponseOfIdentity](docs/ApiResponseOfIdentity.md)
@@ -175,6 +180,8 @@ Class | Method | HTTP request | Description
  - [AuthorisationRequestResponse](docs/AuthorisationRequestResponse.md)
  - [Balance](docs/Balance.md)
  - [Branch](docs/Branch.md)
+ - [BulkUserDelete](docs/BulkUserDelete.md)
+ - [BulkUserDeleteDetails](docs/BulkUserDeleteDetails.md)
  - [ChargeDetails](docs/ChargeDetails.md)
  - [Consent](docs/Consent.md)
  - [ConsentAuthCodeRequest](docs/ConsentAuthCodeRequest.md)
@@ -254,6 +261,7 @@ Class | Method | HTTP request | Description
  - [TransferResponse](docs/TransferResponse.md)
  - [URI](docs/URI.md)
  - [URL](docs/URL.md)
+ - [UserDeleteRequest](docs/UserDeleteRequest.md)
  - [UserDeleteResponse](docs/UserDeleteResponse.md)
  - [YapilyAccessToken](docs/YapilyAccessToken.md)
 
