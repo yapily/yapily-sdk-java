@@ -9,8 +9,8 @@ Method | HTTP request | Description
 [**deleteUsingDELETE**](ConsentsApi.md#deleteUsingDELETE) | **DELETE** /consents/{consentId} | Delete consent
 [**getConsentByIdUsingGET**](ConsentsApi.md#getConsentByIdUsingGET) | **GET** /consents/{consentId} | Get consent
 [**getConsentBySingleAccessConsentUsingPOST**](ConsentsApi.md#getConsentBySingleAccessConsentUsingPOST) | **POST** /consent-one-time-token | Post one time token
-[**getConsentsUsingGET**](ConsentsApi.md#getConsentsUsingGET) | **GET** /consents | Get consents
-[**getUserConsentsUsingGET**](ConsentsApi.md#getUserConsentsUsingGET) | **GET** /users/{userUuid}/consents | Get user consents
+[**getConsentsUsingGET**](ConsentsApi.md#getConsentsUsingGET) | **GET** /consents | Get consents sorted by creation date
+[**getUserConsentsUsingGET**](ConsentsApi.md#getUserConsentsUsingGET) | **GET** /users/{userUuid}/consents | Get latest user consents
 
 
 <a name="addConsentUsingPOST"></a>
@@ -299,9 +299,9 @@ Name | Type | Description  | Notes
 
 <a name="getConsentsUsingGET"></a>
 # **getConsentsUsingGET**
-> ApiListResponseOfConsent getConsentsUsingGET(filterApplicationUserId, filterInstitution)
+> ApiListResponseOfConsent getConsentsUsingGET(filterApplicationUserId, filterUserUuid, filterInstitution, filterStatus, from, before, limit, offset)
 
-Get consents
+Get consents sorted by creation date
 
 ### Example
 ```java
@@ -324,10 +324,16 @@ OAuth tokenAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
 tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 ConsentsApi apiInstance = new ConsentsApi();
-List<String> filterApplicationUserId = Arrays.asList("filterApplicationUserId_example"); // List<String> | Filter consents by applicationUserId
+List<String> filterApplicationUserId = Arrays.asList("filterApplicationUserId_example"); // List<String> | Filter consents by your application user Id (applicationUserId)
+List<String> filterUserUuid = Arrays.asList("filterUserUuid_example"); // List<String> | Filter consents by Yapily user Id (userUuid)
 List<String> filterInstitution = Arrays.asList("filterInstitution_example"); // List<String> | Use this parameter to filter consent by institution, using the Yapily institution Id
+List<String> filterStatus = Arrays.asList("filterStatus_example"); // List<String> | Use this parameter to filter consent by status
+String from = "from_example"; // String | Use this parameter to filter consents created after the date specified
+String before = "before_example"; // String | Use this parameter to filter consents created before the date specified
+Integer limit = 56; // Integer | Use this parameter to limit consent results, max limit is 20
+Integer offset = 0; // Integer | Use this parameter to specify the offset of the results
 try {
-    ApiListResponseOfConsent result = apiInstance.getConsentsUsingGET(filterApplicationUserId, filterInstitution);
+    ApiListResponseOfConsent result = apiInstance.getConsentsUsingGET(filterApplicationUserId, filterUserUuid, filterInstitution, filterStatus, from, before, limit, offset);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ConsentsApi#getConsentsUsingGET");
@@ -339,8 +345,14 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filterApplicationUserId** | [**List&lt;String&gt;**](String.md)| Filter consents by applicationUserId | [optional]
+ **filterApplicationUserId** | [**List&lt;String&gt;**](String.md)| Filter consents by your application user Id (applicationUserId) | [optional]
+ **filterUserUuid** | [**List&lt;String&gt;**](String.md)| Filter consents by Yapily user Id (userUuid) | [optional]
  **filterInstitution** | [**List&lt;String&gt;**](String.md)| Use this parameter to filter consent by institution, using the Yapily institution Id | [optional]
+ **filterStatus** | [**List&lt;String&gt;**](String.md)| Use this parameter to filter consent by status | [optional]
+ **from** | **String**| Use this parameter to filter consents created after the date specified | [optional]
+ **before** | **String**| Use this parameter to filter consents created before the date specified | [optional]
+ **limit** | **Integer**| Use this parameter to limit consent results, max limit is 20 | [optional]
+ **offset** | **Integer**| Use this parameter to specify the offset of the results | [optional] [default to 0]
 
 ### Return type
 
@@ -357,9 +369,9 @@ Name | Type | Description  | Notes
 
 <a name="getUserConsentsUsingGET"></a>
 # **getUserConsentsUsingGET**
-> List&lt;Consent&gt; getUserConsentsUsingGET(userUuid, filterInstitution)
+> List&lt;Consent&gt; getUserConsentsUsingGET(userUuid, filterInstitution, limit)
 
-Get user consents
+Get latest user consents
 
 ### Example
 ```java
@@ -384,8 +396,9 @@ tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 ConsentsApi apiInstance = new ConsentsApi();
 String userUuid = "userUuid_example"; // String | userUuid
 String filterInstitution = "filterInstitution_example"; // String | Use this parameter to filter consent by institution, using the Yapily institution Id. This replaces the deprecated `institutionId` query param.
+Integer limit = 56; // Integer | Use this parameter to limit consent results, max limit is 20
 try {
-    List<Consent> result = apiInstance.getUserConsentsUsingGET(userUuid, filterInstitution);
+    List<Consent> result = apiInstance.getUserConsentsUsingGET(userUuid, filterInstitution, limit);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ConsentsApi#getUserConsentsUsingGET");
@@ -399,6 +412,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userUuid** | **String**| userUuid |
  **filterInstitution** | **String**| Use this parameter to filter consent by institution, using the Yapily institution Id. This replaces the deprecated &#x60;institutionId&#x60; query param. | [optional]
+ **limit** | **Integer**| Use this parameter to limit consent results, max limit is 20 | [optional]
 
 ### Return type
 
