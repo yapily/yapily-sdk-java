@@ -7,16 +7,19 @@ import yapily.Pair;
 
 import javax.ws.rs.core.GenericType;
 
+import yapily.sdk.ApiListResponseOfBulkUserDelete;
+import yapily.sdk.ApiResponseOfBulkUserDeleteDetails;
 import yapily.sdk.ApiResponseOfUserDeleteResponse;
 import yapily.sdk.ApplicationUser;
 import yapily.sdk.NewApplicationUser;
+import yapily.sdk.UserDeleteRequest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-07-15T13:33:48.764Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-09-11T11:10:00.681Z")
 public class ApplicationUsersApi {
   private ApiClient apiClient;
 
@@ -78,7 +81,7 @@ public class ApplicationUsersApi {
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
   /**
-   * Delete an application user
+   * Delete an application user and sub-resources (including consent resources on institution APIs if they exist)
    * 
    * @param userUuid userUuid (required)
    * @return ApiResponseOfUserDeleteResponse
@@ -118,6 +121,83 @@ public class ApplicationUsersApi {
 
     GenericType<ApiResponseOfUserDeleteResponse> localVarReturnType = new GenericType<ApiResponseOfUserDeleteResponse>() {};
     return apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+      }
+  /**
+   * Get details of a user deletion job
+   * 
+   * @param jobId job-id (required)
+   * @return ApiResponseOfBulkUserDeleteDetails
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponseOfBulkUserDeleteDetails getDeleteUsersJobUsingGET(String jobId) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'jobId' is set
+    if (jobId == null) {
+      throw new ApiException(400, "Missing the required parameter 'jobId' when calling getDeleteUsersJobUsingGET");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/delete-users/{job-id}"
+      .replaceAll("\\{" + "job-id" + "\\}", apiClient.escapeString(jobId.toString()));
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json;charset=UTF-8"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "basicAuth", "tokenAuth" };
+
+    GenericType<ApiResponseOfBulkUserDeleteDetails> localVarReturnType = new GenericType<ApiResponseOfBulkUserDeleteDetails>() {};
+    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+      }
+  /**
+   * Get details of all user deletion jobs
+   * 
+   * @return ApiListResponseOfBulkUserDelete
+   * @throws ApiException if fails to make API call
+   */
+  public ApiListResponseOfBulkUserDelete getDeleteUsersJobsUsingGET() throws ApiException {
+    Object localVarPostBody = null;
+    
+    // create path and map variables
+    String localVarPath = "/delete-users";
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json;charset=UTF-8"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "basicAuth", "tokenAuth" };
+
+    GenericType<ApiListResponseOfBulkUserDelete> localVarReturnType = new GenericType<ApiListResponseOfBulkUserDelete>() {};
+    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
   /**
    * Get an application user
@@ -195,5 +275,46 @@ public class ApplicationUsersApi {
 
     GenericType<List<ApplicationUser>> localVarReturnType = new GenericType<List<ApplicationUser>>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+      }
+  /**
+   * Start a job to delete application users by specifying their identifiers
+   * 
+   * @param userDeleteRequest userDeleteRequest (required)
+   * @return ApiResponseOfBulkUserDeleteDetails
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponseOfBulkUserDeleteDetails startDeleteUsersJobUsingPOST(UserDeleteRequest userDeleteRequest) throws ApiException {
+    Object localVarPostBody = userDeleteRequest;
+    
+    // verify the required parameter 'userDeleteRequest' is set
+    if (userDeleteRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'userDeleteRequest' when calling startDeleteUsersJobUsingPOST");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/delete-users";
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json;charset=UTF-8"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json;charset=UTF-8"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "basicAuth", "tokenAuth" };
+
+    GenericType<ApiResponseOfBulkUserDeleteDetails> localVarReturnType = new GenericType<ApiResponseOfBulkUserDeleteDetails>() {};
+    return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
 }

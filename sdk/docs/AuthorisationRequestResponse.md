@@ -18,10 +18,11 @@ Name | Type | Description | Notes
 **timeToExpire** | **String** | ISO 8601 duration |  [optional]
 **featureScope** | [**List&lt;FeatureScopeEnum&gt;**](#List&lt;FeatureScopeEnum&gt;) |  |  [optional]
 **consentToken** | **String** |  |  [optional]
-**authorisationUrl** | **String** |  |  [optional]
 **startsAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
 **totalMaxAmount** | [**BigDecimal**](BigDecimal.md) |  |  [optional]
 **maxAmountPerRequest** | [**BigDecimal**](BigDecimal.md) |  |  [optional]
+**allowOverdraft** | **Boolean** |  |  [optional]
+**authorisationUrl** | **String** |  |  [optional]
 
 
 <a name="StatusEnum"></a>

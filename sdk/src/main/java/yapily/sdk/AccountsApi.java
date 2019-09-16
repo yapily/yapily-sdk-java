@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-07-15T13:33:48.764Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-09-11T11:10:00.681Z")
 public class AccountsApi {
   private ApiClient apiClient;
 
@@ -170,5 +170,48 @@ public class AccountsApi {
 
     GenericType<ApiResponseOfAuthorisationRequestResponse> localVarReturnType = new GenericType<ApiResponseOfAuthorisationRequestResponse>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+      }
+  /**
+   * Re-authorize account request
+   * 
+   * @param consent Consent Token (required)
+   * @return ApiResponseOfAuthorisationRequestResponse
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponseOfAuthorisationRequestResponse reAuthoriseAccountUsingPATCH(String consent) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'consent' is set
+    if (consent == null) {
+      throw new ApiException(400, "Missing the required parameter 'consent' when calling reAuthoriseAccountUsingPATCH");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/account-auth-requests";
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+
+    if (consent != null)
+      localVarHeaderParams.put("consent", apiClient.parameterToString(consent));
+
+    
+    final String[] localVarAccepts = {
+      "application/json;charset=UTF-8"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json;charset=UTF-8"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "basicAuth", "tokenAuth" };
+
+    GenericType<ApiResponseOfAuthorisationRequestResponse> localVarReturnType = new GenericType<ApiResponseOfAuthorisationRequestResponse>() {};
+    return apiClient.invokeAPI(localVarPath, "PATCH", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
 }

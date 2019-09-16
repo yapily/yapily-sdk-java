@@ -21,6 +21,9 @@ BIC | &quot;BIC&quot;
 PAN | &quot;PAN&quot;
 MASKED_PAN | &quot;MASKED_PAN&quot;
 MSISDN | &quot;MSISDN&quot;
+ABA | &quot;ABA&quot;
+ABA_WIRE | &quot;ABA_WIRE&quot;
+ABA_ACH | &quot;ABA_ACH&quot;
 
 
 

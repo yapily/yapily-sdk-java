@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **startsAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
 **totalMaxAmount** | [**BigDecimal**](BigDecimal.md) |  |  [optional]
 **maxAmountPerRequest** | [**BigDecimal**](BigDecimal.md) |  |  [optional]
+**allowOverdraft** | **Boolean** |  |  [optional]
 
 
 <a name="StatusEnum"></a>

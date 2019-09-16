@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-07-15T13:33:48.764Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-09-11T11:10:00.681Z")
 public class ConsentsApi {
   private ApiClient apiClient;
 
@@ -257,15 +257,20 @@ public class ConsentsApi {
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
   /**
-   * Get consents
+   * Get consents sorted by creation date
    * 
-   * @param filterApplicationUserId Filter consents by applicationUserId (optional)
-   * @param filterUserUuid Filter consents by userUuid (optional)
+   * @param filterApplicationUserId Filter consents by your application user Id (applicationUserId) (optional)
+   * @param filterUserUuid Filter consents by Yapily user Id (userUuid) (optional)
    * @param filterInstitution Use this parameter to filter consent by institution, using the Yapily institution Id (optional)
+   * @param filterStatus Use this parameter to filter consent by status (optional)
+   * @param from Use this parameter to filter consents created after the date specified (optional)
+   * @param before Use this parameter to filter consents created before the date specified (optional)
+   * @param limit Use this parameter to limit consent results, max limit is 20 (optional)
+   * @param offset Use this parameter to specify the offset of the results (optional, default to 0)
    * @return ApiListResponseOfConsent
    * @throws ApiException if fails to make API call
    */
-  public ApiListResponseOfConsent getConsentsUsingGET(String filterApplicationUserId, String filterUserUuid, String filterInstitution) throws ApiException {
+  public ApiListResponseOfConsent getConsentsUsingGET(List<String> filterApplicationUserId, List<String> filterUserUuid, List<String> filterInstitution, List<String> filterStatus, String from, String before, Integer limit, Integer offset) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -276,9 +281,14 @@ public class ConsentsApi {
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter[applicationUserId]", filterApplicationUserId));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter[userUuid]", filterUserUuid));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter[institution]", filterInstitution));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filter[applicationUserId]", filterApplicationUserId));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filter[userUuid]", filterUserUuid));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filter[institution]", filterInstitution));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filter[status]", filterStatus));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "from", from));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "before", before));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "offset", offset));
 
     
     
@@ -298,14 +308,17 @@ public class ConsentsApi {
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
   /**
-   * Get user consents
+   * Get latest user consents
    * 
    * @param userUuid userUuid (required)
    * @param filterInstitution Use this parameter to filter consent by institution, using the Yapily institution Id. This replaces the deprecated &#x60;institutionId&#x60; query param. (optional)
+   * @param limit Use this parameter to limit consent results, max limit is 20 (optional)
    * @return List&lt;Consent&gt;
    * @throws ApiException if fails to make API call
+   * @deprecated
    */
-  public List<Consent> getUserConsentsUsingGET(String userUuid, String filterInstitution) throws ApiException {
+  @Deprecated
+  public List<Consent> getUserConsentsUsingGET(String userUuid, String filterInstitution, Integer limit) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'userUuid' is set
@@ -323,6 +336,7 @@ public class ConsentsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter[institution]", filterInstitution));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
 
     
     

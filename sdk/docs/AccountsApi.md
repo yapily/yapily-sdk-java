@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**getAccountUsingGET**](AccountsApi.md#getAccountUsingGET) | **GET** /accounts/{accountId} | Get account
 [**getAccountsUsingGET**](AccountsApi.md#getAccountsUsingGET) | **GET** /accounts | Get accounts
 [**initiateAccountRequestUsingPOST**](AccountsApi.md#initiateAccountRequestUsingPOST) | **POST** /account-auth-requests | Initiate a new account request for user to authorize
+[**reAuthoriseAccountUsingPATCH**](AccountsApi.md#reAuthoriseAccountUsingPATCH) | **PATCH** /account-auth-requests | Re-authorize account request
 
 
 <a name="getAccountUsingGET"></a>
@@ -165,6 +166,62 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **accountAuthRequest** | [**AccountAuthorisationRequest**](AccountAuthorisationRequest.md)| accountAuthRequest |
+
+### Return type
+
+[**ApiResponseOfAuthorisationRequestResponse**](ApiResponseOfAuthorisationRequestResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth), [tokenAuth](../README.md#tokenAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json;charset=UTF-8
+ - **Accept**: application/json;charset=UTF-8
+
+<a name="reAuthoriseAccountUsingPATCH"></a>
+# **reAuthoriseAccountUsingPATCH**
+> ApiResponseOfAuthorisationRequestResponse reAuthoriseAccountUsingPATCH(consent)
+
+Re-authorize account request
+
+### Example
+```java
+// Import classes:
+//import yapily.ApiClient;
+//import yapily.ApiException;
+//import yapily.Configuration;
+//import yapily.auth.*;
+//import yapily.sdk.AccountsApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure HTTP basic authorization: basicAuth
+HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
+basicAuth.setUsername("YOUR USERNAME");
+basicAuth.setPassword("YOUR PASSWORD");
+
+// Configure OAuth2 access token for authorization: tokenAuth
+OAuth tokenAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
+tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
+
+AccountsApi apiInstance = new AccountsApi();
+String consent = "consent_example"; // String | Consent Token
+try {
+    ApiResponseOfAuthorisationRequestResponse result = apiInstance.reAuthoriseAccountUsingPATCH(consent);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AccountsApi#reAuthoriseAccountUsingPATCH");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **consent** | **String**| Consent Token |
 
 ### Return type
 

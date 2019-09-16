@@ -17,6 +17,7 @@ UP | &quot;Up&quot;
 DOWN | &quot;Down&quot;
 WARNING | &quot;Warning&quot;
 UNKNOWN | &quot;Unknown&quot;
+EXPIRED | &quot;Expired&quot;
 
 
 
