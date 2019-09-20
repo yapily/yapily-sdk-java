@@ -62,7 +62,7 @@ repositories {
 Dependency:
 
 ```groovy
-compile group: 'yapily', name: 'yapily-sdk-java', version: '0.0.143'
+compile group: 'yapily', name: 'yapily-sdk', version: '0.0.143'
 ```
 
 #### Download JAR
