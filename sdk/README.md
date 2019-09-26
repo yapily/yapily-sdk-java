@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>yapily</groupId>
     <artifactId>yapily-sdk</artifactId>
-    <version>0.0.143</version>
+    <version>0.0.145</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "yapily:yapily-sdk:0.0.143"
+compile "yapily:yapily-sdk:0.0.145"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/yapily-sdk-0.0.143.jar
+* target/yapily-sdk-0.0.145.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -129,9 +129,12 @@ Class | Method | HTTP request | Description
 *InstitutionsOpenDataApi* | [**getATMDataUsingGET**](docs/InstitutionsOpenDataApi.md#getATMDataUsingGET) | **GET** /institutions/{institutionId}/atms | Retrieves data about all ATMs of the selected institution
 *InstitutionsOpenDataApi* | [**getPersonalCurrentAccountsUsingGET**](docs/InstitutionsOpenDataApi.md#getPersonalCurrentAccountsUsingGET) | **GET** /institutions/{institutionId}/personal-current-accounts | Retrieves details of personal current accounts for an institution
 *OAuthApi* | [**oauthToken**](docs/OAuthApi.md#oauthToken) | **POST** /oauth/token | Retrieve Access Token
+*PaymentsApi* | [**createPaymentAuthorisationUsingPOST**](docs/PaymentsApi.md#createPaymentAuthorisationUsingPOST) | **POST** /payment-auth-requests | Initiate a payment for user to authorise
 *PaymentsApi* | [**createPaymentAuthorisationWithSortCodeUsingPOST**](docs/PaymentsApi.md#createPaymentAuthorisationWithSortCodeUsingPOST) | **POST** /payment-sortcode-auth-requests | Initiate a new single payment for user to authorise
+*PaymentsApi* | [**createPaymentUsingPOST**](docs/PaymentsApi.md#createPaymentUsingPOST) | **POST** /payments | Create a payment
 *PaymentsApi* | [**createPaymentWithSortCodeUsingPOST**](docs/PaymentsApi.md#createPaymentWithSortCodeUsingPOST) | **POST** /payment-sortcode | Create a new single payment
 *PaymentsApi* | [**getPaymentStatusUsingGET**](docs/PaymentsApi.md#getPaymentStatusUsingGET) | **GET** /payments/{paymentId} | Get status of a payment
+*PaymentsApi* | [**getPaymentsUsingGET**](docs/PaymentsApi.md#getPaymentsUsingGET) | **GET** /payments/{paymentId}/details | Get payments detail
 *StatementsApi* | [**getStatementFileUsingGET**](docs/StatementsApi.md#getStatementFileUsingGET) | **GET** /accounts/{accountId}/statements/{statementId}/file | Get account statement file
 *StatementsApi* | [**getStatementUsingGET**](docs/StatementsApi.md#getStatementUsingGET) | **GET** /accounts/{accountId}/statements/{statementId} | Get account statement
 *StatementsApi* | [**getStatementsUsingGET**](docs/StatementsApi.md#getStatementsUsingGET) | **GET** /accounts/{accountId}/statements | Get account statements
@@ -156,6 +159,7 @@ Class | Method | HTTP request | Description
  - [AddressDetails](docs/AddressDetails.md)
  - [AgeEligibility](docs/AgeEligibility.md)
  - [Amount](docs/Amount.md)
+ - [ApiError](docs/ApiError.md)
  - [ApiListResponseOfAccount](docs/ApiListResponseOfAccount.md)
  - [ApiListResponseOfAccountStatement](docs/ApiListResponseOfAccountStatement.md)
  - [ApiListResponseOfBulkUserDelete](docs/ApiListResponseOfBulkUserDelete.md)
@@ -173,6 +177,7 @@ Class | Method | HTTP request | Description
  - [ApiResponseOfListOfATMOpenDataResponse](docs/ApiResponseOfListOfATMOpenDataResponse.md)
  - [ApiResponseOfListOfPersonalCurrentAccountData](docs/ApiResponseOfListOfPersonalCurrentAccountData.md)
  - [ApiResponseOfPaymentResponse](docs/ApiResponseOfPaymentResponse.md)
+ - [ApiResponseOfPaymentResponses](docs/ApiResponseOfPaymentResponses.md)
  - [ApiResponseOfTransferResponse](docs/ApiResponseOfTransferResponse.md)
  - [ApiResponseOfUserDeleteResponse](docs/ApiResponseOfUserDeleteResponse.md)
  - [Application](docs/Application.md)
@@ -200,6 +205,7 @@ Class | Method | HTTP request | Description
  - [EligibilityOtherEligibility](docs/EligibilityOtherEligibility.md)
  - [FeatureDetails](docs/FeatureDetails.md)
  - [FilterAndSort](docs/FilterAndSort.md)
+ - [FrequencyResponse](docs/FrequencyResponse.md)
  - [GeoLocation1](docs/GeoLocation1.md)
  - [GeographicCoordinates1](docs/GeographicCoordinates1.md)
  - [IDVerificationCheck](docs/IDVerificationCheck.md)
@@ -220,6 +226,7 @@ Class | Method | HTTP request | Description
  - [Merchant](docs/Merchant.md)
  - [MerchantInfo](docs/MerchantInfo.md)
  - [MonitoringFeatureStatus](docs/MonitoringFeatureStatus.md)
+ - [MultiAuthorisation](docs/MultiAuthorisation.md)
  - [NewApplicationUser](docs/NewApplicationUser.md)
  - [Next](docs/Next.md)
  - [OneTimeTokenRequest](docs/OneTimeTokenRequest.md)
@@ -240,7 +247,10 @@ Class | Method | HTTP request | Description
  - [OverdraftOverdraftTierBandSet](docs/OverdraftOverdraftTierBandSet.md)
  - [Pagination](docs/Pagination.md)
  - [Payee](docs/Payee.md)
+ - [PaymentAuthorisationRequest](docs/PaymentAuthorisationRequest.md)
+ - [PaymentRequest](docs/PaymentRequest.md)
  - [PaymentResponse](docs/PaymentResponse.md)
+ - [PaymentResponses](docs/PaymentResponses.md)
  - [PaymentStatusDetails](docs/PaymentStatusDetails.md)
  - [PersonalCurrentAccountBrand](docs/PersonalCurrentAccountBrand.md)
  - [PersonalCurrentAccountData](docs/PersonalCurrentAccountData.md)

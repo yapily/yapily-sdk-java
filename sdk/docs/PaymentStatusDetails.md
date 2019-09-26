@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **statusReason** | **String** |  |  [optional]
 **statusReasonDescription** | **String** |  |  [optional]
 **statusUpdateDate** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
+**multiAuthorisationStatus** | [**MultiAuthorisation**](MultiAuthorisation.md) |  |  [optional]
 
 
 <a name="StatusEnum"></a>
@@ -20,6 +21,8 @@ DECLINED | &quot;DECLINED&quot;
 COMPLETED | &quot;COMPLETED&quot;
 EXPIRED | &quot;EXPIRED&quot;
 UNKNOWN | &quot;UNKNOWN&quot;
+ACTIVE | &quot;ACTIVE&quot;
+INACTIVE | &quot;INACTIVE&quot;
 
 
 
