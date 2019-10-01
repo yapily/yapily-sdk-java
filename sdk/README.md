@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>yapily</groupId>
     <artifactId>yapily-sdk</artifactId>
-    <version>0.0.145</version>
+    <version>0.0.146</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "yapily:yapily-sdk:0.0.145"
+compile "yapily:yapily-sdk:0.0.146"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/yapily-sdk-0.0.145.jar
+* target/yapily-sdk-0.0.146.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -81,13 +81,14 @@ public class AccountsApiExample {
         tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
         AccountsApi apiInstance = new AccountsApi();
-        String consent = "consent_example"; // String | Consent Token
         String accountId = "accountId_example"; // String | accountId
+        String consent = "consent_example"; // String | Consent Token
+        Integer limit = 56; // Integer | Use this parameter to limit account's direct debit results
         try {
-            ApiResponseOfAccount result = apiInstance.getAccountUsingGET(consent, accountId);
+            ApiListResponseOfPaymentResponse result = apiInstance.getAccountDirectDebitsUsingGET(accountId, consent, limit);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AccountsApi#getAccountUsingGET");
+            System.err.println("Exception when calling AccountsApi#getAccountDirectDebitsUsingGET");
             e.printStackTrace();
         }
     }
@@ -101,6 +102,9 @@ All URIs are relative to *https://api.yapily.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AccountsApi* | [**getAccountDirectDebitsUsingGET**](docs/AccountsApi.md#getAccountDirectDebitsUsingGET) | **GET** /accounts/{accountId}/direct-debits | Get account direct debits
+*AccountsApi* | [**getAccountPeriodicPaymentOrderUsingGET**](docs/AccountsApi.md#getAccountPeriodicPaymentOrderUsingGET) | **GET** /accounts/{accountId}/periodic-payment-orders | Get account payments detail
+*AccountsApi* | [**getAccountScheduledPaymentsUsingGET**](docs/AccountsApi.md#getAccountScheduledPaymentsUsingGET) | **GET** /accounts/{accountId}/scheduled-payments | Get account scheduled payments
 *AccountsApi* | [**getAccountUsingGET**](docs/AccountsApi.md#getAccountUsingGET) | **GET** /accounts/{accountId} | Get account
 *AccountsApi* | [**getAccountsUsingGET**](docs/AccountsApi.md#getAccountsUsingGET) | **GET** /accounts | Get accounts
 *AccountsApi* | [**initiateAccountRequestUsingPOST**](docs/AccountsApi.md#initiateAccountRequestUsingPOST) | **POST** /account-auth-requests | Initiate a new account request for user to authorize
@@ -166,6 +170,7 @@ Class | Method | HTTP request | Description
  - [ApiListResponseOfConsent](docs/ApiListResponseOfConsent.md)
  - [ApiListResponseOfFeatureDetails](docs/ApiListResponseOfFeatureDetails.md)
  - [ApiListResponseOfInstitution](docs/ApiListResponseOfInstitution.md)
+ - [ApiListResponseOfPaymentResponse](docs/ApiListResponseOfPaymentResponse.md)
  - [ApiListResponseOfTransaction](docs/ApiListResponseOfTransaction.md)
  - [ApiResponseOfAccount](docs/ApiResponseOfAccount.md)
  - [ApiResponseOfAccountStatement](docs/ApiResponseOfAccountStatement.md)

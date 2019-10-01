@@ -19,39 +19,26 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.File;
-import yapily.sdk.InputStream;
-import yapily.sdk.URI;
-import yapily.sdk.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import yapily.sdk.PaymentResponse;
+import yapily.sdk.ResponseListMeta;
 
 /**
- * InputStreamResource
+ * ApiListResponseOfPaymentResponse
  */
 @Data
-public class InputStreamResource {
-  @JsonProperty("description")
-  private String description = null;
+public class ApiListResponseOfPaymentResponse {
+  @JsonProperty("meta")
+  private ResponseListMeta meta = null;
 
-  @JsonProperty("file")
-  private File file = null;
+  @JsonProperty("data")
+  private List<PaymentResponse> data = null;
 
-  @JsonProperty("filename")
-  private String filename = null;
-
-  @JsonProperty("inputStream")
-  private InputStream inputStream = null;
-
-  @JsonProperty("open")
-  private Boolean open = null;
-
-  @JsonProperty("readable")
-  private Boolean readable = null;
-
-  @JsonProperty("uri")
-  private URI uri = null;
-
-  @JsonProperty("url")
-  private URL url = null;
+  @JsonProperty("links")
+  private Map<String, String> links = null;
 
 }
 
