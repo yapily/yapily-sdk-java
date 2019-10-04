@@ -5,7 +5,7 @@ All URIs are relative to *https://api.yapily.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getAccountDirectDebitsUsingGET**](AccountsApi.md#getAccountDirectDebitsUsingGET) | **GET** /accounts/{accountId}/direct-debits | Get account direct debits
-[**getAccountPeriodicPaymentOrderUsingGET**](AccountsApi.md#getAccountPeriodicPaymentOrderUsingGET) | **GET** /accounts/{accountId}/periodic-payment-orders | Get account payments detail
+[**getAccountPeriodicPaymentsUsingGET**](AccountsApi.md#getAccountPeriodicPaymentsUsingGET) | **GET** /accounts/{accountId}/periodic-payments | Get account payments detail
 [**getAccountScheduledPaymentsUsingGET**](AccountsApi.md#getAccountScheduledPaymentsUsingGET) | **GET** /accounts/{accountId}/scheduled-payments | Get account scheduled payments
 [**getAccountUsingGET**](AccountsApi.md#getAccountUsingGET) | **GET** /accounts/{accountId} | Get account
 [**getAccountsUsingGET**](AccountsApi.md#getAccountsUsingGET) | **GET** /accounts | Get accounts
@@ -73,9 +73,9 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json;charset=UTF-8
 
-<a name="getAccountPeriodicPaymentOrderUsingGET"></a>
-# **getAccountPeriodicPaymentOrderUsingGET**
-> ApiListResponseOfPaymentResponse getAccountPeriodicPaymentOrderUsingGET(accountId, consent, limit)
+<a name="getAccountPeriodicPaymentsUsingGET"></a>
+# **getAccountPeriodicPaymentsUsingGET**
+> ApiListResponseOfPaymentResponse getAccountPeriodicPaymentsUsingGET(accountId, consent, limit)
 
 Get account payments detail
 
@@ -104,10 +104,10 @@ String accountId = "accountId_example"; // String | accountId
 String consent = "consent_example"; // String | Consent Token
 Integer limit = 56; // Integer | Use this parameter to limit account's periodic payment order results
 try {
-    ApiListResponseOfPaymentResponse result = apiInstance.getAccountPeriodicPaymentOrderUsingGET(accountId, consent, limit);
+    ApiListResponseOfPaymentResponse result = apiInstance.getAccountPeriodicPaymentsUsingGET(accountId, consent, limit);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling AccountsApi#getAccountPeriodicPaymentOrderUsingGET");
+    System.err.println("Exception when calling AccountsApi#getAccountPeriodicPaymentsUsingGET");
     e.printStackTrace();
 }
 ```

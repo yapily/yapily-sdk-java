@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **executionDay** | **Integer** |  |  [optional]
-**frequency** | [**FrequencyEnum**](#FrequencyEnum) |  |  [optional]
+**frequencyType** | [**FrequencyTypeEnum**](#FrequencyTypeEnum) |  |  [optional]
 **intervalMonth** | **Integer** |  |  [optional]
 **intervalWeek** | **Integer** |  |  [optional]
 
 
-<a name="FrequencyEnum"></a>
-## Enum: FrequencyEnum
+<a name="FrequencyTypeEnum"></a>
+## Enum: FrequencyTypeEnum
 Name | Value
 ---- | -----
 DAILY | &quot;DAILY&quot;

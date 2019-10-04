@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>yapily</groupId>
     <artifactId>yapily-sdk</artifactId>
-    <version>0.0.147</version>
+    <version>0.0.149</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "yapily:yapily-sdk:0.0.147"
+compile "yapily:yapily-sdk:0.0.149"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/yapily-sdk-0.0.147.jar
+* target/yapily-sdk-0.0.149.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -103,7 +103,7 @@ All URIs are relative to *https://api.yapily.com*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AccountsApi* | [**getAccountDirectDebitsUsingGET**](docs/AccountsApi.md#getAccountDirectDebitsUsingGET) | **GET** /accounts/{accountId}/direct-debits | Get account direct debits
-*AccountsApi* | [**getAccountPeriodicPaymentOrderUsingGET**](docs/AccountsApi.md#getAccountPeriodicPaymentOrderUsingGET) | **GET** /accounts/{accountId}/periodic-payment-orders | Get account payments detail
+*AccountsApi* | [**getAccountPeriodicPaymentsUsingGET**](docs/AccountsApi.md#getAccountPeriodicPaymentsUsingGET) | **GET** /accounts/{accountId}/periodic-payments | Get account payments detail
 *AccountsApi* | [**getAccountScheduledPaymentsUsingGET**](docs/AccountsApi.md#getAccountScheduledPaymentsUsingGET) | **GET** /accounts/{accountId}/scheduled-payments | Get account scheduled payments
 *AccountsApi* | [**getAccountUsingGET**](docs/AccountsApi.md#getAccountUsingGET) | **GET** /accounts/{accountId} | Get account
 *AccountsApi* | [**getAccountsUsingGET**](docs/AccountsApi.md#getAccountsUsingGET) | **GET** /accounts | Get accounts

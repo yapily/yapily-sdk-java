@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-10-03T16:08:48.052Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-10-04T10:29:45.440Z")
 public class AccountsApi {
   private ApiClient apiClient;
 
@@ -99,21 +99,21 @@ public class AccountsApi {
    * @return ApiListResponseOfPaymentResponse
    * @throws ApiException if fails to make API call
    */
-  public ApiListResponseOfPaymentResponse getAccountPeriodicPaymentOrderUsingGET(String accountId, String consent, Integer limit) throws ApiException {
+  public ApiListResponseOfPaymentResponse getAccountPeriodicPaymentsUsingGET(String accountId, String consent, Integer limit) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'accountId' is set
     if (accountId == null) {
-      throw new ApiException(400, "Missing the required parameter 'accountId' when calling getAccountPeriodicPaymentOrderUsingGET");
+      throw new ApiException(400, "Missing the required parameter 'accountId' when calling getAccountPeriodicPaymentsUsingGET");
     }
     
     // verify the required parameter 'consent' is set
     if (consent == null) {
-      throw new ApiException(400, "Missing the required parameter 'consent' when calling getAccountPeriodicPaymentOrderUsingGET");
+      throw new ApiException(400, "Missing the required parameter 'consent' when calling getAccountPeriodicPaymentsUsingGET");
     }
     
     // create path and map variables
-    String localVarPath = "/accounts/{accountId}/periodic-payment-orders"
+    String localVarPath = "/accounts/{accountId}/periodic-payments"
       .replaceAll("\\{" + "accountId" + "\\}", apiClient.escapeString(accountId.toString()));
 
     // query params
