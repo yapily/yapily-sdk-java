@@ -30,7 +30,7 @@ basicAuth.setUsername("YOUR USERNAME");
 basicAuth.setPassword("YOUR PASSWORD");
 
 OAuthApi apiInstance = new OAuthApi();
-Object grantType = client_credentials; // Object | Grant type
+String grantType = "client_credentials"; // String | Grant type
 try {
     YapilyAccessToken result = apiInstance.oauthToken(grantType);
     System.out.println(result);
@@ -44,7 +44,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **grantType** | [**Object**](.md)| Grant type | [default to client_credentials]
+ **grantType** | **String**| Grant type | [default to client_credentials] [enum: client_credentials]
 
 ### Return type
 

@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>yapily</groupId>
     <artifactId>yapily-sdk</artifactId>
-    <version>0.0.149</version>
+    <version>0.0.150</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "yapily:yapily-sdk:0.0.149"
+compile "yapily:yapily-sdk:0.0.150"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/yapily-sdk-0.0.149.jar
+* target/yapily-sdk-0.0.150.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -219,8 +219,6 @@ Class | Method | HTTP request | Description
  - [InlineResponse2001ATM](docs/InlineResponse2001ATM.md)
  - [InlineResponse2001OtherATMServices](docs/InlineResponse2001OtherATMServices.md)
  - [InlineResponse2001OtherAccessibility](docs/InlineResponse2001OtherAccessibility.md)
- - [InputStream](docs/InputStream.md)
- - [InputStreamResource](docs/InputStreamResource.md)
  - [Institution](docs/Institution.md)
  - [InstitutionConsent](docs/InstitutionConsent.md)
  - [IsoBankTransactionCode](docs/IsoBankTransactionCode.md)
@@ -274,8 +272,6 @@ Class | Method | HTTP request | Description
  - [Transaction](docs/Transaction.md)
  - [TransferRequest](docs/TransferRequest.md)
  - [TransferResponse](docs/TransferResponse.md)
- - [URI](docs/URI.md)
- - [URL](docs/URL.md)
  - [UserDeleteRequest](docs/UserDeleteRequest.md)
  - [UserDeleteResponse](docs/UserDeleteResponse.md)
  - [YapilyAccessToken](docs/YapilyAccessToken.md)

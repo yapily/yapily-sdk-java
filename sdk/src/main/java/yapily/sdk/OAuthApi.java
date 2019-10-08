@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-10-07T11:11:15.842Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-10-08T12:15:52.416Z")
 public class OAuthApi {
   private ApiClient apiClient;
 
@@ -41,7 +41,7 @@ public class OAuthApi {
    * @return YapilyAccessToken
    * @throws ApiException if fails to make API call
    */
-  public YapilyAccessToken oauthToken(Object grantType) throws ApiException {
+  public YapilyAccessToken oauthToken(String grantType) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'grantType' is set
