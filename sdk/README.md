@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>yapily</groupId>
     <artifactId>yapily-sdk</artifactId>
-    <version>0.0.154</version>
+    <version>0.0.155</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "yapily:yapily-sdk:0.0.154"
+compile "yapily:yapily-sdk:0.0.155"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/yapily-sdk-0.0.154.jar
+* target/yapily-sdk-0.0.155.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -192,6 +192,8 @@ Class | Method | HTTP request | Description
  - [Branch](docs/Branch.md)
  - [BulkUserDelete](docs/BulkUserDelete.md)
  - [BulkUserDeleteDetails](docs/BulkUserDeleteDetails.md)
+ - [Categorisation](docs/Categorisation.md)
+ - [Category](docs/Category.md)
  - [ChargeDetails](docs/ChargeDetails.md)
  - [Consent](docs/Consent.md)
  - [ConsentAuthCodeRequest](docs/ConsentAuthCodeRequest.md)

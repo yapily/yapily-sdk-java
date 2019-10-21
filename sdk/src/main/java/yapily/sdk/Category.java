@@ -19,17 +19,20 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * Merchant
+ * Category
  */
 @Data
-public class Merchant {
-  @JsonProperty("merchantName")
-  private String merchantName = null;
+public class Category {
+  @JsonProperty("confidence")
+  private BigDecimal confidence = null;
 
-  @JsonProperty("merchantCategoryCode")
-  private String merchantCategoryCode = null;
+  @JsonProperty("values")
+  private List<String> values = null;
 
 }
 
