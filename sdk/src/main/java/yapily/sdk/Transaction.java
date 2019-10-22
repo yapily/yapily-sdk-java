@@ -26,7 +26,6 @@ import java.util.List;
 import yapily.sdk.AddressDetails;
 import yapily.sdk.Amount;
 import yapily.sdk.Balance;
-import yapily.sdk.Categorisation;
 import yapily.sdk.ChargeDetails;
 import yapily.sdk.CurrencyExchange;
 import yapily.sdk.IsoBankTransactionCode;
@@ -142,9 +141,6 @@ public class Transaction {
 
   @JsonProperty("merchant")
   private Merchant merchant = null;
-
-  @JsonProperty("categorisation")
-  private Categorisation categorisation = null;
 
 }
 
