@@ -8,6 +8,7 @@ import yapily.Pair;
 import javax.ws.rs.core.GenericType;
 
 import yapily.sdk.ApiResponseOfAuthorisationRequestResponse;
+import yapily.sdk.ApiResponseOfPaymentAuthorisationRequestResponse;
 import yapily.sdk.ApiResponseOfPaymentResponse;
 import yapily.sdk.ApiResponseOfPaymentResponses;
 import yapily.sdk.PaymentAuthorisationRequest;
@@ -20,7 +21,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-10-22T10:58:56.635Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-10-24T09:25:10.929Z")
 public class PaymentsApi {
   private ApiClient apiClient;
 
@@ -44,10 +45,10 @@ public class PaymentsApi {
    * Initiate a payment for user to authorise
    * 
    * @param paymentAuthRequest paymentAuthRequest (required)
-   * @return ApiResponseOfAuthorisationRequestResponse
+   * @return ApiResponseOfPaymentAuthorisationRequestResponse
    * @throws ApiException if fails to make API call
    */
-  public ApiResponseOfAuthorisationRequestResponse createPaymentAuthorisationUsingPOST(PaymentAuthorisationRequest paymentAuthRequest) throws ApiException {
+  public ApiResponseOfPaymentAuthorisationRequestResponse createPaymentAuthorisationUsingPOST(PaymentAuthorisationRequest paymentAuthRequest) throws ApiException {
     Object localVarPostBody = paymentAuthRequest;
     
     // verify the required parameter 'paymentAuthRequest' is set
@@ -78,7 +79,7 @@ public class PaymentsApi {
 
     String[] localVarAuthNames = new String[] { "basicAuth", "tokenAuth" };
 
-    GenericType<ApiResponseOfAuthorisationRequestResponse> localVarReturnType = new GenericType<ApiResponseOfAuthorisationRequestResponse>() {};
+    GenericType<ApiResponseOfPaymentAuthorisationRequestResponse> localVarReturnType = new GenericType<ApiResponseOfPaymentAuthorisationRequestResponse>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
   /**

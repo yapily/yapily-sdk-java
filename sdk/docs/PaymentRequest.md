@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **type** | [**TypeEnum**](#TypeEnum) |  |  [optional]
 **paymentDateTime** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
 **payee** | [**Payee**](Payee.md) |  | 
+**periodicPayments** | [**PeriodicPaymentRequest**](PeriodicPaymentRequest.md) |  |  [optional]
 
 
 <a name="ContextTypeEnum"></a>
@@ -32,6 +33,7 @@ Name | Value
 PAYMENT | &quot;DOMESTIC_PAYMENT&quot;
 VARIABLE_RECURRING_PAYMENT | &quot;DOMESTIC_VARIABLE_RECURRING_PAYMENT&quot;
 SCHEDULED_PAYMENT | &quot;DOMESTIC_SCHEDULED_PAYMENT&quot;
+PERIODIC_PAYMENT | &quot;DOMESTIC_PERIODIC_PAYMENT&quot;
 
 
 

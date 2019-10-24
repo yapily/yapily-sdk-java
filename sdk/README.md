@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>yapily</groupId>
     <artifactId>yapily-sdk</artifactId>
-    <version>0.0.155</version>
+    <version>0.0.158</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "yapily:yapily-sdk:0.0.155"
+compile "yapily:yapily-sdk:0.0.158"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/yapily-sdk-0.0.155.jar
+* target/yapily-sdk-0.0.158.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -181,6 +181,7 @@ Class | Method | HTTP request | Description
  - [ApiResponseOfIdentity](docs/ApiResponseOfIdentity.md)
  - [ApiResponseOfListOfATMOpenDataResponse](docs/ApiResponseOfListOfATMOpenDataResponse.md)
  - [ApiResponseOfListOfPersonalCurrentAccountData](docs/ApiResponseOfListOfPersonalCurrentAccountData.md)
+ - [ApiResponseOfPaymentAuthorisationRequestResponse](docs/ApiResponseOfPaymentAuthorisationRequestResponse.md)
  - [ApiResponseOfPaymentResponse](docs/ApiResponseOfPaymentResponse.md)
  - [ApiResponseOfPaymentResponses](docs/ApiResponseOfPaymentResponses.md)
  - [ApiResponseOfTransferResponse](docs/ApiResponseOfTransferResponse.md)
@@ -210,6 +211,7 @@ Class | Method | HTTP request | Description
  - [EligibilityOtherEligibility](docs/EligibilityOtherEligibility.md)
  - [FeatureDetails](docs/FeatureDetails.md)
  - [FilterAndSort](docs/FilterAndSort.md)
+ - [FrequencyRequest](docs/FrequencyRequest.md)
  - [FrequencyResponse](docs/FrequencyResponse.md)
  - [GeoLocation1](docs/GeoLocation1.md)
  - [GeographicCoordinates1](docs/GeographicCoordinates1.md)
@@ -251,10 +253,12 @@ Class | Method | HTTP request | Description
  - [Pagination](docs/Pagination.md)
  - [Payee](docs/Payee.md)
  - [PaymentAuthorisationRequest](docs/PaymentAuthorisationRequest.md)
+ - [PaymentAuthorisationRequestResponse](docs/PaymentAuthorisationRequestResponse.md)
  - [PaymentRequest](docs/PaymentRequest.md)
  - [PaymentResponse](docs/PaymentResponse.md)
  - [PaymentResponses](docs/PaymentResponses.md)
  - [PaymentStatusDetails](docs/PaymentStatusDetails.md)
+ - [PeriodicPaymentRequest](docs/PeriodicPaymentRequest.md)
  - [PersonalCurrentAccountBrand](docs/PersonalCurrentAccountBrand.md)
  - [PersonalCurrentAccountData](docs/PersonalCurrentAccountData.md)
  - [PersonalCurrentAccountPCA](docs/PersonalCurrentAccountPCA.md)

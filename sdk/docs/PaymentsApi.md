@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 <a name="createPaymentAuthorisationUsingPOST"></a>
 # **createPaymentAuthorisationUsingPOST**
-> ApiResponseOfAuthorisationRequestResponse createPaymentAuthorisationUsingPOST(paymentAuthRequest)
+> ApiResponseOfPaymentAuthorisationRequestResponse createPaymentAuthorisationUsingPOST(paymentAuthRequest)
 
 Initiate a payment for user to authorise
 
@@ -41,7 +41,7 @@ tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 PaymentsApi apiInstance = new PaymentsApi();
 PaymentAuthorisationRequest paymentAuthRequest = new PaymentAuthorisationRequest(); // PaymentAuthorisationRequest | paymentAuthRequest
 try {
-    ApiResponseOfAuthorisationRequestResponse result = apiInstance.createPaymentAuthorisationUsingPOST(paymentAuthRequest);
+    ApiResponseOfPaymentAuthorisationRequestResponse result = apiInstance.createPaymentAuthorisationUsingPOST(paymentAuthRequest);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PaymentsApi#createPaymentAuthorisationUsingPOST");
@@ -57,7 +57,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApiResponseOfAuthorisationRequestResponse**](ApiResponseOfAuthorisationRequestResponse.md)
+[**ApiResponseOfPaymentAuthorisationRequestResponse**](ApiResponseOfPaymentAuthorisationRequestResponse.md)
 
 ### Authorization
 

@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  |  [optional]
-**paymentIdempotencyId** | **String** |  |  [optional]
 **institutionConsentId** | **String** |  |  [optional]
+**paymentIdempotencyId** | **String** |  |  [optional]
 **paymentLifecycleId** | **String** |  |  [optional]
 **status** | [**StatusEnum**](#StatusEnum) |  |  [optional]
 **statusDetails** | [**PaymentStatusDetails**](PaymentStatusDetails.md) |  |  [optional]
