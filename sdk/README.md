@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>yapily</groupId>
     <artifactId>yapily-sdk</artifactId>
-    <version>0.0.143</version>
+    <version>0.0.159</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "yapily:yapily-sdk:0.0.143"
+compile "yapily:yapily-sdk:0.0.159"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/yapily-sdk-0.0.143.jar
+* target/yapily-sdk-0.0.159.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -81,13 +81,14 @@ public class AccountsApiExample {
         tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
         AccountsApi apiInstance = new AccountsApi();
-        String consent = "consent_example"; // String | Consent Token
         String accountId = "accountId_example"; // String | accountId
+        String consent = "consent_example"; // String | Consent Token
+        Integer limit = 56; // Integer | Use this parameter to limit account's direct debit results
         try {
-            ApiResponseOfAccount result = apiInstance.getAccountUsingGET(consent, accountId);
+            ApiListResponseOfPaymentResponse result = apiInstance.getAccountDirectDebitsUsingGET(accountId, consent, limit);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AccountsApi#getAccountUsingGET");
+            System.err.println("Exception when calling AccountsApi#getAccountDirectDebitsUsingGET");
             e.printStackTrace();
         }
     }
@@ -101,6 +102,9 @@ All URIs are relative to *https://api.yapily.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AccountsApi* | [**getAccountDirectDebitsUsingGET**](docs/AccountsApi.md#getAccountDirectDebitsUsingGET) | **GET** /accounts/{accountId}/direct-debits | Get account direct debits
+*AccountsApi* | [**getAccountPeriodicPaymentsUsingGET**](docs/AccountsApi.md#getAccountPeriodicPaymentsUsingGET) | **GET** /accounts/{accountId}/periodic-payments | Get account payments detail
+*AccountsApi* | [**getAccountScheduledPaymentsUsingGET**](docs/AccountsApi.md#getAccountScheduledPaymentsUsingGET) | **GET** /accounts/{accountId}/scheduled-payments | Get account scheduled payments
 *AccountsApi* | [**getAccountUsingGET**](docs/AccountsApi.md#getAccountUsingGET) | **GET** /accounts/{accountId} | Get account
 *AccountsApi* | [**getAccountsUsingGET**](docs/AccountsApi.md#getAccountsUsingGET) | **GET** /accounts | Get accounts
 *AccountsApi* | [**initiateAccountRequestUsingPOST**](docs/AccountsApi.md#initiateAccountRequestUsingPOST) | **POST** /account-auth-requests | Initiate a new account request for user to authorize
@@ -129,9 +133,12 @@ Class | Method | HTTP request | Description
 *InstitutionsOpenDataApi* | [**getATMDataUsingGET**](docs/InstitutionsOpenDataApi.md#getATMDataUsingGET) | **GET** /institutions/{institutionId}/atms | Retrieves data about all ATMs of the selected institution
 *InstitutionsOpenDataApi* | [**getPersonalCurrentAccountsUsingGET**](docs/InstitutionsOpenDataApi.md#getPersonalCurrentAccountsUsingGET) | **GET** /institutions/{institutionId}/personal-current-accounts | Retrieves details of personal current accounts for an institution
 *OAuthApi* | [**oauthToken**](docs/OAuthApi.md#oauthToken) | **POST** /oauth/token | Retrieve Access Token
+*PaymentsApi* | [**createPaymentAuthorisationUsingPOST**](docs/PaymentsApi.md#createPaymentAuthorisationUsingPOST) | **POST** /payment-auth-requests | Initiate a payment for user to authorise
 *PaymentsApi* | [**createPaymentAuthorisationWithSortCodeUsingPOST**](docs/PaymentsApi.md#createPaymentAuthorisationWithSortCodeUsingPOST) | **POST** /payment-sortcode-auth-requests | Initiate a new single payment for user to authorise
+*PaymentsApi* | [**createPaymentUsingPOST**](docs/PaymentsApi.md#createPaymentUsingPOST) | **POST** /payments | Create a payment
 *PaymentsApi* | [**createPaymentWithSortCodeUsingPOST**](docs/PaymentsApi.md#createPaymentWithSortCodeUsingPOST) | **POST** /payment-sortcode | Create a new single payment
 *PaymentsApi* | [**getPaymentStatusUsingGET**](docs/PaymentsApi.md#getPaymentStatusUsingGET) | **GET** /payments/{paymentId} | Get status of a payment
+*PaymentsApi* | [**getPaymentsUsingGET**](docs/PaymentsApi.md#getPaymentsUsingGET) | **GET** /payments/{paymentId}/details | Get payments detail
 *StatementsApi* | [**getStatementFileUsingGET**](docs/StatementsApi.md#getStatementFileUsingGET) | **GET** /accounts/{accountId}/statements/{statementId}/file | Get account statement file
 *StatementsApi* | [**getStatementUsingGET**](docs/StatementsApi.md#getStatementUsingGET) | **GET** /accounts/{accountId}/statements/{statementId} | Get account statement
 *StatementsApi* | [**getStatementsUsingGET**](docs/StatementsApi.md#getStatementsUsingGET) | **GET** /accounts/{accountId}/statements | Get account statements
@@ -156,12 +163,14 @@ Class | Method | HTTP request | Description
  - [AddressDetails](docs/AddressDetails.md)
  - [AgeEligibility](docs/AgeEligibility.md)
  - [Amount](docs/Amount.md)
+ - [ApiError](docs/ApiError.md)
  - [ApiListResponseOfAccount](docs/ApiListResponseOfAccount.md)
  - [ApiListResponseOfAccountStatement](docs/ApiListResponseOfAccountStatement.md)
  - [ApiListResponseOfBulkUserDelete](docs/ApiListResponseOfBulkUserDelete.md)
  - [ApiListResponseOfConsent](docs/ApiListResponseOfConsent.md)
  - [ApiListResponseOfFeatureDetails](docs/ApiListResponseOfFeatureDetails.md)
  - [ApiListResponseOfInstitution](docs/ApiListResponseOfInstitution.md)
+ - [ApiListResponseOfPaymentResponse](docs/ApiListResponseOfPaymentResponse.md)
  - [ApiListResponseOfTransaction](docs/ApiListResponseOfTransaction.md)
  - [ApiResponseOfAccount](docs/ApiResponseOfAccount.md)
  - [ApiResponseOfAccountStatement](docs/ApiResponseOfAccountStatement.md)
@@ -172,7 +181,9 @@ Class | Method | HTTP request | Description
  - [ApiResponseOfIdentity](docs/ApiResponseOfIdentity.md)
  - [ApiResponseOfListOfATMOpenDataResponse](docs/ApiResponseOfListOfATMOpenDataResponse.md)
  - [ApiResponseOfListOfPersonalCurrentAccountData](docs/ApiResponseOfListOfPersonalCurrentAccountData.md)
+ - [ApiResponseOfPaymentAuthorisationRequestResponse](docs/ApiResponseOfPaymentAuthorisationRequestResponse.md)
  - [ApiResponseOfPaymentResponse](docs/ApiResponseOfPaymentResponse.md)
+ - [ApiResponseOfPaymentResponses](docs/ApiResponseOfPaymentResponses.md)
  - [ApiResponseOfTransferResponse](docs/ApiResponseOfTransferResponse.md)
  - [ApiResponseOfUserDeleteResponse](docs/ApiResponseOfUserDeleteResponse.md)
  - [Application](docs/Application.md)
@@ -200,6 +211,8 @@ Class | Method | HTTP request | Description
  - [EligibilityOtherEligibility](docs/EligibilityOtherEligibility.md)
  - [FeatureDetails](docs/FeatureDetails.md)
  - [FilterAndSort](docs/FilterAndSort.md)
+ - [FrequencyRequest](docs/FrequencyRequest.md)
+ - [FrequencyResponse](docs/FrequencyResponse.md)
  - [GeoLocation1](docs/GeoLocation1.md)
  - [GeographicCoordinates1](docs/GeographicCoordinates1.md)
  - [IDVerificationCheck](docs/IDVerificationCheck.md)
@@ -208,8 +221,6 @@ Class | Method | HTTP request | Description
  - [InlineResponse2001ATM](docs/InlineResponse2001ATM.md)
  - [InlineResponse2001OtherATMServices](docs/InlineResponse2001OtherATMServices.md)
  - [InlineResponse2001OtherAccessibility](docs/InlineResponse2001OtherAccessibility.md)
- - [InputStream](docs/InputStream.md)
- - [InputStreamResource](docs/InputStreamResource.md)
  - [Institution](docs/Institution.md)
  - [InstitutionConsent](docs/InstitutionConsent.md)
  - [IsoBankTransactionCode](docs/IsoBankTransactionCode.md)
@@ -220,6 +231,7 @@ Class | Method | HTTP request | Description
  - [Merchant](docs/Merchant.md)
  - [MerchantInfo](docs/MerchantInfo.md)
  - [MonitoringFeatureStatus](docs/MonitoringFeatureStatus.md)
+ - [MultiAuthorisation](docs/MultiAuthorisation.md)
  - [NewApplicationUser](docs/NewApplicationUser.md)
  - [Next](docs/Next.md)
  - [OneTimeTokenRequest](docs/OneTimeTokenRequest.md)
@@ -240,8 +252,13 @@ Class | Method | HTTP request | Description
  - [OverdraftOverdraftTierBandSet](docs/OverdraftOverdraftTierBandSet.md)
  - [Pagination](docs/Pagination.md)
  - [Payee](docs/Payee.md)
+ - [PaymentAuthorisationRequest](docs/PaymentAuthorisationRequest.md)
+ - [PaymentAuthorisationRequestResponse](docs/PaymentAuthorisationRequestResponse.md)
+ - [PaymentRequest](docs/PaymentRequest.md)
  - [PaymentResponse](docs/PaymentResponse.md)
+ - [PaymentResponses](docs/PaymentResponses.md)
  - [PaymentStatusDetails](docs/PaymentStatusDetails.md)
+ - [PeriodicPaymentRequest](docs/PeriodicPaymentRequest.md)
  - [PersonalCurrentAccountBrand](docs/PersonalCurrentAccountBrand.md)
  - [PersonalCurrentAccountData](docs/PersonalCurrentAccountData.md)
  - [PersonalCurrentAccountPCA](docs/PersonalCurrentAccountPCA.md)
@@ -259,8 +276,6 @@ Class | Method | HTTP request | Description
  - [Transaction](docs/Transaction.md)
  - [TransferRequest](docs/TransferRequest.md)
  - [TransferResponse](docs/TransferResponse.md)
- - [URI](docs/URI.md)
- - [URL](docs/URL.md)
  - [UserDeleteRequest](docs/UserDeleteRequest.md)
  - [UserDeleteResponse](docs/UserDeleteResponse.md)
  - [YapilyAccessToken](docs/YapilyAccessToken.md)

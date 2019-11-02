@@ -9,6 +9,7 @@ import javax.ws.rs.core.GenericType;
 
 import yapily.sdk.AccountAuthorisationRequest;
 import yapily.sdk.ApiListResponseOfAccount;
+import yapily.sdk.ApiListResponseOfPaymentResponse;
 import yapily.sdk.ApiResponseOfAccount;
 import yapily.sdk.ApiResponseOfAuthorisationRequestResponse;
 
@@ -17,7 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-09-20T13:32:04.025Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-10-31T13:59:39.779Z")
 public class AccountsApi {
   private ApiClient apiClient;
 
@@ -37,6 +38,162 @@ public class AccountsApi {
     this.apiClient = apiClient;
   }
 
+  /**
+   * Get account direct debits
+   * 
+   * @param accountId accountId (required)
+   * @param consent Consent Token (required)
+   * @param limit Use this parameter to limit account&#39;s direct debit results (optional)
+   * @return ApiListResponseOfPaymentResponse
+   * @throws ApiException if fails to make API call
+   */
+  public ApiListResponseOfPaymentResponse getAccountDirectDebitsUsingGET(String accountId, String consent, Integer limit) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'accountId' is set
+    if (accountId == null) {
+      throw new ApiException(400, "Missing the required parameter 'accountId' when calling getAccountDirectDebitsUsingGET");
+    }
+    
+    // verify the required parameter 'consent' is set
+    if (consent == null) {
+      throw new ApiException(400, "Missing the required parameter 'consent' when calling getAccountDirectDebitsUsingGET");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/accounts/{accountId}/direct-debits"
+      .replaceAll("\\{" + "accountId" + "\\}", apiClient.escapeString(accountId.toString()));
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
+
+    if (consent != null)
+      localVarHeaderParams.put("consent", apiClient.parameterToString(consent));
+
+    
+    final String[] localVarAccepts = {
+      "application/json;charset=UTF-8"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "basicAuth", "tokenAuth" };
+
+    GenericType<ApiListResponseOfPaymentResponse> localVarReturnType = new GenericType<ApiListResponseOfPaymentResponse>() {};
+    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+      }
+  /**
+   * Get account payments detail
+   * 
+   * @param accountId accountId (required)
+   * @param consent Consent Token (required)
+   * @param limit Use this parameter to limit account&#39;s periodic payment order results (optional)
+   * @return ApiListResponseOfPaymentResponse
+   * @throws ApiException if fails to make API call
+   */
+  public ApiListResponseOfPaymentResponse getAccountPeriodicPaymentsUsingGET(String accountId, String consent, Integer limit) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'accountId' is set
+    if (accountId == null) {
+      throw new ApiException(400, "Missing the required parameter 'accountId' when calling getAccountPeriodicPaymentsUsingGET");
+    }
+    
+    // verify the required parameter 'consent' is set
+    if (consent == null) {
+      throw new ApiException(400, "Missing the required parameter 'consent' when calling getAccountPeriodicPaymentsUsingGET");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/accounts/{accountId}/periodic-payments"
+      .replaceAll("\\{" + "accountId" + "\\}", apiClient.escapeString(accountId.toString()));
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
+
+    if (consent != null)
+      localVarHeaderParams.put("consent", apiClient.parameterToString(consent));
+
+    
+    final String[] localVarAccepts = {
+      "application/json;charset=UTF-8"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "basicAuth", "tokenAuth" };
+
+    GenericType<ApiListResponseOfPaymentResponse> localVarReturnType = new GenericType<ApiListResponseOfPaymentResponse>() {};
+    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+      }
+  /**
+   * Get account scheduled payments
+   * 
+   * @param accountId accountId (required)
+   * @param consent Consent Token (required)
+   * @param limit Use this parameter to limit account&#39;s scheduled payment results (optional)
+   * @return ApiListResponseOfPaymentResponse
+   * @throws ApiException if fails to make API call
+   */
+  public ApiListResponseOfPaymentResponse getAccountScheduledPaymentsUsingGET(String accountId, String consent, Integer limit) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'accountId' is set
+    if (accountId == null) {
+      throw new ApiException(400, "Missing the required parameter 'accountId' when calling getAccountScheduledPaymentsUsingGET");
+    }
+    
+    // verify the required parameter 'consent' is set
+    if (consent == null) {
+      throw new ApiException(400, "Missing the required parameter 'consent' when calling getAccountScheduledPaymentsUsingGET");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/accounts/{accountId}/scheduled-payments"
+      .replaceAll("\\{" + "accountId" + "\\}", apiClient.escapeString(accountId.toString()));
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
+
+    if (consent != null)
+      localVarHeaderParams.put("consent", apiClient.parameterToString(consent));
+
+    
+    final String[] localVarAccepts = {
+      "application/json;charset=UTF-8"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "basicAuth", "tokenAuth" };
+
+    GenericType<ApiListResponseOfPaymentResponse> localVarReturnType = new GenericType<ApiListResponseOfPaymentResponse>() {};
+    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+      }
   /**
    * Get account
    * 
