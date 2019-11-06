@@ -38,6 +38,7 @@ REVOKED | &quot;REVOKED&quot;
 FAILED | &quot;FAILED&quot;
 EXPIRED | &quot;EXPIRED&quot;
 UNKNOWN | &quot;UNKNOWN&quot;
+INVALID | &quot;INVALID&quot;
 
 
 <a name="List<FeatureScopeEnum>"></a>

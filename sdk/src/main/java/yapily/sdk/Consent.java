@@ -66,7 +66,9 @@ public class Consent {
     
     EXPIRED("EXPIRED"),
     
-    UNKNOWN("UNKNOWN");
+    UNKNOWN("UNKNOWN"),
+    
+    INVALID("INVALID");
 
     private String value;
 

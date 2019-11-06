@@ -66,7 +66,9 @@ public class AuthorisationRequestResponse {
     
     EXPIRED("EXPIRED"),
     
-    UNKNOWN("UNKNOWN");
+    UNKNOWN("UNKNOWN"),
+    
+    INVALID("INVALID");
 
     private String value;
 
