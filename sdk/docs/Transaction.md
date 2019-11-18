@@ -29,14 +29,8 @@ Name | Type | Description | Notes
 ## Enum: StatusEnum
 Name | Value
 ---- | -----
-ACCOUNT_CHECK | &quot;ACCOUNT_CHECK&quot;
 BOOKED | &quot;BOOKED&quot;
-DECLINED | &quot;DECLINED&quot;
 PENDING | &quot;PENDING&quot;
-REFUNDED | &quot;REFUNDED&quot;
-RETRYING | &quot;RETRYING&quot;
-REVERSED | &quot;REVERSED&quot;
-UPCOMING | &quot;UPCOMING&quot;
 
 
 
