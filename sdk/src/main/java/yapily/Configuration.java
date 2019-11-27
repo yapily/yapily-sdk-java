@@ -13,7 +13,7 @@
 
 package yapily;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-11-26T18:03:14.605Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-11-27T08:33:47.046Z")
 public class Configuration {
     private static ApiClient defaultApiClient = new ApiClient();
 
