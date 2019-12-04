@@ -38,11 +38,11 @@ public class Payee {
   @JsonProperty("accountIdentifications")
   private List<AccountIdentification> accountIdentifications = new ArrayList<>();
 
-  @JsonProperty("merchantCategoryCode")
-  private String merchantCategoryCode = null;
-
   @JsonProperty("merchantId")
   private String merchantId = null;
+
+  @JsonProperty("merchantCategoryCode")
+  private String merchantCategoryCode = null;
 
 }
 

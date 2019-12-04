@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import yapily.sdk.AccountIdentification;
 import yapily.sdk.Amount;
+import yapily.sdk.InternationalPaymentRequest;
 import yapily.sdk.Payee;
 import yapily.sdk.PeriodicPaymentRequest;
 
@@ -92,13 +93,15 @@ public class PaymentRequest {
    * Gets or Sets type
    */
   public enum TypeEnum {
-    PAYMENT("DOMESTIC_PAYMENT"),
+    DOMESTIC_PAYMENT("DOMESTIC_PAYMENT"),
     
-    VARIABLE_RECURRING_PAYMENT("DOMESTIC_VARIABLE_RECURRING_PAYMENT"),
+    DOMESTIC_VARIABLE_RECURRING_PAYMENT("DOMESTIC_VARIABLE_RECURRING_PAYMENT"),
     
-    SCHEDULED_PAYMENT("DOMESTIC_SCHEDULED_PAYMENT"),
+    DOMESTIC_SCHEDULED_PAYMENT("DOMESTIC_SCHEDULED_PAYMENT"),
     
-    PERIODIC_PAYMENT("DOMESTIC_PERIODIC_PAYMENT");
+    DOMESTIC_PERIODIC_PAYMENT("DOMESTIC_PERIODIC_PAYMENT"),
+    
+    INTERNATIONAL_PAYMENT("INTERNATIONAL_PAYMENT");
 
     private String value;
 
@@ -136,8 +139,11 @@ public class PaymentRequest {
   @JsonProperty("payee")
   private Payee payee = null;
 
-  @JsonProperty("periodicPayments")
-  private PeriodicPaymentRequest periodicPayments = null;
+  @JsonProperty("periodicPayment")
+  private PeriodicPaymentRequest periodicPayment = null;
+
+  @JsonProperty("internationalPayment")
+  private InternationalPaymentRequest internationalPayment = null;
 
 }
 

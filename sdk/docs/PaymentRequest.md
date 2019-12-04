@@ -4,15 +4,16 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**paymentIdempotencyId** | **String** |  | 
+**paymentIdempotencyId** | **String** |  |  [optional]
 **payerAccountIdentifications** | [**List&lt;AccountIdentification&gt;**](AccountIdentification.md) |  |  [optional]
 **amount** | [**Amount**](Amount.md) |  |  [optional]
 **reference** | **String** |  |  [optional]
 **contextType** | [**ContextTypeEnum**](#ContextTypeEnum) |  |  [optional]
-**type** | [**TypeEnum**](#TypeEnum) |  |  [optional]
+**type** | [**TypeEnum**](#TypeEnum) |  | 
 **paymentDateTime** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
 **payee** | [**Payee**](Payee.md) |  | 
-**periodicPayments** | [**PeriodicPaymentRequest**](PeriodicPaymentRequest.md) |  |  [optional]
+**periodicPayment** | [**PeriodicPaymentRequest**](PeriodicPaymentRequest.md) |  |  [optional]
+**internationalPayment** | [**InternationalPaymentRequest**](InternationalPaymentRequest.md) |  |  [optional]
 
 
 <a name="ContextTypeEnum"></a>
@@ -30,10 +31,11 @@ PERSON_TO_PERSON | &quot;PERSON_TO_PERSON&quot;
 ## Enum: TypeEnum
 Name | Value
 ---- | -----
-PAYMENT | &quot;DOMESTIC_PAYMENT&quot;
-VARIABLE_RECURRING_PAYMENT | &quot;DOMESTIC_VARIABLE_RECURRING_PAYMENT&quot;
-SCHEDULED_PAYMENT | &quot;DOMESTIC_SCHEDULED_PAYMENT&quot;
-PERIODIC_PAYMENT | &quot;DOMESTIC_PERIODIC_PAYMENT&quot;
+DOMESTIC_PAYMENT | &quot;DOMESTIC_PAYMENT&quot;
+DOMESTIC_VARIABLE_RECURRING_PAYMENT | &quot;DOMESTIC_VARIABLE_RECURRING_PAYMENT&quot;
+DOMESTIC_SCHEDULED_PAYMENT | &quot;DOMESTIC_SCHEDULED_PAYMENT&quot;
+DOMESTIC_PERIODIC_PAYMENT | &quot;DOMESTIC_PERIODIC_PAYMENT&quot;
+INTERNATIONAL_PAYMENT | &quot;INTERNATIONAL_PAYMENT&quot;
 
 
 

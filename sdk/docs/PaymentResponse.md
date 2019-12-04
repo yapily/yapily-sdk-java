@@ -22,12 +22,17 @@ Name | Type | Description | Notes
 **finalPaymentAmount** | [**Amount**](Amount.md) |  |  [optional]
 **finalPaymentDateTime** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
 **createdAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
+**numberOfPayments** | **Integer** |  |  [optional]
 **previousPaymentAmount** | [**Amount**](Amount.md) |  |  [optional]
 **previousPaymentDateTime** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
 **chargeDetails** | [**List&lt;ChargeDetails&gt;**](ChargeDetails.md) |  |  [optional]
 **scheduledPaymentType** | **String** |  |  [optional]
 **scheduledPaymentDateTime** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
 **frequency** | [**FrequencyResponse**](FrequencyResponse.md) |  |  [optional]
+**currencyOfTransfer** | **String** |  |  [optional]
+**purpose** | **String** |  |  [optional]
+**priority** | [**PriorityEnum**](#PriorityEnum) |  |  [optional]
+**exchangeRate** | [**ExchangeRateInformationResponse**](ExchangeRateInformationResponse.md) |  |  [optional]
 
 
 <a name="StatusEnum"></a>
@@ -42,6 +47,14 @@ EXPIRED | &quot;EXPIRED&quot;
 UNKNOWN | &quot;UNKNOWN&quot;
 ACTIVE | &quot;ACTIVE&quot;
 INACTIVE | &quot;INACTIVE&quot;
+
+
+<a name="PriorityEnum"></a>
+## Enum: PriorityEnum
+Name | Value
+---- | -----
+NORMAL | &quot;NORMAL&quot;
+URGENT | &quot;URGENT&quot;
 
 
 

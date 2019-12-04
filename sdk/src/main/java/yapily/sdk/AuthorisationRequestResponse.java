@@ -19,7 +19,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -156,9 +155,9 @@ public class AuthorisationRequestResponse {
     
     EXISTING_PAYMENTS_DETAILS("EXISTING_PAYMENTS_DETAILS"),
     
-    INITIATE_PAYMENT("INITIATE_PAYMENT"),
+    INITIATE_DOMESTIC_SINGLE_PAYMENT("INITIATE_DOMESTIC_SINGLE_PAYMENT"),
     
-    CREATE_PAYMENT("CREATE_PAYMENT"),
+    CREATE_DOMESTIC_SINGLE_PAYMENT("CREATE_DOMESTIC_SINGLE_PAYMENT"),
     
     INITIATE_DOMESTIC_VARIABLE_RECURRING_PAYMENT("INITIATE_DOMESTIC_VARIABLE_RECURRING_PAYMENT"),
     
@@ -186,9 +185,9 @@ public class AuthorisationRequestResponse {
     
     CREATE_INTERNATIONAL_PERIODIC_PAYMENT_ORDER("CREATE_INTERNATIONAL_PERIODIC_PAYMENT_ORDER"),
     
-    INITIATE_INTERNATIONAL_PAYMENT("INITIATE_INTERNATIONAL_PAYMENT"),
+    INITIATE_INTERNATIONAL_SINGLE_PAYMENT("INITIATE_INTERNATIONAL_SINGLE_PAYMENT"),
     
-    CREATE_INTERNATIONAL_PAYMENT("CREATE_INTERNATIONAL_PAYMENT"),
+    CREATE_INTERNATIONAL_SINGLE_PAYMENT("CREATE_INTERNATIONAL_SINGLE_PAYMENT"),
     
     TRANSFER("TRANSFER"),
     
@@ -226,23 +225,11 @@ public class AuthorisationRequestResponse {
   @JsonProperty("featureScope")
   private List<FeatureScopeEnum> featureScope = null;
 
-  @JsonProperty("startsAt")
-  private OffsetDateTime startsAt = null;
-
-  @JsonProperty("totalMaxAmount")
-  private BigDecimal totalMaxAmount = null;
-
-  @JsonProperty("maxAmountPerRequest")
-  private BigDecimal maxAmountPerRequest = null;
-
-  @JsonProperty("allowOverdraft")
-  private Boolean allowOverdraft = null;
+  @JsonProperty("authorisationUrl")
+  private String authorisationUrl = null;
 
   @JsonProperty("consentToken")
   private String consentToken = null;
-
-  @JsonProperty("authorisationUrl")
-  private String authorisationUrl = null;
 
 }
 

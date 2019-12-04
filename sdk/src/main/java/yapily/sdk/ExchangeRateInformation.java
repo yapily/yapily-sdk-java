@@ -19,45 +19,32 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.math.BigDecimal;
 
 /**
- * AccountIdentification
+ * ExchangeRateInformation
  */
 @Data
-public class AccountIdentification {
+public class ExchangeRateInformation {
+  @JsonProperty("foreignExchangeContractReference")
+  private String foreignExchangeContractReference = null;
+
+  @JsonProperty("rate")
+  private BigDecimal rate = null;
+
   /**
-   * Gets or Sets type
+   * Gets or Sets rateType
    */
-  public enum TypeEnum {
-    SORT_CODE("SORT_CODE"),
+  public enum RateTypeEnum {
+    ACTUAL("ACTUAL"),
     
-    ACCOUNT_NUMBER("ACCOUNT_NUMBER"),
+    AGREED("AGREED"),
     
-    IBAN("IBAN"),
-    
-    BBAN("BBAN"),
-    
-    BIC("BIC"),
-    
-    PAN("PAN"),
-    
-    MASKED_PAN("MASKED_PAN"),
-    
-    MSISDN("MSISDN"),
-    
-    BSB("BSB"),
-    
-    NCC("NCC"),
-    
-    ABA("ABA"),
-    
-    ABA_WIRE("ABA_WIRE"),
-    
-    ABA_ACH("ABA_ACH");
+    INDICATIVE("INDICATIVE");
 
     private String value;
 
-    TypeEnum(String value) {
+    RateTypeEnum(String value) {
       this.value = value;
     }
 
@@ -72,8 +59,8 @@ public class AccountIdentification {
     }
 
     @JsonCreator
-    public static TypeEnum fromValue(String text) {
-      for (TypeEnum b : TypeEnum.values()) {
+    public static RateTypeEnum fromValue(String text) {
+      for (RateTypeEnum b : RateTypeEnum.values()) {
         if (String.valueOf(b.value).equals(text)) {
           return b;
         }
@@ -82,11 +69,11 @@ public class AccountIdentification {
     }
   }
 
-  @JsonProperty("type")
-  private TypeEnum type = null;
+  @JsonProperty("rateType")
+  private RateTypeEnum rateType = null;
 
-  @JsonProperty("identification")
-  private String identification = null;
+  @JsonProperty("unitCurrency")
+  private String unitCurrency = null;
 
 }
 

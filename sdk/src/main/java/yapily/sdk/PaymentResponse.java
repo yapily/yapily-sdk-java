@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 import yapily.sdk.Amount;
 import yapily.sdk.ChargeDetails;
+import yapily.sdk.ExchangeRateInformationResponse;
 import yapily.sdk.FrequencyResponse;
 import yapily.sdk.Payee;
 import yapily.sdk.PaymentStatusDetails;
@@ -135,6 +136,9 @@ public class PaymentResponse {
   @JsonProperty("createdAt")
   private OffsetDateTime createdAt = null;
 
+  @JsonProperty("numberOfPayments")
+  private Integer numberOfPayments = null;
+
   @JsonProperty("previousPaymentAmount")
   private Amount previousPaymentAmount = null;
 
@@ -152,6 +156,53 @@ public class PaymentResponse {
 
   @JsonProperty("frequency")
   private FrequencyResponse frequency = null;
+
+  @JsonProperty("currencyOfTransfer")
+  private String currencyOfTransfer = null;
+
+  @JsonProperty("purpose")
+  private String purpose = null;
+
+  /**
+   * Gets or Sets priority
+   */
+  public enum PriorityEnum {
+    NORMAL("NORMAL"),
+    
+    URGENT("URGENT");
+
+    private String value;
+
+    PriorityEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static PriorityEnum fromValue(String text) {
+      for (PriorityEnum b : PriorityEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+  }
+
+  @JsonProperty("priority")
+  private PriorityEnum priority = null;
+
+  @JsonProperty("exchangeRate")
+  private ExchangeRateInformationResponse exchangeRate = null;
 
 }
 
