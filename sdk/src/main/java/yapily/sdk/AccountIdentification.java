@@ -53,7 +53,9 @@ public class AccountIdentification {
     
     ABA_WIRE("ABA_WIRE"),
     
-    ABA_ACH("ABA_ACH");
+    ABA_ACH("ABA_ACH"),
+    
+    EMAIL("EMAIL");
 
     private String value;
 

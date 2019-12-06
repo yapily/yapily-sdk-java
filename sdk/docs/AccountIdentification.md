@@ -25,6 +25,7 @@ NCC | &quot;NCC&quot;
 ABA | &quot;ABA&quot;
 ABA_WIRE | &quot;ABA_WIRE&quot;
 ABA_ACH | &quot;ABA_ACH&quot;
+EMAIL | &quot;EMAIL&quot;
 
 
 
