@@ -20,25 +20,19 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import yapily.sdk.PaymentResponse;
-import yapily.sdk.ResponseListMeta;
+import yapily.sdk.AccountIdentification;
 
 /**
- * ApiListResponseOfPaymentResponse
+ * Payer
  */
 @Data
-public class ApiListResponseOfPaymentResponse {
-  @JsonProperty("meta")
-  private ResponseListMeta meta = null;
+public class Payer {
+  @JsonProperty("name")
+  private String name = null;
 
-  @JsonProperty("data")
-  private List<PaymentResponse> data = null;
-
-  @JsonProperty("links")
-  private Map<String, String> links = null;
+  @JsonProperty("accountIdentifications")
+  private List<AccountIdentification> accountIdentifications = new ArrayList<>();
 
 }
 

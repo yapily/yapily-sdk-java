@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **paymentIdempotencyId** | **String** |  |  [optional]
-**payerAccountIdentifications** | [**List&lt;AccountIdentification&gt;**](AccountIdentification.md) |  |  [optional]
+**payer** | [**Payer**](Payer.md) |  |  [optional]
 **amount** | [**Amount**](Amount.md) |  |  [optional]
 **reference** | **String** |  |  [optional]
 **contextType** | [**ContextTypeEnum**](#ContextTypeEnum) |  |  [optional]
