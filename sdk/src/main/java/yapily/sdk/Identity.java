@@ -37,6 +37,9 @@ public class Identity {
   @JsonProperty("lastName")
   private String lastName = null;
 
+  @JsonProperty("fullName")
+  private String fullName = null;
+
   @JsonProperty("gender")
   private String gender = null;
 
