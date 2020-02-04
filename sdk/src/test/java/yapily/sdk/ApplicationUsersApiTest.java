@@ -126,7 +126,8 @@ public class ApplicationUsersApiTest {
      */
     @Test
     public void getUsersUsingGETTest() throws ApiException {
-        List<ApplicationUser> response = api.getUsersUsingGET();
+        List<String> filterApplicationUserId = null;
+        List<ApplicationUser> response = api.getUsersUsingGET(filterApplicationUserId);
 
         // TODO: test validations
     }
