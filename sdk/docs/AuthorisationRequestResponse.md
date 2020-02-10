@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **featureScope** | [**List&lt;FeatureScopeEnum&gt;**](#List&lt;FeatureScopeEnum&gt;) |  |  [optional]
 **authorisationUrl** | **String** |  |  [optional]
 **consentToken** | **String** |  |  [optional]
+**qrCodeUrl** | **String** |  |  [optional]
 
 
 <a name="StatusEnum"></a>
