@@ -5,7 +5,7 @@
     <artifactId>yapily-sdk</artifactId>
     <packaging>jar</packaging>
     <name>yapily-sdk</name>
-    <version>0.0.168-SNAPSHOT</version>
+    <version>0.0.168</version>
     <url>https://github.com/yapily/developer-resources</url>
     <description>Swagger Java</description>
     <scm>
@@ -200,7 +200,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.16.16</version>
+            <version>${lombok-version}</version>
         </dependency>
         <dependency>
             <groupId>io.swagger</groupId>
@@ -261,9 +261,12 @@
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <lombok-version>1.18.12</lombok-version>
         <swagger-core-version>1.5.15</swagger-core-version>
-            <jersey-version>2.26</jersey-version>
-        <jackson-version>2.7.5</jackson-version>
+        <jersey-version>2.30</jersey-version>
+        <commons_io_version>2.6</commons_io_version>
+        <commons_lang3_version>3.9</commons_lang3_version>
+        <jackson-version>2.10.2</jackson-version>
         <maven-plugin-version>1.0.0</maven-plugin-version>
         <junit-version>4.12</junit-version>
     </properties>
