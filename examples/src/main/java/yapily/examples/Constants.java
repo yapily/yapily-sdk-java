@@ -11,6 +11,11 @@ public class Constants {
     static final String PARAMETER_CALLBACK_URL = "callback";
 
     /**
+     * A default user all examples will run with
+     */
+    public static final String APPLICATION_USER_ID = "java-sdk@yapily.com";
+
+    /**
      * Placeholder for credentials created in the Applications dashboard. Hardcoded here only for
      * example purposes. Can be used to test/demonstrate code. NOT SUITABLE FOR PRODUCTION
      */

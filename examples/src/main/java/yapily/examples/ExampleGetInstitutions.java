@@ -1,18 +1,16 @@
 package yapily.examples;
 
-import yapily.auth.OAuth;
-
-import java.util.List;
-import java.util.stream.Collectors;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
 import yapily.ApiClient;
 import yapily.ApiException;
+import yapily.auth.OAuth;
 import yapily.sdk.ApiListResponseOfInstitution;
 import yapily.sdk.Institution;
 import yapily.sdk.InstitutionsApi;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Hello Yapily! This example lists all the institutions (banks) retrieved from the Yapily API

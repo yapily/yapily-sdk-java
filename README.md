@@ -108,12 +108,12 @@ List<Institution> institutions = institutionsApi.getInstitutionsUsingGET().getDa
 
 - Creating users and retrieving users for your application registered in the Yapily Dashboard
 ```java
-final ApplicationUsersApi usersApi = new ApplicationUsersApi();
-NewApplicationUser user = new NewApplicationUser();
-user.setReferenceId("Bojack");
-usersApi.addUserUsingPOST(user);
+final ApplicationUsersApi applicationUsersApi = new ApplicationUsersApi();
+NewApplicationUser exampleUser = new NewApplicationUser();
+exampleUser.setApplicationUserId("java-sdk@yapily.com");
+applicationUsersApi.addUserUsingPOST(exampleUser);
 
-List<ApplicationUser> users = usersApi.listUsers();
+List<ApplicationUser> users = applicationUsersApi.getUsersUsingGET();
 ```
 
 - Create an authorization url in order for your users to give consent on accessing their account data. 
@@ -121,7 +121,7 @@ List<ApplicationUser> users = usersApi.listUsers();
 ```java
 final AccountsApi accountsApi = new AccountsApi();
 AccountAuthorisationRequest accountAuthorisationRequest = new AccountAuthorisationRequest();
-accountAuthorisationRequest.setUserUuid(userUuid);
+accountAuthorisationRequest.setApplicationUserId(applicationUserId);
 accountAuthorisationRequest.setInstitutionId(institutionId);
 /**
 * Use the defaults
@@ -131,15 +131,24 @@ ApiResponseOfAuthorisationRequestResponse authorizationResponse = accountsApi.in
 String directUrl = authorizationResponse.getData().getAuthorisationUrl();
 ```
 
-- Receive consents issued by your user by authorizing to a specific institution
+- Get the most resent Consent for the configured user and institution. Make sure to check that the Consent is AUTHORIZED otherwise fail the request
 ```java
-// Get user consents
-final ConsentsApi consentsApi = new ConsentsApi();
-List<Consent> consents = consentsApi.getUserConsentsUsingGET(userUuid, institutionId);
+Consent consent = consentsApi.getConsentsUsingGET(
+        Collections.singletonList(applicationUserId),
+        Collections.emptyList(),
+        Collections.singletonList(institutionId),
+        Collections.emptyList(),
+        null,
+        null,
+        1,
+        null).getData().stream()
+        .filter(c -> c.getStatus().equals(Consent.StatusEnum.AUTHORIZED))
+        .findFirst()
+        .orElseThrow(() -> new RuntimeException(String.format("No valid consent token present for application user %s", applicationUserId)));
 
 ```
  
-- Return user account details using the consent the user has given
+- Providing that the user has given consent and you have an AUTHORIZED Consent, obtain the user account details using the consent token
 
 ```java
 String consentToken = consent.getConsentToken();
@@ -151,11 +160,26 @@ List<Account> accounts = accountsResponse.getData();
 
 ```java
 String consentToken = consent.getConsentToken();
-ApiListResponseOfTransaction transactionsResponse = transactionsApi.getTransactionsUsingGET(consentToken, accountId, new ArrayList<>());
+ApiListResponseOfTransaction transactionsResponse = transactionsApi.getTransactionsUsingGET(
+                                        consentToken, 
+                                        accountId, 
+                                        Collections.emptyList(),
+                                        "1980-01-01T00:00:00.000Z",
+                                        "2020-01-01T00:00:00.000Z",
+                                        10,
+                                        null,
+                                        0);
 List<Transaction> transactions = transactionsResponse.getData();
 ```
 
-- Return user identity details
+- Check that the identity feature is provided for this institution.
+```java
+Institution institution = institutionsApi.getInstitutionUsingGET(institutionId);
+Boolean supportsIdentity = institution.getFeatures().stream()
+        .anyMatch(featuresEnum -> featuresEnum != null && featuresEnum.equals(Institution.FeaturesEnum.IDENTITY));
+```
+
+- If the identity feature is supported return user identity details. This will fail if the identity feature is not supported.
 ```java
 String consentToken = consent.getConsentToken();
 IdentityApi identityApi = new IdentityApi();
@@ -163,37 +187,61 @@ ApiResponseOfIdentity identityResp = identityApi.getIdentityUsingGET(consentToke
 Identity identity = identityResp.getData();
 ```
 
-- Create an authorization url in order for your users to give consent on executing a payment. 
+- Create a new payment request detailing what type of payment you want to issue on behalf of your user e.g. a Domestic 
+payment to send £1.00 to another account using an account number and sort code:
 
 ```java
-SortCodePaymentRequest sortCodePaymentRequest = new SortCodePaymentRequest();
-sortCodePaymentRequest.setName("name");
-sortCodePaymentRequest.setAmount(new BigDecimal("2.9"));
-sortCodePaymentRequest.setReference("Up to 35 characters");
-sortCodePaymentRequest.setCountry("GB");
-sortCodePaymentRequest.setCurrency("GBP");
-sortCodePaymentRequest.setAccountNumber("accountNumber");
-sortCodePaymentRequest.setSortCode("123456");
+PaymentRequest paymentRequest = new PaymentRequest();
 
-SortCodePaymentAuthRequest authRequest = new SortCodePaymentAuthRequest();
-sortCodePaymentAuthRequest.setInstitutionId(institutionId);
-sortCodePaymentAuthRequest.setUserUuid(userUUID);
-sortCodePaymentAuthRequest.setPaymentRequest(sortCodePaymentRequest);
+Amount amount = new Amount();
+amount.setAmount(new BigDecimal(1));
+amount.setCurrency("GBP");
 
-PaymentsApi paymentsApi = new PaymentsApi();
-ApiResponseOfAuthorisationRequestResponse authorizationResponse = paymentsApi.createPaymentInitiationUsingPOST(authRequest);
-String url = authorizationResponse.getData().getAuthorisationUrl();
+Payee payee = new Payee();
+payee.setName("John Doe");
 
+List<AccountIdentification> payeeAccountIdentifications = new ArrayList<>();
+
+AccountIdentification accountNumberIdentification = new AccountIdentification();
+accountNumberIdentification.setType(AccountIdentification.TypeEnum.ACCOUNT_NUMBER);
+accountNumberIdentification.setIdentification("70000005");
+payeeAccountIdentifications.add(accountNumberIdentification);
+
+AccountIdentification sortCodeIdentification = new AccountIdentification();
+sortCodeIdentification.setType(AccountIdentification.TypeEnum.SORT_CODE);
+sortCodeIdentification.setIdentification("700001");
+payeeAccountIdentifications.add(sortCodeIdentification);
+
+payee.setAccountIdentifications(payeeAccountIdentifications);
+
+paymentRequest.setAmount(amount);
+paymentRequest.setPayee(payee);
+paymentRequest.setType(PaymentRequest.TypeEnum.DOMESTIC_PAYMENT);
+paymentRequest.setReference("Sending £1.00 to John Doe via. Yapily");
+paymentRequest.setPaymentIdempotencyId("anyUniqueStringOver18characters");
 ```
 
-- Submit a payment request using the consent given by the user
+- Create a new payment authorisation request using the payment request to generate an authorization url that your users can use to authorize the payment:
+
+```java
+PaymentsApi paymentsApi = new PaymentsApi();
+PaymentAuthorisationRequest paymentAuthorisationRequest = new PaymentAuthorisationRequest();
+paymentAuthorisationRequest.setApplicationUserId(applicationUserId);
+paymentAuthorisationRequest.setInstitutionId(institutionId);
+paymentAuthorisationRequest.setPaymentRequest(paymentRequest);
+ApiResponseOfPaymentAuthorisationRequestResponse authorizationResponse = 
+                        paymentsApi.createPaymentAuthorisationUsingPOST(paymentAuthorisationRequest);
+String url = authorizationResponse.getData().getAuthorisationUrl();
+```
+
+- Submit a payment request using the same payment request object in the authorization request and the AUTHORIZED consent given by the user:
 
 ```java
 String consentToken = consent.getConsentToken();
-ApiResponseOfPaymentResponse response = paymentsApi.createPaymentUsingPOST(consentToken,sortCodePaymentRequest);
+ApiResponseOfPaymentResponse response = paymentsApi.createPaymentUsingPOST(consentToken, paymentRequest);
 ```
 
-- Check the payment status;
+- Check the payment status:
 ```java
 String consentToken = consent.getConsentToken();
 String paymentId =  paymentResponse.getData().getId();
