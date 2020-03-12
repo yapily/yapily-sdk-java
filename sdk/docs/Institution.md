@@ -39,6 +39,7 @@ OPEN_BANKING_IBM | &quot;OPEN_BANKING_IBM&quot;
 OPEN_BANKING_AUTO | &quot;OPEN_BANKING_AUTO&quot;
 OPEN_BANKING_MANUAL | &quot;OPEN_BANKING_MANUAL&quot;
 API_KEY | &quot;API_KEY&quot;
+OPEN_BANKING_NO_KEY | &quot;OPEN_BANKING_NO_KEY&quot;
 
 
 <a name="List<FeaturesEnum>"></a>
