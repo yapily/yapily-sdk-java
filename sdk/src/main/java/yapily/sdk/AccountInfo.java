@@ -20,22 +20,19 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import yapily.sdk.AccountIdentification;
 
 /**
- * Non-standard eligibility type code.
+ * AccountInfo
  */
-@ApiModel(description = "Non-standard eligibility type code.")
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class OtherType {
-  @JsonProperty("Code")
-  private String code = null;
+public class AccountInfo {
+  @JsonProperty("accountId")
+  private String accountId = null;
 
-  @JsonProperty("Description")
-  private String description = null;
-
-  @JsonProperty("Name")
-  private String name = null;
+  @JsonProperty("accountIdentification")
+  private AccountIdentification accountIdentification = null;
 
 }
 

@@ -7,6 +7,8 @@ Name | Type | Description | Notes
 **transactionFrom** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
 **transactionTo** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
 **expiresAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
+**accountIdentifiers** | [**AccountInfo**](AccountInfo.md) |  |  [optional]
+**accountIdentifiersForTransaction** | [**List&lt;AccountInfo&gt;**](AccountInfo.md) |  |  [optional]
 **featureScope** | [**List&lt;FeatureScopeEnum&gt;**](#List&lt;FeatureScopeEnum&gt;) |  |  [optional]
 
 
@@ -27,6 +29,8 @@ ACCOUNT_DIRECT_DEBITS | &quot;ACCOUNT_DIRECT_DEBITS&quot;
 ACCOUNT_PERIODIC_PAYMENTS | &quot;ACCOUNT_PERIODIC_PAYMENTS&quot;
 ACCOUNT_TRANSACTIONS_WITH_MERCHANT | &quot;ACCOUNT_TRANSACTIONS_WITH_MERCHANT&quot;
 IDENTITY | &quot;IDENTITY&quot;
+ACCOUNTS_WITHOUT_BALANCE | &quot;ACCOUNTS_WITHOUT_BALANCE&quot;
+ACCOUNT_WITHOUT_BALANCE | &quot;ACCOUNT_WITHOUT_BALANCE&quot;
 INITIATE_SINGLE_PAYMENT_SORTCODE | &quot;INITIATE_SINGLE_PAYMENT_SORTCODE&quot;
 EXISTING_PAYMENT_INITIATION_DETAILS | &quot;EXISTING_PAYMENT_INITIATION_DETAILS&quot;
 CREATE_SINGLE_PAYMENT_SORTCODE | &quot;CREATE_SINGLE_PAYMENT_SORTCODE&quot;
