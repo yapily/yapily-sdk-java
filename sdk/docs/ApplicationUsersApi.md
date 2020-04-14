@@ -291,7 +291,7 @@ Name | Type | Description  | Notes
 
 <a name="getUsersUsingGET"></a>
 # **getUsersUsingGET**
-> List&lt;ApplicationUser&gt; getUsersUsingGET()
+> List&lt;ApplicationUser&gt; getUsersUsingGET(filterApplicationUserId)
 
 Get application users
 
@@ -316,8 +316,9 @@ OAuth tokenAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
 tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 ApplicationUsersApi apiInstance = new ApplicationUsersApi();
+List<String> filterApplicationUserId = Arrays.asList("filterApplicationUserId_example"); // List<String> | Filter users by the provided application user Id (applicationUserId) when the user was created.
 try {
-    List<ApplicationUser> result = apiInstance.getUsersUsingGET();
+    List<ApplicationUser> result = apiInstance.getUsersUsingGET(filterApplicationUserId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ApplicationUsersApi#getUsersUsingGET");
@@ -326,7 +327,10 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **filterApplicationUserId** | [**List&lt;String&gt;**](String.md)| Filter users by the provided application user Id (applicationUserId) when the user was created. | [optional]
 
 ### Return type
 

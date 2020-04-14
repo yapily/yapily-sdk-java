@@ -73,6 +73,11 @@ cmake-build-release/
 *.iml
 ## Plugin-specific files:
 
+# Eclips
+*.project
+*.classpath
+*.settings
+
 # IntelliJ
 out/
 

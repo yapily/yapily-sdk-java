@@ -16,14 +16,16 @@ SORT_CODE | &quot;SORT_CODE&quot;
 ACCOUNT_NUMBER | &quot;ACCOUNT_NUMBER&quot;
 IBAN | &quot;IBAN&quot;
 BBAN | &quot;BBAN&quot;
-SWIFT | &quot;SWIFT&quot;
 BIC | &quot;BIC&quot;
 PAN | &quot;PAN&quot;
 MASKED_PAN | &quot;MASKED_PAN&quot;
 MSISDN | &quot;MSISDN&quot;
+BSB | &quot;BSB&quot;
+NCC | &quot;NCC&quot;
 ABA | &quot;ABA&quot;
 ABA_WIRE | &quot;ABA_WIRE&quot;
 ABA_ACH | &quot;ABA_ACH&quot;
+EMAIL | &quot;EMAIL&quot;
 
 
 

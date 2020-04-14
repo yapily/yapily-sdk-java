@@ -23,20 +23,15 @@ Name | Type | Description | Notes
 **proprietaryBankTransactionCode** | [**ProprietaryBankTransactionCode**](ProprietaryBankTransactionCode.md) |  |  [optional]
 **balance** | [**Balance**](Balance.md) | Running account balance after transaction has been applied |  [optional]
 **merchant** | [**Merchant**](Merchant.md) | Merchant details |  [optional]
+**supplementaryData** | **String** | Additional information that can not be captured in the structured fields and/or any other specific block. |  [optional]
 
 
 <a name="StatusEnum"></a>
 ## Enum: StatusEnum
 Name | Value
 ---- | -----
-ACCOUNT_CHECK | &quot;ACCOUNT_CHECK&quot;
 BOOKED | &quot;BOOKED&quot;
-DECLINED | &quot;DECLINED&quot;
 PENDING | &quot;PENDING&quot;
-REFUNDED | &quot;REFUNDED&quot;
-RETRYING | &quot;RETRYING&quot;
-REVERSED | &quot;REVERSED&quot;
-UPCOMING | &quot;UPCOMING&quot;
 
 
 

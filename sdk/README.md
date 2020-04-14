@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>yapily</groupId>
     <artifactId>yapily-sdk</artifactId>
-    <version>0.0.159</version>
+    <version>0.0.179</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "yapily:yapily-sdk:0.0.159"
+compile "yapily:yapily-sdk:0.0.179"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/yapily-sdk-0.0.159.jar
+* target/yapily-sdk-0.0.179.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -156,6 +156,7 @@ Class | Method | HTTP request | Description
  - [AccountAuthorisationRequest](docs/AccountAuthorisationRequest.md)
  - [AccountBalance](docs/AccountBalance.md)
  - [AccountIdentification](docs/AccountIdentification.md)
+ - [AccountInfo](docs/AccountInfo.md)
  - [AccountName](docs/AccountName.md)
  - [AccountRequest](docs/AccountRequest.md)
  - [AccountStatement](docs/AccountStatement.md)
@@ -209,6 +210,8 @@ Class | Method | HTTP request | Description
  - [CurrencyExchange](docs/CurrencyExchange.md)
  - [Eligibility](docs/Eligibility.md)
  - [EligibilityOtherEligibility](docs/EligibilityOtherEligibility.md)
+ - [ExchangeRateInformation](docs/ExchangeRateInformation.md)
+ - [ExchangeRateInformationResponse](docs/ExchangeRateInformationResponse.md)
  - [FeatureDetails](docs/FeatureDetails.md)
  - [FilterAndSort](docs/FilterAndSort.md)
  - [FrequencyRequest](docs/FrequencyRequest.md)
@@ -221,8 +224,10 @@ Class | Method | HTTP request | Description
  - [InlineResponse2001ATM](docs/InlineResponse2001ATM.md)
  - [InlineResponse2001OtherATMServices](docs/InlineResponse2001OtherATMServices.md)
  - [InlineResponse2001OtherAccessibility](docs/InlineResponse2001OtherAccessibility.md)
+ - [InputStream](docs/InputStream.md)
  - [Institution](docs/Institution.md)
  - [InstitutionConsent](docs/InstitutionConsent.md)
+ - [InternationalPaymentRequest](docs/InternationalPaymentRequest.md)
  - [IsoBankTransactionCode](docs/IsoBankTransactionCode.md)
  - [IsoCodeDetails](docs/IsoCodeDetails.md)
  - [Location](docs/Location.md)
@@ -252,6 +257,7 @@ Class | Method | HTTP request | Description
  - [OverdraftOverdraftTierBandSet](docs/OverdraftOverdraftTierBandSet.md)
  - [Pagination](docs/Pagination.md)
  - [Payee](docs/Payee.md)
+ - [Payer](docs/Payer.md)
  - [PaymentAuthorisationRequest](docs/PaymentAuthorisationRequest.md)
  - [PaymentAuthorisationRequestResponse](docs/PaymentAuthorisationRequestResponse.md)
  - [PaymentRequest](docs/PaymentRequest.md)
@@ -266,6 +272,7 @@ Class | Method | HTTP request | Description
  - [PostalAddress1](docs/PostalAddress1.md)
  - [ProprietaryBankTransactionCode](docs/ProprietaryBankTransactionCode.md)
  - [ResidencyEligibility](docs/ResidencyEligibility.md)
+ - [Resource](docs/Resource.md)
  - [ResponseEntity](docs/ResponseEntity.md)
  - [ResponseListMeta](docs/ResponseListMeta.md)
  - [ResponseMeta](docs/ResponseMeta.md)
@@ -276,6 +283,8 @@ Class | Method | HTTP request | Description
  - [Transaction](docs/Transaction.md)
  - [TransferRequest](docs/TransferRequest.md)
  - [TransferResponse](docs/TransferResponse.md)
+ - [URI](docs/URI.md)
+ - [URL](docs/URL.md)
  - [UserDeleteRequest](docs/UserDeleteRequest.md)
  - [UserDeleteResponse](docs/UserDeleteResponse.md)
  - [YapilyAccessToken](docs/YapilyAccessToken.md)

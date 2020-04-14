@@ -19,7 +19,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-10-31T13:59:39.779Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-04-09T16:32:43.621Z")
 public class ApplicationUsersApi {
   private ApiClient apiClient;
 
@@ -244,10 +244,11 @@ public class ApplicationUsersApi {
   /**
    * Get application users
    * 
+   * @param filterApplicationUserId Filter users by the provided application user Id (applicationUserId) when the user was created. (optional)
    * @return List&lt;ApplicationUser&gt;
    * @throws ApiException if fails to make API call
    */
-  public List<ApplicationUser> getUsersUsingGET() throws ApiException {
+  public List<ApplicationUser> getUsersUsingGET(List<String> filterApplicationUserId) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -258,6 +259,7 @@ public class ApplicationUsersApi {
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+    localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filter[applicationUserId]", filterApplicationUserId));
 
     
     

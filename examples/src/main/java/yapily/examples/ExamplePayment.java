@@ -1,30 +1,22 @@
 package yapily.examples;
 
-import java.awt.Desktop;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import yapily.ApiClient;
+import yapily.auth.OAuth;
+import yapily.sdk.*;
+
+import java.awt.*;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URI;
+import java.util.Collections;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
-import yapily.ApiClient;
-import yapily.auth.OAuth;
-import yapily.sdk.ApiResponseOfAuthorisationRequestResponse;
-import yapily.sdk.ApiResponseOfPaymentResponse;
-import yapily.sdk.ApplicationUser;
-import yapily.sdk.ApplicationUsersApi;
-import yapily.sdk.Consent;
-import yapily.sdk.ConsentsApi;
-import yapily.sdk.NewApplicationUser;
-import yapily.sdk.PaymentResponse;
-import yapily.sdk.PaymentsApi;
-import yapily.sdk.SortCodePaymentAuthRequest;
-import yapily.sdk.SortCodePaymentRequest;
+import static yapily.examples.Constants.APPLICATION_USER_ID;
 
 public class ExamplePayment {
 
-    private static final String INSTITUTION_ID = "forgerock-sandbox";
+    private static final String INSTITUTION_ID = "modelo-sandbox";
 
     public static void main(String[] args) throws Exception {
         // Set access credentials
@@ -37,29 +29,35 @@ public class ExamplePayment {
 
         final ApplicationUsersApi usersApi = new ApplicationUsersApi();
 
-        NewApplicationUser user = new NewApplicationUser();
-        /**
-         * Add a unique identifier for your user
-         */
-        user.setReferenceId("bojack123");
-        usersApi.addUserUsingPOST(user);
-
-        System.out.println("Adding new user [Bojack] with POST /users");
-        final ApplicationUser applicationUser = usersApi.addUserUsingPOST(user);
-
+        ApplicationUser applicationUser = UserUtils.createOrUseExistingApplciationUser(APPLICATION_USER_ID);
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        System.out.println("Created user:");
+        System.out.println("Using user:");
         System.out.println(gson.toJson(applicationUser));
-
-        // Set user variable
-        String userUuid = applicationUser.getUuid();
 
         PaymentsApi paymentsApi = new PaymentsApi();
 
-        SortCodePaymentAuthRequest authRequest = sortCodePaymentRequest(userUuid,INSTITUTION_ID);
-        SortCodePaymentRequest sortCodePaymentRequest = authRequest.getPaymentRequest();
+        // Create a new payment authorisation request
+        PaymentAuthorisationRequest paymentAuthorisationRequest = new PaymentAuthorisationRequest();
+        paymentAuthorisationRequest.setApplicationUserId(APPLICATION_USER_ID);
+        paymentAuthorisationRequest.setInstitutionId(INSTITUTION_ID);
 
-        ApiResponseOfAuthorisationRequestResponse authorizationResponse = paymentsApi.createPaymentInitiationUsingPOST(authRequest);
+        // Create the payment request detailing the payment to attach to the authorisation request
+        PaymentRequest paymentRequest = PaymentRequestUtils.createNewDomesticPaymentRequestWithSortCodeAndAccountNumber(
+                new BigDecimal(1),
+                "GBP",
+                "Test Domestic payment",
+                "anyUniqueStringOver18characters",
+                "Bob Smith",
+                "700001",
+                "70000005"
+        );
+        paymentAuthorisationRequest.setPaymentRequest(paymentRequest);
+        System.out.println();
+        System.out.println("Sending a new payment authorisation request: ");
+        System.out.println(gson.toJson(paymentAuthorisationRequest));
+
+        // Send the payment authorisation request
+        ApiResponseOfPaymentAuthorisationRequestResponse authorizationResponse = paymentsApi.createPaymentAuthorisationUsingPOST(paymentAuthorisationRequest);
 
         URI url = new URI(authorizationResponse.getData().getAuthorisationUrl());
 
@@ -75,16 +73,28 @@ public class ExamplePayment {
                 // Get user consents
                 final ConsentsApi consentsApi = new ConsentsApi();
 
-                System.out.println("Reading user consents filtered by institution [" + INSTITUTION_ID +
-                                       "] with GET /users/{userUuid}/consents?institutionId={institutionId}");
-                Consent consent = consentsApi.getUserConsentsUsingGET(userUuid, INSTITUTION_ID)
-                                             .stream()
-                                             .findFirst()
-                                             .orElseThrow(() -> new RuntimeException(String.format("No consent token present for user %s", userUuid)));
+                System.out.println("Obtaining the most recent consent filtered by application user Id [" +
+                        APPLICATION_USER_ID +  "] and institution [" + INSTITUTION_ID + "] with GET /consents?" +
+                        "filter[applicationUserId]=" + APPLICATION_USER_ID + "&filter[institution]=" + INSTITUTION_ID);
+                System.out.println("Validating that the consent is AUTHORIZED");
+
+                Consent consent = consentsApi.getConsentsUsingGET(
+                        Collections.singletonList(APPLICATION_USER_ID),
+                        Collections.emptyList(),
+                        Collections.singletonList(INSTITUTION_ID),
+                        Collections.emptyList(),
+                        null,
+                        null,
+                        1,
+                        null).getData().stream()
+                        .filter(c -> c.getStatus().equals(Consent.StatusEnum.AUTHORIZED))
+                        .findFirst()
+                        .orElseThrow(() -> new RuntimeException(String.format("No consent token present for application user %s", APPLICATION_USER_ID)));
 
                 final String consentToken = consent.getConsentToken();
 
-                ApiResponseOfPaymentResponse response = paymentsApi.createPaymentUsingPOST(consentToken,sortCodePaymentRequest);
+                // Create the payment with the same payment request object used in the payment authorisation request
+                ApiResponseOfPaymentResponse response = paymentsApi.createPaymentUsingPOST(consentToken, paymentRequest);
 
                 System.out.println("Payment submitted");
 
@@ -96,32 +106,11 @@ public class ExamplePayment {
                     Thread.sleep(1000);
                 }
 
-                System.out.println("Payment was executed with status: "+status);
+                System.out.println("Payment was executed with status: " + status);
 
             } catch (final IOException e) {
                 e.printStackTrace();
             }
         }
     }
-
-    private static SortCodePaymentAuthRequest sortCodePaymentRequest(String userUUID,String institutionId) {
-        SortCodePaymentAuthRequest sortCodePaymentAuthRequest = new SortCodePaymentAuthRequest();
-        sortCodePaymentAuthRequest.setInstitutionId(institutionId);
-        sortCodePaymentAuthRequest.setUserUuid(userUUID);
-        sortCodePaymentAuthRequest.setPaymentRequest(sortCodePaymentRequest());
-        return sortCodePaymentAuthRequest;
-    }
-
-    private static SortCodePaymentRequest sortCodePaymentRequest() {
-        SortCodePaymentRequest sortCodePaymentRequest = new SortCodePaymentRequest();
-        sortCodePaymentRequest.setName("name");
-        sortCodePaymentRequest.setAmount(new BigDecimal("2.9"));
-        sortCodePaymentRequest.setReference("Up to 35 characters");
-        sortCodePaymentRequest.setCountry("GB");
-        sortCodePaymentRequest.setCurrency("GBP");
-        sortCodePaymentRequest.setAccountNumber("accountNumber");
-        sortCodePaymentRequest.setSortCode("123456");
-        return sortCodePaymentRequest;
-    }
-
 }
