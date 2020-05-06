@@ -22,14 +22,14 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
-import yapily.sdk.SortCodePaymentRequest;
+import yapily.sdk.BulkPaymentRequest;
 
 /**
- * SortCodePaymentAuthRequest
+ * BulkPaymentAuthorisationRequest
  */
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class SortCodePaymentAuthRequest {
+public class BulkPaymentAuthorisationRequest {
   @JsonProperty("userUuid")
   private String userUuid = null;
 
@@ -49,7 +49,7 @@ public class SortCodePaymentAuthRequest {
   private Boolean oneTimeToken = null;
 
   @JsonProperty("paymentRequest")
-  private SortCodePaymentRequest paymentRequest = null;
+  private BulkPaymentRequest paymentRequest = null;
 
 }
 

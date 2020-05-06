@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>yapily</groupId>
     <artifactId>yapily-sdk</artifactId>
-    <version>0.0.183</version>
+    <version>0.0.184</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "yapily:yapily-sdk:0.0.183"
+compile "yapily:yapily-sdk:0.0.184"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/yapily-sdk-0.0.183.jar
+* target/yapily-sdk-0.0.184.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -133,6 +133,8 @@ Class | Method | HTTP request | Description
 *InstitutionsOpenDataApi* | [**getATMDataUsingGET**](docs/InstitutionsOpenDataApi.md#getATMDataUsingGET) | **GET** /institutions/{institutionId}/atms | Retrieves data about all ATMs of the selected institution
 *InstitutionsOpenDataApi* | [**getPersonalCurrentAccountsUsingGET**](docs/InstitutionsOpenDataApi.md#getPersonalCurrentAccountsUsingGET) | **GET** /institutions/{institutionId}/personal-current-accounts | Retrieves details of personal current accounts for an institution
 *OAuthApi* | [**oauthToken**](docs/OAuthApi.md#oauthToken) | **POST** /oauth/token | Retrieve Access Token
+*PaymentsApi* | [**createBulkPaymentAuthorisationUsingPOST**](docs/PaymentsApi.md#createBulkPaymentAuthorisationUsingPOST) | **POST** /bulk-payment-auth-requests | Initiate bulk payment for user to authorise
+*PaymentsApi* | [**createBulkPaymentUsingPOST**](docs/PaymentsApi.md#createBulkPaymentUsingPOST) | **POST** /bulk-payments | Create bulk payment
 *PaymentsApi* | [**createPaymentAuthorisationUsingPOST**](docs/PaymentsApi.md#createPaymentAuthorisationUsingPOST) | **POST** /payment-auth-requests | Initiate a payment for user to authorise
 *PaymentsApi* | [**createPaymentAuthorisationWithSortCodeUsingPOST**](docs/PaymentsApi.md#createPaymentAuthorisationWithSortCodeUsingPOST) | **POST** /payment-sortcode-auth-requests | Initiate a new single payment for user to authorise
 *PaymentsApi* | [**createPaymentUsingPOST**](docs/PaymentsApi.md#createPaymentUsingPOST) | **POST** /payments | Create a payment
@@ -192,6 +194,8 @@ Class | Method | HTTP request | Description
  - [AuthorisationRequestResponse](docs/AuthorisationRequestResponse.md)
  - [Balance](docs/Balance.md)
  - [Branch](docs/Branch.md)
+ - [BulkPaymentAuthorisationRequest](docs/BulkPaymentAuthorisationRequest.md)
+ - [BulkPaymentRequest](docs/BulkPaymentRequest.md)
  - [BulkUserDelete](docs/BulkUserDelete.md)
  - [BulkUserDeleteDetails](docs/BulkUserDeleteDetails.md)
  - [ChargeDetails](docs/ChargeDetails.md)

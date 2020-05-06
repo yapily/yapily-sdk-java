@@ -10,13 +10,13 @@ Name | Type | Description | Notes
 **institutionId** | **String** |  | 
 **callback** | **String** |  | 
 **oneTimeToken** | **Boolean** |  | 
-**paymentRequest** | [**PaymentRequest**](PaymentRequest.md) |  | 
 **totalMaxAmount** | [**BigDecimal**](BigDecimal.md) |  |  [optional]
 **totalMaxAmountFrequency** | [**TotalMaxAmountFrequencyEnum**](#TotalMaxAmountFrequencyEnum) |  |  [optional]
 **maxAmountPerRequest** | [**BigDecimal**](BigDecimal.md) |  |  [optional]
 **startsAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
 **expiresAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
 **allowOverdraft** | **Boolean** |  |  [optional]
+**paymentRequest** | [**PaymentRequest**](PaymentRequest.md) |  | 
 
 
 <a name="TotalMaxAmountFrequencyEnum"></a>

@@ -20,36 +20,25 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import yapily.sdk.SortCodePaymentRequest;
+import yapily.sdk.PaymentRequest;
 
 /**
- * SortCodePaymentAuthRequest
+ * BulkPaymentRequest
  */
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class SortCodePaymentAuthRequest {
-  @JsonProperty("userUuid")
-  private String userUuid = null;
+public class BulkPaymentRequest {
+  @JsonProperty("executionDateTime")
+  private OffsetDateTime executionDateTime = null;
 
-  @JsonProperty("applicationUserId")
-  private String applicationUserId = null;
+  @JsonProperty("originatorIdentificationNumber")
+  private String originatorIdentificationNumber = null;
 
-  @JsonProperty("forwardParameters")
-  private List<String> forwardParameters = null;
-
-  @JsonProperty("institutionId")
-  private String institutionId = null;
-
-  @JsonProperty("callback")
-  private String callback = null;
-
-  @JsonProperty("oneTimeToken")
-  private Boolean oneTimeToken = null;
-
-  @JsonProperty("paymentRequest")
-  private SortCodePaymentRequest paymentRequest = null;
+  @JsonProperty("payments")
+  private List<PaymentRequest> payments = new ArrayList<>();
 
 }
 

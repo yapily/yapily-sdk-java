@@ -4,6 +4,8 @@ All URIs are relative to *https://api.yapily.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**createBulkPaymentAuthorisationUsingPOST**](PaymentsApi.md#createBulkPaymentAuthorisationUsingPOST) | **POST** /bulk-payment-auth-requests | Initiate bulk payment for user to authorise
+[**createBulkPaymentUsingPOST**](PaymentsApi.md#createBulkPaymentUsingPOST) | **POST** /bulk-payments | Create bulk payment
 [**createPaymentAuthorisationUsingPOST**](PaymentsApi.md#createPaymentAuthorisationUsingPOST) | **POST** /payment-auth-requests | Initiate a payment for user to authorise
 [**createPaymentAuthorisationWithSortCodeUsingPOST**](PaymentsApi.md#createPaymentAuthorisationWithSortCodeUsingPOST) | **POST** /payment-sortcode-auth-requests | Initiate a new single payment for user to authorise
 [**createPaymentUsingPOST**](PaymentsApi.md#createPaymentUsingPOST) | **POST** /payments | Create a payment
@@ -11,6 +13,120 @@ Method | HTTP request | Description
 [**getPaymentStatusUsingGET**](PaymentsApi.md#getPaymentStatusUsingGET) | **GET** /payments/{paymentId} | Get status of a payment
 [**getPaymentsUsingGET**](PaymentsApi.md#getPaymentsUsingGET) | **GET** /payments/{paymentId}/details | Get payments detail
 
+
+<a name="createBulkPaymentAuthorisationUsingPOST"></a>
+# **createBulkPaymentAuthorisationUsingPOST**
+> ApiResponseOfPaymentAuthorisationRequestResponse createBulkPaymentAuthorisationUsingPOST(paymentAuthRequest)
+
+Initiate bulk payment for user to authorise
+
+### Example
+```java
+// Import classes:
+//import yapily.ApiClient;
+//import yapily.ApiException;
+//import yapily.Configuration;
+//import yapily.auth.*;
+//import yapily.sdk.PaymentsApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure HTTP basic authorization: basicAuth
+HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
+basicAuth.setUsername("YOUR USERNAME");
+basicAuth.setPassword("YOUR PASSWORD");
+
+// Configure OAuth2 access token for authorization: tokenAuth
+OAuth tokenAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
+tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
+
+PaymentsApi apiInstance = new PaymentsApi();
+BulkPaymentAuthorisationRequest paymentAuthRequest = new BulkPaymentAuthorisationRequest(); // BulkPaymentAuthorisationRequest | paymentAuthRequest
+try {
+    ApiResponseOfPaymentAuthorisationRequestResponse result = apiInstance.createBulkPaymentAuthorisationUsingPOST(paymentAuthRequest);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling PaymentsApi#createBulkPaymentAuthorisationUsingPOST");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **paymentAuthRequest** | [**BulkPaymentAuthorisationRequest**](BulkPaymentAuthorisationRequest.md)| paymentAuthRequest |
+
+### Return type
+
+[**ApiResponseOfPaymentAuthorisationRequestResponse**](ApiResponseOfPaymentAuthorisationRequestResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth), [tokenAuth](../README.md#tokenAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json;charset=UTF-8
+ - **Accept**: application/json;charset=UTF-8
+
+<a name="createBulkPaymentUsingPOST"></a>
+# **createBulkPaymentUsingPOST**
+> ApiResponseOfPaymentResponse createBulkPaymentUsingPOST(consent, paymentRequest)
+
+Create bulk payment
+
+### Example
+```java
+// Import classes:
+//import yapily.ApiClient;
+//import yapily.ApiException;
+//import yapily.Configuration;
+//import yapily.auth.*;
+//import yapily.sdk.PaymentsApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure HTTP basic authorization: basicAuth
+HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
+basicAuth.setUsername("YOUR USERNAME");
+basicAuth.setPassword("YOUR PASSWORD");
+
+// Configure OAuth2 access token for authorization: tokenAuth
+OAuth tokenAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
+tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
+
+PaymentsApi apiInstance = new PaymentsApi();
+String consent = "consent_example"; // String | Consent Token
+BulkPaymentRequest paymentRequest = new BulkPaymentRequest(); // BulkPaymentRequest | paymentRequest
+try {
+    ApiResponseOfPaymentResponse result = apiInstance.createBulkPaymentUsingPOST(consent, paymentRequest);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling PaymentsApi#createBulkPaymentUsingPOST");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **consent** | **String**| Consent Token |
+ **paymentRequest** | [**BulkPaymentRequest**](BulkPaymentRequest.md)| paymentRequest |
+
+### Return type
+
+[**ApiResponseOfPaymentResponse**](ApiResponseOfPaymentResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth), [tokenAuth](../README.md#tokenAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json;charset=UTF-8
+ - **Accept**: application/json;charset=UTF-8
 
 <a name="createPaymentAuthorisationUsingPOST"></a>
 # **createPaymentAuthorisationUsingPOST**

@@ -11,6 +11,8 @@ import yapily.sdk.ApiResponseOfAuthorisationRequestResponse;
 import yapily.sdk.ApiResponseOfPaymentAuthorisationRequestResponse;
 import yapily.sdk.ApiResponseOfPaymentResponse;
 import yapily.sdk.ApiResponseOfPaymentResponses;
+import yapily.sdk.BulkPaymentAuthorisationRequest;
+import yapily.sdk.BulkPaymentRequest;
 import yapily.sdk.PaymentAuthorisationRequest;
 import yapily.sdk.PaymentRequest;
 import yapily.sdk.SortCodePaymentAuthRequest;
@@ -21,7 +23,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-04-29T14:57:28.429Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-05-06T11:55:38.370Z")
 public class PaymentsApi {
   private ApiClient apiClient;
 
@@ -41,6 +43,96 @@ public class PaymentsApi {
     this.apiClient = apiClient;
   }
 
+  /**
+   * Initiate bulk payment for user to authorise
+   * 
+   * @param paymentAuthRequest paymentAuthRequest (required)
+   * @return ApiResponseOfPaymentAuthorisationRequestResponse
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponseOfPaymentAuthorisationRequestResponse createBulkPaymentAuthorisationUsingPOST(BulkPaymentAuthorisationRequest paymentAuthRequest) throws ApiException {
+    Object localVarPostBody = paymentAuthRequest;
+    
+    // verify the required parameter 'paymentAuthRequest' is set
+    if (paymentAuthRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'paymentAuthRequest' when calling createBulkPaymentAuthorisationUsingPOST");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/bulk-payment-auth-requests";
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json;charset=UTF-8"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json;charset=UTF-8"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "basicAuth", "tokenAuth" };
+
+    GenericType<ApiResponseOfPaymentAuthorisationRequestResponse> localVarReturnType = new GenericType<ApiResponseOfPaymentAuthorisationRequestResponse>() {};
+    return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+      }
+  /**
+   * Create bulk payment
+   * 
+   * @param consent Consent Token (required)
+   * @param paymentRequest paymentRequest (required)
+   * @return ApiResponseOfPaymentResponse
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponseOfPaymentResponse createBulkPaymentUsingPOST(String consent, BulkPaymentRequest paymentRequest) throws ApiException {
+    Object localVarPostBody = paymentRequest;
+    
+    // verify the required parameter 'consent' is set
+    if (consent == null) {
+      throw new ApiException(400, "Missing the required parameter 'consent' when calling createBulkPaymentUsingPOST");
+    }
+    
+    // verify the required parameter 'paymentRequest' is set
+    if (paymentRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'paymentRequest' when calling createBulkPaymentUsingPOST");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/bulk-payments";
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+
+    if (consent != null)
+      localVarHeaderParams.put("consent", apiClient.parameterToString(consent));
+
+    
+    final String[] localVarAccepts = {
+      "application/json;charset=UTF-8"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json;charset=UTF-8"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "basicAuth", "tokenAuth" };
+
+    GenericType<ApiResponseOfPaymentResponse> localVarReturnType = new GenericType<ApiResponseOfPaymentResponse>() {};
+    return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+      }
   /**
    * Initiate a payment for user to authorise
    * 
