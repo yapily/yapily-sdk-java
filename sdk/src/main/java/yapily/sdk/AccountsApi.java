@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-05-21T09:39:29.828Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-05-27T12:52:16.790Z")
 public class AccountsApi {
   private ApiClient apiClient;
 
@@ -291,10 +291,13 @@ public class AccountsApi {
    * Initiate a new account request for user to authorize
    * 
    * @param accountAuthRequest accountAuthRequest (required)
+   * @param psuId PSU ID (optional)
+   * @param psuCorporateId PSU ID CORPORATE (optional)
+   * @param psuIpAddress PSU IP ADDRESS (optional)
    * @return ApiResponseOfAuthorisationRequestResponse
    * @throws ApiException if fails to make API call
    */
-  public ApiResponseOfAuthorisationRequestResponse initiateAccountRequestUsingPOST(AccountAuthorisationRequest accountAuthRequest) throws ApiException {
+  public ApiResponseOfAuthorisationRequestResponse initiateAccountRequestUsingPOST(AccountAuthorisationRequest accountAuthRequest, String psuId, String psuCorporateId, String psuIpAddress) throws ApiException {
     Object localVarPostBody = accountAuthRequest;
     
     // verify the required parameter 'accountAuthRequest' is set
@@ -311,7 +314,13 @@ public class AccountsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    
+    if (psuId != null)
+      localVarHeaderParams.put("psu-id", apiClient.parameterToString(psuId));
+if (psuCorporateId != null)
+      localVarHeaderParams.put("psu-corporate-id", apiClient.parameterToString(psuCorporateId));
+if (psuIpAddress != null)
+      localVarHeaderParams.put("psu-ip-address", apiClient.parameterToString(psuIpAddress));
+
     
     final String[] localVarAccepts = {
       "application/json;charset=UTF-8"
@@ -332,10 +341,13 @@ public class AccountsApi {
    * Re-authorize account request
    * 
    * @param consent Consent Token (required)
+   * @param psuId PSU ID (optional)
+   * @param psuCorporateId PSU ID CORPORATE (optional)
+   * @param psuIpAddress PSU IP ADDRESS (optional)
    * @return ApiResponseOfAuthorisationRequestResponse
    * @throws ApiException if fails to make API call
    */
-  public ApiResponseOfAuthorisationRequestResponse reAuthoriseAccountUsingPATCH(String consent) throws ApiException {
+  public ApiResponseOfAuthorisationRequestResponse reAuthoriseAccountUsingPATCH(String consent, String psuId, String psuCorporateId, String psuIpAddress) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'consent' is set
@@ -354,6 +366,12 @@ public class AccountsApi {
 
     if (consent != null)
       localVarHeaderParams.put("consent", apiClient.parameterToString(consent));
+if (psuId != null)
+      localVarHeaderParams.put("psu-id", apiClient.parameterToString(psuId));
+if (psuCorporateId != null)
+      localVarHeaderParams.put("psu-corporate-id", apiClient.parameterToString(psuCorporateId));
+if (psuIpAddress != null)
+      localVarHeaderParams.put("psu-ip-address", apiClient.parameterToString(psuIpAddress));
 
     
     final String[] localVarAccepts = {

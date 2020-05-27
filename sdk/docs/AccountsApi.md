@@ -309,7 +309,7 @@ Name | Type | Description  | Notes
 
 <a name="initiateAccountRequestUsingPOST"></a>
 # **initiateAccountRequestUsingPOST**
-> ApiResponseOfAuthorisationRequestResponse initiateAccountRequestUsingPOST(accountAuthRequest)
+> ApiResponseOfAuthorisationRequestResponse initiateAccountRequestUsingPOST(accountAuthRequest, psuId, psuCorporateId, psuIpAddress)
 
 Initiate a new account request for user to authorize
 
@@ -335,8 +335,11 @@ tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 AccountsApi apiInstance = new AccountsApi();
 AccountAuthorisationRequest accountAuthRequest = new AccountAuthorisationRequest(); // AccountAuthorisationRequest | accountAuthRequest
+String psuId = "psuId_example"; // String | PSU ID
+String psuCorporateId = "psuCorporateId_example"; // String | PSU ID CORPORATE
+String psuIpAddress = "psuIpAddress_example"; // String | PSU IP ADDRESS
 try {
-    ApiResponseOfAuthorisationRequestResponse result = apiInstance.initiateAccountRequestUsingPOST(accountAuthRequest);
+    ApiResponseOfAuthorisationRequestResponse result = apiInstance.initiateAccountRequestUsingPOST(accountAuthRequest, psuId, psuCorporateId, psuIpAddress);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AccountsApi#initiateAccountRequestUsingPOST");
@@ -349,6 +352,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **accountAuthRequest** | [**AccountAuthorisationRequest**](AccountAuthorisationRequest.md)| accountAuthRequest |
+ **psuId** | **String**| PSU ID | [optional]
+ **psuCorporateId** | **String**| PSU ID CORPORATE | [optional]
+ **psuIpAddress** | **String**| PSU IP ADDRESS | [optional]
 
 ### Return type
 
@@ -365,7 +371,7 @@ Name | Type | Description  | Notes
 
 <a name="reAuthoriseAccountUsingPATCH"></a>
 # **reAuthoriseAccountUsingPATCH**
-> ApiResponseOfAuthorisationRequestResponse reAuthoriseAccountUsingPATCH(consent)
+> ApiResponseOfAuthorisationRequestResponse reAuthoriseAccountUsingPATCH(consent, psuId, psuCorporateId, psuIpAddress)
 
 Re-authorize account request
 
@@ -391,8 +397,11 @@ tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 AccountsApi apiInstance = new AccountsApi();
 String consent = "consent_example"; // String | Consent Token
+String psuId = "psuId_example"; // String | PSU ID
+String psuCorporateId = "psuCorporateId_example"; // String | PSU ID CORPORATE
+String psuIpAddress = "psuIpAddress_example"; // String | PSU IP ADDRESS
 try {
-    ApiResponseOfAuthorisationRequestResponse result = apiInstance.reAuthoriseAccountUsingPATCH(consent);
+    ApiResponseOfAuthorisationRequestResponse result = apiInstance.reAuthoriseAccountUsingPATCH(consent, psuId, psuCorporateId, psuIpAddress);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AccountsApi#reAuthoriseAccountUsingPATCH");
@@ -405,6 +414,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consent** | **String**| Consent Token |
+ **psuId** | **String**| PSU ID | [optional]
+ **psuCorporateId** | **String**| PSU ID CORPORATE | [optional]
+ **psuIpAddress** | **String**| PSU IP ADDRESS | [optional]
 
 ### Return type
 
