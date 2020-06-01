@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 <a name="createBulkPaymentAuthorisationUsingPOST"></a>
 # **createBulkPaymentAuthorisationUsingPOST**
-> ApiResponseOfPaymentAuthorisationRequestResponse createBulkPaymentAuthorisationUsingPOST(paymentAuthRequest)
+> ApiResponseOfPaymentAuthorisationRequestResponse createBulkPaymentAuthorisationUsingPOST(paymentAuthRequest, psuId, psuCorporateId, psuIpAddress)
 
 Initiate bulk payment for user to authorise
 
@@ -42,8 +42,11 @@ tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 PaymentsApi apiInstance = new PaymentsApi();
 BulkPaymentAuthorisationRequest paymentAuthRequest = new BulkPaymentAuthorisationRequest(); // BulkPaymentAuthorisationRequest | paymentAuthRequest
+String psuId = "psuId_example"; // String | PSU ID
+String psuCorporateId = "psuCorporateId_example"; // String | PSU ID CORPORATE
+String psuIpAddress = "psuIpAddress_example"; // String | PSU IP ADDRESS
 try {
-    ApiResponseOfPaymentAuthorisationRequestResponse result = apiInstance.createBulkPaymentAuthorisationUsingPOST(paymentAuthRequest);
+    ApiResponseOfPaymentAuthorisationRequestResponse result = apiInstance.createBulkPaymentAuthorisationUsingPOST(paymentAuthRequest, psuId, psuCorporateId, psuIpAddress);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PaymentsApi#createBulkPaymentAuthorisationUsingPOST");
@@ -56,6 +59,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **paymentAuthRequest** | [**BulkPaymentAuthorisationRequest**](BulkPaymentAuthorisationRequest.md)| paymentAuthRequest |
+ **psuId** | **String**| PSU ID | [optional]
+ **psuCorporateId** | **String**| PSU ID CORPORATE | [optional]
+ **psuIpAddress** | **String**| PSU IP ADDRESS | [optional]
 
 ### Return type
 
@@ -130,7 +136,7 @@ Name | Type | Description  | Notes
 
 <a name="createPaymentAuthorisationUsingPOST"></a>
 # **createPaymentAuthorisationUsingPOST**
-> ApiResponseOfPaymentAuthorisationRequestResponse createPaymentAuthorisationUsingPOST(paymentAuthRequest)
+> ApiResponseOfPaymentAuthorisationRequestResponse createPaymentAuthorisationUsingPOST(paymentAuthRequest, psuId, psuCorporateId, psuIpAddress)
 
 Initiate a payment for user to authorise
 
@@ -156,8 +162,11 @@ tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 PaymentsApi apiInstance = new PaymentsApi();
 PaymentAuthorisationRequest paymentAuthRequest = new PaymentAuthorisationRequest(); // PaymentAuthorisationRequest | paymentAuthRequest
+String psuId = "psuId_example"; // String | PSU ID
+String psuCorporateId = "psuCorporateId_example"; // String | PSU ID CORPORATE
+String psuIpAddress = "psuIpAddress_example"; // String | PSU IP ADDRESS
 try {
-    ApiResponseOfPaymentAuthorisationRequestResponse result = apiInstance.createPaymentAuthorisationUsingPOST(paymentAuthRequest);
+    ApiResponseOfPaymentAuthorisationRequestResponse result = apiInstance.createPaymentAuthorisationUsingPOST(paymentAuthRequest, psuId, psuCorporateId, psuIpAddress);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PaymentsApi#createPaymentAuthorisationUsingPOST");
@@ -170,6 +179,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **paymentAuthRequest** | [**PaymentAuthorisationRequest**](PaymentAuthorisationRequest.md)| paymentAuthRequest |
+ **psuId** | **String**| PSU ID | [optional]
+ **psuCorporateId** | **String**| PSU ID CORPORATE | [optional]
+ **psuIpAddress** | **String**| PSU IP ADDRESS | [optional]
 
 ### Return type
 
@@ -186,7 +198,7 @@ Name | Type | Description  | Notes
 
 <a name="createPaymentAuthorisationWithSortCodeUsingPOST"></a>
 # **createPaymentAuthorisationWithSortCodeUsingPOST**
-> ApiResponseOfAuthorisationRequestResponse createPaymentAuthorisationWithSortCodeUsingPOST(paymentAuthRequest)
+> ApiResponseOfAuthorisationRequestResponse createPaymentAuthorisationWithSortCodeUsingPOST(paymentAuthRequest, psuId, psuCorporateId, psuIpAddress)
 
 Initiate a new single payment for user to authorise
 
@@ -212,8 +224,11 @@ tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 PaymentsApi apiInstance = new PaymentsApi();
 SortCodePaymentAuthRequest paymentAuthRequest = new SortCodePaymentAuthRequest(); // SortCodePaymentAuthRequest | paymentAuthRequest
+String psuId = "psuId_example"; // String | PSU ID
+String psuCorporateId = "psuCorporateId_example"; // String | PSU ID CORPORATE
+String psuIpAddress = "psuIpAddress_example"; // String | PSU IP ADDRESS
 try {
-    ApiResponseOfAuthorisationRequestResponse result = apiInstance.createPaymentAuthorisationWithSortCodeUsingPOST(paymentAuthRequest);
+    ApiResponseOfAuthorisationRequestResponse result = apiInstance.createPaymentAuthorisationWithSortCodeUsingPOST(paymentAuthRequest, psuId, psuCorporateId, psuIpAddress);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PaymentsApi#createPaymentAuthorisationWithSortCodeUsingPOST");
@@ -226,6 +241,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **paymentAuthRequest** | [**SortCodePaymentAuthRequest**](SortCodePaymentAuthRequest.md)| paymentAuthRequest |
+ **psuId** | **String**| PSU ID | [optional]
+ **psuCorporateId** | **String**| PSU ID CORPORATE | [optional]
+ **psuIpAddress** | **String**| PSU IP ADDRESS | [optional]
 
 ### Return type
 

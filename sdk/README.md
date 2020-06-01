@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>yapily</groupId>
     <artifactId>yapily-sdk</artifactId>
-    <version>0.0.190</version>
+    <version>0.0.191</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "yapily:yapily-sdk:0.0.190"
+compile "yapily:yapily-sdk:0.0.191"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/yapily-sdk-0.0.190.jar
+* target/yapily-sdk-0.0.191.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -119,6 +119,7 @@ Class | Method | HTTP request | Description
 *ApplicationsApi* | [**getApplicationMeUsingGET**](docs/ApplicationsApi.md#getApplicationMeUsingGET) | **GET** /me | Returns the details of the application that owns the request credentials
 *ApplicationsApi* | [**getJwksUsingGET**](docs/ApplicationsApi.md#getJwksUsingGET) | **GET** /jwks | JSON Web Key Set (JWKS) for authenticated application
 *ApplicationsApi* | [**revokeTokensUsingPOST**](docs/ApplicationsApi.md#revokeTokensUsingPOST) | **POST** /revoke-tokens | Revoke existing access tokens for application, which will also generate a new public key discoverable via /jwks
+*CategoriesApi* | [**getCategoriesUsingGET**](docs/CategoriesApi.md#getCategoriesUsingGET) | **GET** /categories/{country} | Retrieves a list of categories returned by the Yapily Categorisation engine for a given locale
 *ConsentsApi* | [**addConsentUsingPOST**](docs/ConsentsApi.md#addConsentUsingPOST) | **POST** /users/{userUuid}/consents | Post consent
 *ConsentsApi* | [**createConsentWithCodeUsingPOST**](docs/ConsentsApi.md#createConsentWithCodeUsingPOST) | **POST** /consent-auth-code | Post auth-code and auth-state
 *ConsentsApi* | [**deleteUsingDELETE**](docs/ConsentsApi.md#deleteUsingDELETE) | **DELETE** /consents/{consentId} | Delete consent
@@ -170,6 +171,7 @@ Class | Method | HTTP request | Description
  - [ApiListResponseOfAccount](docs/ApiListResponseOfAccount.md)
  - [ApiListResponseOfAccountStatement](docs/ApiListResponseOfAccountStatement.md)
  - [ApiListResponseOfBulkUserDelete](docs/ApiListResponseOfBulkUserDelete.md)
+ - [ApiListResponseOfCategory](docs/ApiListResponseOfCategory.md)
  - [ApiListResponseOfConsent](docs/ApiListResponseOfConsent.md)
  - [ApiListResponseOfFeatureDetails](docs/ApiListResponseOfFeatureDetails.md)
  - [ApiListResponseOfInstitution](docs/ApiListResponseOfInstitution.md)
@@ -198,6 +200,8 @@ Class | Method | HTTP request | Description
  - [BulkPaymentRequest](docs/BulkPaymentRequest.md)
  - [BulkUserDelete](docs/BulkUserDelete.md)
  - [BulkUserDeleteDetails](docs/BulkUserDeleteDetails.md)
+ - [Categorisation](docs/Categorisation.md)
+ - [Category](docs/Category.md)
  - [ChargeDetails](docs/ChargeDetails.md)
  - [Consent](docs/Consent.md)
  - [ConsentAuthCodeRequest](docs/ConsentAuthCodeRequest.md)
@@ -214,6 +218,7 @@ Class | Method | HTTP request | Description
  - [CurrencyExchange](docs/CurrencyExchange.md)
  - [Eligibility](docs/Eligibility.md)
  - [EligibilityOtherEligibility](docs/EligibilityOtherEligibility.md)
+ - [Enrichment](docs/Enrichment.md)
  - [ExchangeRateInformation](docs/ExchangeRateInformation.md)
  - [ExchangeRateInformationResponse](docs/ExchangeRateInformationResponse.md)
  - [FeatureDetails](docs/FeatureDetails.md)
@@ -284,6 +289,7 @@ Class | Method | HTTP request | Description
  - [SortCodePaymentAuthRequest](docs/SortCodePaymentAuthRequest.md)
  - [SortCodePaymentRequest](docs/SortCodePaymentRequest.md)
  - [StatementReference](docs/StatementReference.md)
+ - [Subcategory](docs/Subcategory.md)
  - [Transaction](docs/Transaction.md)
  - [TransferRequest](docs/TransferRequest.md)
  - [TransferResponse](docs/TransferResponse.md)

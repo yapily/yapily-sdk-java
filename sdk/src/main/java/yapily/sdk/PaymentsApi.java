@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-05-27T12:52:16.790Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-06-01T13:37:31.174Z")
 public class PaymentsApi {
   private ApiClient apiClient;
 
@@ -47,10 +47,13 @@ public class PaymentsApi {
    * Initiate bulk payment for user to authorise
    * 
    * @param paymentAuthRequest paymentAuthRequest (required)
+   * @param psuId PSU ID (optional)
+   * @param psuCorporateId PSU ID CORPORATE (optional)
+   * @param psuIpAddress PSU IP ADDRESS (optional)
    * @return ApiResponseOfPaymentAuthorisationRequestResponse
    * @throws ApiException if fails to make API call
    */
-  public ApiResponseOfPaymentAuthorisationRequestResponse createBulkPaymentAuthorisationUsingPOST(BulkPaymentAuthorisationRequest paymentAuthRequest) throws ApiException {
+  public ApiResponseOfPaymentAuthorisationRequestResponse createBulkPaymentAuthorisationUsingPOST(BulkPaymentAuthorisationRequest paymentAuthRequest, String psuId, String psuCorporateId, String psuIpAddress) throws ApiException {
     Object localVarPostBody = paymentAuthRequest;
     
     // verify the required parameter 'paymentAuthRequest' is set
@@ -67,7 +70,13 @@ public class PaymentsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    
+    if (psuId != null)
+      localVarHeaderParams.put("psu-id", apiClient.parameterToString(psuId));
+if (psuCorporateId != null)
+      localVarHeaderParams.put("psu-corporate-id", apiClient.parameterToString(psuCorporateId));
+if (psuIpAddress != null)
+      localVarHeaderParams.put("psu-ip-address", apiClient.parameterToString(psuIpAddress));
+
     
     final String[] localVarAccepts = {
       "application/json;charset=UTF-8"
@@ -137,10 +146,13 @@ public class PaymentsApi {
    * Initiate a payment for user to authorise
    * 
    * @param paymentAuthRequest paymentAuthRequest (required)
+   * @param psuId PSU ID (optional)
+   * @param psuCorporateId PSU ID CORPORATE (optional)
+   * @param psuIpAddress PSU IP ADDRESS (optional)
    * @return ApiResponseOfPaymentAuthorisationRequestResponse
    * @throws ApiException if fails to make API call
    */
-  public ApiResponseOfPaymentAuthorisationRequestResponse createPaymentAuthorisationUsingPOST(PaymentAuthorisationRequest paymentAuthRequest) throws ApiException {
+  public ApiResponseOfPaymentAuthorisationRequestResponse createPaymentAuthorisationUsingPOST(PaymentAuthorisationRequest paymentAuthRequest, String psuId, String psuCorporateId, String psuIpAddress) throws ApiException {
     Object localVarPostBody = paymentAuthRequest;
     
     // verify the required parameter 'paymentAuthRequest' is set
@@ -157,7 +169,13 @@ public class PaymentsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    
+    if (psuId != null)
+      localVarHeaderParams.put("psu-id", apiClient.parameterToString(psuId));
+if (psuCorporateId != null)
+      localVarHeaderParams.put("psu-corporate-id", apiClient.parameterToString(psuCorporateId));
+if (psuIpAddress != null)
+      localVarHeaderParams.put("psu-ip-address", apiClient.parameterToString(psuIpAddress));
+
     
     final String[] localVarAccepts = {
       "application/json;charset=UTF-8"
@@ -178,12 +196,15 @@ public class PaymentsApi {
    * Initiate a new single payment for user to authorise
    * 
    * @param paymentAuthRequest paymentAuthRequest (required)
+   * @param psuId PSU ID (optional)
+   * @param psuCorporateId PSU ID CORPORATE (optional)
+   * @param psuIpAddress PSU IP ADDRESS (optional)
    * @return ApiResponseOfAuthorisationRequestResponse
    * @throws ApiException if fails to make API call
    * @deprecated
    */
   @Deprecated
-  public ApiResponseOfAuthorisationRequestResponse createPaymentAuthorisationWithSortCodeUsingPOST(SortCodePaymentAuthRequest paymentAuthRequest) throws ApiException {
+  public ApiResponseOfAuthorisationRequestResponse createPaymentAuthorisationWithSortCodeUsingPOST(SortCodePaymentAuthRequest paymentAuthRequest, String psuId, String psuCorporateId, String psuIpAddress) throws ApiException {
     Object localVarPostBody = paymentAuthRequest;
     
     // verify the required parameter 'paymentAuthRequest' is set
@@ -200,7 +221,13 @@ public class PaymentsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    
+    if (psuId != null)
+      localVarHeaderParams.put("psu-id", apiClient.parameterToString(psuId));
+if (psuCorporateId != null)
+      localVarHeaderParams.put("psu-corporate-id", apiClient.parameterToString(psuCorporateId));
+if (psuIpAddress != null)
+      localVarHeaderParams.put("psu-ip-address", apiClient.parameterToString(psuIpAddress));
+
     
     final String[] localVarAccepts = {
       "application/json;charset=UTF-8"
