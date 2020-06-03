@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>yapily</groupId>
     <artifactId>yapily-sdk</artifactId>
-    <version>0.0.191</version>
+    <version>0.0.192</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "yapily:yapily-sdk:0.0.191"
+compile "yapily:yapily-sdk:0.0.192"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/yapily-sdk-0.0.191.jar
+* target/yapily-sdk-0.0.192.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -119,6 +119,7 @@ Class | Method | HTTP request | Description
 *ApplicationsApi* | [**getApplicationMeUsingGET**](docs/ApplicationsApi.md#getApplicationMeUsingGET) | **GET** /me | Returns the details of the application that owns the request credentials
 *ApplicationsApi* | [**getJwksUsingGET**](docs/ApplicationsApi.md#getJwksUsingGET) | **GET** /jwks | JSON Web Key Set (JWKS) for authenticated application
 *ApplicationsApi* | [**revokeTokensUsingPOST**](docs/ApplicationsApi.md#revokeTokensUsingPOST) | **POST** /revoke-tokens | Revoke existing access tokens for application, which will also generate a new public key discoverable via /jwks
+*BalancesApi* | [**getAccountBalancesUsingGET**](docs/BalancesApi.md#getAccountBalancesUsingGET) | **GET** /accounts/{accountId}/balances | Get account balances
 *CategoriesApi* | [**getCategoriesUsingGET**](docs/CategoriesApi.md#getCategoriesUsingGET) | **GET** /categories/{country} | Retrieves a list of categories returned by the Yapily Categorisation engine for a given locale
 *ConsentsApi* | [**addConsentUsingPOST**](docs/ConsentsApi.md#addConsentUsingPOST) | **POST** /users/{userUuid}/consents | Post consent
 *ConsentsApi* | [**createConsentWithCodeUsingPOST**](docs/ConsentsApi.md#createConsentWithCodeUsingPOST) | **POST** /consent-auth-code | Post auth-code and auth-state
@@ -180,6 +181,7 @@ Class | Method | HTTP request | Description
  - [ApiResponseOfAccount](docs/ApiResponseOfAccount.md)
  - [ApiResponseOfAccountStatement](docs/ApiResponseOfAccountStatement.md)
  - [ApiResponseOfAuthorisationRequestResponse](docs/ApiResponseOfAuthorisationRequestResponse.md)
+ - [ApiResponseOfBalances](docs/ApiResponseOfBalances.md)
  - [ApiResponseOfBulkUserDeleteDetails](docs/ApiResponseOfBulkUserDeleteDetails.md)
  - [ApiResponseOfConsent](docs/ApiResponseOfConsent.md)
  - [ApiResponseOfConsentDeleteResponse](docs/ApiResponseOfConsentDeleteResponse.md)
@@ -195,6 +197,7 @@ Class | Method | HTTP request | Description
  - [ApplicationUser](docs/ApplicationUser.md)
  - [AuthorisationRequestResponse](docs/AuthorisationRequestResponse.md)
  - [Balance](docs/Balance.md)
+ - [Balances](docs/Balances.md)
  - [Branch](docs/Branch.md)
  - [BulkPaymentAuthorisationRequest](docs/BulkPaymentAuthorisationRequest.md)
  - [BulkPaymentRequest](docs/BulkPaymentRequest.md)

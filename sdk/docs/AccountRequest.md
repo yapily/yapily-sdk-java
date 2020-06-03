@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **expiresAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
 **accountIdentifiers** | [**AccountInfo**](AccountInfo.md) |  |  [optional]
 **accountIdentifiersForTransaction** | [**List&lt;AccountInfo&gt;**](AccountInfo.md) |  |  [optional]
+**accountIdentifiersForBalance** | [**List&lt;AccountInfo&gt;**](AccountInfo.md) |  |  [optional]
 **featureScope** | [**List&lt;FeatureScopeEnum&gt;**](#List&lt;FeatureScopeEnum&gt;) |  |  [optional]
 
 
@@ -31,6 +32,7 @@ ACCOUNT_TRANSACTIONS_WITH_MERCHANT | &quot;ACCOUNT_TRANSACTIONS_WITH_MERCHANT&qu
 IDENTITY | &quot;IDENTITY&quot;
 ACCOUNTS_WITHOUT_BALANCE | &quot;ACCOUNTS_WITHOUT_BALANCE&quot;
 ACCOUNT_WITHOUT_BALANCE | &quot;ACCOUNT_WITHOUT_BALANCE&quot;
+ACCOUNT_BALANCES | &quot;ACCOUNT_BALANCES&quot;
 INITIATE_SINGLE_PAYMENT_SORTCODE | &quot;INITIATE_SINGLE_PAYMENT_SORTCODE&quot;
 EXISTING_PAYMENT_INITIATION_DETAILS | &quot;EXISTING_PAYMENT_INITIATION_DETAILS&quot;
 CREATE_SINGLE_PAYMENT_SORTCODE | &quot;CREATE_SINGLE_PAYMENT_SORTCODE&quot;
