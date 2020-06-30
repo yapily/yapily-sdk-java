@@ -8,7 +8,7 @@ import java.text.DateFormat;
 
 import javax.ws.rs.ext.ContextResolver;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-06-29T14:10:16.122Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-06-30T15:55:15.038Z")
 public class JSON implements ContextResolver<ObjectMapper> {
   private ObjectMapper mapper;
 
