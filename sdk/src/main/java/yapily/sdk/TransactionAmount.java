@@ -20,26 +20,19 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import yapily.sdk.AccountStatement;
-import yapily.sdk.ResponseMeta;
+import java.math.BigDecimal;
 
 /**
- * ApiResponseOfAccountStatement
+ * TransactionAmount
  */
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ApiResponseOfAccountStatement {
-  @JsonProperty("meta")
-  private ResponseMeta meta = null;
+public class TransactionAmount {
+  @JsonProperty("amount")
+  private BigDecimal amount = null;
 
-  @JsonProperty("data")
-  private AccountStatement data = null;
-
-  @JsonProperty("links")
-  private Map<String, String> links = null;
+  @JsonProperty("currency")
+  private String currency = null;
 
 }
 
