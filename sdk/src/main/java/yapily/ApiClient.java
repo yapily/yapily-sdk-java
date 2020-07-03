@@ -50,7 +50,7 @@ import yapily.auth.HttpBasicAuth;
 import yapily.auth.ApiKeyAuth;
 import yapily.auth.OAuth;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-07-02T14:57:31.346Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-07-03T10:34:20.495Z")
 public class ApiClient {
   protected Map<String, String> defaultHeaderMap = new HashMap<String, String>();
   protected String basePath = "https://api.yapily.com";
