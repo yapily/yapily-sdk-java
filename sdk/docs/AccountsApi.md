@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**getAccountsUsingGET**](AccountsApi.md#getAccountsUsingGET) | **GET** /accounts | Get accounts
 [**initiateAccountRequestUsingPOST**](AccountsApi.md#initiateAccountRequestUsingPOST) | **POST** /account-auth-requests | Initiate a new account request for user to authorize
 [**reAuthoriseAccountUsingPATCH**](AccountsApi.md#reAuthoriseAccountUsingPATCH) | **PATCH** /account-auth-requests | Re-authorize account request
+[**updatePreAuthoriseAccountConsentUsingPUT**](AccountsApi.md#updatePreAuthoriseAccountConsentUsingPUT) | **PUT** /account-auth-requests | Update pre authorize consent for user to authorise account
 
 
 <a name="getAccountDirectDebitsUsingGET"></a>
@@ -414,6 +415,70 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consent** | **String**| Consent Token |
+ **psuId** | **String**| PSU ID | [optional]
+ **psuCorporateId** | **String**| PSU ID CORPORATE | [optional]
+ **psuIpAddress** | **String**| PSU IP ADDRESS | [optional]
+
+### Return type
+
+[**ApiResponseOfAuthorisationRequestResponse**](ApiResponseOfAuthorisationRequestResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth), [tokenAuth](../README.md#tokenAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json;charset=UTF-8
+ - **Accept**: application/json;charset=UTF-8
+
+<a name="updatePreAuthoriseAccountConsentUsingPUT"></a>
+# **updatePreAuthoriseAccountConsentUsingPUT**
+> ApiResponseOfAuthorisationRequestResponse updatePreAuthoriseAccountConsentUsingPUT(consent, accountAuthRequest, psuId, psuCorporateId, psuIpAddress)
+
+Update pre authorize consent for user to authorise account
+
+### Example
+```java
+// Import classes:
+//import yapily.ApiClient;
+//import yapily.ApiException;
+//import yapily.Configuration;
+//import yapily.auth.*;
+//import yapily.sdk.AccountsApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure HTTP basic authorization: basicAuth
+HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
+basicAuth.setUsername("YOUR USERNAME");
+basicAuth.setPassword("YOUR PASSWORD");
+
+// Configure OAuth2 access token for authorization: tokenAuth
+OAuth tokenAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
+tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
+
+AccountsApi apiInstance = new AccountsApi();
+String consent = "consent_example"; // String | Consent Token
+AccountAuthorisationRequest accountAuthRequest = new AccountAuthorisationRequest(); // AccountAuthorisationRequest | accountAuthRequest
+String psuId = "psuId_example"; // String | PSU ID
+String psuCorporateId = "psuCorporateId_example"; // String | PSU ID CORPORATE
+String psuIpAddress = "psuIpAddress_example"; // String | PSU IP ADDRESS
+try {
+    ApiResponseOfAuthorisationRequestResponse result = apiInstance.updatePreAuthoriseAccountConsentUsingPUT(consent, accountAuthRequest, psuId, psuCorporateId, psuIpAddress);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AccountsApi#updatePreAuthoriseAccountConsentUsingPUT");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **consent** | **String**| Consent Token |
+ **accountAuthRequest** | [**AccountAuthorisationRequest**](AccountAuthorisationRequest.md)| accountAuthRequest |
  **psuId** | **String**| PSU ID | [optional]
  **psuCorporateId** | **String**| PSU ID CORPORATE | [optional]
  **psuIpAddress** | **String**| PSU IP ADDRESS | [optional]

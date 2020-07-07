@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-07-03T10:34:20.495Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-07-07T16:29:37.692Z")
 public class AccountsApi {
   private ApiClient apiClient;
 
@@ -388,5 +388,63 @@ if (psuIpAddress != null)
 
     GenericType<ApiResponseOfAuthorisationRequestResponse> localVarReturnType = new GenericType<ApiResponseOfAuthorisationRequestResponse>() {};
     return apiClient.invokeAPI(localVarPath, "PATCH", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+      }
+  /**
+   * Update pre authorize consent for user to authorise account
+   * 
+   * @param consent Consent Token (required)
+   * @param accountAuthRequest accountAuthRequest (required)
+   * @param psuId PSU ID (optional)
+   * @param psuCorporateId PSU ID CORPORATE (optional)
+   * @param psuIpAddress PSU IP ADDRESS (optional)
+   * @return ApiResponseOfAuthorisationRequestResponse
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponseOfAuthorisationRequestResponse updatePreAuthoriseAccountConsentUsingPUT(String consent, AccountAuthorisationRequest accountAuthRequest, String psuId, String psuCorporateId, String psuIpAddress) throws ApiException {
+    Object localVarPostBody = accountAuthRequest;
+    
+    // verify the required parameter 'consent' is set
+    if (consent == null) {
+      throw new ApiException(400, "Missing the required parameter 'consent' when calling updatePreAuthoriseAccountConsentUsingPUT");
+    }
+    
+    // verify the required parameter 'accountAuthRequest' is set
+    if (accountAuthRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'accountAuthRequest' when calling updatePreAuthoriseAccountConsentUsingPUT");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/account-auth-requests";
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+
+    if (consent != null)
+      localVarHeaderParams.put("consent", apiClient.parameterToString(consent));
+if (psuId != null)
+      localVarHeaderParams.put("psu-id", apiClient.parameterToString(psuId));
+if (psuCorporateId != null)
+      localVarHeaderParams.put("psu-corporate-id", apiClient.parameterToString(psuCorporateId));
+if (psuIpAddress != null)
+      localVarHeaderParams.put("psu-ip-address", apiClient.parameterToString(psuIpAddress));
+
+    
+    final String[] localVarAccepts = {
+      "application/json;charset=UTF-8"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json;charset=UTF-8"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "basicAuth", "tokenAuth" };
+
+    GenericType<ApiResponseOfAuthorisationRequestResponse> localVarReturnType = new GenericType<ApiResponseOfAuthorisationRequestResponse>() {};
+    return apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
 }

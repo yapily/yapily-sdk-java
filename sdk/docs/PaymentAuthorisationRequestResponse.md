@@ -39,12 +39,15 @@ FAILED | &quot;FAILED&quot;
 EXPIRED | &quot;EXPIRED&quot;
 UNKNOWN | &quot;UNKNOWN&quot;
 INVALID | &quot;INVALID&quot;
+AWAITING_PRE_AUTHORIZATION | &quot;AWAITING_PRE_AUTHORIZATION&quot;
+PRE_AUTHORIZED | &quot;PRE_AUTHORIZED&quot;
 
 
 <a name="List<FeatureScopeEnum>"></a>
 ## Enum: List&lt;FeatureScopeEnum&gt;
 Name | Value
 ---- | -----
+INITIATE_PRE_AUTHORISATION | &quot;INITIATE_PRE_AUTHORISATION&quot;
 INITIATE_ACCOUNT_REQUEST | &quot;INITIATE_ACCOUNT_REQUEST&quot;
 ACCOUNT_REQUEST_DETAILS | &quot;ACCOUNT_REQUEST_DETAILS&quot;
 ACCOUNTS | &quot;ACCOUNTS&quot;

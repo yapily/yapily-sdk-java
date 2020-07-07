@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**createPaymentWithSortCodeUsingPOST**](PaymentsApi.md#createPaymentWithSortCodeUsingPOST) | **POST** /payment-sortcode | Create a new single payment
 [**getPaymentStatusUsingGET**](PaymentsApi.md#getPaymentStatusUsingGET) | **GET** /payments/{paymentId} | Get status of a payment
 [**getPaymentsUsingGET**](PaymentsApi.md#getPaymentsUsingGET) | **GET** /payments/{paymentId}/details | Get payments detail
+[**updatePaymentAuthorisationUsingPUT**](PaymentsApi.md#updatePaymentAuthorisationUsingPUT) | **PUT** /payment-auth-requests | Update pre authorize consent for user to authorise payment
 
 
 <a name="createBulkPaymentAuthorisationUsingPOST"></a>
@@ -488,5 +489,69 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json;charset=UTF-8
+
+<a name="updatePaymentAuthorisationUsingPUT"></a>
+# **updatePaymentAuthorisationUsingPUT**
+> ApiResponseOfPaymentAuthorisationRequestResponse updatePaymentAuthorisationUsingPUT(consent, paymentAuthRequest, psuId, psuCorporateId, psuIpAddress)
+
+Update pre authorize consent for user to authorise payment
+
+### Example
+```java
+// Import classes:
+//import yapily.ApiClient;
+//import yapily.ApiException;
+//import yapily.Configuration;
+//import yapily.auth.*;
+//import yapily.sdk.PaymentsApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure HTTP basic authorization: basicAuth
+HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
+basicAuth.setUsername("YOUR USERNAME");
+basicAuth.setPassword("YOUR PASSWORD");
+
+// Configure OAuth2 access token for authorization: tokenAuth
+OAuth tokenAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
+tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
+
+PaymentsApi apiInstance = new PaymentsApi();
+String consent = "consent_example"; // String | Consent Token
+PaymentAuthorisationRequest paymentAuthRequest = new PaymentAuthorisationRequest(); // PaymentAuthorisationRequest | paymentAuthRequest
+String psuId = "psuId_example"; // String | PSU ID
+String psuCorporateId = "psuCorporateId_example"; // String | PSU ID CORPORATE
+String psuIpAddress = "psuIpAddress_example"; // String | PSU IP ADDRESS
+try {
+    ApiResponseOfPaymentAuthorisationRequestResponse result = apiInstance.updatePaymentAuthorisationUsingPUT(consent, paymentAuthRequest, psuId, psuCorporateId, psuIpAddress);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling PaymentsApi#updatePaymentAuthorisationUsingPUT");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **consent** | **String**| Consent Token |
+ **paymentAuthRequest** | [**PaymentAuthorisationRequest**](PaymentAuthorisationRequest.md)| paymentAuthRequest |
+ **psuId** | **String**| PSU ID | [optional]
+ **psuCorporateId** | **String**| PSU ID CORPORATE | [optional]
+ **psuIpAddress** | **String**| PSU IP ADDRESS | [optional]
+
+### Return type
+
+[**ApiResponseOfPaymentAuthorisationRequestResponse**](ApiResponseOfPaymentAuthorisationRequestResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth), [tokenAuth](../README.md#tokenAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json;charset=UTF-8
  - **Accept**: application/json;charset=UTF-8
 

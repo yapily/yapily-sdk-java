@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 ## Enum: List&lt;FeatureScopeEnum&gt;
 Name | Value
 ---- | -----
+INITIATE_PRE_AUTHORISATION | &quot;INITIATE_PRE_AUTHORISATION&quot;
 INITIATE_ACCOUNT_REQUEST | &quot;INITIATE_ACCOUNT_REQUEST&quot;
 ACCOUNT_REQUEST_DETAILS | &quot;ACCOUNT_REQUEST_DETAILS&quot;
 ACCOUNTS | &quot;ACCOUNTS&quot;

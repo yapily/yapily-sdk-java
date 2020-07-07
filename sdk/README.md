@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>yapily</groupId>
     <artifactId>yapily-sdk</artifactId>
-    <version>0.0.203</version>
+    <version>0.0.204</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "yapily:yapily-sdk:0.0.203"
+compile "yapily:yapily-sdk:0.0.204"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/yapily-sdk-0.0.203.jar
+* target/yapily-sdk-0.0.204.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -109,6 +109,7 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**getAccountsUsingGET**](docs/AccountsApi.md#getAccountsUsingGET) | **GET** /accounts | Get accounts
 *AccountsApi* | [**initiateAccountRequestUsingPOST**](docs/AccountsApi.md#initiateAccountRequestUsingPOST) | **POST** /account-auth-requests | Initiate a new account request for user to authorize
 *AccountsApi* | [**reAuthoriseAccountUsingPATCH**](docs/AccountsApi.md#reAuthoriseAccountUsingPATCH) | **PATCH** /account-auth-requests | Re-authorize account request
+*AccountsApi* | [**updatePreAuthoriseAccountConsentUsingPUT**](docs/AccountsApi.md#updatePreAuthoriseAccountConsentUsingPUT) | **PUT** /account-auth-requests | Update pre authorize consent for user to authorise account
 *ApplicationUsersApi* | [**addUserUsingPOST**](docs/ApplicationUsersApi.md#addUserUsingPOST) | **POST** /users | Add an application user
 *ApplicationUsersApi* | [**deleteUserUsingDELETE**](docs/ApplicationUsersApi.md#deleteUserUsingDELETE) | **DELETE** /users/{userUuid} | Delete an application user and sub-resources (including consent resources on institution APIs if they exist)
 *ApplicationUsersApi* | [**getDeleteUsersJobUsingGET**](docs/ApplicationUsersApi.md#getDeleteUsersJobUsingGET) | **GET** /delete-users/{job-id} | Get details of a user deletion job
@@ -143,6 +144,8 @@ Class | Method | HTTP request | Description
 *PaymentsApi* | [**createPaymentWithSortCodeUsingPOST**](docs/PaymentsApi.md#createPaymentWithSortCodeUsingPOST) | **POST** /payment-sortcode | Create a new single payment
 *PaymentsApi* | [**getPaymentStatusUsingGET**](docs/PaymentsApi.md#getPaymentStatusUsingGET) | **GET** /payments/{paymentId} | Get status of a payment
 *PaymentsApi* | [**getPaymentsUsingGET**](docs/PaymentsApi.md#getPaymentsUsingGET) | **GET** /payments/{paymentId}/details | Get payments detail
+*PaymentsApi* | [**updatePaymentAuthorisationUsingPUT**](docs/PaymentsApi.md#updatePaymentAuthorisationUsingPUT) | **PUT** /payment-auth-requests | Update pre authorize consent for user to authorise payment
+*PreAuthConsentControllerApi* | [**createPreAuthorisationUsingPOST**](docs/PreAuthConsentControllerApi.md#createPreAuthorisationUsingPOST) | **POST** /pre-auth-requests | Initiate request for user to pre authorise
 *StatementsApi* | [**getStatementFileUsingGET**](docs/StatementsApi.md#getStatementFileUsingGET) | **GET** /accounts/{accountId}/statements/{statementId}/file | Get account statement file
 *StatementsApi* | [**getStatementUsingGET**](docs/StatementsApi.md#getStatementUsingGET) | **GET** /accounts/{accountId}/statements/{statementId} | Get account statement
 *StatementsApi* | [**getStatementsUsingGET**](docs/StatementsApi.md#getStatementsUsingGET) | **GET** /accounts/{accountId}/statements | Get account statements
@@ -282,6 +285,7 @@ Class | Method | HTTP request | Description
  - [PersonalCurrentAccountPCA](docs/PersonalCurrentAccountPCA.md)
  - [PersonalCurrentAccountPCAMarketingState](docs/PersonalCurrentAccountPCAMarketingState.md)
  - [PostalAddress1](docs/PostalAddress1.md)
+ - [PreAuthorisationRequest](docs/PreAuthorisationRequest.md)
  - [ProprietaryBankTransactionCode](docs/ProprietaryBankTransactionCode.md)
  - [ResidencyEligibility](docs/ResidencyEligibility.md)
  - [Resource](docs/Resource.md)
