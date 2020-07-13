@@ -1,5 +1,5 @@
 # Yapily Java SDK
-[![GitHub version](https://d25lcipzij17d.cloudfront.net/badge.svg?id=gh&type=6&v=0.0.206&x2=0)](http://badge.fury.io/gh/boennemann%2Fbadges)
+[![GitHub version](https://d25lcipzij17d.cloudfront.net/badge.svg?id=gh&type=6&v=0.0.207&x2=0)](http://badge.fury.io/gh/boennemann%2Fbadges)
 
 This SDK was generated using [Swagger Code Generator](https://github.com/swagger-api/swagger-codegen). The SDK can be used as a module in your code and the examples demonstrate how to connect
 to financial institutions integrated with Yapily.
@@ -41,7 +41,7 @@ Dependency:
    <dependency>
        <groupId>yapily</groupId>
        <artifactId>yapily-sdk</artifactId>
-       <version>0.0.206</version>
+       <version>0.0.207</version>
    </dependency>
 </dependencies>
 ```
@@ -62,7 +62,7 @@ repositories {
 Dependency:
 
 ```groovy
-compile group: 'yapily', name: 'yapily-sdk', version: '0.0.206'
+compile group: 'yapily', name: 'yapily-sdk', version: '0.0.207'
 ```
 
 #### Download JAR
