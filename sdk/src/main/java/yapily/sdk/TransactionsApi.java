@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-07-13T14:45:37.870Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-07-14T15:13:47.672Z")
 public class TransactionsApi {
   private ApiClient apiClient;
 
@@ -45,10 +45,11 @@ public class TransactionsApi {
    * @param limit limit (optional)
    * @param sort sort (optional)
    * @param offset offset (optional)
+   * @param cursor cursor (optional)
    * @return ApiListResponseOfTransaction
    * @throws ApiException if fails to make API call
    */
-  public ApiListResponseOfTransaction getTransactionsUsingGET(String consent, String accountId, List<String> with, String from, String before, Integer limit, String sort, Integer offset) throws ApiException {
+  public ApiListResponseOfTransaction getTransactionsUsingGET(String consent, String accountId, List<String> with, String from, String before, Integer limit, String sort, Integer offset, String cursor) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'consent' is set
@@ -76,6 +77,7 @@ public class TransactionsApi {
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "sort", sort));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "offset", offset));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "cursor", cursor));
 
     if (consent != null)
       localVarHeaderParams.put("consent", apiClient.parameterToString(consent));
