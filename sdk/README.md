@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>yapily</groupId>
     <artifactId>yapily-sdk</artifactId>
-    <version>0.0.215</version>
+    <version>0.0.216</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "yapily:yapily-sdk:0.0.215"
+compile "yapily:yapily-sdk:0.0.216"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/yapily-sdk-0.0.215.jar
+* target/yapily-sdk-0.0.216.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -121,7 +121,6 @@ Class | Method | HTTP request | Description
 *ApplicationsApi* | [**getJwksUsingGET**](docs/ApplicationsApi.md#getJwksUsingGET) | **GET** /jwks | JSON Web Key Set (JWKS) for authenticated application
 *ApplicationsApi* | [**revokeTokensUsingPOST**](docs/ApplicationsApi.md#revokeTokensUsingPOST) | **POST** /revoke-tokens | Revoke existing access tokens for application, which will also generate a new public key discoverable via /jwks
 *BalancesApi* | [**getAccountBalancesUsingGET**](docs/BalancesApi.md#getAccountBalancesUsingGET) | **GET** /accounts/{accountId}/balances | Get account balances
-*CategoriesApi* | [**getCategoriesUsingGET**](docs/CategoriesApi.md#getCategoriesUsingGET) | **GET** /categories/{country} | Retrieves a list of categories returned by the Yapily Categorisation engine for a given locale
 *ConsentsApi* | [**addConsentUsingPOST**](docs/ConsentsApi.md#addConsentUsingPOST) | **POST** /users/{userUuid}/consents | Post consent
 *ConsentsApi* | [**createConsentWithCodeUsingPOST**](docs/ConsentsApi.md#createConsentWithCodeUsingPOST) | **POST** /consent-auth-code | Post auth-code and auth-state
 *ConsentsApi* | [**deleteUsingDELETE**](docs/ConsentsApi.md#deleteUsingDELETE) | **DELETE** /consents/{consentId} | Delete consent
@@ -149,7 +148,6 @@ Class | Method | HTTP request | Description
 *StatementsApi* | [**getStatementFileUsingGET**](docs/StatementsApi.md#getStatementFileUsingGET) | **GET** /accounts/{accountId}/statements/{statementId}/file | Get account statement file
 *StatementsApi* | [**getStatementUsingGET**](docs/StatementsApi.md#getStatementUsingGET) | **GET** /accounts/{accountId}/statements/{statementId} | Get account statement
 *StatementsApi* | [**getStatementsUsingGET**](docs/StatementsApi.md#getStatementsUsingGET) | **GET** /accounts/{accountId}/statements | Get account statements
-*TransactionsApi* | [**getTransactionsUsingGET**](docs/TransactionsApi.md#getTransactionsUsingGET) | **GET** /accounts/{accountId}/transactions | Get account transactions
 *TransfersApi* | [**transferUsingPUT**](docs/TransfersApi.md#transferUsingPUT) | **PUT** /accounts/{accountId}/transfer | Transfer money from one account to another account accessible with the same consent
 
 
@@ -168,19 +166,16 @@ Class | Method | HTTP request | Description
  - [AccountRequest](docs/AccountRequest.md)
  - [AccountStatement](docs/AccountStatement.md)
  - [Address](docs/Address.md)
- - [AddressDetails](docs/AddressDetails.md)
  - [AgeEligibility](docs/AgeEligibility.md)
  - [Amount](docs/Amount.md)
  - [ApiError](docs/ApiError.md)
  - [ApiListResponseOfAccount](docs/ApiListResponseOfAccount.md)
  - [ApiListResponseOfAccountStatement](docs/ApiListResponseOfAccountStatement.md)
  - [ApiListResponseOfBulkUserDelete](docs/ApiListResponseOfBulkUserDelete.md)
- - [ApiListResponseOfCategory](docs/ApiListResponseOfCategory.md)
  - [ApiListResponseOfConsent](docs/ApiListResponseOfConsent.md)
  - [ApiListResponseOfFeatureDetails](docs/ApiListResponseOfFeatureDetails.md)
  - [ApiListResponseOfInstitution](docs/ApiListResponseOfInstitution.md)
  - [ApiListResponseOfPaymentResponse](docs/ApiListResponseOfPaymentResponse.md)
- - [ApiListResponseOfTransaction](docs/ApiListResponseOfTransaction.md)
  - [ApiResponseOfAccount](docs/ApiResponseOfAccount.md)
  - [ApiResponseOfAccountStatement](docs/ApiResponseOfAccountStatement.md)
  - [ApiResponseOfAuthorisationRequestResponse](docs/ApiResponseOfAuthorisationRequestResponse.md)
@@ -199,15 +194,12 @@ Class | Method | HTTP request | Description
  - [Application](docs/Application.md)
  - [ApplicationUser](docs/ApplicationUser.md)
  - [AuthorisationRequestResponse](docs/AuthorisationRequestResponse.md)
- - [Balance](docs/Balance.md)
  - [Balances](docs/Balances.md)
  - [Branch](docs/Branch.md)
  - [BulkPaymentAuthorisationRequest](docs/BulkPaymentAuthorisationRequest.md)
  - [BulkPaymentRequest](docs/BulkPaymentRequest.md)
  - [BulkUserDelete](docs/BulkUserDelete.md)
  - [BulkUserDeleteDetails](docs/BulkUserDeleteDetails.md)
- - [Categorisation](docs/Categorisation.md)
- - [Category](docs/Category.md)
  - [ChargeDetails](docs/ChargeDetails.md)
  - [Consent](docs/Consent.md)
  - [ConsentAuthCodeRequest](docs/ConsentAuthCodeRequest.md)
@@ -221,10 +213,8 @@ Class | Method | HTTP request | Description
  - [CreditInterestTierBand](docs/CreditInterestTierBand.md)
  - [CreditInterestTierBandSet](docs/CreditInterestTierBandSet.md)
  - [CreditLine](docs/CreditLine.md)
- - [CurrencyExchange](docs/CurrencyExchange.md)
  - [Eligibility](docs/Eligibility.md)
  - [EligibilityOtherEligibility](docs/EligibilityOtherEligibility.md)
- - [Enrichment](docs/Enrichment.md)
  - [ExchangeRateInformation](docs/ExchangeRateInformation.md)
  - [ExchangeRateInformationResponse](docs/ExchangeRateInformationResponse.md)
  - [FeatureDetails](docs/FeatureDetails.md)
@@ -243,12 +233,9 @@ Class | Method | HTTP request | Description
  - [Institution](docs/Institution.md)
  - [InstitutionConsent](docs/InstitutionConsent.md)
  - [InternationalPaymentRequest](docs/InternationalPaymentRequest.md)
- - [IsoBankTransactionCode](docs/IsoBankTransactionCode.md)
- - [IsoCodeDetails](docs/IsoCodeDetails.md)
  - [Location](docs/Location.md)
  - [LocationOtherLocationCategory](docs/LocationOtherLocationCategory.md)
  - [Media](docs/Media.md)
- - [Merchant](docs/Merchant.md)
  - [MerchantInfo](docs/MerchantInfo.md)
  - [MonitoringFeatureStatus](docs/MonitoringFeatureStatus.md)
  - [MultiAuthorisation](docs/MultiAuthorisation.md)
@@ -286,7 +273,6 @@ Class | Method | HTTP request | Description
  - [PersonalCurrentAccountPCAMarketingState](docs/PersonalCurrentAccountPCAMarketingState.md)
  - [PostalAddress1](docs/PostalAddress1.md)
  - [PreAuthorisationRequest](docs/PreAuthorisationRequest.md)
- - [ProprietaryBankTransactionCode](docs/ProprietaryBankTransactionCode.md)
  - [ResidencyEligibility](docs/ResidencyEligibility.md)
  - [Resource](docs/Resource.md)
  - [ResponseEntity](docs/ResponseEntity.md)
@@ -295,11 +281,6 @@ Class | Method | HTTP request | Description
  - [Site](docs/Site.md)
  - [SortCodePaymentAuthRequest](docs/SortCodePaymentAuthRequest.md)
  - [SortCodePaymentRequest](docs/SortCodePaymentRequest.md)
- - [StatementReference](docs/StatementReference.md)
- - [Subcategory](docs/Subcategory.md)
- - [Transaction](docs/Transaction.md)
- - [TransactionAmount](docs/TransactionAmount.md)
- - [TransactionHash](docs/TransactionHash.md)
  - [TransferRequest](docs/TransferRequest.md)
  - [TransferResponse](docs/TransferResponse.md)
  - [URI](docs/URI.md)
