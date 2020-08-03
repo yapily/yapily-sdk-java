@@ -31,11 +31,5 @@ public class ChargeDetails {
   @JsonProperty("chargeAmount")
   private Amount chargeAmount = null;
 
-  @JsonProperty("chargeType")
-  private String chargeType = null;
-
-  @JsonProperty("chargeTo")
-  private String chargeTo = null;
-
 }
 

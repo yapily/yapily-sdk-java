@@ -1,0 +1,7599 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "To access endpoints that require authentication, use your application key and secret created in the Dashboard (https://dashboard.yapily.com)",
+    "version": "0.0.218",
+    "title": "Yapily API"
+  },
+  "host": "api.yapily.com",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Statements",
+      "description": " "
+    },
+    {
+      "name": "Transfers",
+      "description": " "
+    },
+    {
+      "name": "Applications",
+      "description": " "
+    },
+    {
+      "name": "Categories",
+      "description": " "
+    },
+    {
+      "name": "pre-auth-consent-controller",
+      "description": "Pre Auth Consent Controller"
+    },
+    {
+      "name": "Accounts",
+      "description": " "
+    },
+    {
+      "name": "Balances",
+      "description": " "
+    },
+    {
+      "name": "Institutions",
+      "description": " "
+    },
+    {
+      "name": "Consents",
+      "description": " "
+    },
+    {
+      "name": "Identity",
+      "description": " "
+    },
+    {
+      "name": "Transactions",
+      "description": " "
+    },
+    {
+      "name": "Institutions Open Data",
+      "description": " "
+    },
+    {
+      "name": "Application Users",
+      "description": " "
+    },
+    {
+      "name": "Payments",
+      "description": " "
+    }
+  ],
+  "paths": {
+    "/account-auth-requests": {
+      "post": {
+        "tags": [
+          "Accounts"
+        ],
+        "summary": "Initiate a new account request for user to authorize",
+        "operationId": "initiateAccountRequestUsingPOST",
+        "consumes": [
+          "application/json;charset=UTF-8"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "name": "psu-id",
+            "in": "header",
+            "description": "PSU ID",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "psu-corporate-id",
+            "in": "header",
+            "description": "PSU ID CORPORATE",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "psu-ip-address",
+            "in": "header",
+            "description": "PSU IP ADDRESS",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "accountAuthRequest",
+            "description": "accountAuthRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AccountAuthorisationRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApiResponseOfAuthorisationRequestResponse"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Accounts"
+        ],
+        "summary": "Update pre authorize consent for user to authorise account",
+        "operationId": "updatePreAuthoriseAccountConsentUsingPUT",
+        "consumes": [
+          "application/json;charset=UTF-8"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "name": "consent",
+            "in": "header",
+            "description": "Consent Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "psu-id",
+            "in": "header",
+            "description": "PSU ID",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "psu-corporate-id",
+            "in": "header",
+            "description": "PSU ID CORPORATE",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "psu-ip-address",
+            "in": "header",
+            "description": "PSU IP ADDRESS",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "accountAuthRequest",
+            "description": "accountAuthRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AccountAuthorisationRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApiResponseOfAuthorisationRequestResponse"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "Accounts"
+        ],
+        "summary": "Re-authorize account request",
+        "operationId": "reAuthoriseAccountUsingPATCH",
+        "consumes": [
+          "application/json;charset=UTF-8"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "name": "consent",
+            "in": "header",
+            "description": "Consent Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "psu-id",
+            "in": "header",
+            "description": "PSU ID",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "psu-corporate-id",
+            "in": "header",
+            "description": "PSU ID CORPORATE",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "psu-ip-address",
+            "in": "header",
+            "description": "PSU IP ADDRESS",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApiResponseOfAuthorisationRequestResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ]
+      }
+    },
+    "/accounts": {
+      "get": {
+        "tags": [
+          "Accounts"
+        ],
+        "summary": "Get accounts",
+        "operationId": "getAccountsUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "name": "consent",
+            "in": "header",
+            "description": "Consent Token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApiListResponseOfAccount"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ]
+      }
+    },
+    "/accounts/{accountId}": {
+      "get": {
+        "tags": [
+          "Accounts"
+        ],
+        "summary": "Get account",
+        "operationId": "getAccountUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "name": "consent",
+            "in": "header",
+            "description": "Consent Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "accountId",
+            "in": "path",
+            "description": "accountId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApiResponseOfAccount"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ]
+      }
+    },
+    "/accounts/{accountId}/balances": {
+      "get": {
+        "tags": [
+          "Balances"
+        ],
+        "summary": "Get account balances",
+        "operationId": "getAccountBalancesUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "name": "consent",
+            "in": "header",
+            "description": "Consent Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "accountId",
+            "in": "path",
+            "description": "accountId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApiResponseOfBalances"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ]
+      }
+    },
+    "/accounts/{accountId}/direct-debits": {
+      "get": {
+        "tags": [
+          "Accounts"
+        ],
+        "summary": "Get account direct debits",
+        "operationId": "getAccountDirectDebitsUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "name": "accountId",
+            "in": "path",
+            "description": "accountId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "consent",
+            "in": "header",
+            "description": "Consent Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Use this parameter to limit account's direct debit results",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApiListResponseOfPaymentResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ]
+      }
+    },
+    "/accounts/{accountId}/periodic-payments": {
+      "get": {
+        "tags": [
+          "Accounts"
+        ],
+        "summary": "Get account payments detail",
+        "operationId": "getAccountPeriodicPaymentsUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "name": "accountId",
+            "in": "path",
+            "description": "accountId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "consent",
+            "in": "header",
+            "description": "Consent Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Use this parameter to limit account's periodic payment order results",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApiListResponseOfPaymentResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ]
+      }
+    },
+    "/accounts/{accountId}/scheduled-payments": {
+      "get": {
+        "tags": [
+          "Accounts"
+        ],
+        "summary": "Get account scheduled payments",
+        "operationId": "getAccountScheduledPaymentsUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "name": "accountId",
+            "in": "path",
+            "description": "accountId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "consent",
+            "in": "header",
+            "description": "Consent Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Use this parameter to limit account's scheduled payment results",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApiListResponseOfPaymentResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ]
+      }
+    },
+    "/accounts/{accountId}/statements": {
+      "get": {
+        "tags": [
+          "Statements"
+        ],
+        "summary": "Get account statements",
+        "operationId": "getStatementsUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "name": "consent",
+            "in": "header",
+            "description": "Consent Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "accountId",
+            "in": "path",
+            "description": "accountId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "description": "from",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "before",
+            "in": "query",
+            "description": "before",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "limit",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "sort",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "date",
+              "-date"
+            ]
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "offset",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApiListResponseOfAccountStatement"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ]
+      }
+    },
+    "/accounts/{accountId}/statements/{statementId}": {
+      "get": {
+        "tags": [
+          "Statements"
+        ],
+        "summary": "Get account statement",
+        "operationId": "getStatementUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "name": "consent",
+            "in": "header",
+            "description": "Consent Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "accountId",
+            "in": "path",
+            "description": "accountId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "statementId",
+            "in": "path",
+            "description": "statementId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApiResponseOfAccountStatement"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ]
+      }
+    },
+    "/accounts/{accountId}/statements/{statementId}/file": {
+      "get": {
+        "tags": [
+          "Statements"
+        ],
+        "summary": "Get account statement file",
+        "operationId": "getStatementFileUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "consent",
+            "in": "header",
+            "description": "Consent Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "accountId",
+            "in": "path",
+            "description": "accountId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "statementId",
+            "in": "path",
+            "description": "statementId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ]
+      }
+    },
+    "/accounts/{accountId}/transactions": {
+      "get": {
+        "tags": [
+          "Transactions"
+        ],
+        "summary": "Get account transactions",
+        "operationId": "getTransactionsUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "name": "consent",
+            "in": "header",
+            "description": "Consent Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "accountId",
+            "in": "path",
+            "description": "accountId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "with",
+            "in": "query",
+            "description": "with",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "description": "from",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "before",
+            "in": "query",
+            "description": "before",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "limit",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "sort",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "date",
+              "-date"
+            ]
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "offset",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "description": "cursor",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApiListResponseOfTransaction"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ]
+      }
+    },
+    "/accounts/{accountId}/transfer": {
+      "put": {
+        "tags": [
+          "Transfers"
+        ],
+        "summary": "Transfer money from one account to another account accessible with the same consent",
+        "operationId": "transferUsingPUT",
+        "consumes": [
+          "application/json;charset=UTF-8"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "name": "consent",
+            "in": "header",
+            "description": "Consent Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "accountId",
+            "in": "path",
+            "description": "accountId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "transferRequest",
+            "description": "transferRequest",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/TransferRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApiResponseOfTransferResponse"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ]
+      }
+    },
+    "/bulk-payment-auth-requests": {
+      "post": {
+        "tags": [
+          "Payments"
+        ],
+        "summary": "Initiate bulk payment for user to authorise",
+        "operationId": "createBulkPaymentAuthorisationUsingPOST",
+        "consumes": [
+          "application/json;charset=UTF-8"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "name": "psu-id",
+            "in": "header",
+            "description": "PSU ID",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "psu-corporate-id",
+            "in": "header",
+            "description": "PSU ID CORPORATE",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "psu-ip-address",
+            "in": "header",
+            "description": "PSU IP ADDRESS",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "paymentAuthRequest",
+            "description": "paymentAuthRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/BulkPaymentAuthorisationRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApiResponseOfPaymentAuthorisationRequestResponse"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ]
+      }
+    },
+    "/bulk-payments": {
+      "post": {
+        "tags": [
+          "Payments"
+        ],
+        "summary": "Create bulk payment",
+        "operationId": "createBulkPaymentUsingPOST",
+        "consumes": [
+          "application/json;charset=UTF-8"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "name": "consent",
+            "in": "header",
+            "description": "Consent Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "paymentRequest",
+            "description": "paymentRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/BulkPaymentRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApiResponseOfPaymentResponse"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ]
+      }
+    },
+    "/categories/{country}": {
+      "get": {
+        "tags": [
+          "Categories"
+        ],
+        "summary": "Retrieves a list of categories returned by the Yapily Categorisation engine for a given locale",
+        "operationId": "getCategoriesUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "name": "country",
+            "in": "path",
+            "description": "country",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApiListResponseOfCategory"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ]
+      }
+    },
+    "/consent-auth-code": {
+      "post": {
+        "tags": [
+          "Consents"
+        ],
+        "summary": "Post auth-code and auth-state",
+        "operationId": "createConsentWithCodeUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "consentByAuthCode",
+            "description": "consentByAuthCode",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ConsentAuthCodeRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Consent"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ]
+      }
+    },
+    "/consent-one-time-token": {
+      "post": {
+        "tags": [
+          "Consents"
+        ],
+        "summary": "Post one time token",
+        "operationId": "getConsentBySingleAccessConsentUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "oneTimeToken",
+            "description": "oneTimeToken",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/OneTimeTokenRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Consent"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ]
+      }
+    },
+    "/consents": {
+      "get": {
+        "tags": [
+          "Consents"
+        ],
+        "summary": "Get consents sorted by creation date",
+        "operationId": "getConsentsUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "name": "filter[applicationUserId]",
+            "in": "query",
+            "description": "Filter consents by your application user Id (applicationUserId)",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "filter[userUuid]",
+            "in": "query",
+            "description": "Filter consents by Yapily user Id (userUuid)",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "filter[institution]",
+            "in": "query",
+            "description": "Use this parameter to filter consent by institution, using the Yapily institution Id",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "filter[status]",
+            "in": "query",
+            "description": "Use this parameter to filter consent by status",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "description": "Use this parameter to filter consents created after the date specified",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "before",
+            "in": "query",
+            "description": "Use this parameter to filter consents created before the date specified",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Use this parameter to limit consent results, max limit is 20",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "Use this parameter to specify the offset of the results",
+            "required": false,
+            "type": "integer",
+            "default": 0,
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApiListResponseOfConsent"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ]
+      }
+    },
+    "/consents/{consentId}": {
+      "get": {
+        "tags": [
+          "Consents"
+        ],
+        "summary": "Get consent",
+        "operationId": "getConsentByIdUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "name": "consentId",
+            "in": "path",
+            "description": "consentId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApiResponseOfConsent"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Consents"
+        ],
+        "summary": "Delete consent",
+        "operationId": "deleteUsingDELETE",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "name": "consentId",
+            "in": "path",
+            "description": "consentId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "forceDelete",
+            "in": "query",
+            "description": "forceDelete",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApiResponseOfConsentDeleteResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ]
+      }
+    },
+    "/delete-users": {
+      "get": {
+        "tags": [
+          "Application Users"
+        ],
+        "summary": "Get details of all user deletion jobs",
+        "operationId": "getDeleteUsersJobsUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApiListResponseOfBulkUserDelete"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Application Users"
+        ],
+        "summary": "Start a job to delete application users by specifying their identifiers",
+        "operationId": "startDeleteUsersJobUsingPOST",
+        "consumes": [
+          "application/json;charset=UTF-8"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "userDeleteRequest",
+            "description": "userDeleteRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserDeleteRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApiResponseOfBulkUserDeleteDetails"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "204": {
+            "description": "No content"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ]
+      }
+    },
+    "/delete-users/{job-id}": {
+      "get": {
+        "tags": [
+          "Application Users"
+        ],
+        "summary": "Get details of a user deletion job",
+        "operationId": "getDeleteUsersJobUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "name": "job-id",
+            "in": "path",
+            "description": "job-id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApiResponseOfBulkUserDeleteDetails"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ]
+      }
+    },
+    "/features": {
+      "get": {
+        "tags": [
+          "Institutions"
+        ],
+        "summary": "Retrieve details for Yapily's institution features",
+        "operationId": "getFeatureDetailsUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApiListResponseOfFeatureDetails"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ]
+      }
+    },
+    "/identity": {
+      "get": {
+        "tags": [
+          "Identity"
+        ],
+        "summary": "Get identity",
+        "operationId": "getIdentityUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "name": "consent",
+            "in": "header",
+            "description": "Consent Token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApiResponseOfIdentity"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ]
+      }
+    },
+    "/institutions": {
+      "get": {
+        "tags": [
+          "Institutions"
+        ],
+        "summary": "Retrieves the list of institutions available in Yapily",
+        "operationId": "getInstitutionsUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApiListResponseOfInstitution"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ]
+      }
+    },
+    "/institutions/{institutionId}": {
+      "get": {
+        "tags": [
+          "Institutions"
+        ],
+        "summary": "Retrieves details of a specific institution available in Yapily",
+        "operationId": "getInstitutionUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "name": "institutionId",
+            "in": "path",
+            "description": "institutionId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Institution"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ]
+      }
+    },
+    "/institutions/{institutionId}/atms": {
+      "get": {
+        "tags": [
+          "Institutions Open Data"
+        ],
+        "summary": "Retrieves data about all ATMs of the selected institution",
+        "operationId": "getATMDataUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "name": "institutionId",
+            "in": "path",
+            "description": "institutionId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApiResponseOfListOfATMOpenDataResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ]
+      }
+    },
+    "/institutions/{institutionId}/personal-current-accounts": {
+      "get": {
+        "tags": [
+          "Institutions Open Data"
+        ],
+        "summary": "Retrieves details of personal current accounts for an institution",
+        "operationId": "getPersonalCurrentAccountsUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "name": "institutionId",
+            "in": "path",
+            "description": "institutionId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApiResponseOfListOfPersonalCurrentAccountData"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ]
+      }
+    },
+    "/jwks": {
+      "get": {
+        "tags": [
+          "Applications"
+        ],
+        "summary": "JSON Web Key Set (JWKS) for authenticated application",
+        "operationId": "getJwksUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ]
+      }
+    },
+    "/me": {
+      "get": {
+        "tags": [
+          "Applications"
+        ],
+        "summary": "Returns the details of the application that owns the request credentials",
+        "operationId": "getApplicationMeUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Application"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ]
+      }
+    },
+    "/oauth/token": {
+      "post": {
+        "tags": [
+          "OAuth"
+        ],
+        "summary": "Retrieve Access Token",
+        "operationId": "oauth-token",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "grant_type",
+            "in": "formData",
+            "description": "Grant type",
+            "required": true,
+            "type": "string",
+            "default": "client_credentials",
+            "enum": [
+              "client_credentials"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/YapilyAccessToken"
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ]
+      }
+    },
+    "/payment-auth-requests": {
+      "post": {
+        "tags": [
+          "Payments"
+        ],
+        "summary": "Initiate a payment for user to authorise",
+        "operationId": "createPaymentAuthorisationUsingPOST",
+        "consumes": [
+          "application/json;charset=UTF-8"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "name": "psu-id",
+            "in": "header",
+            "description": "PSU ID",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "psu-corporate-id",
+            "in": "header",
+            "description": "PSU ID CORPORATE",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "psu-ip-address",
+            "in": "header",
+            "description": "PSU IP ADDRESS",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "paymentAuthRequest",
+            "description": "paymentAuthRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PaymentAuthorisationRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApiResponseOfPaymentAuthorisationRequestResponse"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Payments"
+        ],
+        "summary": "Update pre authorize consent for user to authorise payment",
+        "operationId": "updatePaymentAuthorisationUsingPUT",
+        "consumes": [
+          "application/json;charset=UTF-8"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "name": "psu-id",
+            "in": "header",
+            "description": "PSU ID",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "psu-corporate-id",
+            "in": "header",
+            "description": "PSU ID CORPORATE",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "psu-ip-address",
+            "in": "header",
+            "description": "PSU IP ADDRESS",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "consent",
+            "in": "header",
+            "description": "Consent Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "paymentAuthRequest",
+            "description": "paymentAuthRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PaymentAuthorisationRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApiResponseOfPaymentAuthorisationRequestResponse"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ]
+      }
+    },
+    "/payment-sortcode": {
+      "post": {
+        "tags": [
+          "Payments"
+        ],
+        "summary": "Create a new single payment",
+        "operationId": "createPaymentWithSortCodeUsingPOST",
+        "consumes": [
+          "application/json;charset=UTF-8"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "name": "consent",
+            "in": "header",
+            "description": "Consent Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "paymentRequest",
+            "description": "paymentRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SortCodePaymentRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApiResponseOfPaymentResponse"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ],
+        "deprecated": true
+      }
+    },
+    "/payment-sortcode-auth-requests": {
+      "post": {
+        "tags": [
+          "Payments"
+        ],
+        "summary": "Initiate a new single payment for user to authorise",
+        "operationId": "createPaymentAuthorisationWithSortCodeUsingPOST",
+        "consumes": [
+          "application/json;charset=UTF-8"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "name": "psu-id",
+            "in": "header",
+            "description": "PSU ID",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "psu-corporate-id",
+            "in": "header",
+            "description": "PSU ID CORPORATE",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "psu-ip-address",
+            "in": "header",
+            "description": "PSU IP ADDRESS",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "paymentAuthRequest",
+            "description": "paymentAuthRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SortCodePaymentAuthRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApiResponseOfAuthorisationRequestResponse"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ],
+        "deprecated": true
+      }
+    },
+    "/payments": {
+      "post": {
+        "tags": [
+          "Payments"
+        ],
+        "summary": "Create a payment",
+        "operationId": "createPaymentUsingPOST",
+        "consumes": [
+          "application/json;charset=UTF-8"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "name": "consent",
+            "in": "header",
+            "description": "Consent Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "paymentRequest",
+            "description": "paymentRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PaymentRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApiResponseOfPaymentResponse"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ]
+      }
+    },
+    "/payments/{paymentId}": {
+      "get": {
+        "tags": [
+          "Payments"
+        ],
+        "summary": "Get status of a payment",
+        "operationId": "getPaymentStatusUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "name": "paymentId",
+            "in": "path",
+            "description": "paymentId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "consent",
+            "in": "header",
+            "description": "Consent Token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApiResponseOfPaymentResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ]
+      }
+    },
+    "/payments/{paymentId}/details": {
+      "get": {
+        "tags": [
+          "Payments"
+        ],
+        "summary": "Get payments detail",
+        "operationId": "getPaymentsUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "name": "paymentId",
+            "in": "path",
+            "description": "paymentId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "consent",
+            "in": "header",
+            "description": "Consent Token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApiResponseOfPaymentResponses"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ]
+      }
+    },
+    "/pre-auth-requests": {
+      "post": {
+        "tags": [
+          "pre-auth-consent-controller"
+        ],
+        "summary": "Initiate request for user to pre authorise",
+        "operationId": "createPreAuthorisationUsingPOST",
+        "consumes": [
+          "application/json;charset=UTF-8"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "preAuthorisationRequest",
+            "description": "preAuthorisationRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PreAuthorisationRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApiResponseOfAuthorisationRequestResponse"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ]
+      }
+    },
+    "/revoke-tokens": {
+      "post": {
+        "tags": [
+          "Applications"
+        ],
+        "summary": "Revoke existing access tokens for application, which will also generate a new public key discoverable via /jwks",
+        "operationId": "revokeTokensUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ResponseEntity"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ]
+      }
+    },
+    "/users": {
+      "get": {
+        "tags": [
+          "Application Users"
+        ],
+        "summary": "Get application users",
+        "operationId": "getUsersUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "name": "filter[applicationUserId]",
+            "in": "query",
+            "description": "Filter users by the provided application user Id (applicationUserId) when the user was created.",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ApplicationUser"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Application Users"
+        ],
+        "summary": "Add an application user",
+        "operationId": "addUserUsingPOST",
+        "consumes": [
+          "application/json;charset=UTF-8"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "newApplicationUser",
+            "description": "newApplicationUser",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NewApplicationUser"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApplicationUser"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ]
+      }
+    },
+    "/users/{userUuid}": {
+      "get": {
+        "tags": [
+          "Application Users"
+        ],
+        "summary": "Get an application user",
+        "operationId": "getUserUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "name": "userUuid",
+            "in": "path",
+            "description": "userUuid",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApplicationUser"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Application Users"
+        ],
+        "summary": "Delete an application user and sub-resources (including consent resources on institution APIs if they exist)",
+        "operationId": "deleteUserUsingDELETE",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "name": "userUuid",
+            "in": "path",
+            "description": "userUuid",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApiResponseOfUserDeleteResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ]
+      }
+    },
+    "/users/{userUuid}/consents": {
+      "get": {
+        "tags": [
+          "Consents"
+        ],
+        "summary": "Get latest user consents",
+        "operationId": "getUserConsentsUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "name": "userUuid",
+            "in": "path",
+            "description": "userUuid",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "filter[institution]",
+            "in": "query",
+            "description": "Use this parameter to filter consent by institution, using the Yapily institution Id. This replaces the deprecated `institutionId` query param.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Use this parameter to limit consent results, max limit is 20",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Consent"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ],
+        "deprecated": true
+      },
+      "post": {
+        "tags": [
+          "Consents"
+        ],
+        "summary": "Post consent",
+        "operationId": "addConsentUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "name": "userUuid",
+            "in": "path",
+            "description": "userUuid",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "createConsentAccessToken",
+            "description": "createConsentAccessToken",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreateConsentAccessToken"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Consent"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "securityDefinitions": {
+    "basicAuth": {
+      "type": "basic"
+    },
+    "tokenAuth": {
+      "type": "oauth2",
+      "tokenUrl": "https://api.yapily.com/oauth/token",
+      "flow": "application"
+    }
+  },
+  "definitions": {
+    "Account": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Account Id returned by the institution if present"
+        },
+        "type": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string",
+          "description": "Product name as defined by the financial institution for this account"
+        },
+        "balance": {
+          "type": "number"
+        },
+        "currency": {
+          "type": "string",
+          "description": "ISO 4217 currency code"
+        },
+        "usageType": {
+          "type": "string",
+          "enum": [
+            "PERSONAL",
+            "BUSINESS",
+            "OTHER",
+            "UNKNOWN"
+          ]
+        },
+        "accountType": {
+          "type": "string",
+          "enum": [
+            "CASH_TRADING",
+            "CASH_INCOME",
+            "CASH_PAYMENT",
+            "CHARGE_CARD",
+            "CHARGES",
+            "COMMISSION",
+            "CREDIT_CARD",
+            "CURRENT",
+            "E_MONEY",
+            "LIMITED_LIQUIDITY_SAVINGS_ACCOUNT",
+            "LOAN",
+            "MARGINAL_LENDING",
+            "MONEY_MARKET",
+            "MORTGAGE",
+            "NON_RESIDENT_EXTERNAL",
+            "OTHER",
+            "OVERDRAFT",
+            "OVERNIGHT_DEPOSIT",
+            "PREPAID_CARD",
+            "SALARY",
+            "SAVINGS",
+            "SETTLEMENT",
+            "TAX",
+            "UNKNOWN"
+          ]
+        },
+        "nickname": {
+          "type": "string",
+          "description": "Name of the account as defined by the financial institution or the end user"
+        },
+        "details": {
+          "type": "string",
+          "description": "Specifications that might be provided by the institution\n- characteristics of the account\n- characteristics of the relevant card"
+        },
+        "accountNames": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AccountName"
+          }
+        },
+        "accountIdentifications": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AccountIdentification"
+          }
+        },
+        "accountBalances": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AccountBalance"
+          }
+        }
+      }
+    },
+    "OverdraftOverdraftTierBand": {
+      "type": "object",
+      "properties": {
+        "BankGuaranteedIndicator": {
+          "type": "boolean"
+        },
+        "EAR": {
+          "type": "string"
+        },
+        "Identification": {
+          "type": "string"
+        },
+        "Notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "OverdraftFeesCharges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OverdraftOverdraftFeesCharges"
+          }
+        },
+        "OverdraftInterestChargingCoverage": {
+          "type": "string",
+          "enum": [
+            "Tiered",
+            "Whole"
+          ]
+        },
+        "TierValueMax": {
+          "type": "string"
+        },
+        "TierValueMin": {
+          "type": "string"
+        }
+      },
+      "description": "Provides overdraft details for a specific tier or band"
+    },
+    "Address": {
+      "type": "object",
+      "properties": {
+        "addressLines": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "streetName": {
+          "type": "string"
+        },
+        "buildingNumber": {
+          "type": "string"
+        },
+        "postCode": {
+          "type": "string"
+        },
+        "townName": {
+          "type": "string"
+        },
+        "county": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "addressType": {
+          "type": "string",
+          "enum": [
+            "BUSINESS",
+            "CORRESPONDENCE",
+            "DELIVERY_TO",
+            "MAIL_TO",
+            "PO_BOX",
+            "POSTAL",
+            "RESIDENTIAL",
+            "STATEMENT",
+            "UNKNOWN"
+          ]
+        },
+        "country": {
+          "type": "string"
+        },
+        "department": {
+          "type": "string"
+        },
+        "subDepartment": {
+          "type": "string"
+        }
+      }
+    },
+    "AuthorisationRequestResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "userUuid": {
+          "type": "string"
+        },
+        "applicationUserId": {
+          "type": "string"
+        },
+        "referenceId": {
+          "type": "string"
+        },
+        "institutionId": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "AWAITING_AUTHORIZATION",
+            "AWAITING_FURTHER_AUTHORIZATION",
+            "AWAITING_RE_AUTHORIZATION",
+            "AUTHORIZED",
+            "CONSUMED",
+            "REJECTED",
+            "REVOKED",
+            "FAILED",
+            "EXPIRED",
+            "UNKNOWN",
+            "INVALID",
+            "AWAITING_PRE_AUTHORIZATION",
+            "PRE_AUTHORIZED"
+          ]
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "transactionFrom": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "transactionTo": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "expiresAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "timeToExpireInMillis": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Deprecated. Use `timeToExpire` instead."
+        },
+        "timeToExpire": {
+          "type": "string",
+          "description": "ISO 8601 duration"
+        },
+        "featureScope": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "INITIATE_PRE_AUTHORISATION",
+              "INITIATE_ACCOUNT_REQUEST",
+              "ACCOUNT_REQUEST_DETAILS",
+              "ACCOUNTS",
+              "ACCOUNT",
+              "ACCOUNT_TRANSACTIONS",
+              "ACCOUNT_STATEMENTS",
+              "ACCOUNT_STATEMENT",
+              "ACCOUNT_STATEMENT_FILE",
+              "ACCOUNT_SCHEDULED_PAYMENTS",
+              "ACCOUNT_DIRECT_DEBITS",
+              "ACCOUNT_PERIODIC_PAYMENTS",
+              "ACCOUNT_TRANSACTIONS_WITH_MERCHANT",
+              "IDENTITY",
+              "ACCOUNTS_WITHOUT_BALANCE",
+              "ACCOUNT_WITHOUT_BALANCE",
+              "ACCOUNT_BALANCES",
+              "INITIATE_SINGLE_PAYMENT_SORTCODE",
+              "EXISTING_PAYMENT_INITIATION_DETAILS",
+              "CREATE_SINGLE_PAYMENT_SORTCODE",
+              "EXISTING_PAYMENTS_DETAILS",
+              "INITIATE_DOMESTIC_SINGLE_PAYMENT",
+              "CREATE_DOMESTIC_SINGLE_PAYMENT",
+              "INITIATE_DOMESTIC_SINGLE_INSTANT_PAYMENT",
+              "CREATE_DOMESTIC_SINGLE_INSTANT_PAYMENT",
+              "INITIATE_DOMESTIC_VARIABLE_RECURRING_PAYMENT",
+              "CREATE_DOMESTIC_VARIABLE_RECURRING_PAYMENT",
+              "INITIATE_DOMESTIC_SCHEDULED_PAYMENT",
+              "CREATE_DOMESTIC_SCHEDULED_PAYMENT",
+              "INITIATE_DOMESTIC_PERIODIC_PAYMENT",
+              "CREATE_DOMESTIC_PERIODIC_PAYMENT",
+              "PERIODIC_PAYMENT_FREQUENCY_EXTENDED",
+              "INITIATE_INTERNATIONAL_VARIABLE_RECURRING_PAYMENT",
+              "CREATE_INTERNATIONAL_VARIABLE_RECURRING_PAYMENT",
+              "INITIATE_INTERNATIONAL_SCHEDULED_PAYMENT",
+              "CREATE_INTERNATIONAL_SCHEDULED_PAYMENT",
+              "INITIATE_INTERNATIONAL_PERIODIC_PAYMENT",
+              "CREATE_INTERNATIONAL_PERIODIC_PAYMENT",
+              "INITIATE_INTERNATIONAL_SINGLE_PAYMENT",
+              "CREATE_INTERNATIONAL_SINGLE_PAYMENT",
+              "INITIATE_BULK_PAYMENT",
+              "CREATE_BULK_PAYMENT",
+              "TRANSFER",
+              "OPEN_DATA_PERSONAL_CURRENT_ACCOUNTS",
+              "OPEN_DATA_ATMS"
+            ]
+          }
+        },
+        "authorisationUrl": {
+          "type": "string"
+        },
+        "consentToken": {
+          "type": "string"
+        },
+        "qrCodeUrl": {
+          "type": "string"
+        }
+      }
+    },
+    "Institution": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "fullName": {
+          "type": "string"
+        },
+        "countries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Country"
+          }
+        },
+        "environmentType": {
+          "type": "string",
+          "enum": [
+            "SANDBOX",
+            "MOCK",
+            "LIVE"
+          ]
+        },
+        "credentialsType": {
+          "type": "string",
+          "enum": [
+            "OAUTH1",
+            "OAUTH2",
+            "OAUTH2_NOSECRET",
+            "OAUTH2_SIGNATURE",
+            "OPEN_BANKING",
+            "OPEN_BANKING_UK_MANUAL",
+            "OPEN_BANKING_UK_AUTO",
+            "OPEN_BANKING_IBM",
+            "OPEN_BANKING_AUTO",
+            "OPEN_BANKING_MANUAL",
+            "API_KEY",
+            "OPEN_BANKING_NO_KEY",
+            "OPEN_BANKING_NO_TRANSPORT",
+            "TOKEN_IO"
+          ]
+        },
+        "media": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Media"
+          }
+        },
+        "features": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "INITIATE_PRE_AUTHORISATION",
+              "INITIATE_ACCOUNT_REQUEST",
+              "ACCOUNT_REQUEST_DETAILS",
+              "ACCOUNTS",
+              "ACCOUNT",
+              "ACCOUNT_TRANSACTIONS",
+              "ACCOUNT_STATEMENTS",
+              "ACCOUNT_STATEMENT",
+              "ACCOUNT_STATEMENT_FILE",
+              "ACCOUNT_SCHEDULED_PAYMENTS",
+              "ACCOUNT_DIRECT_DEBITS",
+              "ACCOUNT_PERIODIC_PAYMENTS",
+              "ACCOUNT_TRANSACTIONS_WITH_MERCHANT",
+              "IDENTITY",
+              "ACCOUNTS_WITHOUT_BALANCE",
+              "ACCOUNT_WITHOUT_BALANCE",
+              "ACCOUNT_BALANCES",
+              "INITIATE_SINGLE_PAYMENT_SORTCODE",
+              "EXISTING_PAYMENT_INITIATION_DETAILS",
+              "CREATE_SINGLE_PAYMENT_SORTCODE",
+              "EXISTING_PAYMENTS_DETAILS",
+              "INITIATE_DOMESTIC_SINGLE_PAYMENT",
+              "CREATE_DOMESTIC_SINGLE_PAYMENT",
+              "INITIATE_DOMESTIC_SINGLE_INSTANT_PAYMENT",
+              "CREATE_DOMESTIC_SINGLE_INSTANT_PAYMENT",
+              "INITIATE_DOMESTIC_VARIABLE_RECURRING_PAYMENT",
+              "CREATE_DOMESTIC_VARIABLE_RECURRING_PAYMENT",
+              "INITIATE_DOMESTIC_SCHEDULED_PAYMENT",
+              "CREATE_DOMESTIC_SCHEDULED_PAYMENT",
+              "INITIATE_DOMESTIC_PERIODIC_PAYMENT",
+              "CREATE_DOMESTIC_PERIODIC_PAYMENT",
+              "PERIODIC_PAYMENT_FREQUENCY_EXTENDED",
+              "INITIATE_INTERNATIONAL_VARIABLE_RECURRING_PAYMENT",
+              "CREATE_INTERNATIONAL_VARIABLE_RECURRING_PAYMENT",
+              "INITIATE_INTERNATIONAL_SCHEDULED_PAYMENT",
+              "CREATE_INTERNATIONAL_SCHEDULED_PAYMENT",
+              "INITIATE_INTERNATIONAL_PERIODIC_PAYMENT",
+              "CREATE_INTERNATIONAL_PERIODIC_PAYMENT",
+              "INITIATE_INTERNATIONAL_SINGLE_PAYMENT",
+              "CREATE_INTERNATIONAL_SINGLE_PAYMENT",
+              "INITIATE_BULK_PAYMENT",
+              "CREATE_BULK_PAYMENT",
+              "TRANSFER",
+              "OPEN_DATA_PERSONAL_CURRENT_ACCOUNTS",
+              "OPEN_DATA_ATMS"
+            ]
+          }
+        },
+        "monitoring": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/MonitoringFeatureStatus"
+          }
+        }
+      }
+    },
+    "IdentityAddress": {
+      "type": "object",
+      "properties": {
+        "addressLines": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "city": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "streetName": {
+          "type": "string"
+        },
+        "buildingNumber": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "BUSINESS",
+            "CORRESPONDENCE",
+            "DELIVERY_TO",
+            "MAIL_TO",
+            "PO_BOX",
+            "POSTAL",
+            "RESIDENTIAL",
+            "STATEMENT",
+            "UNKNOWN"
+          ]
+        },
+        "county": {
+          "type": "string"
+        }
+      }
+    },
+    "MultiAuthorisation": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "numberOfAuthorisationRequired": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "numberOfAuthorisationReceived": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "lastUpdatedDateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "expirationDateTime": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "OtherFeeRateType": {
+      "type": "object",
+      "properties": {
+        "Code": {
+          "type": "string"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        }
+      },
+      "description": "Other fee rate type code which is not available in the standard code set"
+    },
+    "ApiResponseOfUserDeleteResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/ResponseMeta"
+        },
+        "data": {
+          "$ref": "#/definitions/UserDeleteResponse"
+        },
+        "links": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Consent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "userUuid": {
+          "type": "string"
+        },
+        "applicationUserId": {
+          "type": "string"
+        },
+        "referenceId": {
+          "type": "string"
+        },
+        "institutionId": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "AWAITING_AUTHORIZATION",
+            "AWAITING_FURTHER_AUTHORIZATION",
+            "AWAITING_RE_AUTHORIZATION",
+            "AUTHORIZED",
+            "CONSUMED",
+            "REJECTED",
+            "REVOKED",
+            "FAILED",
+            "EXPIRED",
+            "UNKNOWN",
+            "INVALID",
+            "AWAITING_PRE_AUTHORIZATION",
+            "PRE_AUTHORIZED"
+          ]
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "transactionFrom": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "transactionTo": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "expiresAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "timeToExpireInMillis": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Deprecated. Use `timeToExpire` instead."
+        },
+        "timeToExpire": {
+          "type": "string",
+          "description": "ISO 8601 duration"
+        },
+        "featureScope": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "INITIATE_PRE_AUTHORISATION",
+              "INITIATE_ACCOUNT_REQUEST",
+              "ACCOUNT_REQUEST_DETAILS",
+              "ACCOUNTS",
+              "ACCOUNT",
+              "ACCOUNT_TRANSACTIONS",
+              "ACCOUNT_STATEMENTS",
+              "ACCOUNT_STATEMENT",
+              "ACCOUNT_STATEMENT_FILE",
+              "ACCOUNT_SCHEDULED_PAYMENTS",
+              "ACCOUNT_DIRECT_DEBITS",
+              "ACCOUNT_PERIODIC_PAYMENTS",
+              "ACCOUNT_TRANSACTIONS_WITH_MERCHANT",
+              "IDENTITY",
+              "ACCOUNTS_WITHOUT_BALANCE",
+              "ACCOUNT_WITHOUT_BALANCE",
+              "ACCOUNT_BALANCES",
+              "INITIATE_SINGLE_PAYMENT_SORTCODE",
+              "EXISTING_PAYMENT_INITIATION_DETAILS",
+              "CREATE_SINGLE_PAYMENT_SORTCODE",
+              "EXISTING_PAYMENTS_DETAILS",
+              "INITIATE_DOMESTIC_SINGLE_PAYMENT",
+              "CREATE_DOMESTIC_SINGLE_PAYMENT",
+              "INITIATE_DOMESTIC_SINGLE_INSTANT_PAYMENT",
+              "CREATE_DOMESTIC_SINGLE_INSTANT_PAYMENT",
+              "INITIATE_DOMESTIC_VARIABLE_RECURRING_PAYMENT",
+              "CREATE_DOMESTIC_VARIABLE_RECURRING_PAYMENT",
+              "INITIATE_DOMESTIC_SCHEDULED_PAYMENT",
+              "CREATE_DOMESTIC_SCHEDULED_PAYMENT",
+              "INITIATE_DOMESTIC_PERIODIC_PAYMENT",
+              "CREATE_DOMESTIC_PERIODIC_PAYMENT",
+              "PERIODIC_PAYMENT_FREQUENCY_EXTENDED",
+              "INITIATE_INTERNATIONAL_VARIABLE_RECURRING_PAYMENT",
+              "CREATE_INTERNATIONAL_VARIABLE_RECURRING_PAYMENT",
+              "INITIATE_INTERNATIONAL_SCHEDULED_PAYMENT",
+              "CREATE_INTERNATIONAL_SCHEDULED_PAYMENT",
+              "INITIATE_INTERNATIONAL_PERIODIC_PAYMENT",
+              "CREATE_INTERNATIONAL_PERIODIC_PAYMENT",
+              "INITIATE_INTERNATIONAL_SINGLE_PAYMENT",
+              "CREATE_INTERNATIONAL_SINGLE_PAYMENT",
+              "INITIATE_BULK_PAYMENT",
+              "CREATE_BULK_PAYMENT",
+              "TRANSFER",
+              "OPEN_DATA_PERSONAL_CURRENT_ACCOUNTS",
+              "OPEN_DATA_ATMS"
+            ]
+          }
+        },
+        "consentToken": {
+          "type": "string"
+        }
+      }
+    },
+    "ConsentDeleteResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "deleteStatus": {
+          "type": "string",
+          "enum": [
+            "SUCCESS",
+            "FAILED"
+          ]
+        },
+        "institutionId": {
+          "type": "string"
+        },
+        "institutionConsentId": {
+          "type": "string"
+        },
+        "creationDate": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "PersonalCurrentAccountData": {
+      "type": "object",
+      "properties": {
+        "Brand": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PersonalCurrentAccountBrand"
+          }
+        }
+      }
+    },
+    "NewApplicationUser": {
+      "type": "object",
+      "properties": {
+        "applicationUserId": {
+          "type": "string"
+        },
+        "referenceId": {
+          "type": "string"
+        }
+      }
+    },
+    "InlineResponse2001OtherATMServices": {
+      "type": "object",
+      "properties": {
+        "Code": {
+          "type": "string"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        }
+      },
+      "description": "Enter a new code , name and description for any other ATM Service"
+    },
+    "Identity": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "fullName": {
+          "type": "string"
+        },
+        "gender": {
+          "type": "string"
+        },
+        "birthdate": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "addresses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/IdentityAddress"
+          }
+        }
+      }
+    },
+    "ApplicationUser": {
+      "type": "object",
+      "properties": {
+        "uuid": {
+          "type": "string",
+          "description": "User UUID"
+        },
+        "applicationUuid": {
+          "type": "string"
+        },
+        "applicationUserId": {
+          "type": "string"
+        },
+        "referenceId": {
+          "type": "string"
+        },
+        "institutionConsents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InstitutionConsent"
+          }
+        }
+      }
+    },
+    "AgeEligibility": {
+      "type": "object",
+      "properties": {
+        "MaximumAge": {
+          "type": "number",
+          "format": "float"
+        },
+        "MinimumAge": {
+          "type": "number",
+          "format": "float"
+        },
+        "Notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Age eligibility that a person should be to hold this account"
+    },
+    "ApiListResponseOfInstitution": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/ResponseListMeta"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Institution"
+          }
+        },
+        "links": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "PersonalCurrentAccountBrand": {
+      "type": "object",
+      "properties": {
+        "BrandName": {
+          "type": "string"
+        },
+        "PCA": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PersonalCurrentAccountPCA"
+          }
+        }
+      },
+      "description": "Brand registered by the banking group at https://register.fca.org.uk/"
+    },
+    "Balances": {
+      "type": "object",
+      "properties": {
+        "mainBalanceAmount": {
+          "$ref": "#/definitions/Amount"
+        },
+        "balances": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AccountBalance"
+          }
+        }
+      }
+    },
+    "OtherBankInterestType": {
+      "type": "object",
+      "properties": {
+        "Code": {
+          "type": "string"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        }
+      },
+      "description": "Other interest rate types which are not available in the standard code list"
+    },
+    "Next": {
+      "type": "object",
+      "properties": {
+        "before": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "cursor": {
+          "type": "string"
+        },
+        "from": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "limit": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "PaymentAuthorisationRequest": {
+      "type": "object",
+      "required": [
+        "callback",
+        "institutionId",
+        "oneTimeToken",
+        "paymentRequest"
+      ],
+      "properties": {
+        "userUuid": {
+          "type": "string"
+        },
+        "applicationUserId": {
+          "type": "string"
+        },
+        "forwardParameters": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "institutionId": {
+          "type": "string"
+        },
+        "callback": {
+          "type": "string"
+        },
+        "oneTimeToken": {
+          "type": "boolean",
+          "example": false
+        },
+        "totalMaxAmount": {
+          "type": "number"
+        },
+        "totalMaxAmountFrequency": {
+          "type": "string",
+          "enum": [
+            "DAILY",
+            "WEEKLY",
+            "MONTHLY",
+            "YEARLY"
+          ]
+        },
+        "maxAmountPerRequest": {
+          "type": "number"
+        },
+        "startsAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "expiresAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "allowOverdraft": {
+          "type": "boolean",
+          "example": false
+        },
+        "paymentRequest": {
+          "$ref": "#/definitions/PaymentRequest"
+        }
+      }
+    },
+    "PreAuthorisationRequest": {
+      "type": "object",
+      "required": [
+        "callback",
+        "institutionId",
+        "oneTimeToken"
+      ],
+      "properties": {
+        "userUuid": {
+          "type": "string"
+        },
+        "applicationUserId": {
+          "type": "string"
+        },
+        "forwardParameters": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "institutionId": {
+          "type": "string"
+        },
+        "callback": {
+          "type": "string"
+        },
+        "oneTimeToken": {
+          "type": "boolean",
+          "example": false
+        }
+      }
+    },
+    "ApiResponseOfConsentDeleteResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/ResponseMeta"
+        },
+        "data": {
+          "$ref": "#/definitions/ConsentDeleteResponse"
+        },
+        "links": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Country": {
+      "type": "object",
+      "properties": {
+        "countryCode2": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        }
+      }
+    },
+    "TransactionHash": {
+      "type": "object",
+      "properties": {
+        "hash": {
+          "type": "string",
+          "description": "hash"
+        }
+      }
+    },
+    "ApiError": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "400",
+            "401",
+            "402",
+            "403",
+            "404",
+            "405",
+            "406",
+            "407",
+            "408",
+            "409",
+            "410",
+            "411",
+            "412",
+            "413",
+            "414",
+            "415",
+            "416",
+            "417",
+            "418",
+            "419",
+            "420",
+            "421",
+            "422",
+            "423",
+            "424",
+            "426",
+            "428",
+            "429",
+            "431",
+            "451",
+            "500",
+            "501",
+            "502",
+            "503",
+            "504",
+            "505",
+            "506",
+            "507",
+            "508",
+            "509",
+            "510",
+            "511"
+          ]
+        },
+        "tracingId": {
+          "type": "string"
+        }
+      }
+    },
+    "OtherType": {
+      "type": "object",
+      "properties": {
+        "Code": {
+          "type": "string"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        }
+      },
+      "description": "Non-standard eligibility type code."
+    },
+    "BulkUserDeleteDetails": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "invalidApplicationUserIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "invalidUserUuids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "IN_PROGRESS",
+            "COMPLETED",
+            "FAILED"
+          ]
+        },
+        "startedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "users": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UserDeleteResponse"
+          }
+        },
+        "links": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Application": {
+      "type": "object",
+      "properties": {
+        "uuid": {
+          "type": "string",
+          "description": "Application UUID"
+        },
+        "name": {
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean",
+          "example": false
+        },
+        "authCallbacks": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "institutions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Institution"
+          }
+        },
+        "media": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Media"
+          }
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updated": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "AccountName": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "PersonalCurrentAccountPCA": {
+      "type": "object",
+      "properties": {
+        "Identification": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "PCAMarketingState": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PersonalCurrentAccountPCAMarketingState"
+          }
+        },
+        "Segment": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Site": {
+      "type": "object",
+      "properties": {
+        "Identification": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        }
+      },
+      "description": "Used by a Financial Institution internally to identify the location of an ATM."
+    },
+    "OtherFeeType": {
+      "type": "object",
+      "properties": {
+        "Code": {
+          "type": "string"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        }
+      },
+      "description": "Other Fee type which is not available in the standard code set"
+    },
+    "InstitutionConsent": {
+      "type": "object",
+      "properties": {
+        "institutionId": {
+          "type": "string"
+        }
+      }
+    },
+    "URI": {
+      "type": "object",
+      "properties": {
+        "absolute": {
+          "type": "boolean"
+        },
+        "authority": {
+          "type": "string"
+        },
+        "fragment": {
+          "type": "string"
+        },
+        "host": {
+          "type": "string"
+        },
+        "opaque": {
+          "type": "boolean"
+        },
+        "path": {
+          "type": "string"
+        },
+        "port": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "query": {
+          "type": "string"
+        },
+        "rawAuthority": {
+          "type": "string"
+        },
+        "rawFragment": {
+          "type": "string"
+        },
+        "rawPath": {
+          "type": "string"
+        },
+        "rawQuery": {
+          "type": "string"
+        },
+        "rawSchemeSpecificPart": {
+          "type": "string"
+        },
+        "rawUserInfo": {
+          "type": "string"
+        },
+        "scheme": {
+          "type": "string"
+        },
+        "schemeSpecificPart": {
+          "type": "string"
+        },
+        "userInfo": {
+          "type": "string"
+        }
+      }
+    },
+    "OtherApplicationFrequency": {
+      "type": "object",
+      "properties": {
+        "Code": {
+          "type": "string"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        }
+      },
+      "description": "Other application frequencies that are not available in the standard code list"
+    },
+    "URL": {
+      "type": "object",
+      "properties": {
+        "authority": {
+          "type": "string"
+        },
+        "content": {
+          "type": "object"
+        },
+        "defaultPort": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "file": {
+          "type": "string"
+        },
+        "host": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "port": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "protocol": {
+          "type": "string"
+        },
+        "query": {
+          "type": "string"
+        },
+        "ref": {
+          "type": "string"
+        },
+        "userInfo": {
+          "type": "string"
+        }
+      }
+    },
+    "Merchant": {
+      "type": "object",
+      "properties": {
+        "merchantName": {
+          "type": "string"
+        },
+        "merchantCategoryCode": {
+          "type": "string"
+        }
+      }
+    },
+    "CreditInterestTierBandSet": {
+      "type": "object",
+      "properties": {
+        "CalculationMethod": {
+          "type": "string",
+          "enum": [
+            "Compound",
+            "SimpleInterest"
+          ]
+        },
+        "CreditInterestEligibility": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CreditInterestCreditInterestEligibility"
+          }
+        },
+        "Destination": {
+          "type": "string",
+          "enum": [
+            "PayAway",
+            "SelfCredit"
+          ]
+        },
+        "Notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "TierBand": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CreditInterestTierBand"
+          }
+        },
+        "TierBandMethod": {
+          "type": "string",
+          "enum": [
+            "Tiered",
+            "Whole"
+          ]
+        }
+      },
+      "description": "The group of tiers or bands for which credit interest can be applied."
+    },
+    "ApiListResponseOfPaymentResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/ResponseListMeta"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PaymentResponse"
+          }
+        },
+        "links": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "AccountInfo": {
+      "type": "object",
+      "properties": {
+        "accountId": {
+          "type": "string"
+        },
+        "accountIdentification": {
+          "$ref": "#/definitions/AccountIdentification"
+        }
+      }
+    },
+    "ApiResponseOfAuthorisationRequestResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/ResponseMeta"
+        },
+        "data": {
+          "$ref": "#/definitions/AuthorisationRequestResponse"
+        },
+        "links": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ProprietaryBankTransactionCode": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "issuer": {
+          "type": "string"
+        }
+      }
+    },
+    "AddressDetails": {
+      "type": "object",
+      "properties": {
+        "addressLine": {
+          "type": "string"
+        }
+      }
+    },
+    "ApiResponseOfPaymentResponses": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/ResponseMeta"
+        },
+        "data": {
+          "$ref": "#/definitions/PaymentResponses"
+        },
+        "links": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Amount": {
+      "type": "object",
+      "required": [
+        "amount",
+        "currency"
+      ],
+      "properties": {
+        "amount": {
+          "type": "number"
+        },
+        "currency": {
+          "type": "string",
+          "description": "ISO 4217 currency code"
+        }
+      }
+    },
+    "IsoBankTransactionCode": {
+      "type": "object",
+      "properties": {
+        "domainCode": {
+          "$ref": "#/definitions/IsoCodeDetails"
+        },
+        "familyCode": {
+          "$ref": "#/definitions/IsoCodeDetails"
+        },
+        "subFamilyCode": {
+          "$ref": "#/definitions/IsoCodeDetails"
+        }
+      }
+    },
+    "CurrencyExchange": {
+      "type": "object",
+      "properties": {
+        "sourceCurrency": {
+          "type": "string",
+          "description": "ISO 4217 currency code denoting the currency of the creditor"
+        },
+        "targetCurrency": {
+          "type": "string",
+          "description": "ISO 4217 currency code denoting the currency of the debtor"
+        },
+        "unitCurrency": {
+          "type": "string",
+          "description": "ISO 4217 currency code denoting the currency used to set the exchange rate (GBP is the unit currency in the conversion of 1 GBP = x CUR)"
+        },
+        "exchangeRate": {
+          "type": "number",
+          "description": "Currency exchange rate"
+        }
+      }
+    },
+    "YapilyAccessToken": {
+      "type": "object",
+      "properties": {
+        "access_token": {
+          "type": "string"
+        },
+        "expires_in": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "jti": {
+          "type": "string"
+        },
+        "scope": {
+          "type": "string"
+        },
+        "token_type": {
+          "type": "string"
+        }
+      }
+    },
+    "IDVerificationCheck": {
+      "type": "object",
+      "properties": {
+        "Notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "URL": {
+          "type": "string"
+        }
+      },
+      "description": "Identity verification criteria that the account holder will need to meet to take out the PCA product"
+    },
+    "CreditInterestTierBand": {
+      "type": "object",
+      "properties": {
+        "AER": {
+          "type": "string"
+        },
+        "ApplicationFrequency": {
+          "type": "string",
+          "enum": [
+            "PerAcademicTerm",
+            "Daily",
+            "HalfYearly",
+            "Monthly",
+            "Other",
+            "Quarterly",
+            "PerStatementDate",
+            "Weekly",
+            "Yearly"
+          ]
+        },
+        "BankInterestRate": {
+          "type": "string"
+        },
+        "BankInterestRateType": {
+          "type": "string",
+          "enum": [
+            "LinkedBaseRate",
+            "Gross",
+            "Net",
+            "Other"
+          ]
+        },
+        "CalculationFrequency": {
+          "type": "string",
+          "enum": [
+            "PerAcademicTerm",
+            "Daily",
+            "HalfYearly",
+            "Monthly",
+            "Other",
+            "Quarterly",
+            "PerStatementDate",
+            "Weekly",
+            "Yearly"
+          ]
+        },
+        "DepositInterestAppliedCoverage": {
+          "type": "string",
+          "enum": [
+            "Tiered",
+            "Whole"
+          ]
+        },
+        "FixedVariableInterestRateType": {
+          "type": "string",
+          "enum": [
+            "Fixed",
+            "Variable"
+          ]
+        },
+        "Identification": {
+          "type": "string"
+        },
+        "Notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "OtherApplicationFrequency": {
+          "$ref": "#/definitions/OtherApplicationFrequency"
+        },
+        "OtherBankInterestType": {
+          "$ref": "#/definitions/OtherBankInterestType"
+        },
+        "OtherCalculationFrequency": {
+          "$ref": "#/definitions/OtherCalculationFrequency"
+        },
+        "TierValueMaximum": {
+          "type": "string"
+        },
+        "TierValueMinimum": {
+          "type": "string"
+        }
+      },
+      "description": "Tier Band Details"
+    },
+    "TransactionAmount": {
+      "type": "object",
+      "required": [
+        "amount",
+        "currency"
+      ],
+      "properties": {
+        "amount": {
+          "type": "number"
+        },
+        "currency": {
+          "type": "string",
+          "description": "ISO 4217 currency code"
+        }
+      }
+    },
+    "ResponseEntity": {
+      "type": "object",
+      "properties": {
+        "body": {
+          "type": "object"
+        },
+        "statusCode": {
+          "type": "string",
+          "enum": [
+            "100",
+            "101",
+            "102",
+            "103",
+            "200",
+            "201",
+            "202",
+            "203",
+            "204",
+            "205",
+            "206",
+            "207",
+            "208",
+            "226",
+            "300",
+            "301",
+            "302",
+            "303",
+            "304",
+            "305",
+            "307",
+            "308",
+            "400",
+            "401",
+            "402",
+            "403",
+            "404",
+            "405",
+            "406",
+            "407",
+            "408",
+            "409",
+            "410",
+            "411",
+            "412",
+            "413",
+            "414",
+            "415",
+            "416",
+            "417",
+            "418",
+            "419",
+            "420",
+            "421",
+            "422",
+            "423",
+            "424",
+            "426",
+            "428",
+            "429",
+            "431",
+            "451",
+            "500",
+            "501",
+            "502",
+            "503",
+            "504",
+            "505",
+            "506",
+            "507",
+            "508",
+            "509",
+            "510",
+            "511"
+          ]
+        },
+        "statusCodeValue": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "OverdraftOverdraftFeesCharges1": {
+      "type": "object",
+      "properties": {
+        "OverdraftFeeChargeCap": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OverdraftOverdraftFeeChargeCap"
+          }
+        },
+        "OverdraftFeeChargeDetail": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OverdraftOverdraftFeeChargeDetail"
+          }
+        }
+      },
+      "description": "Overdraft fees and charges details"
+    },
+    "MerchantInfo": {
+      "type": "object",
+      "required": [
+        "address",
+        "categoryCode",
+        "customerId"
+      ],
+      "properties": {
+        "categoryCode": {
+          "type": "string"
+        },
+        "customerId": {
+          "type": "string"
+        },
+        "address": {
+          "$ref": "#/definitions/Address"
+        }
+      }
+    },
+    "ApiListResponseOfBulkUserDelete": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/ResponseListMeta"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BulkUserDelete"
+          }
+        },
+        "links": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ApiResponseOfListOfPersonalCurrentAccountData": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/ResponseMeta"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PersonalCurrentAccountData"
+          }
+        },
+        "links": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "UserDeleteResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "deleteStatus": {
+          "type": "string",
+          "enum": [
+            "SUCCESS",
+            "FAILED"
+          ]
+        },
+        "creationDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "userConsents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ConsentDeleteResponse"
+          }
+        }
+      }
+    },
+    "ApiListResponseOfAccountStatement": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/ResponseListMeta"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AccountStatement"
+          }
+        },
+        "links": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "GeographicCoordinates1": {
+      "type": "object",
+      "properties": {
+        "Latitude": {
+          "type": "string"
+        },
+        "Longitude": {
+          "type": "string"
+        }
+      },
+      "description": "Location on the earth specified by two numbers representing vertical and horizontal position."
+    },
+    "BulkPaymentAuthorisationRequest": {
+      "type": "object",
+      "required": [
+        "callback",
+        "institutionId",
+        "oneTimeToken",
+        "paymentRequest"
+      ],
+      "properties": {
+        "userUuid": {
+          "type": "string"
+        },
+        "applicationUserId": {
+          "type": "string"
+        },
+        "forwardParameters": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "institutionId": {
+          "type": "string"
+        },
+        "callback": {
+          "type": "string"
+        },
+        "oneTimeToken": {
+          "type": "boolean",
+          "example": false
+        },
+        "paymentRequest": {
+          "$ref": "#/definitions/BulkPaymentRequest"
+        }
+      }
+    },
+    "Eligibility": {
+      "type": "object",
+      "properties": {
+        "AgeEligibility": {
+          "$ref": "#/definitions/AgeEligibility"
+        },
+        "CreditCheck": {
+          "$ref": "#/definitions/CreditCheck"
+        },
+        "IDVerificationCheck": {
+          "$ref": "#/definitions/IDVerificationCheck"
+        },
+        "OtherEligibility": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EligibilityOtherEligibility"
+          }
+        },
+        "ResidencyEligibility": {
+          "$ref": "#/definitions/ResidencyEligibility"
+        }
+      },
+      "description": "Eligibility details for this product i.e. the criteria that an accountholder has to meet in order to be eligible for the PCA product."
+    },
+    "CreditLine": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "AVAILABLE",
+            "CREDIT",
+            "EMERGENCY",
+            "PRE_AGREED",
+            "TEMPORARY",
+            "OTHER",
+            "UNKNOWN"
+          ]
+        },
+        "creditLineAmount": {
+          "$ref": "#/definitions/Amount"
+        }
+      }
+    },
+    "GeoLocation1": {
+      "type": "object",
+      "properties": {
+        "GeographicCoordinates": {
+          "$ref": "#/definitions/GeographicCoordinates1"
+        }
+      },
+      "description": "Geographic location of the ATM specified by geographic coordinates or UTM coordinates."
+    },
+    "InlineResponse2001OtherAccessibility": {
+      "type": "object",
+      "properties": {
+        "Code": {
+          "type": "string"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        }
+      },
+      "description": "Enter a new code , name and description for any other ATM accessibility options"
+    },
+    "IsoCodeDetails": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "ApiResponseOfIdentity": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/ResponseMeta"
+        },
+        "data": {
+          "$ref": "#/definitions/Identity"
+        },
+        "links": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ApiListResponseOfTransaction": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/ResponseListMeta"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Transaction"
+          }
+        },
+        "links": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ChargeDetails": {
+      "type": "object",
+      "properties": {
+        "chargeAmount": {
+          "description": "Amount paid by charge bearer",
+          "$ref": "#/definitions/Amount"
+        }
+      }
+    },
+    "OverdraftOverdraftFeeChargeDetail": {
+      "type": "object",
+      "properties": {
+        "ApplicationFrequency": {
+          "type": "string",
+          "enum": [
+            "AccountClosing",
+            "AccountOpening",
+            "AcademicTerm",
+            "ChargingPeriod",
+            "Daily",
+            "PerItem",
+            "Monthly",
+            "OnAccountAnniversary",
+            "Other",
+            "PerHour",
+            "PerOccurrence",
+            "PerSheet",
+            "PerTransaction",
+            "PerTransactionAmount",
+            "PerTransactionPercentage",
+            "Quarterly",
+            "SixMonthly",
+            "StatementMonthly",
+            "Weekly",
+            "Yearly"
+          ]
+        },
+        "CalculationFrequency": {
+          "type": "string",
+          "enum": [
+            "AccountClosing",
+            "AccountOpening",
+            "AcademicTerm",
+            "ChargingPeriod",
+            "Daily",
+            "PerItem",
+            "Monthly",
+            "OnAccountAnniversary",
+            "Other",
+            "PerHour",
+            "PerOccurrence",
+            "PerSheet",
+            "PerTransaction",
+            "PerTransactionAmount",
+            "PerTransactionPercentage",
+            "Quarterly",
+            "SixMonthly",
+            "StatementMonthly",
+            "Weekly",
+            "Yearly"
+          ]
+        },
+        "FeeAmount": {
+          "type": "string"
+        },
+        "FeeRate": {
+          "type": "string"
+        },
+        "FeeRateType": {
+          "type": "string",
+          "enum": [
+            "LinkedBaseRate",
+            "Gross",
+            "Net",
+            "Other"
+          ]
+        },
+        "FeeType": {
+          "type": "string",
+          "enum": [
+            "ArrangedOverdraft",
+            "EmergencyBorrowing",
+            "BorrowingItem",
+            "OverdraftRenewal",
+            "AnnualReview",
+            "OverdraftSetup",
+            "Surcharge",
+            "TempOverdraft",
+            "UnauthorisedBorrowing",
+            "UnauthorisedPaidTrans",
+            "Other",
+            "UnauthorisedUnpaidTrans"
+          ]
+        },
+        "IncrementalBorrowingAmount": {
+          "type": "string"
+        },
+        "Notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "OtherApplicationFrequency": {
+          "$ref": "#/definitions/OtherApplicationFrequency"
+        },
+        "OtherCalculationFrequency": {
+          "$ref": "#/definitions/OtherCalculationFrequency"
+        },
+        "OtherFeeRateType": {
+          "$ref": "#/definitions/OtherFeeRateType"
+        },
+        "OtherFeeType": {
+          "$ref": "#/definitions/OtherFeeType"
+        },
+        "OverdraftControlIndicator": {
+          "type": "boolean"
+        },
+        "OverdraftFeeChargeCap": {
+          "$ref": "#/definitions/OverdraftOverdraftFeeChargeCap"
+        }
+      },
+      "description": "Details about the fees/charges"
+    },
+    "StatementReference": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "TransferRequest": {
+      "type": "object",
+      "properties": {
+        "accountId": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "number"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "reference": {
+          "type": "string"
+        },
+        "transferReferenceId": {
+          "type": "string"
+        }
+      }
+    },
+    "ApiResponseOfConsent": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/ResponseMeta"
+        },
+        "data": {
+          "$ref": "#/definitions/Consent"
+        },
+        "links": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "PaymentStatusDetails": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "PENDING",
+            "FAILED",
+            "DECLINED",
+            "COMPLETED",
+            "COMPLETED_SETTLEMENT_IN_PROCESS",
+            "EXPIRED",
+            "UNKNOWN",
+            "ACTIVE",
+            "INACTIVE"
+          ]
+        },
+        "statusReason": {
+          "type": "string"
+        },
+        "statusReasonDescription": {
+          "type": "string"
+        },
+        "statusUpdateDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "multiAuthorisationStatus": {
+          "$ref": "#/definitions/MultiAuthorisation"
+        }
+      }
+    },
+    "Pagination": {
+      "type": "object",
+      "properties": {
+        "next": {
+          "$ref": "#/definitions/Next"
+        },
+        "self": {
+          "$ref": "#/definitions/FilterAndSort"
+        },
+        "totalCount": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "ATMMapServiceLinks": {
+      "type": "object",
+      "properties": {
+        "bingMapsUrl": {
+          "type": "string"
+        },
+        "googleMapsUrl": {
+          "type": "string"
+        },
+        "hereMapsUrl": {
+          "type": "string"
+        }
+      },
+      "description": "Links on popular map services pointing the ATM Location on the earth."
+    },
+    "SortCodePaymentAuthRequest": {
+      "type": "object",
+      "required": [
+        "callback",
+        "institutionId",
+        "oneTimeToken",
+        "paymentRequest"
+      ],
+      "properties": {
+        "userUuid": {
+          "type": "string"
+        },
+        "applicationUserId": {
+          "type": "string"
+        },
+        "forwardParameters": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "institutionId": {
+          "type": "string"
+        },
+        "callback": {
+          "type": "string"
+        },
+        "oneTimeToken": {
+          "type": "boolean",
+          "example": false
+        },
+        "paymentRequest": {
+          "$ref": "#/definitions/SortCodePaymentRequest"
+        }
+      }
+    },
+    "ResponseMeta": {
+      "type": "object",
+      "properties": {
+        "tracingId": {
+          "type": "string"
+        }
+      }
+    },
+    "ApiListResponseOfAccount": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/ResponseListMeta"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Account"
+          }
+        },
+        "links": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "PaymentResponses": {
+      "type": "object",
+      "properties": {
+        "payments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PaymentResponse"
+          }
+        }
+      }
+    },
+    "OneTimeTokenRequest": {
+      "type": "object",
+      "required": [
+        "oneTimeToken"
+      ],
+      "properties": {
+        "oneTimeToken": {
+          "type": "string"
+        }
+      }
+    },
+    "ApiResponseOfBalances": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/ResponseMeta"
+        },
+        "data": {
+          "$ref": "#/definitions/Balances"
+        },
+        "links": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ResidencyEligibility": {
+      "type": "object",
+      "properties": {
+        "Notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "OtherResidencyType": {
+          "$ref": "#/definitions/OtherResidencyType"
+        },
+        "ResidencyIncluded": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "ResidencyType": {
+          "type": "string",
+          "enum": [
+            "Householder",
+            "Other"
+          ]
+        }
+      },
+      "description": "Countries in which an accountholder can reside and, therefore, be eligible to open an account"
+    },
+    "Payer": {
+      "type": "object",
+      "required": [
+        "accountIdentifications",
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "address": {
+          "$ref": "#/definitions/Address"
+        },
+        "accountIdentifications": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AccountIdentification"
+          }
+        }
+      }
+    },
+    "CreditInterestCreditInterestEligibility": {
+      "type": "object",
+      "properties": {
+        "Amount": {
+          "type": "string"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "Indicator": {
+          "type": "boolean"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "OtherType": {
+          "$ref": "#/definitions/OtherType"
+        },
+        "Period": {
+          "type": "string",
+          "enum": [
+            "Day",
+            "Half Year",
+            "Month",
+            "Quarter",
+            "Week",
+            "AcademicTerm",
+            "Year"
+          ]
+        },
+        "Textual": {
+          "type": "string"
+        },
+        "Type": {
+          "type": "string",
+          "enum": [
+            "DirectDebits",
+            "ExistingCustomers",
+            "MinimumOperatingBalance",
+            "MinimumDeposit",
+            "NewCustomersOnly",
+            "PreviousBankruptcyAllowed",
+            "Other",
+            "StudentsOnly",
+            "SoleStudentAccount",
+            "SoleUkAccount",
+            "SwitchersOnly",
+            "UCASFulltimeTwoYears"
+          ]
+        }
+      },
+      "description": "Eligibility for credit interest"
+    },
+    "AccountRequest": {
+      "type": "object",
+      "properties": {
+        "transactionFrom": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "transactionTo": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "expiresAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "accountIdentifiers": {
+          "$ref": "#/definitions/AccountInfo"
+        },
+        "accountIdentifiersForTransaction": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AccountInfo"
+          }
+        },
+        "accountIdentifiersForBalance": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AccountInfo"
+          }
+        },
+        "featureScope": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "INITIATE_PRE_AUTHORISATION",
+              "INITIATE_ACCOUNT_REQUEST",
+              "ACCOUNT_REQUEST_DETAILS",
+              "ACCOUNTS",
+              "ACCOUNT",
+              "ACCOUNT_TRANSACTIONS",
+              "ACCOUNT_STATEMENTS",
+              "ACCOUNT_STATEMENT",
+              "ACCOUNT_STATEMENT_FILE",
+              "ACCOUNT_SCHEDULED_PAYMENTS",
+              "ACCOUNT_DIRECT_DEBITS",
+              "ACCOUNT_PERIODIC_PAYMENTS",
+              "ACCOUNT_TRANSACTIONS_WITH_MERCHANT",
+              "IDENTITY",
+              "ACCOUNTS_WITHOUT_BALANCE",
+              "ACCOUNT_WITHOUT_BALANCE",
+              "ACCOUNT_BALANCES",
+              "INITIATE_SINGLE_PAYMENT_SORTCODE",
+              "EXISTING_PAYMENT_INITIATION_DETAILS",
+              "CREATE_SINGLE_PAYMENT_SORTCODE",
+              "EXISTING_PAYMENTS_DETAILS",
+              "INITIATE_DOMESTIC_SINGLE_PAYMENT",
+              "CREATE_DOMESTIC_SINGLE_PAYMENT",
+              "INITIATE_DOMESTIC_SINGLE_INSTANT_PAYMENT",
+              "CREATE_DOMESTIC_SINGLE_INSTANT_PAYMENT",
+              "INITIATE_DOMESTIC_VARIABLE_RECURRING_PAYMENT",
+              "CREATE_DOMESTIC_VARIABLE_RECURRING_PAYMENT",
+              "INITIATE_DOMESTIC_SCHEDULED_PAYMENT",
+              "CREATE_DOMESTIC_SCHEDULED_PAYMENT",
+              "INITIATE_DOMESTIC_PERIODIC_PAYMENT",
+              "CREATE_DOMESTIC_PERIODIC_PAYMENT",
+              "PERIODIC_PAYMENT_FREQUENCY_EXTENDED",
+              "INITIATE_INTERNATIONAL_VARIABLE_RECURRING_PAYMENT",
+              "CREATE_INTERNATIONAL_VARIABLE_RECURRING_PAYMENT",
+              "INITIATE_INTERNATIONAL_SCHEDULED_PAYMENT",
+              "CREATE_INTERNATIONAL_SCHEDULED_PAYMENT",
+              "INITIATE_INTERNATIONAL_PERIODIC_PAYMENT",
+              "CREATE_INTERNATIONAL_PERIODIC_PAYMENT",
+              "INITIATE_INTERNATIONAL_SINGLE_PAYMENT",
+              "CREATE_INTERNATIONAL_SINGLE_PAYMENT",
+              "INITIATE_BULK_PAYMENT",
+              "CREATE_BULK_PAYMENT",
+              "TRANSFER",
+              "OPEN_DATA_PERSONAL_CURRENT_ACCOUNTS",
+              "OPEN_DATA_ATMS"
+            ]
+          }
+        }
+      }
+    },
+    "ApiListResponseOfConsent": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/ResponseListMeta"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Consent"
+          }
+        },
+        "links": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "OverdraftOverdraftFeeChargeCap": {
+      "type": "object",
+      "properties": {
+        "CappingPeriod": {
+          "type": "string",
+          "enum": [
+            "Day",
+            "Half Year",
+            "Month",
+            "Quarter",
+            "Week",
+            "AcademicTerm",
+            "Year"
+          ]
+        },
+        "FeeCapAmount": {
+          "type": "string"
+        },
+        "FeeCapOccurrence": {
+          "type": "number",
+          "format": "float"
+        },
+        "FeeType": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "ArrangedOverdraft",
+              "EmergencyBorrowing",
+              "BorrowingItem",
+              "OverdraftRenewal",
+              "AnnualReview",
+              "OverdraftSetup",
+              "Surcharge",
+              "TempOverdraft",
+              "UnauthorisedBorrowing",
+              "UnauthorisedPaidTrans",
+              "Other",
+              "UnauthorisedUnpaidTrans"
+            ]
+          }
+        },
+        "MinMaxType": {
+          "type": "string",
+          "enum": [
+            "Minimum",
+            "Maximum"
+          ]
+        },
+        "Notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "OtherFeeType": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OverdraftOtherFeeType"
+          }
+        },
+        "OverdraftControlIndicator": {
+          "type": "boolean"
+        }
+      },
+      "description": "Details about any caps (maximum charges) that apply to a particular fee/charge"
+    },
+    "ATMOpenDataBrand": {
+      "type": "object",
+      "properties": {
+        "ATM": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InlineResponse2001ATM"
+          }
+        },
+        "BrandName": {
+          "type": "string"
+        }
+      },
+      "description": "Brand of the Acquirer of transactions captured by the ATM"
+    },
+    "Media": {
+      "type": "object",
+      "properties": {
+        "source": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "Resource": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "file": {
+          "type": "file"
+        },
+        "filename": {
+          "type": "string"
+        },
+        "inputStream": {
+          "$ref": "#/definitions/InputStream"
+        },
+        "open": {
+          "type": "boolean"
+        },
+        "readable": {
+          "type": "boolean"
+        },
+        "uri": {
+          "$ref": "#/definitions/URI"
+        },
+        "url": {
+          "$ref": "#/definitions/URL"
+        }
+      }
+    },
+    "ATMOpenDataResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ATMOpenData"
+          }
+        }
+      }
+    },
+    "CreditCheck": {
+      "type": "object",
+      "properties": {
+        "Notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "ScoringType": {
+          "type": "string",
+          "enum": [
+            "Hard",
+            "Soft"
+          ]
+        }
+      },
+      "description": "Credit check criteria that the account holder will need to meet to take out the PCA product"
+    },
+    "OverdraftOverdraftFeesCharges": {
+      "type": "object",
+      "properties": {
+        "OverdraftFeeChargeCap": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OverdraftOverdraftFeeChargeCap"
+          }
+        },
+        "OverdraftFeeChargeDetail": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OverdraftOverdraftFeeChargeDetail"
+          }
+        }
+      },
+      "description": "Overdraft fees and charges"
+    },
+    "InlineResponse2001ATM": {
+      "type": "object",
+      "properties": {
+        "ATMServices": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "Balance",
+              "BillPayments",
+              "CashDeposits",
+              "CharityDonation",
+              "ChequeDeposits",
+              "CashWithdrawal",
+              "EnvelopeDeposit",
+              "FastCash",
+              "MobileBankingRegistration",
+              "MobilePaymentRegistration",
+              "MobilePhoneTopUp",
+              "OrderStatement",
+              "Other",
+              "PINActivation",
+              "PINChange",
+              "PINUnblock",
+              "MiniStatement"
+            ]
+          }
+        },
+        "Access24HoursIndicator": {
+          "type": "boolean"
+        },
+        "Accessibility": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "AudioCashMachine",
+              "AutomaticDoors",
+              "ExternalRamp",
+              "InductionLoop",
+              "InternalRamp",
+              "LevelAccess",
+              "LowerLevelCounter",
+              "Other",
+              "WheelchairAccess"
+            ]
+          }
+        },
+        "Branch": {
+          "$ref": "#/definitions/Branch"
+        },
+        "Identification": {
+          "type": "string"
+        },
+        "Location": {
+          "$ref": "#/definitions/Location"
+        },
+        "MinimumPossibleAmount": {
+          "type": "string"
+        },
+        "Note": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "OtherATMServices": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InlineResponse2001OtherATMServices"
+          }
+        },
+        "OtherAccessibility": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InlineResponse2001OtherAccessibility"
+          }
+        },
+        "SupportedCurrencies": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "SupportedLanguages": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "ATM information."
+    },
+    "CreditInterest": {
+      "type": "object",
+      "properties": {
+        "TierBandSet": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CreditInterestTierBandSet"
+          }
+        }
+      },
+      "description": "Details about the interest that may be payable to the PCA account holders"
+    },
+    "ApiResponseOfAccountStatement": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/ResponseMeta"
+        },
+        "data": {
+          "$ref": "#/definitions/AccountStatement"
+        },
+        "links": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Transaction": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Transaction Id returned by the institution if present"
+        },
+        "date": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Transaction date as defined by the institution"
+        },
+        "bookingDateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date and (if available) time that transaction is posted"
+        },
+        "valueDateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The actual or expected date and time transaction is cleared"
+        },
+        "status": {
+          "type": "string",
+          "description": "The status of the transaction",
+          "enum": [
+            "BOOKED",
+            "PENDING"
+          ]
+        },
+        "amount": {
+          "type": "number",
+          "description": "Deprecated. Use the amount value in `transactionAmount` instead"
+        },
+        "currency": {
+          "type": "string",
+          "description": "Deprecated. Use the currency value in `transactionAmount` instead"
+        },
+        "transactionAmount": {
+          "$ref": "#/definitions/TransactionAmount"
+        },
+        "currencyExchange": {
+          "$ref": "#/definitions/CurrencyExchange"
+        },
+        "chargeDetails": {
+          "description": "If present, contains details of any charges applied during this transaction",
+          "$ref": "#/definitions/ChargeDetails"
+        },
+        "reference": {
+          "type": "string",
+          "description": "Transaction reference"
+        },
+        "statementReferences": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/StatementReference"
+          }
+        },
+        "description": {
+          "type": "string",
+          "description": "Unstructured text containing details of the transaction. Usage varies according to the institution"
+        },
+        "transactionInformation": {
+          "type": "array",
+          "description": "Further information related to the transaction. Usage varies according to the institution",
+          "items": {
+            "type": "string"
+          }
+        },
+        "addressDetails": {
+          "$ref": "#/definitions/AddressDetails"
+        },
+        "isoBankTransactionCode": {
+          "$ref": "#/definitions/IsoBankTransactionCode"
+        },
+        "proprietaryBankTransactionCode": {
+          "$ref": "#/definitions/ProprietaryBankTransactionCode"
+        },
+        "balance": {
+          "description": "Running account balance after transaction has been applied",
+          "$ref": "#/definitions/Balance"
+        },
+        "merchant": {
+          "description": "Merchant details",
+          "$ref": "#/definitions/Merchant"
+        },
+        "enrichment": {
+          "description": "Enrichment",
+          "$ref": "#/definitions/Enrichment"
+        },
+        "supplementaryData": {
+          "type": "string",
+          "description": "Additional information that can not be captured in the structured fields and/or any other specific block."
+        }
+      }
+    },
+    "ConsentAuthCodeRequest": {
+      "type": "object",
+      "required": [
+        "authCode",
+        "authState"
+      ],
+      "properties": {
+        "authCode": {
+          "type": "string"
+        },
+        "authState": {
+          "type": "string"
+        }
+      }
+    },
+    "FeatureDetails": {
+      "type": "object",
+      "properties": {
+        "feature": {
+          "type": "string",
+          "enum": [
+            "INITIATE_PRE_AUTHORISATION",
+            "INITIATE_ACCOUNT_REQUEST",
+            "ACCOUNT_REQUEST_DETAILS",
+            "ACCOUNTS",
+            "ACCOUNT",
+            "ACCOUNT_TRANSACTIONS",
+            "ACCOUNT_STATEMENTS",
+            "ACCOUNT_STATEMENT",
+            "ACCOUNT_STATEMENT_FILE",
+            "ACCOUNT_SCHEDULED_PAYMENTS",
+            "ACCOUNT_DIRECT_DEBITS",
+            "ACCOUNT_PERIODIC_PAYMENTS",
+            "ACCOUNT_TRANSACTIONS_WITH_MERCHANT",
+            "IDENTITY",
+            "ACCOUNTS_WITHOUT_BALANCE",
+            "ACCOUNT_WITHOUT_BALANCE",
+            "ACCOUNT_BALANCES",
+            "INITIATE_SINGLE_PAYMENT_SORTCODE",
+            "EXISTING_PAYMENT_INITIATION_DETAILS",
+            "CREATE_SINGLE_PAYMENT_SORTCODE",
+            "EXISTING_PAYMENTS_DETAILS",
+            "INITIATE_DOMESTIC_SINGLE_PAYMENT",
+            "CREATE_DOMESTIC_SINGLE_PAYMENT",
+            "INITIATE_DOMESTIC_SINGLE_INSTANT_PAYMENT",
+            "CREATE_DOMESTIC_SINGLE_INSTANT_PAYMENT",
+            "INITIATE_DOMESTIC_VARIABLE_RECURRING_PAYMENT",
+            "CREATE_DOMESTIC_VARIABLE_RECURRING_PAYMENT",
+            "INITIATE_DOMESTIC_SCHEDULED_PAYMENT",
+            "CREATE_DOMESTIC_SCHEDULED_PAYMENT",
+            "INITIATE_DOMESTIC_PERIODIC_PAYMENT",
+            "CREATE_DOMESTIC_PERIODIC_PAYMENT",
+            "PERIODIC_PAYMENT_FREQUENCY_EXTENDED",
+            "INITIATE_INTERNATIONAL_VARIABLE_RECURRING_PAYMENT",
+            "CREATE_INTERNATIONAL_VARIABLE_RECURRING_PAYMENT",
+            "INITIATE_INTERNATIONAL_SCHEDULED_PAYMENT",
+            "CREATE_INTERNATIONAL_SCHEDULED_PAYMENT",
+            "INITIATE_INTERNATIONAL_PERIODIC_PAYMENT",
+            "CREATE_INTERNATIONAL_PERIODIC_PAYMENT",
+            "INITIATE_INTERNATIONAL_SINGLE_PAYMENT",
+            "CREATE_INTERNATIONAL_SINGLE_PAYMENT",
+            "INITIATE_BULK_PAYMENT",
+            "CREATE_BULK_PAYMENT",
+            "TRANSFER",
+            "OPEN_DATA_PERSONAL_CURRENT_ACCOUNTS",
+            "OPEN_DATA_ATMS"
+          ]
+        },
+        "endpoint": {
+          "type": "string"
+        },
+        "documentationUrl": {
+          "type": "string"
+        }
+      }
+    },
+    "OverdraftOverdraftTierBandSet": {
+      "type": "object",
+      "properties": {
+        "AuthorisedIndicator": {
+          "type": "boolean"
+        },
+        "BufferAmount": {
+          "type": "string"
+        },
+        "Identification": {
+          "type": "string"
+        },
+        "MinimumArrangedOverdraftAmount": {
+          "type": "string"
+        },
+        "Notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "OverdraftFeesCharges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OverdraftOverdraftFeesCharges1"
+          }
+        },
+        "OverdraftTierBand": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OverdraftOverdraftTierBand"
+          }
+        },
+        "OverdraftType": {
+          "type": "string",
+          "enum": [
+            "Committed",
+            "OnDemand",
+            "Other"
+          ]
+        },
+        "TierBandMethod": {
+          "type": "string",
+          "enum": [
+            "Tiered",
+            "Whole"
+          ]
+        }
+      },
+      "description": "Tier band set details"
+    },
+    "TransferResponse": {
+      "type": "object",
+      "properties": {
+        "fromAccountId": {
+          "type": "string"
+        },
+        "toAccountId": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "PENDING",
+            "FAILED",
+            "DECLINED",
+            "COMPLETED",
+            "UNKNOWN"
+          ]
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "reference": {
+          "type": "string"
+        },
+        "balance": {
+          "type": "number"
+        },
+        "currency": {
+          "type": "string"
+        }
+      }
+    },
+    "AccountAuthorisationRequest": {
+      "type": "object",
+      "required": [
+        "callback",
+        "institutionId",
+        "oneTimeToken"
+      ],
+      "properties": {
+        "userUuid": {
+          "type": "string"
+        },
+        "applicationUserId": {
+          "type": "string"
+        },
+        "forwardParameters": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "institutionId": {
+          "type": "string"
+        },
+        "callback": {
+          "type": "string"
+        },
+        "oneTimeToken": {
+          "type": "boolean",
+          "example": false
+        },
+        "accountRequest": {
+          "$ref": "#/definitions/AccountRequest"
+        }
+      }
+    },
+    "ApiListResponseOfFeatureDetails": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/ResponseListMeta"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/FeatureDetails"
+          }
+        },
+        "links": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "AccountStatement": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "startDateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "endDateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "creationDateTime": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "Payee": {
+      "type": "object",
+      "required": [
+        "accountIdentifications",
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "address": {
+          "$ref": "#/definitions/Address"
+        },
+        "accountIdentifications": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AccountIdentification"
+          }
+        },
+        "merchantId": {
+          "type": "string"
+        },
+        "merchantCategoryCode": {
+          "type": "string"
+        }
+      }
+    },
+    "File": {
+      "type": "object",
+      "properties": {
+        "absolute": {
+          "type": "boolean"
+        },
+        "absoluteFile": {
+          "type": "file"
+        },
+        "absolutePath": {
+          "type": "string"
+        },
+        "canonicalFile": {
+          "type": "file"
+        },
+        "canonicalPath": {
+          "type": "string"
+        },
+        "directory": {
+          "type": "boolean"
+        },
+        "file": {
+          "type": "boolean"
+        },
+        "freeSpace": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "hidden": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "parent": {
+          "type": "string"
+        },
+        "parentFile": {
+          "type": "file"
+        },
+        "path": {
+          "type": "string"
+        },
+        "totalSpace": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "usableSpace": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "Balance": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "CLOSING_AVAILABLE",
+            "CLOSING_BOOKED",
+            "CLOSING_CLEARED",
+            "EXPECTED",
+            "FORWARD_AVAILABLE",
+            "INFORMATION",
+            "INTERIM_AVAILABLE",
+            "INTERIM_BOOKED",
+            "INTERIM_CLEARED",
+            "OPENING_AVAILABLE",
+            "OPENING_BOOKED",
+            "OPENING_CLEARED",
+            "PREVIOUSLY_CLOSED_BOOKED",
+            "AUTHORISED",
+            "OTHER",
+            "UNKNOWN"
+          ]
+        },
+        "balanceAmount": {
+          "$ref": "#/definitions/Amount"
+        }
+      }
+    },
+    "PostalAddress1": {
+      "type": "object",
+      "properties": {
+        "AddressLine": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "BuildingNumber": {
+          "type": "string"
+        },
+        "Country": {
+          "type": "string"
+        },
+        "CountrySubDivision": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "GeoLocation": {
+          "$ref": "#/definitions/GeoLocation1"
+        },
+        "PostCode": {
+          "type": "string"
+        },
+        "StreetName": {
+          "type": "string"
+        },
+        "TownName": {
+          "type": "string"
+        }
+      },
+      "description": "Information that locates and identifies a specific address, as defined by postal services or in free format text."
+    },
+    "InternationalPaymentRequest": {
+      "type": "object",
+      "required": [
+        "currencyOfTransfer"
+      ],
+      "properties": {
+        "currencyOfTransfer": {
+          "type": "string"
+        },
+        "exchangeRateInformation": {
+          "$ref": "#/definitions/ExchangeRateInformation"
+        },
+        "purpose": {
+          "type": "string"
+        },
+        "priority": {
+          "type": "string",
+          "enum": [
+            "NORMAL",
+            "URGENT"
+          ]
+        },
+        "chargeBearer": {
+          "type": "string",
+          "enum": [
+            "DEBT",
+            "CRED",
+            "SHAR",
+            "SLEV"
+          ]
+        }
+      }
+    },
+    "ExchangeRateInformationResponse": {
+      "type": "object",
+      "properties": {
+        "exchangeRateExpiryDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "foreignExchangeContractReference": {
+          "type": "string"
+        },
+        "rate": {
+          "type": "number"
+        },
+        "rateType": {
+          "type": "string",
+          "enum": [
+            "ACTUAL",
+            "AGREED",
+            "INDICATIVE"
+          ]
+        },
+        "unitCurrency": {
+          "type": "string"
+        }
+      }
+    },
+    "Enrichment": {
+      "type": "object",
+      "properties": {
+        "categorisation": {
+          "description": "Categorisation",
+          "$ref": "#/definitions/Categorisation"
+        },
+        "transactionHash": {
+          "description": "TransactionHash",
+          "$ref": "#/definitions/TransactionHash"
+        }
+      }
+    },
+    "BulkPaymentRequest": {
+      "type": "object",
+      "required": [
+        "payments"
+      ],
+      "properties": {
+        "executionDateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Execution datetime for the bulk payments"
+        },
+        "originatorIdentificationNumber": {
+          "type": "string",
+          "description": "Required field for AIB bulk payments"
+        },
+        "payments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PaymentRequest"
+          }
+        }
+      }
+    },
+    "OverdraftOtherFeeType": {
+      "type": "object",
+      "properties": {
+        "Code": {
+          "type": "string"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        }
+      },
+      "description": "Other fee type code which is not available in the standard code set"
+    },
+    "UserDeleteRequest": {
+      "type": "object",
+      "properties": {
+        "userUuids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "applicationUserIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Category": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "SortCodePaymentRequest": {
+      "type": "object",
+      "required": [
+        "accountNumber",
+        "amount",
+        "country",
+        "currency",
+        "name",
+        "reference",
+        "sortCode"
+      ],
+      "properties": {
+        "senderAccountId": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "number"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "reference": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "BILL",
+            "GOODS",
+            "SERVICES",
+            "OTHER",
+            "PERSON_TO_PERSON"
+          ]
+        },
+        "accountNumber": {
+          "type": "string"
+        },
+        "sortCode": {
+          "type": "string"
+        },
+        "merchantInfo": {
+          "$ref": "#/definitions/MerchantInfo"
+        }
+      }
+    },
+    "ApiResponseOfTransferResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/ResponseMeta"
+        },
+        "data": {
+          "$ref": "#/definitions/TransferResponse"
+        },
+        "links": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "BulkUserDelete": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "IN_PROGRESS",
+            "COMPLETED",
+            "FAILED"
+          ]
+        },
+        "startedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "links": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "AccountIdentification": {
+      "type": "object",
+      "required": [
+        "identification",
+        "type"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "SORT_CODE",
+            "ACCOUNT_NUMBER",
+            "IBAN",
+            "BBAN",
+            "BIC",
+            "PAN",
+            "MASKED_PAN",
+            "MSISDN",
+            "BSB",
+            "NCC",
+            "ABA",
+            "ABA_WIRE",
+            "ABA_ACH",
+            "EMAIL"
+          ]
+        },
+        "identification": {
+          "type": "string"
+        }
+      }
+    },
+    "PaymentResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "institutionConsentId": {
+          "type": "string"
+        },
+        "paymentIdempotencyId": {
+          "type": "string"
+        },
+        "paymentLifecycleId": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "PENDING",
+            "FAILED",
+            "DECLINED",
+            "COMPLETED",
+            "COMPLETED_SETTLEMENT_IN_PROCESS",
+            "EXPIRED",
+            "UNKNOWN",
+            "ACTIVE",
+            "INACTIVE"
+          ]
+        },
+        "statusDetails": {
+          "$ref": "#/definitions/PaymentStatusDetails"
+        },
+        "payer": {
+          "$ref": "#/definitions/Payer"
+        },
+        "payeeDetails": {
+          "$ref": "#/definitions/Payee"
+        },
+        "reference": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "number"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "amountDetails": {
+          "$ref": "#/definitions/Amount"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "firstPaymentAmount": {
+          "$ref": "#/definitions/Amount"
+        },
+        "firstPaymentDateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "nextPaymentAmount": {
+          "$ref": "#/definitions/Amount"
+        },
+        "nextPaymentDateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "finalPaymentAmount": {
+          "$ref": "#/definitions/Amount"
+        },
+        "finalPaymentDateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "numberOfPayments": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "previousPaymentAmount": {
+          "$ref": "#/definitions/Amount"
+        },
+        "previousPaymentDateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "chargeDetails": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ChargeDetails"
+          }
+        },
+        "scheduledPaymentType": {
+          "type": "string"
+        },
+        "scheduledPaymentDateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "frequency": {
+          "$ref": "#/definitions/FrequencyResponse"
+        },
+        "currencyOfTransfer": {
+          "type": "string"
+        },
+        "purpose": {
+          "type": "string"
+        },
+        "priority": {
+          "type": "string",
+          "enum": [
+            "NORMAL",
+            "URGENT"
+          ]
+        },
+        "exchangeRate": {
+          "$ref": "#/definitions/ExchangeRateInformationResponse"
+        }
+      }
+    },
+    "ATMOpenData": {
+      "type": "object",
+      "properties": {
+        "Brand": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ATMOpenDataBrand"
+          }
+        }
+      },
+      "description": "Environment of the ATM."
+    },
+    "Overdraft": {
+      "type": "object",
+      "properties": {
+        "Notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "OverdraftTierBandSet": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OverdraftOverdraftTierBandSet"
+          }
+        },
+        "TcsAndCsURL": {
+          "type": "string"
+        }
+      },
+      "description": "Borrowing details"
+    },
+    "CreateConsentAccessToken": {
+      "type": "object",
+      "required": [
+        "accessToken",
+        "institutionId",
+        "refreshToken",
+        "scope"
+      ],
+      "properties": {
+        "accessToken": {
+          "type": "string"
+        },
+        "refreshToken": {
+          "type": "string"
+        },
+        "institutionId": {
+          "type": "string"
+        },
+        "scope": {
+          "type": "string"
+        }
+      }
+    },
+    "ApiResponseOfBulkUserDeleteDetails": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/ResponseMeta"
+        },
+        "data": {
+          "$ref": "#/definitions/BulkUserDeleteDetails"
+        },
+        "links": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Categorisation": {
+      "type": "object",
+      "properties": {
+        "category": {
+          "description": "Category",
+          "$ref": "#/definitions/Category"
+        }
+      }
+    },
+    "AccountBalance": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "CLOSING_AVAILABLE",
+            "CLOSING_BOOKED",
+            "CLOSING_CLEARED",
+            "EXPECTED",
+            "FORWARD_AVAILABLE",
+            "INFORMATION",
+            "INTERIM_AVAILABLE",
+            "INTERIM_BOOKED",
+            "INTERIM_CLEARED",
+            "OPENING_AVAILABLE",
+            "OPENING_BOOKED",
+            "OPENING_CLEARED",
+            "PREVIOUSLY_CLOSED_BOOKED",
+            "AUTHORISED",
+            "OTHER",
+            "UNKNOWN"
+          ]
+        },
+        "dateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp of the last change of the balance amount"
+        },
+        "balanceAmount": {
+          "$ref": "#/definitions/Amount"
+        },
+        "creditLineIncluded": {
+          "type": "boolean",
+          "example": false,
+          "description": "Indicates whether or not the credit line is included in the balance"
+        },
+        "creditLines": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CreditLine"
+          }
+        }
+      }
+    },
+    "FilterAndSort": {
+      "type": "object",
+      "properties": {
+        "before": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "cursor": {
+          "type": "string"
+        },
+        "from": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "limit": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "offset": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "sort": {
+          "type": "string",
+          "enum": [
+            "date",
+            "-date"
+          ]
+        }
+      }
+    },
+    "Branch": {
+      "type": "object",
+      "properties": {
+        "Identification": {
+          "type": "string"
+        }
+      },
+      "description": "Information that locates and identifies a specific branch of a financial institution."
+    },
+    "ResponseListMeta": {
+      "type": "object",
+      "properties": {
+        "tracingId": {
+          "type": "string"
+        },
+        "count": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pagination": {
+          "$ref": "#/definitions/Pagination"
+        }
+      }
+    },
+    "PersonalCurrentAccountPCAMarketingState": {
+      "type": "object",
+      "properties": {
+        "CoreProduct": {
+          "$ref": "#/definitions/CoreProduct"
+        },
+        "CreditInterest": {
+          "$ref": "#/definitions/CreditInterest"
+        },
+        "Eligibility": {
+          "$ref": "#/definitions/Eligibility"
+        },
+        "FirstMarketedDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Identification": {
+          "type": "string"
+        },
+        "LastMarketedDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "MarketingState": {
+          "type": "string"
+        },
+        "Notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "Overdraft": {
+          "$ref": "#/definitions/Overdraft"
+        },
+        "PredecessorID": {
+          "type": "string"
+        },
+        "StateTenureLength": {
+          "type": "number",
+          "format": "float"
+        },
+        "StateTenurePeriod": {
+          "type": "string"
+        }
+      }
+    },
+    "PeriodicPaymentRequest": {
+      "type": "object",
+      "required": [
+        "frequency"
+      ],
+      "properties": {
+        "frequency": {
+          "$ref": "#/definitions/FrequencyRequest"
+        },
+        "numberOfPayments": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "nextPaymentDateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "nextPaymentAmount": {
+          "$ref": "#/definitions/Amount"
+        },
+        "finalPaymentDateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "finalPaymentAmount": {
+          "$ref": "#/definitions/Amount"
+        }
+      }
+    },
+    "OtherResidencyType": {
+      "type": "object",
+      "properties": {
+        "Code": {
+          "type": "string"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        }
+      },
+      "description": "Other residency type which is not available in standard code list."
+    },
+    "ApiListResponseOfCategory": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/ResponseListMeta"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Category"
+          }
+        },
+        "links": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "MonitoringFeatureStatus": {
+      "type": "object",
+      "properties": {
+        "lastTested": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "span": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "Up",
+            "Down",
+            "Warning",
+            "Unknown",
+            "Expired"
+          ]
+        }
+      }
+    },
+    "ApiResponseOfPaymentResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/ResponseMeta"
+        },
+        "data": {
+          "$ref": "#/definitions/PaymentResponse"
+        },
+        "links": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "OtherCalculationFrequency": {
+      "type": "object",
+      "properties": {
+        "Code": {
+          "type": "string"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        }
+      },
+      "description": "Other calculation frequency which is not available in the standard code set."
+    },
+    "InputStream": {
+      "type": "object"
+    },
+    "FrequencyRequest": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "DAILY",
+            "EVERY_WORKING_DAY",
+            "CALENDAR_DAY",
+            "WEEKLY",
+            "EVERY_TWO_WEEKS",
+            "MONTHLY",
+            "EVERY_TWO_MONTHS",
+            "QUARTERLY",
+            "SEMIANNUAL",
+            "ANNUAL"
+          ]
+        },
+        "intervalWeek": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "intervalMonth": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "executionDay": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "PaymentAuthorisationRequestResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "userUuid": {
+          "type": "string"
+        },
+        "applicationUserId": {
+          "type": "string"
+        },
+        "referenceId": {
+          "type": "string"
+        },
+        "institutionId": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "AWAITING_AUTHORIZATION",
+            "AWAITING_FURTHER_AUTHORIZATION",
+            "AWAITING_RE_AUTHORIZATION",
+            "AUTHORIZED",
+            "CONSUMED",
+            "REJECTED",
+            "REVOKED",
+            "FAILED",
+            "EXPIRED",
+            "UNKNOWN",
+            "INVALID",
+            "AWAITING_PRE_AUTHORIZATION",
+            "PRE_AUTHORIZED"
+          ]
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "transactionFrom": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "transactionTo": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "expiresAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "timeToExpireInMillis": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Deprecated. Use `timeToExpire` instead."
+        },
+        "timeToExpire": {
+          "type": "string",
+          "description": "ISO 8601 duration"
+        },
+        "featureScope": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "INITIATE_PRE_AUTHORISATION",
+              "INITIATE_ACCOUNT_REQUEST",
+              "ACCOUNT_REQUEST_DETAILS",
+              "ACCOUNTS",
+              "ACCOUNT",
+              "ACCOUNT_TRANSACTIONS",
+              "ACCOUNT_STATEMENTS",
+              "ACCOUNT_STATEMENT",
+              "ACCOUNT_STATEMENT_FILE",
+              "ACCOUNT_SCHEDULED_PAYMENTS",
+              "ACCOUNT_DIRECT_DEBITS",
+              "ACCOUNT_PERIODIC_PAYMENTS",
+              "ACCOUNT_TRANSACTIONS_WITH_MERCHANT",
+              "IDENTITY",
+              "ACCOUNTS_WITHOUT_BALANCE",
+              "ACCOUNT_WITHOUT_BALANCE",
+              "ACCOUNT_BALANCES",
+              "INITIATE_SINGLE_PAYMENT_SORTCODE",
+              "EXISTING_PAYMENT_INITIATION_DETAILS",
+              "CREATE_SINGLE_PAYMENT_SORTCODE",
+              "EXISTING_PAYMENTS_DETAILS",
+              "INITIATE_DOMESTIC_SINGLE_PAYMENT",
+              "CREATE_DOMESTIC_SINGLE_PAYMENT",
+              "INITIATE_DOMESTIC_SINGLE_INSTANT_PAYMENT",
+              "CREATE_DOMESTIC_SINGLE_INSTANT_PAYMENT",
+              "INITIATE_DOMESTIC_VARIABLE_RECURRING_PAYMENT",
+              "CREATE_DOMESTIC_VARIABLE_RECURRING_PAYMENT",
+              "INITIATE_DOMESTIC_SCHEDULED_PAYMENT",
+              "CREATE_DOMESTIC_SCHEDULED_PAYMENT",
+              "INITIATE_DOMESTIC_PERIODIC_PAYMENT",
+              "CREATE_DOMESTIC_PERIODIC_PAYMENT",
+              "PERIODIC_PAYMENT_FREQUENCY_EXTENDED",
+              "INITIATE_INTERNATIONAL_VARIABLE_RECURRING_PAYMENT",
+              "CREATE_INTERNATIONAL_VARIABLE_RECURRING_PAYMENT",
+              "INITIATE_INTERNATIONAL_SCHEDULED_PAYMENT",
+              "CREATE_INTERNATIONAL_SCHEDULED_PAYMENT",
+              "INITIATE_INTERNATIONAL_PERIODIC_PAYMENT",
+              "CREATE_INTERNATIONAL_PERIODIC_PAYMENT",
+              "INITIATE_INTERNATIONAL_SINGLE_PAYMENT",
+              "CREATE_INTERNATIONAL_SINGLE_PAYMENT",
+              "INITIATE_BULK_PAYMENT",
+              "CREATE_BULK_PAYMENT",
+              "TRANSFER",
+              "OPEN_DATA_PERSONAL_CURRENT_ACCOUNTS",
+              "OPEN_DATA_ATMS"
+            ]
+          }
+        },
+        "charges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ChargeDetails"
+          }
+        },
+        "exchangeRateInformation": {
+          "$ref": "#/definitions/ExchangeRateInformationResponse"
+        },
+        "consentToken": {
+          "type": "string"
+        },
+        "authorisationUrl": {
+          "type": "string"
+        },
+        "qrCodeUrl": {
+          "type": "string"
+        }
+      }
+    },
+    "LocationOtherLocationCategory": {
+      "type": "object",
+      "properties": {
+        "Code": {
+          "type": "string"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        }
+      },
+      "description": "Enter a new code , name and description for any other location category"
+    },
+    "ApiResponseOfPaymentAuthorisationRequestResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/ResponseMeta"
+        },
+        "data": {
+          "$ref": "#/definitions/PaymentAuthorisationRequestResponse"
+        },
+        "links": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "FrequencyResponse": {
+      "type": "object",
+      "properties": {
+        "executionDay": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "frequencyType": {
+          "type": "string",
+          "enum": [
+            "DAILY",
+            "EVERY_WORKING_DAY",
+            "CALENDAR_DAY",
+            "WEEKLY",
+            "EVERY_TWO_WEEKS",
+            "MONTHLY",
+            "EVERY_TWO_MONTHS",
+            "QUARTERLY",
+            "SEMIANNUAL",
+            "ANNUAL"
+          ]
+        },
+        "intervalMonth": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "intervalWeek": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "ExchangeRateInformation": {
+      "type": "object",
+      "properties": {
+        "foreignExchangeContractReference": {
+          "type": "string"
+        },
+        "rate": {
+          "type": "number"
+        },
+        "rateType": {
+          "type": "string",
+          "enum": [
+            "ACTUAL",
+            "AGREED",
+            "INDICATIVE"
+          ]
+        },
+        "unitCurrency": {
+          "type": "string"
+        }
+      }
+    },
+    "PaymentRequest": {
+      "type": "object",
+      "required": [
+        "payee",
+        "type"
+      ],
+      "properties": {
+        "paymentIdempotencyId": {
+          "type": "string"
+        },
+        "payer": {
+          "$ref": "#/definitions/Payer"
+        },
+        "amount": {
+          "$ref": "#/definitions/Amount"
+        },
+        "reference": {
+          "type": "string"
+        },
+        "contextType": {
+          "type": "string",
+          "enum": [
+            "BILL",
+            "GOODS",
+            "SERVICES",
+            "OTHER",
+            "PERSON_TO_PERSON"
+          ]
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "DOMESTIC_PAYMENT",
+            "DOMESTIC_INSTANT_PAYMENT",
+            "DOMESTIC_VARIABLE_RECURRING_PAYMENT",
+            "DOMESTIC_SCHEDULED_PAYMENT",
+            "DOMESTIC_PERIODIC_PAYMENT",
+            "INTERNATIONAL_PAYMENT",
+            "INTERNATIONAL_SCHEDULED_PAYMENT",
+            "INTERNATIONAL_PERIODIC_PAYMENT",
+            "BULK_PAYMENT"
+          ]
+        },
+        "paymentDateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "payee": {
+          "$ref": "#/definitions/Payee"
+        },
+        "periodicPayment": {
+          "$ref": "#/definitions/PeriodicPaymentRequest"
+        },
+        "internationalPayment": {
+          "$ref": "#/definitions/InternationalPaymentRequest"
+        }
+      }
+    },
+    "Subcategory": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Subcategory ID"
+        },
+        "label": {
+          "type": "string",
+          "description": "Subcategory label"
+        }
+      }
+    },
+    "ApiResponseOfAccount": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/ResponseMeta"
+        },
+        "data": {
+          "$ref": "#/definitions/Account"
+        },
+        "links": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "CoreProduct": {
+      "type": "object",
+      "properties": {
+        "MonthlyMaximumCharge": {
+          "type": "string"
+        },
+        "ProductDescription": {
+          "type": "string"
+        },
+        "ProductURL": {
+          "type": "string"
+        },
+        "SalesAccessChannels": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "Branch",
+              "CallCentre",
+              "Post",
+              "Online",
+              "RelationshipManager"
+            ]
+          }
+        },
+        "ServicingAccessChannels": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "ATM",
+              "Branch",
+              "CallCentre",
+              "Post",
+              "MobileBankingApp",
+              "Online",
+              "PostOffice",
+              "RelationshipManager",
+              "Text"
+            ]
+          }
+        },
+        "TcsAndCsURL": {
+          "type": "string"
+        }
+      },
+      "description": "Core feature of the PCA product which can be associated to a particular Marketing State"
+    },
+    "EligibilityOtherEligibility": {
+      "type": "object",
+      "properties": {
+        "Amount": {
+          "type": "string"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "Indicator": {
+          "type": "boolean"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "OtherType": {
+          "$ref": "#/definitions/OtherType"
+        },
+        "Period": {
+          "type": "string",
+          "enum": [
+            "Day",
+            "Half Year",
+            "Month",
+            "Quarter",
+            "Week",
+            "AcademicTerm",
+            "Year"
+          ]
+        },
+        "Textual": {
+          "type": "string"
+        },
+        "Type": {
+          "type": "string",
+          "enum": [
+            "DirectDebits",
+            "ExistingCustomers",
+            "MinimumOperatingBalance",
+            "MinimumDeposit",
+            "NewCustomersOnly",
+            "PreviousBankruptcyAllowed",
+            "Other",
+            "StudentsOnly",
+            "SoleStudentAccount",
+            "SoleUkAccount",
+            "SwitchersOnly",
+            "UCASFulltimeTwoYears"
+          ]
+        }
+      },
+      "description": "Other eligibility which is not covered by the main eligibility of the PCA product"
+    },
+    "ApiResponseOfListOfATMOpenDataResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/ResponseMeta"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ATMOpenDataResponse"
+          }
+        },
+        "links": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Location": {
+      "type": "object",
+      "properties": {
+        "LocationCategory": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "BranchExternal",
+              "BranchInternal",
+              "BranchLobby",
+              "Other",
+              "RetailerOutlet",
+              "RemoteUnit"
+            ]
+          }
+        },
+        "OtherLocationCategory": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LocationOtherLocationCategory"
+          }
+        },
+        "PostalAddress": {
+          "$ref": "#/definitions/PostalAddress1"
+        },
+        "Site": {
+          "$ref": "#/definitions/Site"
+        },
+        "mapServiceLinks": {
+          "$ref": "#/definitions/ATMMapServiceLinks"
+        }
+      },
+      "description": "Location of the ATM."
+    }
+  }
+}
