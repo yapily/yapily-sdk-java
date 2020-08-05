@@ -127,7 +127,7 @@ accountAuthorisationRequest.setInstitutionId(institutionId);
 * Use the defaults
 */
 accountAuthorisationRequest.setAccountRequest(new AccountRequest());
-ApiResponseOfAuthorisationRequestResponse authorizationResponse = accountsApi.initiateAccountRequestUsingPOST(accountAuthorisationRequest);
+ApiResponseOfAuthorisationRequestResponse authorizationResponse = accountsApi.initiateAccountRequestUsingPOST(accountAuthorisationRequest, null, null, null);
 String directUrl = authorizationResponse.getData().getAuthorisationUrl();
 ```
 
@@ -168,7 +168,8 @@ ApiListResponseOfTransaction transactionsResponse = transactionsApi.getTransacti
                                         "2020-01-01T00:00:00.000Z",
                                         10,
                                         null,
-                                        0);
+                                        0,
+                                        null);
 List<Transaction> transactions = transactionsResponse.getData();
 ```
 
@@ -230,7 +231,7 @@ paymentAuthorisationRequest.setApplicationUserId(applicationUserId);
 paymentAuthorisationRequest.setInstitutionId(institutionId);
 paymentAuthorisationRequest.setPaymentRequest(paymentRequest);
 ApiResponseOfPaymentAuthorisationRequestResponse authorizationResponse = 
-                        paymentsApi.createPaymentAuthorisationUsingPOST(paymentAuthorisationRequest);
+                        paymentsApi.createPaymentAuthorisationUsingPOST(paymentAuthorisationRequest, null, null, null);
 String url = authorizationResponse.getData().getAuthorisationUrl();
 ```
 
