@@ -252,8 +252,7 @@ ApiResponseOfPaymentResponse apiResponseOfPaymentResponse = paymentsApi.getPayme
 
 ## Further information
 
-For more information on how to get connected, visit the
-[Yapily developer resources](https://github.com/yapily/developer-resources) repo.
+For more information on how to get connected, visit the [Yapily Knowledge Base](https://kb.yapily.com).
 
 ###### [Website](https://yapily.com) | [Legal](https://yapily.com/legal-policies) | [Contact Us](mailto:info@yapily.com) 
 
