@@ -1,16 +1,16 @@
 package yapily.examples;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
 import yapily.ApiClient;
 import yapily.ApiException;
-import yapily.auth.OAuth;
 import yapily.sdk.ApiListResponseOfInstitution;
 import yapily.sdk.Institution;
 import yapily.sdk.InstitutionsApi;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Hello Yapily! This example lists all the institutions (banks) retrieved from the Yapily API
@@ -25,15 +25,12 @@ public class ExampleGetInstitutions {
 
         try {
             // Set access credentials
-            ApiClient defaultClient = new ApiClient();
-
-            OAuth oAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
-            oAuth.setAccessToken(AuthorizationUtils.createAccessToken());
+            ApiClient defaultClient = ApiClientUtils.basicAuth();
 
             System.out.println("Configured application credentials for API: " + defaultClient.getBasePath());
 
             // Create InstitutionsApi API client
-            final InstitutionsApi institutionsApi = new InstitutionsApi();
+            final InstitutionsApi institutionsApi = new InstitutionsApi(defaultClient);
 
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
 

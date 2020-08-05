@@ -5,10 +5,10 @@ public class Constants {
     /**
      * Yapily Auth API url and parameters
      */
-    static final String PARAMETER_INSTITUTION_ID = "institution";
-    static final String PARAMETER_APPLICATION_ID = "application";
-    static final String PARAMETER_USER_ID = "user";
-    static final String PARAMETER_CALLBACK_URL = "callback";
+    public static final String PARAMETER_INSTITUTION_ID = "institution";
+    public static final String PARAMETER_APPLICATION_ID = "application";
+    public static final String PARAMETER_USER_ID = "user";
+    public static final String PARAMETER_CALLBACK_URL = "callback";
 
     /**
      * A default user all examples will run with

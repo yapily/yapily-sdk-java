@@ -1,16 +1,16 @@
 package yapily.examples;
 
+import java.util.Arrays;
+import java.util.List;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
 import yapily.ApiClient;
 import yapily.ApiException;
-import yapily.auth.OAuth;
 import yapily.sdk.ApplicationUser;
 import yapily.sdk.ApplicationUsersApi;
 import yapily.sdk.NewApplicationUser;
-
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * This example demonstrates how to create and retrieve users using your application credentials.
@@ -24,15 +24,12 @@ public class ExampleConfigureUsers {
 
         try {
             // Set access credentials
-            ApiClient defaultClient = new ApiClient();
-
-            OAuth oAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
-            oAuth.setAccessToken(AuthorizationUtils.createAccessToken());
+            ApiClient defaultClient = ApiClientUtils.basicAuth();
 
             System.out.println("Configured application credentials for API: " + defaultClient.getBasePath());
 
             // Create users for this application
-            final ApplicationUsersApi applicationUsersApi = new ApplicationUsersApi();
+            final ApplicationUsersApi applicationUsersApi = new ApplicationUsersApi(defaultClient);
 
             System.out.println("Adding new user [A] with POST /users");
             ApplicationUser A = applicationUsersApi.addUserUsingPOST(newApplicationUser("A"));

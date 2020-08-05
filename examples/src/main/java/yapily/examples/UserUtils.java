@@ -1,5 +1,6 @@
 package yapily.examples;
 
+import yapily.ApiClient;
 import yapily.ApiException;
 import yapily.sdk.ApplicationUser;
 import yapily.sdk.ApplicationUsersApi;
@@ -9,21 +10,20 @@ import java.util.Collections;
 import java.util.List;
 
 public class UserUtils {
-    public static ApplicationUser createOrUseExistingApplciationUser(String applicationUserId) throws ApiException {
-        ApplicationUsersApi applicationUsersApi = new ApplicationUsersApi();
+    public static ApplicationUser createOrUseExistingApplciationUser(String applicationUserId, ApiClient defaultClient) throws ApiException {
+        ApplicationUsersApi applicationUsersApi = new ApplicationUsersApi(defaultClient);
         System.out.println("Checking for user " + applicationUserId + " using GET /users?filter[applicationUserId]=" + applicationUserId);
         List<ApplicationUser> applicationUserList = applicationUsersApi.getUsersUsingGET(Collections.singletonList(applicationUserId));
 
         if (applicationUserList.isEmpty()) {
-            return createNewApplicationUser(applicationUserId);
+            return createNewApplicationUser(applicationUserId, defaultClient);
         } else {
             return applicationUserList.get(0);
         }
     }
 
-    public static ApplicationUser createNewApplicationUser(String applicationUserId) throws ApiException {
-
-        final ApplicationUsersApi applicationUsersApi = new ApplicationUsersApi();
+    public static ApplicationUser createNewApplicationUser(String applicationUserId, ApiClient defaultClient) throws ApiException {
+        ApplicationUsersApi applicationUsersApi = new ApplicationUsersApi(defaultClient);
 
         // Create a new user with the given application user Id
         NewApplicationUser user = new NewApplicationUser();

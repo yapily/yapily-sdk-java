@@ -1,18 +1,26 @@
 package yapily.examples;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import yapily.ApiClient;
-import yapily.auth.OAuth;
-import yapily.sdk.*;
-
-import java.awt.*;
+import java.awt.Desktop;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URI;
 import java.util.Collections;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import yapily.ApiClient;
 import static yapily.examples.Constants.APPLICATION_USER_ID;
+import yapily.sdk.ApiResponseOfPaymentAuthorisationRequestResponse;
+import yapily.sdk.ApiResponseOfPaymentResponse;
+import yapily.sdk.ApplicationUser;
+import yapily.sdk.ApplicationUsersApi;
+import yapily.sdk.Consent;
+import yapily.sdk.ConsentsApi;
+import yapily.sdk.PaymentAuthorisationRequest;
+import yapily.sdk.PaymentRequest;
+import yapily.sdk.PaymentResponse;
+import yapily.sdk.PaymentsApi;
 
 public class ExamplePayment {
 
@@ -20,21 +28,18 @@ public class ExamplePayment {
 
     public static void main(String[] args) throws Exception {
         // Set access credentials
-        ApiClient defaultClient = new ApiClient();
-
-        OAuth oAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
-        oAuth.setAccessToken(AuthorizationUtils.createAccessToken());
+        ApiClient defaultClient = ApiClientUtils.basicAuth();
 
         System.out.println("Configured application credentials for API: " + defaultClient.getBasePath());
 
         final ApplicationUsersApi usersApi = new ApplicationUsersApi();
 
-        ApplicationUser applicationUser = UserUtils.createOrUseExistingApplciationUser(APPLICATION_USER_ID);
+        ApplicationUser applicationUser = UserUtils.createOrUseExistingApplciationUser(APPLICATION_USER_ID, defaultClient);
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         System.out.println("Using user:");
         System.out.println(gson.toJson(applicationUser));
 
-        PaymentsApi paymentsApi = new PaymentsApi();
+        PaymentsApi paymentsApi = new PaymentsApi(defaultClient);
 
         // Create a new payment authorisation request
         PaymentAuthorisationRequest paymentAuthorisationRequest = new PaymentAuthorisationRequest();
@@ -57,7 +62,7 @@ public class ExamplePayment {
         System.out.println(gson.toJson(paymentAuthorisationRequest));
 
         // Send the payment authorisation request
-        ApiResponseOfPaymentAuthorisationRequestResponse authorizationResponse = paymentsApi.createPaymentAuthorisationUsingPOST(paymentAuthorisationRequest);
+        ApiResponseOfPaymentAuthorisationRequestResponse authorizationResponse = paymentsApi.createPaymentAuthorisationUsingPOST(paymentAuthorisationRequest, null, null, null);
 
         URI url = new URI(authorizationResponse.getData().getAuthorisationUrl());
 
@@ -71,7 +76,7 @@ public class ExamplePayment {
                 System.in.read();
 
                 // Get user consents
-                final ConsentsApi consentsApi = new ConsentsApi();
+                final ConsentsApi consentsApi = new ConsentsApi(defaultClient);
 
                 System.out.println("Obtaining the most recent consent filtered by application user Id [" +
                         APPLICATION_USER_ID +  "] and institution [" + INSTITUTION_ID + "] with GET /consents?" +
