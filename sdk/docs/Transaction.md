@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 **balance** | [**Balance**](Balance.md) | Running account balance after transaction has been applied |  [optional]
 **merchant** | [**Merchant**](Merchant.md) | Merchant details |  [optional]
 **enrichment** | [**Enrichment**](Enrichment.md) | Enrichment |  [optional]
-**supplementaryData** | **String** | Additional information that can not be captured in the structured fields and/or any other specific block. |  [optional]
+**supplementaryData** | **Object** | Additional information that can not be captured in the structured fields and/or any other specific block. |  [optional]
 
 
 <a name="StatusEnum"></a>

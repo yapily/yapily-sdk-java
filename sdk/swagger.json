@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "To access endpoints that require authentication, use your application key and secret created in the Dashboard (https://dashboard.yapily.com)",
-    "version": "0.0.221",
+    "version": "0.0.222",
     "title": "Yapily API"
   },
   "host": "api.yapily.com",
@@ -5974,7 +5974,7 @@
           "$ref": "#/definitions/Enrichment"
         },
         "supplementaryData": {
-          "type": "string",
+          "type": "object",
           "description": "Additional information that can not be captured in the structured fields and/or any other specific block."
         }
       }
