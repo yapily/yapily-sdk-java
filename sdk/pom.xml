@@ -5,7 +5,7 @@
     <artifactId>yapily-sdk</artifactId>
     <packaging>jar</packaging>
     <name>yapily-sdk</name>
-    <version>0.0.228</version>
+    <version>0.0.229</version>
     <url>https://github.com/yapily/developer-resources</url>
     <description>Swagger Java</description>
     <scm>
