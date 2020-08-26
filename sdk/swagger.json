@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "To access endpoints that require authentication, use your application key and secret created in the Dashboard (https://dashboard.yapily.com)",
-    "version": "0.0.229",
+    "version": "0.0.230",
     "title": "Yapily API"
   },
   "host": "api.yapily.com",
@@ -3318,6 +3318,20 @@
         }
       }
     },
+    "SSAResult": {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "type": "string"
+        },
+        "institutionId": {
+          "type": "string"
+        },
+        "ssaJwt": {
+          "type": "string"
+        }
+      }
+    },
     "Institution": {
       "type": "object",
       "properties": {
@@ -3751,6 +3765,23 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/IdentityAddress"
+          }
+        }
+      }
+    },
+    "ApiResponseOfSSAResult": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/ResponseMeta"
+        },
+        "data": {
+          "$ref": "#/definitions/SSAResult"
+        },
+        "links": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
           }
         }
       }
@@ -4307,6 +4338,23 @@
         }
       }
     },
+    "ApiResponseOfRegistrationResult": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/ResponseMeta"
+        },
+        "data": {
+          "$ref": "#/definitions/RegistrationResult"
+        },
+        "links": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
     "OtherApplicationFrequency": {
       "type": "object",
       "properties": {
@@ -4571,6 +4619,23 @@
         },
         "token_type": {
           "type": "string"
+        }
+      }
+    },
+    "ApiResponseOfDeregistrationResult": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/ResponseMeta"
+        },
+        "data": {
+          "$ref": "#/definitions/DeregistrationResult"
+        },
+        "links": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
         }
       }
     },
@@ -5365,6 +5430,53 @@
         }
       }
     },
+    "RegistrationResult": {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "type": "string"
+        },
+        "institutionId": {
+          "type": "string"
+        },
+        "tppId": {
+          "type": "string"
+        },
+        "softwareId": {
+          "type": "string"
+        },
+        "clientName": {
+          "type": "string"
+        },
+        "signingKeyId": {
+          "type": "string"
+        },
+        "signingCertificateId": {
+          "type": "string"
+        },
+        "transportKeyId": {
+          "type": "string"
+        },
+        "transportCertificateId": {
+          "type": "string"
+        },
+        "clientUri": {
+          "type": "string"
+        },
+        "termsOfServiceUri": {
+          "type": "string"
+        },
+        "ssaJwt": {
+          "type": "string"
+        },
+        "clientId": {
+          "type": "string"
+        },
+        "clientSecret": {
+          "type": "string"
+        }
+      }
+    },
     "OneTimeTokenRequest": {
       "type": "object",
       "required": [
@@ -5730,6 +5842,17 @@
         },
         "url": {
           "$ref": "#/definitions/URL"
+        }
+      }
+    },
+    "DeregistrationResult": {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "type": "string"
+        },
+        "institutionId": {
+          "type": "string"
         }
       }
     },
@@ -6648,6 +6771,51 @@
         }
       }
     },
+    "RegistrationRequest": {
+      "type": "object",
+      "properties": {
+        "clientId": {
+          "type": "string"
+        },
+        "clientSecret": {
+          "type": "string"
+        },
+        "manual": {
+          "type": "boolean",
+          "example": false
+        },
+        "tppId": {
+          "type": "string"
+        },
+        "softwareId": {
+          "type": "string"
+        },
+        "clientName": {
+          "type": "string"
+        },
+        "signingKeyId": {
+          "type": "string"
+        },
+        "signingCertificateId": {
+          "type": "string"
+        },
+        "transportKeyId": {
+          "type": "string"
+        },
+        "transportCertificateId": {
+          "type": "string"
+        },
+        "clientUri": {
+          "type": "string"
+        },
+        "termsOfServiceUri": {
+          "type": "string"
+        },
+        "ssaJwt": {
+          "type": "string"
+        }
+      }
+    },
     "PaymentResponse": {
       "type": "object",
       "properties": {
@@ -7041,6 +7209,29 @@
       },
       "description": "Other residency type which is not available in standard code list."
     },
+    "SSARequest": {
+      "type": "object",
+      "properties": {
+        "tppId": {
+          "type": "string"
+        },
+        "softwareId": {
+          "type": "string"
+        },
+        "signingKeyId": {
+          "type": "string"
+        },
+        "transportKeyId": {
+          "type": "string"
+        },
+        "transportCertificateId": {
+          "type": "string"
+        },
+        "signingCertificateId": {
+          "type": "string"
+        }
+      }
+    },
     "ApiListResponseOfCategory": {
       "type": "object",
       "properties": {
@@ -7350,6 +7541,26 @@
         "intervalWeek": {
           "type": "integer",
           "format": "int32"
+        }
+      }
+    },
+    "ApiResponseOfListOfRegistrationResult": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/ResponseMeta"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RegistrationResult"
+          }
+        },
+        "links": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
         }
       }
     },

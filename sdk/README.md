@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>yapily</groupId>
     <artifactId>yapily-sdk</artifactId>
-    <version>0.0.229</version>
+    <version>0.0.230</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "yapily:yapily-sdk:0.0.229"
+compile "yapily:yapily-sdk:0.0.230"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/yapily-sdk-0.0.229.jar
+* target/yapily-sdk-0.0.230.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -188,12 +188,16 @@ Class | Method | HTTP request | Description
  - [ApiResponseOfBulkUserDeleteDetails](docs/ApiResponseOfBulkUserDeleteDetails.md)
  - [ApiResponseOfConsent](docs/ApiResponseOfConsent.md)
  - [ApiResponseOfConsentDeleteResponse](docs/ApiResponseOfConsentDeleteResponse.md)
+ - [ApiResponseOfDeregistrationResult](docs/ApiResponseOfDeregistrationResult.md)
  - [ApiResponseOfIdentity](docs/ApiResponseOfIdentity.md)
  - [ApiResponseOfListOfATMOpenDataResponse](docs/ApiResponseOfListOfATMOpenDataResponse.md)
  - [ApiResponseOfListOfPersonalCurrentAccountData](docs/ApiResponseOfListOfPersonalCurrentAccountData.md)
+ - [ApiResponseOfListOfRegistrationResult](docs/ApiResponseOfListOfRegistrationResult.md)
  - [ApiResponseOfPaymentAuthorisationRequestResponse](docs/ApiResponseOfPaymentAuthorisationRequestResponse.md)
  - [ApiResponseOfPaymentResponse](docs/ApiResponseOfPaymentResponse.md)
  - [ApiResponseOfPaymentResponses](docs/ApiResponseOfPaymentResponses.md)
+ - [ApiResponseOfRegistrationResult](docs/ApiResponseOfRegistrationResult.md)
+ - [ApiResponseOfSSAResult](docs/ApiResponseOfSSAResult.md)
  - [ApiResponseOfTransferResponse](docs/ApiResponseOfTransferResponse.md)
  - [ApiResponseOfUserDeleteResponse](docs/ApiResponseOfUserDeleteResponse.md)
  - [Application](docs/Application.md)
@@ -222,6 +226,7 @@ Class | Method | HTTP request | Description
  - [CreditInterestTierBandSet](docs/CreditInterestTierBandSet.md)
  - [CreditLine](docs/CreditLine.md)
  - [CurrencyExchange](docs/CurrencyExchange.md)
+ - [DeregistrationResult](docs/DeregistrationResult.md)
  - [Eligibility](docs/Eligibility.md)
  - [EligibilityOtherEligibility](docs/EligibilityOtherEligibility.md)
  - [Enrichment](docs/Enrichment.md)
@@ -287,11 +292,15 @@ Class | Method | HTTP request | Description
  - [PostalAddress1](docs/PostalAddress1.md)
  - [PreAuthorisationRequest](docs/PreAuthorisationRequest.md)
  - [ProprietaryBankTransactionCode](docs/ProprietaryBankTransactionCode.md)
+ - [RegistrationRequest](docs/RegistrationRequest.md)
+ - [RegistrationResult](docs/RegistrationResult.md)
  - [ResidencyEligibility](docs/ResidencyEligibility.md)
  - [Resource](docs/Resource.md)
  - [ResponseEntity](docs/ResponseEntity.md)
  - [ResponseListMeta](docs/ResponseListMeta.md)
  - [ResponseMeta](docs/ResponseMeta.md)
+ - [SSARequest](docs/SSARequest.md)
+ - [SSAResult](docs/SSAResult.md)
  - [Site](docs/Site.md)
  - [SortCodePaymentAuthRequest](docs/SortCodePaymentAuthRequest.md)
  - [SortCodePaymentRequest](docs/SortCodePaymentRequest.md)
