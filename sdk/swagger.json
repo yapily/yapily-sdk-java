@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "To access endpoints that require authentication, use your application key and secret created in the Dashboard (https://dashboard.yapily.com)",
-    "version": "0.0.233",
+    "version": "0.0.234",
     "title": "Yapily API"
   },
   "host": "api.yapily.com",
@@ -7208,29 +7208,6 @@
         }
       },
       "description": "Other residency type which is not available in standard code list."
-    },
-    "SSARequest": {
-      "type": "object",
-      "properties": {
-        "tppId": {
-          "type": "string"
-        },
-        "softwareId": {
-          "type": "string"
-        },
-        "signingKeyId": {
-          "type": "string"
-        },
-        "transportKeyId": {
-          "type": "string"
-        },
-        "transportCertificateId": {
-          "type": "string"
-        },
-        "signingCertificateId": {
-          "type": "string"
-        }
-      }
     },
     "ApiListResponseOfCategory": {
       "type": "object",

@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>yapily</groupId>
     <artifactId>yapily-sdk</artifactId>
-    <version>0.0.233</version>
+    <version>0.0.234</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "yapily:yapily-sdk:0.0.233"
+compile "yapily:yapily-sdk:0.0.234"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/yapily-sdk-0.0.233.jar
+* target/yapily-sdk-0.0.234.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -299,7 +299,6 @@ Class | Method | HTTP request | Description
  - [ResponseEntity](docs/ResponseEntity.md)
  - [ResponseListMeta](docs/ResponseListMeta.md)
  - [ResponseMeta](docs/ResponseMeta.md)
- - [SSARequest](docs/SSARequest.md)
  - [SSAResult](docs/SSAResult.md)
  - [Site](docs/Site.md)
  - [SortCodePaymentAuthRequest](docs/SortCodePaymentAuthRequest.md)
