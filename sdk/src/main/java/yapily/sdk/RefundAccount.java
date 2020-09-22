@@ -22,30 +22,19 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
+import yapily.sdk.AccountIdentification;
 
 /**
- * PreAuthorisationRequest
+ * RefundAccount
  */
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class PreAuthorisationRequest {
-  @JsonProperty("userUuid")
-  private String userUuid = null;
+public class RefundAccount {
+  @JsonProperty("name")
+  private String name = null;
 
-  @JsonProperty("applicationUserId")
-  private String applicationUserId = null;
-
-  @JsonProperty("forwardParameters")
-  private List<String> forwardParameters = null;
-
-  @JsonProperty("institutionId")
-  private String institutionId = null;
-
-  @JsonProperty("callback")
-  private String callback = null;
-
-  @JsonProperty("oneTimeToken")
-  private Boolean oneTimeToken = null;
+  @JsonProperty("accountIdentifications")
+  private List<AccountIdentification> accountIdentifications = null;
 
 }
 

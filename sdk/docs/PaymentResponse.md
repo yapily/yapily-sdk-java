@@ -34,6 +34,7 @@ Name | Type | Description | Notes
 **purpose** | **String** |  |  [optional]
 **priority** | [**PriorityEnum**](#PriorityEnum) |  |  [optional]
 **exchangeRate** | [**ExchangeRateInformationResponse**](ExchangeRateInformationResponse.md) |  |  [optional]
+**refundAccount** | [**RefundAccount**](RefundAccount.md) |  |  [optional]
 
 
 <a name="StatusEnum"></a>

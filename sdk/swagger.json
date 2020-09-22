@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "To access endpoints that require authentication, use your application key and secret created in the Dashboard (https://dashboard.yapily.com)",
-    "version": "0.0.242",
+    "version": "0.0.243",
     "title": "Yapily API"
   },
   "host": "api.yapily.com",
@@ -4410,6 +4410,20 @@
         }
       }
     },
+    "RefundAccount": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "accountIdentifications": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AccountIdentification"
+          }
+        }
+      }
+    },
     "Merchant": {
       "type": "object",
       "properties": {
@@ -6694,6 +6708,10 @@
         },
         "merchantInfo": {
           "$ref": "#/definitions/MerchantInfo"
+        },
+        "readRefundAccount": {
+          "type": "boolean",
+          "example": false
         }
       }
     },
@@ -6933,6 +6951,9 @@
         },
         "exchangeRate": {
           "$ref": "#/definitions/ExchangeRateInformationResponse"
+        },
+        "refundAccount": {
+          "$ref": "#/definitions/RefundAccount"
         }
       }
     },
@@ -7618,6 +7639,10 @@
         },
         "internationalPayment": {
           "$ref": "#/definitions/InternationalPaymentRequest"
+        },
+        "readRefundAccount": {
+          "type": "boolean",
+          "example": false
         }
       }
     },
