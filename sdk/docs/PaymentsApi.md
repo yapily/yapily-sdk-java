@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 
 <a name="createBulkPaymentUsingPOST"></a>
 # **createBulkPaymentUsingPOST**
-> ApiResponseOfPaymentResponse createBulkPaymentUsingPOST(consent, paymentRequest)
+> ApiResponseOfPaymentResponse createBulkPaymentUsingPOST(consent, paymentRequest, psuId, psuCorporateId, psuIpAddress)
 
 Create bulk payment
 
@@ -106,8 +106,11 @@ tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 PaymentsApi apiInstance = new PaymentsApi();
 String consent = "consent_example"; // String | Consent Token
 BulkPaymentRequest paymentRequest = new BulkPaymentRequest(); // BulkPaymentRequest | paymentRequest
+String psuId = "psuId_example"; // String | PSU ID
+String psuCorporateId = "psuCorporateId_example"; // String | PSU ID CORPORATE
+String psuIpAddress = "psuIpAddress_example"; // String | PSU IP ADDRESS
 try {
-    ApiResponseOfPaymentResponse result = apiInstance.createBulkPaymentUsingPOST(consent, paymentRequest);
+    ApiResponseOfPaymentResponse result = apiInstance.createBulkPaymentUsingPOST(consent, paymentRequest, psuId, psuCorporateId, psuIpAddress);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PaymentsApi#createBulkPaymentUsingPOST");
@@ -121,6 +124,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consent** | **String**| Consent Token |
  **paymentRequest** | [**BulkPaymentRequest**](BulkPaymentRequest.md)| paymentRequest |
+ **psuId** | **String**| PSU ID | [optional]
+ **psuCorporateId** | **String**| PSU ID CORPORATE | [optional]
+ **psuIpAddress** | **String**| PSU IP ADDRESS | [optional]
 
 ### Return type
 
@@ -261,7 +267,7 @@ Name | Type | Description  | Notes
 
 <a name="createPaymentUsingPOST"></a>
 # **createPaymentUsingPOST**
-> ApiResponseOfPaymentResponse createPaymentUsingPOST(consent, paymentRequest)
+> ApiResponseOfPaymentResponse createPaymentUsingPOST(consent, paymentRequest, psuId, psuCorporateId, psuIpAddress)
 
 Create a payment
 
@@ -288,8 +294,11 @@ tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 PaymentsApi apiInstance = new PaymentsApi();
 String consent = "consent_example"; // String | Consent Token
 PaymentRequest paymentRequest = new PaymentRequest(); // PaymentRequest | paymentRequest
+String psuId = "psuId_example"; // String | PSU ID
+String psuCorporateId = "psuCorporateId_example"; // String | PSU ID CORPORATE
+String psuIpAddress = "psuIpAddress_example"; // String | PSU IP ADDRESS
 try {
-    ApiResponseOfPaymentResponse result = apiInstance.createPaymentUsingPOST(consent, paymentRequest);
+    ApiResponseOfPaymentResponse result = apiInstance.createPaymentUsingPOST(consent, paymentRequest, psuId, psuCorporateId, psuIpAddress);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PaymentsApi#createPaymentUsingPOST");
@@ -303,6 +312,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consent** | **String**| Consent Token |
  **paymentRequest** | [**PaymentRequest**](PaymentRequest.md)| paymentRequest |
+ **psuId** | **String**| PSU ID | [optional]
+ **psuCorporateId** | **String**| PSU ID CORPORATE | [optional]
+ **psuIpAddress** | **String**| PSU IP ADDRESS | [optional]
 
 ### Return type
 
@@ -319,7 +331,7 @@ Name | Type | Description  | Notes
 
 <a name="createPaymentWithSortCodeUsingPOST"></a>
 # **createPaymentWithSortCodeUsingPOST**
-> ApiResponseOfPaymentResponse createPaymentWithSortCodeUsingPOST(consent, paymentRequest)
+> ApiResponseOfPaymentResponse createPaymentWithSortCodeUsingPOST(consent, paymentRequest, psuId, psuCorporateId, psuIpAddress)
 
 Create a new single payment
 
@@ -346,8 +358,11 @@ tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 PaymentsApi apiInstance = new PaymentsApi();
 String consent = "consent_example"; // String | Consent Token
 SortCodePaymentRequest paymentRequest = new SortCodePaymentRequest(); // SortCodePaymentRequest | paymentRequest
+String psuId = "psuId_example"; // String | PSU ID
+String psuCorporateId = "psuCorporateId_example"; // String | PSU ID CORPORATE
+String psuIpAddress = "psuIpAddress_example"; // String | PSU IP ADDRESS
 try {
-    ApiResponseOfPaymentResponse result = apiInstance.createPaymentWithSortCodeUsingPOST(consent, paymentRequest);
+    ApiResponseOfPaymentResponse result = apiInstance.createPaymentWithSortCodeUsingPOST(consent, paymentRequest, psuId, psuCorporateId, psuIpAddress);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PaymentsApi#createPaymentWithSortCodeUsingPOST");
@@ -361,6 +376,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consent** | **String**| Consent Token |
  **paymentRequest** | [**SortCodePaymentRequest**](SortCodePaymentRequest.md)| paymentRequest |
+ **psuId** | **String**| PSU ID | [optional]
+ **psuCorporateId** | **String**| PSU ID CORPORATE | [optional]
+ **psuIpAddress** | **String**| PSU IP ADDRESS | [optional]
 
 ### Return type
 
@@ -377,7 +395,7 @@ Name | Type | Description  | Notes
 
 <a name="getPaymentStatusUsingGET"></a>
 # **getPaymentStatusUsingGET**
-> ApiResponseOfPaymentResponse getPaymentStatusUsingGET(paymentId, consent)
+> ApiResponseOfPaymentResponse getPaymentStatusUsingGET(paymentId, consent, psuId, psuCorporateId, psuIpAddress)
 
 Get status of a payment
 
@@ -404,8 +422,11 @@ tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 PaymentsApi apiInstance = new PaymentsApi();
 String paymentId = "paymentId_example"; // String | paymentId
 String consent = "consent_example"; // String | Consent Token
+String psuId = "psuId_example"; // String | PSU ID
+String psuCorporateId = "psuCorporateId_example"; // String | PSU ID CORPORATE
+String psuIpAddress = "psuIpAddress_example"; // String | PSU IP ADDRESS
 try {
-    ApiResponseOfPaymentResponse result = apiInstance.getPaymentStatusUsingGET(paymentId, consent);
+    ApiResponseOfPaymentResponse result = apiInstance.getPaymentStatusUsingGET(paymentId, consent, psuId, psuCorporateId, psuIpAddress);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PaymentsApi#getPaymentStatusUsingGET");
@@ -419,6 +440,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **paymentId** | **String**| paymentId |
  **consent** | **String**| Consent Token |
+ **psuId** | **String**| PSU ID | [optional]
+ **psuCorporateId** | **String**| PSU ID CORPORATE | [optional]
+ **psuIpAddress** | **String**| PSU IP ADDRESS | [optional]
 
 ### Return type
 
@@ -435,7 +459,7 @@ Name | Type | Description  | Notes
 
 <a name="getPaymentsUsingGET"></a>
 # **getPaymentsUsingGET**
-> ApiResponseOfPaymentResponses getPaymentsUsingGET(paymentId, consent)
+> ApiResponseOfPaymentResponses getPaymentsUsingGET(paymentId, consent, psuId, psuCorporateId, psuIpAddress)
 
 Get payments detail
 
@@ -462,8 +486,11 @@ tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 PaymentsApi apiInstance = new PaymentsApi();
 String paymentId = "paymentId_example"; // String | paymentId
 String consent = "consent_example"; // String | Consent Token
+String psuId = "psuId_example"; // String | PSU ID
+String psuCorporateId = "psuCorporateId_example"; // String | PSU ID CORPORATE
+String psuIpAddress = "psuIpAddress_example"; // String | PSU IP ADDRESS
 try {
-    ApiResponseOfPaymentResponses result = apiInstance.getPaymentsUsingGET(paymentId, consent);
+    ApiResponseOfPaymentResponses result = apiInstance.getPaymentsUsingGET(paymentId, consent, psuId, psuCorporateId, psuIpAddress);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PaymentsApi#getPaymentsUsingGET");
@@ -477,6 +504,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **paymentId** | **String**| paymentId |
  **consent** | **String**| Consent Token |
+ **psuId** | **String**| PSU ID | [optional]
+ **psuCorporateId** | **String**| PSU ID CORPORATE | [optional]
+ **psuIpAddress** | **String**| PSU IP ADDRESS | [optional]
 
 ### Return type
 

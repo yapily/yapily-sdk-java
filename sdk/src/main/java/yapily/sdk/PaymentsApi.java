@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-09-23T14:00:17.722Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-09-24T14:01:33.110Z")
 public class PaymentsApi {
   private ApiClient apiClient;
 
@@ -98,10 +98,13 @@ if (psuIpAddress != null)
    * 
    * @param consent Consent Token (required)
    * @param paymentRequest paymentRequest (required)
+   * @param psuId PSU ID (optional)
+   * @param psuCorporateId PSU ID CORPORATE (optional)
+   * @param psuIpAddress PSU IP ADDRESS (optional)
    * @return ApiResponseOfPaymentResponse
    * @throws ApiException if fails to make API call
    */
-  public ApiResponseOfPaymentResponse createBulkPaymentUsingPOST(String consent, BulkPaymentRequest paymentRequest) throws ApiException {
+  public ApiResponseOfPaymentResponse createBulkPaymentUsingPOST(String consent, BulkPaymentRequest paymentRequest, String psuId, String psuCorporateId, String psuIpAddress) throws ApiException {
     Object localVarPostBody = paymentRequest;
     
     // verify the required parameter 'consent' is set
@@ -125,6 +128,12 @@ if (psuIpAddress != null)
 
     if (consent != null)
       localVarHeaderParams.put("consent", apiClient.parameterToString(consent));
+if (psuId != null)
+      localVarHeaderParams.put("psu-id", apiClient.parameterToString(psuId));
+if (psuCorporateId != null)
+      localVarHeaderParams.put("psu-corporate-id", apiClient.parameterToString(psuCorporateId));
+if (psuIpAddress != null)
+      localVarHeaderParams.put("psu-ip-address", apiClient.parameterToString(psuIpAddress));
 
     
     final String[] localVarAccepts = {
@@ -249,10 +258,13 @@ if (psuIpAddress != null)
    * 
    * @param consent Consent Token (required)
    * @param paymentRequest paymentRequest (required)
+   * @param psuId PSU ID (optional)
+   * @param psuCorporateId PSU ID CORPORATE (optional)
+   * @param psuIpAddress PSU IP ADDRESS (optional)
    * @return ApiResponseOfPaymentResponse
    * @throws ApiException if fails to make API call
    */
-  public ApiResponseOfPaymentResponse createPaymentUsingPOST(String consent, PaymentRequest paymentRequest) throws ApiException {
+  public ApiResponseOfPaymentResponse createPaymentUsingPOST(String consent, PaymentRequest paymentRequest, String psuId, String psuCorporateId, String psuIpAddress) throws ApiException {
     Object localVarPostBody = paymentRequest;
     
     // verify the required parameter 'consent' is set
@@ -276,6 +288,12 @@ if (psuIpAddress != null)
 
     if (consent != null)
       localVarHeaderParams.put("consent", apiClient.parameterToString(consent));
+if (psuId != null)
+      localVarHeaderParams.put("psu-id", apiClient.parameterToString(psuId));
+if (psuCorporateId != null)
+      localVarHeaderParams.put("psu-corporate-id", apiClient.parameterToString(psuCorporateId));
+if (psuIpAddress != null)
+      localVarHeaderParams.put("psu-ip-address", apiClient.parameterToString(psuIpAddress));
 
     
     final String[] localVarAccepts = {
@@ -298,12 +316,15 @@ if (psuIpAddress != null)
    * 
    * @param consent Consent Token (required)
    * @param paymentRequest paymentRequest (required)
+   * @param psuId PSU ID (optional)
+   * @param psuCorporateId PSU ID CORPORATE (optional)
+   * @param psuIpAddress PSU IP ADDRESS (optional)
    * @return ApiResponseOfPaymentResponse
    * @throws ApiException if fails to make API call
    * @deprecated
    */
   @Deprecated
-  public ApiResponseOfPaymentResponse createPaymentWithSortCodeUsingPOST(String consent, SortCodePaymentRequest paymentRequest) throws ApiException {
+  public ApiResponseOfPaymentResponse createPaymentWithSortCodeUsingPOST(String consent, SortCodePaymentRequest paymentRequest, String psuId, String psuCorporateId, String psuIpAddress) throws ApiException {
     Object localVarPostBody = paymentRequest;
     
     // verify the required parameter 'consent' is set
@@ -327,6 +348,12 @@ if (psuIpAddress != null)
 
     if (consent != null)
       localVarHeaderParams.put("consent", apiClient.parameterToString(consent));
+if (psuId != null)
+      localVarHeaderParams.put("psu-id", apiClient.parameterToString(psuId));
+if (psuCorporateId != null)
+      localVarHeaderParams.put("psu-corporate-id", apiClient.parameterToString(psuCorporateId));
+if (psuIpAddress != null)
+      localVarHeaderParams.put("psu-ip-address", apiClient.parameterToString(psuIpAddress));
 
     
     final String[] localVarAccepts = {
@@ -349,10 +376,13 @@ if (psuIpAddress != null)
    * 
    * @param paymentId paymentId (required)
    * @param consent Consent Token (required)
+   * @param psuId PSU ID (optional)
+   * @param psuCorporateId PSU ID CORPORATE (optional)
+   * @param psuIpAddress PSU IP ADDRESS (optional)
    * @return ApiResponseOfPaymentResponse
    * @throws ApiException if fails to make API call
    */
-  public ApiResponseOfPaymentResponse getPaymentStatusUsingGET(String paymentId, String consent) throws ApiException {
+  public ApiResponseOfPaymentResponse getPaymentStatusUsingGET(String paymentId, String consent, String psuId, String psuCorporateId, String psuIpAddress) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'paymentId' is set
@@ -377,6 +407,12 @@ if (psuIpAddress != null)
 
     if (consent != null)
       localVarHeaderParams.put("consent", apiClient.parameterToString(consent));
+if (psuId != null)
+      localVarHeaderParams.put("psu-id", apiClient.parameterToString(psuId));
+if (psuCorporateId != null)
+      localVarHeaderParams.put("psu-corporate-id", apiClient.parameterToString(psuCorporateId));
+if (psuIpAddress != null)
+      localVarHeaderParams.put("psu-ip-address", apiClient.parameterToString(psuIpAddress));
 
     
     final String[] localVarAccepts = {
@@ -399,10 +435,13 @@ if (psuIpAddress != null)
    * 
    * @param paymentId paymentId (required)
    * @param consent Consent Token (required)
+   * @param psuId PSU ID (optional)
+   * @param psuCorporateId PSU ID CORPORATE (optional)
+   * @param psuIpAddress PSU IP ADDRESS (optional)
    * @return ApiResponseOfPaymentResponses
    * @throws ApiException if fails to make API call
    */
-  public ApiResponseOfPaymentResponses getPaymentsUsingGET(String paymentId, String consent) throws ApiException {
+  public ApiResponseOfPaymentResponses getPaymentsUsingGET(String paymentId, String consent, String psuId, String psuCorporateId, String psuIpAddress) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'paymentId' is set
@@ -427,6 +466,12 @@ if (psuIpAddress != null)
 
     if (consent != null)
       localVarHeaderParams.put("consent", apiClient.parameterToString(consent));
+if (psuId != null)
+      localVarHeaderParams.put("psu-id", apiClient.parameterToString(psuId));
+if (psuCorporateId != null)
+      localVarHeaderParams.put("psu-corporate-id", apiClient.parameterToString(psuCorporateId));
+if (psuIpAddress != null)
+      localVarHeaderParams.put("psu-ip-address", apiClient.parameterToString(psuIpAddress));
 
     
     final String[] localVarAccepts = {

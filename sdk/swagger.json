@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "To access endpoints that require authentication, use your application key and secret created in the Dashboard (https://dashboard.yapily.com)",
-    "version": "0.0.244",
+    "version": "0.0.245",
     "title": "Yapily API"
   },
   "host": "api.yapily.com",
@@ -1145,6 +1145,27 @@
             "type": "string"
           },
           {
+            "name": "psu-id",
+            "in": "header",
+            "description": "PSU ID",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "psu-corporate-id",
+            "in": "header",
+            "description": "PSU ID CORPORATE",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "psu-ip-address",
+            "in": "header",
+            "description": "PSU IP ADDRESS",
+            "required": false,
+            "type": "string"
+          },
+          {
             "in": "body",
             "name": "paymentRequest",
             "description": "paymentRequest",
@@ -2280,6 +2301,27 @@
             "type": "string"
           },
           {
+            "name": "psu-id",
+            "in": "header",
+            "description": "PSU ID",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "psu-corporate-id",
+            "in": "header",
+            "description": "PSU ID CORPORATE",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "psu-ip-address",
+            "in": "header",
+            "description": "PSU IP ADDRESS",
+            "required": false,
+            "type": "string"
+          },
+          {
             "in": "body",
             "name": "paymentRequest",
             "description": "paymentRequest",
@@ -2418,6 +2460,27 @@
             "type": "string"
           },
           {
+            "name": "psu-id",
+            "in": "header",
+            "description": "PSU ID",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "psu-corporate-id",
+            "in": "header",
+            "description": "PSU ID CORPORATE",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "psu-ip-address",
+            "in": "header",
+            "description": "PSU IP ADDRESS",
+            "required": false,
+            "type": "string"
+          },
+          {
             "in": "body",
             "name": "paymentRequest",
             "description": "paymentRequest",
@@ -2484,6 +2547,27 @@
             "description": "Consent Token",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "psu-id",
+            "in": "header",
+            "description": "PSU ID",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "psu-corporate-id",
+            "in": "header",
+            "description": "PSU ID CORPORATE",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "psu-ip-address",
+            "in": "header",
+            "description": "PSU IP ADDRESS",
+            "required": false,
+            "type": "string"
           }
         ],
         "responses": {
@@ -2539,6 +2623,27 @@
             "in": "header",
             "description": "Consent Token",
             "required": true,
+            "type": "string"
+          },
+          {
+            "name": "psu-id",
+            "in": "header",
+            "description": "PSU ID",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "psu-corporate-id",
+            "in": "header",
+            "description": "PSU ID CORPORATE",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "psu-ip-address",
+            "in": "header",
+            "description": "PSU IP ADDRESS",
+            "required": false,
             "type": "string"
           }
         ],
