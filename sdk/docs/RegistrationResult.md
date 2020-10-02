@@ -18,6 +18,8 @@ Name | Type | Description | Notes
 **ssaJwt** | **String** |  |  [optional]
 **clientId** | **String** |  |  [optional]
 **clientSecret** | **String** |  |  [optional]
+**signingKeyStore** | **String** |  |  [optional]
+**transportKeyStore** | **String** |  |  [optional]
 
 
 

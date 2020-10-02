@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "To access endpoints that require authentication, use your application key and secret created in the Dashboard (https://dashboard.yapily.com)",
-    "version": "0.0.248",
+    "version": "0.0.249",
     "title": "Yapily API"
   },
   "host": "api.yapily.com",
@@ -5598,6 +5598,12 @@
           "type": "string"
         },
         "clientSecret": {
+          "type": "string"
+        },
+        "signingKeyStore": {
+          "type": "string"
+        },
+        "transportKeyStore": {
           "type": "string"
         }
       }
