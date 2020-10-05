@@ -20,25 +20,18 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.time.OffsetDateTime;
 
 /**
- * Next
+ * InstitutionError
  */
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Next {
-  @JsonProperty("before")
-  private OffsetDateTime before = null;
+public class InstitutionError {
+  @JsonProperty("errorMessage")
+  private String errorMessage = null;
 
-  @JsonProperty("cursor")
-  private String cursor = null;
-
-  @JsonProperty("from")
-  private OffsetDateTime from = null;
-
-  @JsonProperty("limit")
-  private Integer limit = null;
+  @JsonProperty("httpStatusCode")
+  private Integer httpStatusCode = null;
 
 }
 

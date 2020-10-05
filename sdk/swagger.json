@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "To access endpoints that require authentication, use your application key and secret created in the Dashboard (https://dashboard.yapily.com)",
-    "version": "0.0.249",
+    "version": "0.0.250",
     "title": "Yapily API"
   },
   "host": "api.yapily.com",
@@ -4162,6 +4162,9 @@
           "type": "integer",
           "format": "int32"
         },
+        "institutionError": {
+          "$ref": "#/definitions/InstitutionError"
+        },
         "message": {
           "type": "string"
         },
@@ -5198,6 +5201,18 @@
         }
       },
       "description": "Enter a new code , name and description for any other ATM accessibility options"
+    },
+    "InstitutionError": {
+      "type": "object",
+      "properties": {
+        "errorMessage": {
+          "type": "string"
+        },
+        "httpStatusCode": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
     },
     "IsoCodeDetails": {
       "type": "object",
