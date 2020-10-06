@@ -2,7 +2,7 @@ apply plugin: 'idea'
 apply plugin: 'eclipse'
 
 group = 'yapily'
-version = '0.0.250'
+version = '0.0.251'
 
 buildscript {
     repositories {
