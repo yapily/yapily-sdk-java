@@ -65,6 +65,9 @@
       "description": " "
     }
   ],
+  "schemes": [
+    "https"
+  ],
   "paths": {
     "/account-auth-requests": {
       "post": {
