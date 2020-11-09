@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "To access endpoints that require authentication, use your application key and secret created in the Dashboard (https://dashboard.yapily.com)",
-    "version": "0.0.269",
+    "version": "0.0.271",
     "title": "Yapily API"
   },
   "host": "api.yapily.com",
@@ -3423,6 +3423,9 @@
         },
         "qrCodeUrl": {
           "type": "string"
+        },
+        "state": {
+          "type": "string"
         }
       }
     },
@@ -3776,6 +3779,9 @@
           }
         },
         "consentToken": {
+          "type": "string"
+        },
+        "state": {
           "type": "string"
         }
       }
@@ -7608,6 +7614,9 @@
           "type": "string"
         },
         "authorisationUrl": {
+          "type": "string"
+        },
+        "state": {
           "type": "string"
         },
         "qrCodeUrl": {

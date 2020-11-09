@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **timeToExpire** | **String** | ISO 8601 duration |  [optional]
 **featureScope** | [**List&lt;FeatureScopeEnum&gt;**](#List&lt;FeatureScopeEnum&gt;) |  |  [optional]
 **consentToken** | **String** |  |  [optional]
+**state** | **String** |  |  [optional]
 
 
 <a name="StatusEnum"></a>
