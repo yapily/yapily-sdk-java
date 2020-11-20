@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-11-19T15:13:22.654Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-11-20T17:45:48.127Z")
 public class ConsentsApi {
   private ApiClient apiClient;
 
@@ -133,7 +133,7 @@ public class ConsentsApi {
    * Delete consent
    * 
    * @param consentId consentId (required)
-   * @param forceDelete forceDelete (optional)
+   * @param forceDelete forceDelete (optional, default to true)
    * @return ApiResponseOfConsentDeleteResponse
    * @throws ApiException if fails to make API call
    */

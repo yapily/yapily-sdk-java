@@ -35,6 +35,7 @@ Name | Type | Description | Notes
 **priority** | [**PriorityEnum**](#PriorityEnum) |  |  [optional]
 **exchangeRate** | [**ExchangeRateInformationResponse**](ExchangeRateInformationResponse.md) |  |  [optional]
 **refundAccount** | [**RefundAccount**](RefundAccount.md) |  |  [optional]
+**bulkAmountSum** | [**BigDecimal**](BigDecimal.md) | Control sum for bulk payments |  [optional]
 
 
 <a name="StatusEnum"></a>

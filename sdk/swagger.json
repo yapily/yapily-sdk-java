@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "To access endpoints that require authentication, use your application key and secret created in the Dashboard (https://dashboard.yapily.com)",
-    "version": "0.0.277",
+    "version": "0.0.278",
     "title": "Yapily API"
   },
   "host": "api.yapily.com",
@@ -1555,7 +1555,8 @@
             "in": "query",
             "description": "forceDelete",
             "required": false,
-            "type": "boolean"
+            "type": "boolean",
+            "default": true
           }
         ],
         "responses": {
@@ -3481,6 +3482,7 @@
             "OPEN_BANKING_UK_AUTO",
             "OPEN_BANKING_IBM",
             "OPEN_BANKING_AUTO",
+            "OPEN_BANKING_AUTO_EMAIL",
             "OPEN_BANKING_MANUAL",
             "API_KEY",
             "OPEN_BANKING_NO_KEY",
@@ -5632,6 +5634,9 @@
         },
         "transportKeyStore": {
           "type": "string"
+        },
+        "registrationResponse": {
+          "type": "string"
         }
       }
     },
@@ -7100,6 +7105,10 @@
         },
         "refundAccount": {
           "$ref": "#/definitions/RefundAccount"
+        },
+        "bulkAmountSum": {
+          "type": "number",
+          "description": "Control sum for bulk payments"
         }
       }
     },
