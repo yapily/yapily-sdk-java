@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **consentToken** | **String** |  |  [optional]
 **qrCodeUrl** | **String** |  |  [optional]
 **state** | **String** |  |  [optional]
+**authorizedAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
 
 
 <a name="StatusEnum"></a>

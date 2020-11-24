@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **featureScope** | [**List&lt;FeatureScopeEnum&gt;**](#List&lt;FeatureScopeEnum&gt;) |  |  [optional]
 **consentToken** | **String** |  |  [optional]
 **state** | **String** |  |  [optional]
+**authorizedAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
 
 
 <a name="StatusEnum"></a>
