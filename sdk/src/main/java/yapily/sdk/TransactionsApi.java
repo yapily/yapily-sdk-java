@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-11-26T17:15:39.259Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-11-30T12:05:42.392Z")
 public class TransactionsApi {
   private ApiClient apiClient;
 

@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>yapily</groupId>
     <artifactId>yapily-sdk</artifactId>
-    <version>0.0.281</version>
+    <version>0.0.282</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "yapily:yapily-sdk:0.0.281"
+compile "yapily:yapily-sdk:0.0.282"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/yapily-sdk-0.0.281.jar
+* target/yapily-sdk-0.0.282.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -118,12 +118,11 @@ Class | Method | HTTP request | Description
 *ApplicationUsersApi* | [**getUsersUsingGET**](docs/ApplicationUsersApi.md#getUsersUsingGET) | **GET** /users | Get application users
 *ApplicationUsersApi* | [**startDeleteUsersJobUsingPOST**](docs/ApplicationUsersApi.md#startDeleteUsersJobUsingPOST) | **POST** /delete-users | Start a job to delete application users by specifying their identifiers
 *ApplicationsApi* | [**getApplicationMeUsingGET**](docs/ApplicationsApi.md#getApplicationMeUsingGET) | **GET** /me | Returns the details of the application that owns the request credentials
-*ApplicationsApi* | [**getJwksUsingGET**](docs/ApplicationsApi.md#getJwksUsingGET) | **GET** /jwks | JSON Web Key Set (JWKS) for authenticated application
-*ApplicationsApi* | [**revokeTokensUsingPOST**](docs/ApplicationsApi.md#revokeTokensUsingPOST) | **POST** /revoke-tokens | Revoke existing access tokens for application, which will also generate a new public key discoverable via /jwks
 *BalancesApi* | [**getAccountBalancesUsingGET**](docs/BalancesApi.md#getAccountBalancesUsingGET) | **GET** /accounts/{accountId}/balances | Get account balances
 *CategoriesApi* | [**getCategoriesUsingGET**](docs/CategoriesApi.md#getCategoriesUsingGET) | **GET** /categories/{country} | Retrieves a list of categories returned by the Yapily Categorisation engine for a given locale
 *ConsentsApi* | [**addConsentUsingPOST**](docs/ConsentsApi.md#addConsentUsingPOST) | **POST** /users/{userUuid}/consents | Post consent
 *ConsentsApi* | [**createConsentWithCodeUsingPOST**](docs/ConsentsApi.md#createConsentWithCodeUsingPOST) | **POST** /consent-auth-code | Post auth-code and auth-state
+*ConsentsApi* | [**createPreAuthorisationRequestUsingPOST**](docs/ConsentsApi.md#createPreAuthorisationRequestUsingPOST) | **POST** /pre-auth-requests | Initiate request for user to pre authorise
 *ConsentsApi* | [**deleteUsingDELETE**](docs/ConsentsApi.md#deleteUsingDELETE) | **DELETE** /consents/{consentId} | Delete consent
 *ConsentsApi* | [**getConsentByIdUsingGET**](docs/ConsentsApi.md#getConsentByIdUsingGET) | **GET** /consents/{consentId} | Get consent
 *ConsentsApi* | [**getConsentBySingleAccessConsentUsingPOST**](docs/ConsentsApi.md#getConsentBySingleAccessConsentUsingPOST) | **POST** /consent-one-time-token | Post one time token
@@ -135,7 +134,6 @@ Class | Method | HTTP request | Description
 *InstitutionsApi* | [**getInstitutionsUsingGET**](docs/InstitutionsApi.md#getInstitutionsUsingGET) | **GET** /institutions | Retrieves the list of institutions available in Yapily
 *InstitutionsOpenDataApi* | [**getATMDataUsingGET**](docs/InstitutionsOpenDataApi.md#getATMDataUsingGET) | **GET** /institutions/{institutionId}/atms | Retrieves data about all ATMs of the selected institution
 *InstitutionsOpenDataApi* | [**getPersonalCurrentAccountsUsingGET**](docs/InstitutionsOpenDataApi.md#getPersonalCurrentAccountsUsingGET) | **GET** /institutions/{institutionId}/personal-current-accounts | Retrieves details of personal current accounts for an institution
-*OAuthApi* | [**oauthToken**](docs/OAuthApi.md#oauthToken) | **POST** /oauth/token | Retrieve Access Token
 *PaymentsApi* | [**createBulkPaymentAuthorisationUsingPOST**](docs/PaymentsApi.md#createBulkPaymentAuthorisationUsingPOST) | **POST** /bulk-payment-auth-requests | Initiate bulk payment for user to authorise
 *PaymentsApi* | [**createBulkPaymentUsingPOST**](docs/PaymentsApi.md#createBulkPaymentUsingPOST) | **POST** /bulk-payments | Create bulk payment
 *PaymentsApi* | [**createPaymentAuthorisationUsingPOST**](docs/PaymentsApi.md#createPaymentAuthorisationUsingPOST) | **POST** /payment-auth-requests | Initiate a payment for user to authorise
@@ -145,7 +143,6 @@ Class | Method | HTTP request | Description
 *PaymentsApi* | [**getPaymentStatusUsingGET**](docs/PaymentsApi.md#getPaymentStatusUsingGET) | **GET** /payments/{paymentId} | Get status of a payment
 *PaymentsApi* | [**getPaymentsUsingGET**](docs/PaymentsApi.md#getPaymentsUsingGET) | **GET** /payments/{paymentId}/details | Get payments detail
 *PaymentsApi* | [**updatePaymentAuthorisationUsingPUT**](docs/PaymentsApi.md#updatePaymentAuthorisationUsingPUT) | **PUT** /payment-auth-requests | Update pre authorize consent for user to authorise payment
-*PreAuthConsentControllerApi* | [**createPreAuthorisationUsingPOST**](docs/PreAuthConsentControllerApi.md#createPreAuthorisationUsingPOST) | **POST** /pre-auth-requests | Initiate request for user to pre authorise
 *StatementsApi* | [**getStatementFileUsingGET**](docs/StatementsApi.md#getStatementFileUsingGET) | **GET** /accounts/{accountId}/statements/{statementId}/file | Get account statement file
 *StatementsApi* | [**getStatementUsingGET**](docs/StatementsApi.md#getStatementUsingGET) | **GET** /accounts/{accountId}/statements/{statementId} | Get account statement
 *StatementsApi* | [**getStatementsUsingGET**](docs/StatementsApi.md#getStatementsUsingGET) | **GET** /accounts/{accountId}/statements | Get account statements
@@ -316,7 +313,6 @@ Class | Method | HTTP request | Description
  - [URL](docs/URL.md)
  - [UserDeleteRequest](docs/UserDeleteRequest.md)
  - [UserDeleteResponse](docs/UserDeleteResponse.md)
- - [YapilyAccessToken](docs/YapilyAccessToken.md)
 
 
 ## Documentation for Authorization
@@ -331,7 +327,14 @@ Authentication schemes defined for the API:
 - **Type**: OAuth
 - **Flow**: application
 - **Authorization URL**: 
-- **Scopes**: N/A
+- **Scopes**: 
+  - institutions: Getting institution data
+  - payments: Executing payments
+  - certificate: Manage certificates
+  - accounts: Account data
+  - consent: Consents access
+  - user: Manage users
+  - register: Institution registration management
 
 
 ## Recommendation

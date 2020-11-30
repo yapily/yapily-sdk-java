@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**addConsentUsingPOST**](ConsentsApi.md#addConsentUsingPOST) | **POST** /users/{userUuid}/consents | Post consent
 [**createConsentWithCodeUsingPOST**](ConsentsApi.md#createConsentWithCodeUsingPOST) | **POST** /consent-auth-code | Post auth-code and auth-state
+[**createPreAuthorisationRequestUsingPOST**](ConsentsApi.md#createPreAuthorisationRequestUsingPOST) | **POST** /pre-auth-requests | Initiate request for user to pre authorise
 [**deleteUsingDELETE**](ConsentsApi.md#deleteUsingDELETE) | **DELETE** /consents/{consentId} | Delete consent
 [**getConsentByIdUsingGET**](ConsentsApi.md#getConsentByIdUsingGET) | **GET** /consents/{consentId} | Get consent
 [**getConsentBySingleAccessConsentUsingPOST**](ConsentsApi.md#getConsentBySingleAccessConsentUsingPOST) | **POST** /consent-one-time-token | Post one time token
@@ -125,6 +126,62 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json;charset=UTF-8
+
+<a name="createPreAuthorisationRequestUsingPOST"></a>
+# **createPreAuthorisationRequestUsingPOST**
+> ApiResponseOfAuthorisationRequestResponse createPreAuthorisationRequestUsingPOST(preAuthorisationRequest)
+
+Initiate request for user to pre authorise
+
+### Example
+```java
+// Import classes:
+//import yapily.ApiClient;
+//import yapily.ApiException;
+//import yapily.Configuration;
+//import yapily.auth.*;
+//import yapily.sdk.ConsentsApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure HTTP basic authorization: basicAuth
+HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
+basicAuth.setUsername("YOUR USERNAME");
+basicAuth.setPassword("YOUR PASSWORD");
+
+// Configure OAuth2 access token for authorization: tokenAuth
+OAuth tokenAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
+tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
+
+ConsentsApi apiInstance = new ConsentsApi();
+PreAuthorisationRequest preAuthorisationRequest = new PreAuthorisationRequest(); // PreAuthorisationRequest | preAuthorisationRequest
+try {
+    ApiResponseOfAuthorisationRequestResponse result = apiInstance.createPreAuthorisationRequestUsingPOST(preAuthorisationRequest);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling ConsentsApi#createPreAuthorisationRequestUsingPOST");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **preAuthorisationRequest** | [**PreAuthorisationRequest**](PreAuthorisationRequest.md)| preAuthorisationRequest |
+
+### Return type
+
+[**ApiResponseOfAuthorisationRequestResponse**](ApiResponseOfAuthorisationRequestResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth), [tokenAuth](../README.md#tokenAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json;charset=UTF-8
  - **Accept**: application/json;charset=UTF-8
 
 <a name="deleteUsingDELETE"></a>

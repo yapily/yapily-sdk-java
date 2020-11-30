@@ -8,19 +8,21 @@ import yapily.Pair;
 import javax.ws.rs.core.GenericType;
 
 import yapily.sdk.ApiListResponseOfConsent;
+import yapily.sdk.ApiResponseOfAuthorisationRequestResponse;
 import yapily.sdk.ApiResponseOfConsent;
 import yapily.sdk.ApiResponseOfConsentDeleteResponse;
 import yapily.sdk.Consent;
 import yapily.sdk.ConsentAuthCodeRequest;
 import yapily.sdk.CreateConsentAccessToken;
 import yapily.sdk.OneTimeTokenRequest;
+import yapily.sdk.PreAuthorisationRequest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-11-26T17:15:39.259Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-11-30T12:05:42.392Z")
 public class ConsentsApi {
   private ApiClient apiClient;
 
@@ -127,6 +129,47 @@ public class ConsentsApi {
     String[] localVarAuthNames = new String[] { "basicAuth", "tokenAuth" };
 
     GenericType<Consent> localVarReturnType = new GenericType<Consent>() {};
+    return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+      }
+  /**
+   * Initiate request for user to pre authorise
+   * 
+   * @param preAuthorisationRequest preAuthorisationRequest (required)
+   * @return ApiResponseOfAuthorisationRequestResponse
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponseOfAuthorisationRequestResponse createPreAuthorisationRequestUsingPOST(PreAuthorisationRequest preAuthorisationRequest) throws ApiException {
+    Object localVarPostBody = preAuthorisationRequest;
+    
+    // verify the required parameter 'preAuthorisationRequest' is set
+    if (preAuthorisationRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'preAuthorisationRequest' when calling createPreAuthorisationRequestUsingPOST");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/pre-auth-requests";
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json;charset=UTF-8"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json;charset=UTF-8"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "basicAuth", "tokenAuth" };
+
+    GenericType<ApiResponseOfAuthorisationRequestResponse> localVarReturnType = new GenericType<ApiResponseOfAuthorisationRequestResponse>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
   /**

@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "To access endpoints that require authentication, use your application key and secret created in the Dashboard (https://dashboard.yapily.com)",
-    "version": "0.0.281",
+    "version": "0.0.282",
     "title": "Yapily API"
   },
   "host": "api.yapily.com",
@@ -23,10 +23,6 @@
     {
       "name": "Categories",
       "description": " "
-    },
-    {
-      "name": "pre-auth-consent-controller",
-      "description": "Pre Auth Consent Controller"
     },
     {
       "name": "Accounts",
@@ -2006,46 +2002,6 @@
         ]
       }
     },
-    "/jwks": {
-      "get": {
-        "tags": [
-          "Applications"
-        ],
-        "summary": "JSON Web Key Set (JWKS) for authenticated application",
-        "operationId": "getJwksUsingGET",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json;charset=UTF-8"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "type": "object"
-            }
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden"
-          },
-          "404": {
-            "description": "Not Found"
-          }
-        },
-        "security": [
-          {
-            "basicAuth": []
-          },
-          {
-            "tokenAuth": []
-          }
-        ]
-      }
-    },
     "/me": {
       "get": {
         "tags": [
@@ -2082,48 +2038,6 @@
           },
           {
             "tokenAuth": []
-          }
-        ]
-      }
-    },
-    "/oauth/token": {
-      "post": {
-        "tags": [
-          "OAuth"
-        ],
-        "summary": "Retrieve Access Token",
-        "operationId": "oauth-token",
-        "consumes": [
-          "application/x-www-form-urlencoded"
-        ],
-        "produces": [
-          "application/json",
-          "application/xml"
-        ],
-        "parameters": [
-          {
-            "name": "grant_type",
-            "in": "formData",
-            "description": "Grant type",
-            "required": true,
-            "type": "string",
-            "default": "client_credentials",
-            "enum": [
-              "client_credentials"
-            ]
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/YapilyAccessToken"
-            }
-          }
-        },
-        "security": [
-          {
-            "basicAuth": []
           }
         ]
       }
@@ -2681,10 +2595,10 @@
     "/pre-auth-requests": {
       "post": {
         "tags": [
-          "pre-auth-consent-controller"
+          "Consents"
         ],
         "summary": "Initiate request for user to pre authorise",
-        "operationId": "createPreAuthorisationUsingPOST",
+        "operationId": "createPreAuthorisationRequestUsingPOST",
         "consumes": [
           "application/json;charset=UTF-8"
         ],
@@ -2707,49 +2621,6 @@
             "description": "OK",
             "schema": {
               "$ref": "#/definitions/ApiResponseOfAuthorisationRequestResponse"
-            }
-          },
-          "201": {
-            "description": "Created"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden"
-          },
-          "404": {
-            "description": "Not Found"
-          }
-        },
-        "security": [
-          {
-            "basicAuth": []
-          },
-          {
-            "tokenAuth": []
-          }
-        ]
-      }
-    },
-    "/revoke-tokens": {
-      "post": {
-        "tags": [
-          "Applications"
-        ],
-        "summary": "Revoke existing access tokens for application, which will also generate a new public key discoverable via /jwks",
-        "operationId": "revokeTokensUsingPOST",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json;charset=UTF-8"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/ResponseEntity"
             }
           },
           "201": {
@@ -3113,8 +2984,17 @@
     },
     "tokenAuth": {
       "type": "oauth2",
-      "tokenUrl": "https://api.yapily.com/oauth/token",
-      "flow": "application"
+      "tokenUrl": "https://iam.yapily.com/auth/realms/open-banking/protocol/openid-connect/token",
+      "flow": "application",
+      "scopes": {
+        "institutions": "Getting institution data",
+        "payments": "Executing payments",
+        "certificate": "Manage certificates",
+        "accounts": "Account data",
+        "consent": "Consents access",
+        "user": "Manage users",
+        "register": "Institution registration management"
+      }
     }
   },
   "definitions": {
@@ -4746,27 +4626,6 @@
         "exchangeRate": {
           "type": "number",
           "description": "Currency exchange rate"
-        }
-      }
-    },
-    "YapilyAccessToken": {
-      "type": "object",
-      "properties": {
-        "access_token": {
-          "type": "string"
-        },
-        "expires_in": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "jti": {
-          "type": "string"
-        },
-        "scope": {
-          "type": "string"
-        },
-        "token_type": {
-          "type": "string"
         }
       }
     },
