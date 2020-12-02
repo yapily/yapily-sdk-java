@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "To access endpoints that require authentication, use your application key and secret created in the Dashboard (https://dashboard.yapily.com)",
-    "version": "0.0.283",
+    "version": "0.0.284",
     "title": "Yapily API"
   },
   "host": "api.yapily.com",
@@ -5359,6 +5359,47 @@
         }
       }
     },
+    "RegistrationRequestManual": {
+      "type": "object",
+      "properties": {
+        "clientId": {
+          "type": "string"
+        },
+        "clientSecret": {
+          "type": "string"
+        },
+        "tppId": {
+          "type": "string"
+        },
+        "softwareId": {
+          "type": "string"
+        },
+        "clientName": {
+          "type": "string"
+        },
+        "signingKeyId": {
+          "type": "string"
+        },
+        "signingCertificateId": {
+          "type": "string"
+        },
+        "transportKeyId": {
+          "type": "string"
+        },
+        "transportCertificateId": {
+          "type": "string"
+        },
+        "clientUri": {
+          "type": "string"
+        },
+        "termsOfServiceUri": {
+          "type": "string"
+        },
+        "ssaJwt": {
+          "type": "string"
+        }
+      }
+    },
     "ATMMapServiceLinks": {
       "type": "object",
       "properties": {
@@ -6807,51 +6848,6 @@
         }
       }
     },
-    "RegistrationRequest": {
-      "type": "object",
-      "properties": {
-        "clientId": {
-          "type": "string"
-        },
-        "clientSecret": {
-          "type": "string"
-        },
-        "manual": {
-          "type": "boolean",
-          "example": false
-        },
-        "tppId": {
-          "type": "string"
-        },
-        "softwareId": {
-          "type": "string"
-        },
-        "clientName": {
-          "type": "string"
-        },
-        "signingKeyId": {
-          "type": "string"
-        },
-        "signingCertificateId": {
-          "type": "string"
-        },
-        "transportKeyId": {
-          "type": "string"
-        },
-        "transportCertificateId": {
-          "type": "string"
-        },
-        "clientUri": {
-          "type": "string"
-        },
-        "termsOfServiceUri": {
-          "type": "string"
-        },
-        "ssaJwt": {
-          "type": "string"
-        }
-      }
-    },
     "PaymentResponse": {
       "type": "object",
       "properties": {
@@ -7058,6 +7054,23 @@
         "category": {
           "description": "Category",
           "$ref": "#/definitions/Category"
+        }
+      }
+    },
+    "RegistrationRequestAuto": {
+      "type": "object",
+      "properties": {
+        "softwareId": {
+          "type": "string"
+        },
+        "signingCertificateId": {
+          "type": "string"
+        },
+        "transportCertificateId": {
+          "type": "string"
+        },
+        "ssaJwt": {
+          "type": "string"
         }
       }
     },

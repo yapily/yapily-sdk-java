@@ -22,16 +22,16 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * RegistrationResult
+ * RegistrationRequestManual
  */
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class RegistrationResult {
-  @JsonProperty("applicationId")
-  private String applicationId = null;
+public class RegistrationRequestManual {
+  @JsonProperty("clientId")
+  private String clientId = null;
 
-  @JsonProperty("institutionId")
-  private String institutionId = null;
+  @JsonProperty("clientSecret")
+  private String clientSecret = null;
 
   @JsonProperty("tppId")
   private String tppId = null;
@@ -62,21 +62,6 @@ public class RegistrationResult {
 
   @JsonProperty("ssaJwt")
   private String ssaJwt = null;
-
-  @JsonProperty("clientId")
-  private String clientId = null;
-
-  @JsonProperty("clientSecret")
-  private String clientSecret = null;
-
-  @JsonProperty("signingKeyStore")
-  private String signingKeyStore = null;
-
-  @JsonProperty("transportKeyStore")
-  private String transportKeyStore = null;
-
-  @JsonProperty("registrationResponse")
-  private String registrationResponse = null;
 
 }
 
