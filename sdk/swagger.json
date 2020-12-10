@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "To access endpoints that require authentication, use your application key and secret created in the Dashboard (https://dashboard.yapily.com)",
-    "version": "0.0.288",
+    "version": "0.0.289",
     "title": "Yapily API"
   },
   "host": "api.yapily.com",
@@ -3210,7 +3210,8 @@
             "UNKNOWN",
             "INVALID",
             "AWAITING_PRE_AUTHORIZATION",
-            "PRE_AUTHORIZED"
+            "PRE_AUTHORIZED",
+            "AWAITING_DECOUPLED_AUTHORIZATION"
           ]
         },
         "createdAt": {
@@ -3578,7 +3579,8 @@
             "UNKNOWN",
             "INVALID",
             "AWAITING_PRE_AUTHORIZATION",
-            "PRE_AUTHORIZED"
+            "PRE_AUTHORIZED",
+            "AWAITING_DECOUPLED_AUTHORIZATION"
           ]
         },
         "createdAt": {
@@ -6840,7 +6842,8 @@
             "ABA",
             "ABA_WIRE",
             "ABA_ACH",
-            "EMAIL"
+            "EMAIL",
+            "ROLL_NUMBER"
           ]
         },
         "identification": {
@@ -7407,7 +7410,8 @@
             "UNKNOWN",
             "INVALID",
             "AWAITING_PRE_AUTHORIZATION",
-            "PRE_AUTHORIZED"
+            "PRE_AUTHORIZED",
+            "AWAITING_DECOUPLED_AUTHORIZATION"
           ]
         },
         "createdAt": {
