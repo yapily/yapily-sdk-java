@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>yapily</groupId>
     <artifactId>yapily-sdk</artifactId>
-    <version>0.0.301</version>
+    <version>0.0.302</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "yapily:yapily-sdk:0.0.301"
+compile "yapily:yapily-sdk:0.0.302"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/yapily-sdk-0.0.301.jar
+* target/yapily-sdk-0.0.302.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -128,6 +128,8 @@ Class | Method | HTTP request | Description
 *ConsentsApi* | [**getConsentBySingleAccessConsentUsingPOST**](docs/ConsentsApi.md#getConsentBySingleAccessConsentUsingPOST) | **POST** /consent-one-time-token | Post one time token
 *ConsentsApi* | [**getConsentsUsingGET**](docs/ConsentsApi.md#getConsentsUsingGET) | **GET** /consents | Get consents sorted by creation date
 *ConsentsApi* | [**getUserConsentsUsingGET**](docs/ConsentsApi.md#getUserConsentsUsingGET) | **GET** /users/{userUuid}/consents | Get latest user consents
+*EmbeddedPaymentsApi* | [**createEmbeddedPaymentAuthorisationUsingPOST**](docs/EmbeddedPaymentsApi.md#createEmbeddedPaymentAuthorisationUsingPOST) | **POST** /embedded-payment-auth-requests | Initiate an embedded payment for user to authorise
+*EmbeddedPaymentsApi* | [**updateEmbeddedPaymentAuthorisationUsingPUT**](docs/EmbeddedPaymentsApi.md#updateEmbeddedPaymentAuthorisationUsingPUT) | **PUT** /embedded-payment-auth-requests/{consentId} | Update an embedded payment initiation with SCA info
 *IdentityApi* | [**getIdentityUsingGET**](docs/IdentityApi.md#getIdentityUsingGET) | **GET** /identity | Get identity
 *InstitutionsApi* | [**getFeatureDetailsUsingGET**](docs/InstitutionsApi.md#getFeatureDetailsUsingGET) | **GET** /features | Retrieve details for Yapily&#39;s institution features
 *InstitutionsApi* | [**getInstitutionUsingGET**](docs/InstitutionsApi.md#getInstitutionUsingGET) | **GET** /institutions/{institutionId} | Retrieves details of a specific institution available in Yapily
@@ -191,6 +193,7 @@ Class | Method | HTTP request | Description
  - [ApiResponseOfListOfPersonalCurrentAccountData](docs/ApiResponseOfListOfPersonalCurrentAccountData.md)
  - [ApiResponseOfListOfRegistrationResult](docs/ApiResponseOfListOfRegistrationResult.md)
  - [ApiResponseOfPaymentAuthorisationRequestResponse](docs/ApiResponseOfPaymentAuthorisationRequestResponse.md)
+ - [ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse](docs/ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse.md)
  - [ApiResponseOfPaymentResponse](docs/ApiResponseOfPaymentResponse.md)
  - [ApiResponseOfPaymentResponses](docs/ApiResponseOfPaymentResponses.md)
  - [ApiResponseOfRegistrationResult](docs/ApiResponseOfRegistrationResult.md)
@@ -278,6 +281,8 @@ Class | Method | HTTP request | Description
  - [Payer](docs/Payer.md)
  - [PaymentAuthorisationRequest](docs/PaymentAuthorisationRequest.md)
  - [PaymentAuthorisationRequestResponse](docs/PaymentAuthorisationRequestResponse.md)
+ - [PaymentEmbeddedAuthorisationRequest](docs/PaymentEmbeddedAuthorisationRequest.md)
+ - [PaymentEmbeddedAuthorisationRequestResponse](docs/PaymentEmbeddedAuthorisationRequestResponse.md)
  - [PaymentRequest](docs/PaymentRequest.md)
  - [PaymentResponse](docs/PaymentResponse.md)
  - [PaymentResponses](docs/PaymentResponses.md)
@@ -300,6 +305,7 @@ Class | Method | HTTP request | Description
  - [ResponseListMeta](docs/ResponseListMeta.md)
  - [ResponseMeta](docs/ResponseMeta.md)
  - [SSAResult](docs/SSAResult.md)
+ - [ScaMethod](docs/ScaMethod.md)
  - [Site](docs/Site.md)
  - [SortCodePaymentAuthRequest](docs/SortCodePaymentAuthRequest.md)
  - [SortCodePaymentRequest](docs/SortCodePaymentRequest.md)
@@ -312,6 +318,7 @@ Class | Method | HTTP request | Description
  - [TransferResponse](docs/TransferResponse.md)
  - [URI](docs/URI.md)
  - [URL](docs/URL.md)
+ - [UserCredentials](docs/UserCredentials.md)
  - [UserDeleteRequest](docs/UserDeleteRequest.md)
  - [UserDeleteResponse](docs/UserDeleteResponse.md)
 

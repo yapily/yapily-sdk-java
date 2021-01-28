@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "To access endpoints that require authentication, use your application key and secret created in the Dashboard (https://dashboard.yapily.com)",
-    "version": "0.0.301",
+    "version": "0.0.302",
     "title": "Yapily API"
   },
   "host": "api.yapily.com",
@@ -54,6 +54,10 @@
     },
     {
       "name": "Application Users",
+      "description": " "
+    },
+    {
+      "name": "Embedded Payments",
       "description": " "
     },
     {
@@ -1726,6 +1730,163 @@
         ]
       }
     },
+    "/embedded-payment-auth-requests": {
+      "post": {
+        "tags": [
+          "Embedded Payments"
+        ],
+        "summary": "Initiate an embedded payment for user to authorise",
+        "operationId": "createEmbeddedPaymentAuthorisationUsingPOST",
+        "consumes": [
+          "application/json;charset=UTF-8"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "name": "psu-id",
+            "in": "header",
+            "description": "PSU ID",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "psu-corporate-id",
+            "in": "header",
+            "description": "PSU ID CORPORATE",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "psu-ip-address",
+            "in": "header",
+            "description": "PSU IP ADDRESS",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "paymentAuthRequest",
+            "description": "paymentAuthRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PaymentEmbeddedAuthorisationRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ]
+      }
+    },
+    "/embedded-payment-auth-requests/{consentId}": {
+      "put": {
+        "tags": [
+          "Embedded Payments"
+        ],
+        "summary": "Update an embedded payment initiation with SCA info",
+        "operationId": "updateEmbeddedPaymentAuthorisationUsingPUT",
+        "consumes": [
+          "application/json;charset=UTF-8"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "name": "consentId",
+            "in": "path",
+            "description": "consentId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "psu-id",
+            "in": "header",
+            "description": "PSU ID",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "psu-corporate-id",
+            "in": "header",
+            "description": "PSU ID CORPORATE",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "psu-ip-address",
+            "in": "header",
+            "description": "PSU IP ADDRESS",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "paymentAuthRequest",
+            "description": "paymentAuthRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PaymentEmbeddedAuthorisationRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ]
+      }
+    },
     "/features": {
       "get": {
         "tags": [
@@ -3085,6 +3246,80 @@
         }
       }
     },
+    "PaymentEmbeddedAuthorisationRequest": {
+      "type": "object",
+      "required": [
+        "callback",
+        "institutionId",
+        "oneTimeToken",
+        "paymentRequest"
+      ],
+      "properties": {
+        "userUuid": {
+          "type": "string",
+          "description": "Uuid of the application user who will authorise access to their data. Either the userUuid or applicationUserId must be provided."
+        },
+        "applicationUserId": {
+          "type": "string",
+          "description": "Descriptive identifier for the application user.Either the userUuid or applicationUserId must be provided."
+        },
+        "forwardParameters": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "institutionId": {
+          "type": "string"
+        },
+        "callback": {
+          "type": "string"
+        },
+        "oneTimeToken": {
+          "type": "boolean",
+          "example": false
+        },
+        "totalMaxAmount": {
+          "type": "number"
+        },
+        "totalMaxAmountFrequency": {
+          "type": "string",
+          "enum": [
+            "DAILY",
+            "WEEKLY",
+            "MONTHLY",
+            "YEARLY"
+          ]
+        },
+        "maxAmountPerRequest": {
+          "type": "number"
+        },
+        "startsAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "expiresAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "allowOverdraft": {
+          "type": "boolean",
+          "example": false
+        },
+        "paymentRequest": {
+          "$ref": "#/definitions/PaymentRequest"
+        },
+        "userCredentials": {
+          "$ref": "#/definitions/UserCredentials"
+        },
+        "selectedScaMethod": {
+          "$ref": "#/definitions/ScaMethod"
+        },
+        "scaCode": {
+          "type": "string"
+        }
+      }
+    },
     "OverdraftOverdraftTierBand": {
       "type": "object",
       "properties": {
@@ -3211,7 +3446,9 @@
             "INVALID",
             "AWAITING_PRE_AUTHORIZATION",
             "PRE_AUTHORIZED",
-            "AWAITING_DECOUPLED_AUTHORIZATION"
+            "AWAITING_DECOUPLED_AUTHORIZATION",
+            "AWAITING_SCA_METHOD",
+            "AWAITING_SCA_CODE"
           ]
         },
         "createdAt": {
@@ -3246,6 +3483,7 @@
             "enum": [
               "INITIATE_PRE_AUTHORISATION",
               "INITIATE_ACCOUNT_REQUEST",
+              "INITIATE_EMBEDDED_ACCOUNT_REQUEST",
               "ACCOUNT_REQUEST_DETAILS",
               "ACCOUNTS",
               "ACCOUNT",
@@ -3266,6 +3504,7 @@
               "CREATE_SINGLE_PAYMENT_SORTCODE",
               "EXISTING_PAYMENTS_DETAILS",
               "INITIATE_DOMESTIC_SINGLE_PAYMENT",
+              "INITIATE_EMBEDDED_DOMESTIC_SINGLE_PAYMENT",
               "CREATE_DOMESTIC_SINGLE_PAYMENT",
               "INITIATE_DOMESTIC_SINGLE_INSTANT_PAYMENT",
               "CREATE_DOMESTIC_SINGLE_INSTANT_PAYMENT",
@@ -3369,6 +3608,7 @@
             "OPEN_BANKING_AUTO",
             "OPEN_BANKING_AUTO_EMAIL",
             "OPEN_BANKING_MANUAL",
+            "OPEN_BANKING_WITH_TPP_ID_AND_SECRET",
             "API_KEY",
             "OPEN_BANKING_NO_KEY",
             "OPEN_BANKING_NO_TRANSPORT",
@@ -3388,6 +3628,7 @@
             "enum": [
               "INITIATE_PRE_AUTHORISATION",
               "INITIATE_ACCOUNT_REQUEST",
+              "INITIATE_EMBEDDED_ACCOUNT_REQUEST",
               "ACCOUNT_REQUEST_DETAILS",
               "ACCOUNTS",
               "ACCOUNT",
@@ -3408,6 +3649,7 @@
               "CREATE_SINGLE_PAYMENT_SORTCODE",
               "EXISTING_PAYMENTS_DETAILS",
               "INITIATE_DOMESTIC_SINGLE_PAYMENT",
+              "INITIATE_EMBEDDED_DOMESTIC_SINGLE_PAYMENT",
               "CREATE_DOMESTIC_SINGLE_PAYMENT",
               "INITIATE_DOMESTIC_SINGLE_INSTANT_PAYMENT",
               "CREATE_DOMESTIC_SINGLE_INSTANT_PAYMENT",
@@ -3580,7 +3822,9 @@
             "INVALID",
             "AWAITING_PRE_AUTHORIZATION",
             "PRE_AUTHORIZED",
-            "AWAITING_DECOUPLED_AUTHORIZATION"
+            "AWAITING_DECOUPLED_AUTHORIZATION",
+            "AWAITING_SCA_METHOD",
+            "AWAITING_SCA_CODE"
           ]
         },
         "createdAt": {
@@ -3615,6 +3859,7 @@
             "enum": [
               "INITIATE_PRE_AUTHORISATION",
               "INITIATE_ACCOUNT_REQUEST",
+              "INITIATE_EMBEDDED_ACCOUNT_REQUEST",
               "ACCOUNT_REQUEST_DETAILS",
               "ACCOUNTS",
               "ACCOUNT",
@@ -3635,6 +3880,7 @@
               "CREATE_SINGLE_PAYMENT_SORTCODE",
               "EXISTING_PAYMENTS_DETAILS",
               "INITIATE_DOMESTIC_SINGLE_PAYMENT",
+              "INITIATE_EMBEDDED_DOMESTIC_SINGLE_PAYMENT",
               "CREATE_DOMESTIC_SINGLE_PAYMENT",
               "INITIATE_DOMESTIC_SINGLE_INSTANT_PAYMENT",
               "CREATE_DOMESTIC_SINGLE_INSTANT_PAYMENT",
@@ -5483,6 +5729,29 @@
         }
       }
     },
+    "ScaMethod": {
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "SMS_OTP",
+            "CHIP_OTP",
+            "PHOTO_OTP",
+            "PUSH_OTP"
+          ]
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
     "PaymentResponses": {
       "type": "object",
       "properties": {
@@ -5723,6 +5992,7 @@
             "enum": [
               "INITIATE_PRE_AUTHORISATION",
               "INITIATE_ACCOUNT_REQUEST",
+              "INITIATE_EMBEDDED_ACCOUNT_REQUEST",
               "ACCOUNT_REQUEST_DETAILS",
               "ACCOUNTS",
               "ACCOUNT",
@@ -5743,6 +6013,7 @@
               "CREATE_SINGLE_PAYMENT_SORTCODE",
               "EXISTING_PAYMENTS_DETAILS",
               "INITIATE_DOMESTIC_SINGLE_PAYMENT",
+              "INITIATE_EMBEDDED_DOMESTIC_SINGLE_PAYMENT",
               "CREATE_DOMESTIC_SINGLE_PAYMENT",
               "INITIATE_DOMESTIC_SINGLE_INSTANT_PAYMENT",
               "CREATE_DOMESTIC_SINGLE_INSTANT_PAYMENT",
@@ -6082,6 +6353,23 @@
       },
       "description": "Details about the interest that may be payable to the PCA account holders"
     },
+    "ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/ResponseMeta"
+        },
+        "data": {
+          "$ref": "#/definitions/PaymentEmbeddedAuthorisationRequestResponse"
+        },
+        "links": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
     "ApiResponseOfAccountStatement": {
       "type": "object",
       "properties": {
@@ -6218,6 +6506,7 @@
           "enum": [
             "INITIATE_PRE_AUTHORISATION",
             "INITIATE_ACCOUNT_REQUEST",
+            "INITIATE_EMBEDDED_ACCOUNT_REQUEST",
             "ACCOUNT_REQUEST_DETAILS",
             "ACCOUNTS",
             "ACCOUNT",
@@ -6238,6 +6527,7 @@
             "CREATE_SINGLE_PAYMENT_SORTCODE",
             "EXISTING_PAYMENTS_DETAILS",
             "INITIATE_DOMESTIC_SINGLE_PAYMENT",
+            "INITIATE_EMBEDDED_DOMESTIC_SINGLE_PAYMENT",
             "CREATE_DOMESTIC_SINGLE_PAYMENT",
             "INITIATE_DOMESTIC_SINGLE_INSTANT_PAYMENT",
             "CREATE_DOMESTIC_SINGLE_INSTANT_PAYMENT",
@@ -7268,6 +7558,166 @@
       },
       "description": "Other residency type which is not available in standard code list."
     },
+    "PaymentEmbeddedAuthorisationRequestResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "userUuid": {
+          "type": "string"
+        },
+        "applicationUserId": {
+          "type": "string"
+        },
+        "referenceId": {
+          "type": "string"
+        },
+        "institutionId": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "AWAITING_AUTHORIZATION",
+            "AWAITING_FURTHER_AUTHORIZATION",
+            "AWAITING_RE_AUTHORIZATION",
+            "AUTHORIZED",
+            "CONSUMED",
+            "REJECTED",
+            "REVOKED",
+            "FAILED",
+            "EXPIRED",
+            "UNKNOWN",
+            "INVALID",
+            "AWAITING_PRE_AUTHORIZATION",
+            "PRE_AUTHORIZED",
+            "AWAITING_DECOUPLED_AUTHORIZATION",
+            "AWAITING_SCA_METHOD",
+            "AWAITING_SCA_CODE"
+          ]
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "transactionFrom": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "transactionTo": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "expiresAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "timeToExpireInMillis": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Deprecated. Use `timeToExpire` instead."
+        },
+        "timeToExpire": {
+          "type": "string",
+          "description": "ISO 8601 duration"
+        },
+        "featureScope": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "INITIATE_PRE_AUTHORISATION",
+              "INITIATE_ACCOUNT_REQUEST",
+              "INITIATE_EMBEDDED_ACCOUNT_REQUEST",
+              "ACCOUNT_REQUEST_DETAILS",
+              "ACCOUNTS",
+              "ACCOUNT",
+              "ACCOUNT_TRANSACTIONS",
+              "ACCOUNT_STATEMENTS",
+              "ACCOUNT_STATEMENT",
+              "ACCOUNT_STATEMENT_FILE",
+              "ACCOUNT_SCHEDULED_PAYMENTS",
+              "ACCOUNT_DIRECT_DEBITS",
+              "ACCOUNT_PERIODIC_PAYMENTS",
+              "ACCOUNT_TRANSACTIONS_WITH_MERCHANT",
+              "IDENTITY",
+              "ACCOUNTS_WITHOUT_BALANCE",
+              "ACCOUNT_WITHOUT_BALANCE",
+              "ACCOUNT_BALANCES",
+              "INITIATE_SINGLE_PAYMENT_SORTCODE",
+              "EXISTING_PAYMENT_INITIATION_DETAILS",
+              "CREATE_SINGLE_PAYMENT_SORTCODE",
+              "EXISTING_PAYMENTS_DETAILS",
+              "INITIATE_DOMESTIC_SINGLE_PAYMENT",
+              "INITIATE_EMBEDDED_DOMESTIC_SINGLE_PAYMENT",
+              "CREATE_DOMESTIC_SINGLE_PAYMENT",
+              "INITIATE_DOMESTIC_SINGLE_INSTANT_PAYMENT",
+              "CREATE_DOMESTIC_SINGLE_INSTANT_PAYMENT",
+              "INITIATE_DOMESTIC_VARIABLE_RECURRING_PAYMENT",
+              "CREATE_DOMESTIC_VARIABLE_RECURRING_PAYMENT",
+              "INITIATE_DOMESTIC_SCHEDULED_PAYMENT",
+              "CREATE_DOMESTIC_SCHEDULED_PAYMENT",
+              "INITIATE_DOMESTIC_PERIODIC_PAYMENT",
+              "CREATE_DOMESTIC_PERIODIC_PAYMENT",
+              "PERIODIC_PAYMENT_FREQUENCY_EXTENDED",
+              "INITIATE_INTERNATIONAL_VARIABLE_RECURRING_PAYMENT",
+              "CREATE_INTERNATIONAL_VARIABLE_RECURRING_PAYMENT",
+              "INITIATE_INTERNATIONAL_SCHEDULED_PAYMENT",
+              "CREATE_INTERNATIONAL_SCHEDULED_PAYMENT",
+              "INITIATE_INTERNATIONAL_PERIODIC_PAYMENT",
+              "CREATE_INTERNATIONAL_PERIODIC_PAYMENT",
+              "INITIATE_INTERNATIONAL_SINGLE_PAYMENT",
+              "CREATE_INTERNATIONAL_SINGLE_PAYMENT",
+              "INITIATE_BULK_PAYMENT",
+              "CREATE_BULK_PAYMENT",
+              "TRANSFER",
+              "OPEN_DATA_PERSONAL_CURRENT_ACCOUNTS",
+              "OPEN_DATA_ATMS",
+              "READ_DOMESTIC_SINGLE_REFUND",
+              "READ_DOMESTIC_SCHEDULED_REFUND",
+              "READ_DOMESTIC_PERIODIC_PAYMENT_REFUND",
+              "READ_INTERNATIONAL_SINGLE_REFUND",
+              "READ_INTERNATIONAL_SCHEDULED_REFUND"
+            ]
+          }
+        },
+        "charges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ChargeDetails"
+          }
+        },
+        "exchangeRateInformation": {
+          "$ref": "#/definitions/ExchangeRateInformationResponse"
+        },
+        "consentToken": {
+          "type": "string"
+        },
+        "authorisationUrl": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "qrCodeUrl": {
+          "type": "string"
+        },
+        "authorizedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "scaMethods": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ScaMethod"
+          }
+        },
+        "selectedScaMethod": {
+          "$ref": "#/definitions/ScaMethod"
+        }
+      }
+    },
     "ApiListResponseOfCategory": {
       "type": "object",
       "properties": {
@@ -7411,7 +7861,9 @@
             "INVALID",
             "AWAITING_PRE_AUTHORIZATION",
             "PRE_AUTHORIZED",
-            "AWAITING_DECOUPLED_AUTHORIZATION"
+            "AWAITING_DECOUPLED_AUTHORIZATION",
+            "AWAITING_SCA_METHOD",
+            "AWAITING_SCA_CODE"
           ]
         },
         "createdAt": {
@@ -7446,6 +7898,7 @@
             "enum": [
               "INITIATE_PRE_AUTHORISATION",
               "INITIATE_ACCOUNT_REQUEST",
+              "INITIATE_EMBEDDED_ACCOUNT_REQUEST",
               "ACCOUNT_REQUEST_DETAILS",
               "ACCOUNTS",
               "ACCOUNT",
@@ -7466,6 +7919,7 @@
               "CREATE_SINGLE_PAYMENT_SORTCODE",
               "EXISTING_PAYMENTS_DETAILS",
               "INITIATE_DOMESTIC_SINGLE_PAYMENT",
+              "INITIATE_EMBEDDED_DOMESTIC_SINGLE_PAYMENT",
               "CREATE_DOMESTIC_SINGLE_PAYMENT",
               "INITIATE_DOMESTIC_SINGLE_INSTANT_PAYMENT",
               "CREATE_DOMESTIC_SINGLE_INSTANT_PAYMENT",
@@ -7828,6 +8282,24 @@
         }
       },
       "description": "Other eligibility which is not covered by the main eligibility of the PCA product"
+    },
+    "UserCredentials": {
+      "type": "object",
+      "required": [
+        "id",
+        "password"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "corporateId": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
     },
     "ApiResponseOfListOfATMOpenDataResponse": {
       "type": "object",
