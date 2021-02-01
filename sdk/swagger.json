@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "To access endpoints that require authentication, use your application key and secret created in the Dashboard (https://dashboard.yapily.com)",
-    "version": "0.0.302",
+    "version": "0.0.303",
     "title": "Yapily API"
   },
   "host": "api.yapily.com",
@@ -6427,6 +6427,9 @@
         },
         "transactionAmount": {
           "$ref": "#/definitions/TransactionAmount"
+        },
+        "grossAmount": {
+          "$ref": "#/definitions/Amount"
         },
         "currencyExchange": {
           "$ref": "#/definitions/CurrencyExchange"
