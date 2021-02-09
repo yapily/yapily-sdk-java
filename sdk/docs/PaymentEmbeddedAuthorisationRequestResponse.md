@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **qrCodeUrl** | **String** |  |  [optional]
 **authorizedAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
 **scaMethods** | [**List&lt;ScaMethod&gt;**](ScaMethod.md) |  |  [optional]
+**institutionConsentId** | **String** |  |  [optional]
 **selectedScaMethod** | [**ScaMethod**](ScaMethod.md) |  |  [optional]
 
 

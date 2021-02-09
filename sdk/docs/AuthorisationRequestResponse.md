@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **qrCodeUrl** | **String** |  |  [optional]
 **state** | **String** |  |  [optional]
 **authorizedAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
+**institutionConsentId** | **String** |  |  [optional]
 
 
 <a name="StatusEnum"></a>

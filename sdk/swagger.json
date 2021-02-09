@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "To access endpoints that require authentication, use your application key and secret created in the Dashboard (https://dashboard.yapily.com)",
-    "version": "0.0.306",
+    "version": "0.0.307",
     "title": "Yapily API"
   },
   "host": "api.yapily.com",
@@ -3551,6 +3551,9 @@
         "authorizedAt": {
           "type": "string",
           "format": "date-time"
+        },
+        "institutionConsentId": {
+          "type": "string"
         }
       }
     },
@@ -3921,6 +3924,9 @@
         "authorizedAt": {
           "type": "string",
           "format": "date-time"
+        },
+        "institutionConsentId": {
+          "type": "string"
         }
       }
     },
@@ -7716,6 +7722,9 @@
             "$ref": "#/definitions/ScaMethod"
           }
         },
+        "institutionConsentId": {
+          "type": "string"
+        },
         "selectedScaMethod": {
           "$ref": "#/definitions/ScaMethod"
         }
@@ -7978,6 +7987,9 @@
         "authorizedAt": {
           "type": "string",
           "format": "date-time"
+        },
+        "institutionConsentId": {
+          "type": "string"
         }
       }
     },
