@@ -23,6 +23,8 @@ Name | Type | Description | Notes
 **isoBankTransactionCode** | [**IsoBankTransactionCode**](IsoBankTransactionCode.md) |  |  [optional]
 **proprietaryBankTransactionCode** | [**ProprietaryBankTransactionCode**](ProprietaryBankTransactionCode.md) |  |  [optional]
 **balance** | [**Balance**](Balance.md) | Running account balance after transaction has been applied |  [optional]
+**payeeDetails** | [**Payee**](Payee.md) | Payee details |  [optional]
+**payerDetails** | [**Payer**](Payer.md) | Payer details |  [optional]
 **merchant** | [**Merchant**](Merchant.md) | Merchant details |  [optional]
 **enrichment** | [**Enrichment**](Enrichment.md) | Enrichment |  [optional]
 **supplementaryData** | **Object** | Additional information that can not be captured in the structured fields and/or any other specific block. |  [optional]

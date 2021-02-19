@@ -32,6 +32,8 @@ import yapily.sdk.CurrencyExchange;
 import yapily.sdk.Enrichment;
 import yapily.sdk.IsoBankTransactionCode;
 import yapily.sdk.Merchant;
+import yapily.sdk.Payee;
+import yapily.sdk.Payer;
 import yapily.sdk.ProprietaryBankTransactionCode;
 import yapily.sdk.StatementReference;
 import yapily.sdk.TransactionAmount;
@@ -133,6 +135,12 @@ public class Transaction {
 
   @JsonProperty("balance")
   private Balance balance = null;
+
+  @JsonProperty("payeeDetails")
+  private Payee payeeDetails = null;
+
+  @JsonProperty("payerDetails")
+  private Payer payerDetails = null;
 
   @JsonProperty("merchant")
   private Merchant merchant = null;

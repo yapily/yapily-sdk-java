@@ -6478,6 +6478,14 @@
           "description": "Running account balance after transaction has been applied",
           "$ref": "#/definitions/Balance"
         },
+        "payeeDetails": {
+          "description": "Payee details",
+          "$ref": "#/definitions/Payee"
+        },
+        "payerDetails": {
+          "description": "Payer details",
+          "$ref": "#/definitions/Payer"
+        },
         "merchant": {
           "description": "Merchant details",
           "$ref": "#/definitions/Merchant"
