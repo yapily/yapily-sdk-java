@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>yapily</groupId>
     <artifactId>yapily-sdk</artifactId>
-    <version>0.0.330</version>
+    <version>0.0.331</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "yapily:yapily-sdk:0.0.330"
+compile "yapily:yapily-sdk:0.0.331"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/yapily-sdk-0.0.330.jar
+* target/yapily-sdk-0.0.331.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -119,6 +119,7 @@ Class | Method | HTTP request | Description
 *ApplicationUsersApi* | [**startDeleteUsersJobUsingPOST**](docs/ApplicationUsersApi.md#startDeleteUsersJobUsingPOST) | **POST** /delete-users | Start a job to delete application users by specifying their identifiers
 *ApplicationsApi* | [**getApplicationMeUsingGET**](docs/ApplicationsApi.md#getApplicationMeUsingGET) | **GET** /me | Returns the details of the application that owns the request credentials
 *BalancesApi* | [**getAccountBalancesUsingGET**](docs/BalancesApi.md#getAccountBalancesUsingGET) | **GET** /accounts/{accountId}/balances | Get account balances
+*BeneficiariesApi* | [**getBeneficiariesUsingGET**](docs/BeneficiariesApi.md#getBeneficiariesUsingGET) | **GET** /accounts/{accountId}/beneficiaries | Get beneficiaries
 *CategoriesApi* | [**getCategoriesUsingGET**](docs/CategoriesApi.md#getCategoriesUsingGET) | **GET** /categories/{country} | Retrieves a list of categories returned by the Yapily Categorisation engine for a given locale
 *ConsentsApi* | [**addConsentUsingPOST**](docs/ConsentsApi.md#addConsentUsingPOST) | **POST** /users/{userUuid}/consents | Post consent
 *ConsentsApi* | [**createConsentWithCodeUsingPOST**](docs/ConsentsApi.md#createConsentWithCodeUsingPOST) | **POST** /consent-auth-code | Post auth-code and auth-state
@@ -190,6 +191,7 @@ Class | Method | HTTP request | Description
  - [ApiResponseOfDeregistrationResult](docs/ApiResponseOfDeregistrationResult.md)
  - [ApiResponseOfIdentity](docs/ApiResponseOfIdentity.md)
  - [ApiResponseOfListOfATMOpenDataResponse](docs/ApiResponseOfListOfATMOpenDataResponse.md)
+ - [ApiResponseOfListOfBeneficiary](docs/ApiResponseOfListOfBeneficiary.md)
  - [ApiResponseOfListOfPersonalCurrentAccountData](docs/ApiResponseOfListOfPersonalCurrentAccountData.md)
  - [ApiResponseOfListOfRegistrationResult](docs/ApiResponseOfListOfRegistrationResult.md)
  - [ApiResponseOfPaymentAuthorisationRequestResponse](docs/ApiResponseOfPaymentAuthorisationRequestResponse.md)
@@ -205,6 +207,7 @@ Class | Method | HTTP request | Description
  - [AuthorisationRequestResponse](docs/AuthorisationRequestResponse.md)
  - [Balance](docs/Balance.md)
  - [Balances](docs/Balances.md)
+ - [Beneficiary](docs/Beneficiary.md)
  - [Branch](docs/Branch.md)
  - [BulkPaymentAuthorisationRequest](docs/BulkPaymentAuthorisationRequest.md)
  - [BulkPaymentRequest](docs/BulkPaymentRequest.md)

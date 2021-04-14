@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "To access endpoints that require authentication, use your application key and secret created in the Dashboard (https://dashboard.yapily.com)",
-    "version": "0.0.330",
+    "version": "0.0.331",
     "title": "Yapily API"
   },
   "host": "api.yapily.com",
@@ -42,6 +42,10 @@
     },
     {
       "name": "Identity",
+      "description": " "
+    },
+    {
+      "name": "Beneficiaries",
       "description": " "
     },
     {
@@ -431,6 +435,62 @@
             "description": "OK",
             "schema": {
               "$ref": "#/definitions/ApiResponseOfBalances"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ]
+      }
+    },
+    "/accounts/{accountId}/beneficiaries": {
+      "get": {
+        "tags": [
+          "Beneficiaries"
+        ],
+        "summary": "Get beneficiaries",
+        "operationId": "getBeneficiariesUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "name": "accountId",
+            "in": "path",
+            "description": "accountId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "consent",
+            "in": "header",
+            "description": "Consent Token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApiResponseOfListOfBeneficiary"
             }
           },
           "401": {
@@ -3360,6 +3420,26 @@
       },
       "description": "Provides overdraft details for a specific tier or band"
     },
+    "ApiResponseOfListOfBeneficiary": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/ResponseMeta"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Beneficiary"
+          }
+        },
+        "links": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
     "Address": {
       "type": "object",
       "properties": {
@@ -3532,7 +3612,8 @@
               "READ_DOMESTIC_SCHEDULED_REFUND",
               "READ_DOMESTIC_PERIODIC_PAYMENT_REFUND",
               "READ_INTERNATIONAL_SINGLE_REFUND",
-              "READ_INTERNATIONAL_SCHEDULED_REFUND"
+              "READ_INTERNATIONAL_SCHEDULED_REFUND",
+              "ACCOUNT_BENEFICIARIES"
             ]
           }
         },
@@ -3647,6 +3728,7 @@
               "ACCOUNTS_WITHOUT_BALANCE",
               "ACCOUNT_WITHOUT_BALANCE",
               "ACCOUNT_BALANCES",
+              "ACCOUNT_BENEFICIARIES",
               "INITIATE_SINGLE_PAYMENT_SORTCODE",
               "EXISTING_PAYMENT_INITIATION_DETAILS",
               "CREATE_SINGLE_PAYMENT_SORTCODE",
@@ -3911,7 +3993,8 @@
               "READ_DOMESTIC_SCHEDULED_REFUND",
               "READ_DOMESTIC_PERIODIC_PAYMENT_REFUND",
               "READ_INTERNATIONAL_SINGLE_REFUND",
-              "READ_INTERNATIONAL_SCHEDULED_REFUND"
+              "READ_INTERNATIONAL_SCHEDULED_REFUND",
+              "ACCOUNT_BENEFICIARIES"
             ]
           }
         },
@@ -5233,6 +5316,23 @@
       },
       "description": "Location on the earth specified by two numbers representing vertical and horizontal position."
     },
+    "Beneficiary": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "trusted": {
+          "type": "boolean"
+        },
+        "reference": {
+          "type": "string"
+        },
+        "payee": {
+          "$ref": "#/definitions/Payee"
+        }
+      }
+    },
     "BulkPaymentAuthorisationRequest": {
       "type": "object",
       "required": [
@@ -6047,7 +6147,8 @@
               "READ_DOMESTIC_SCHEDULED_REFUND",
               "READ_DOMESTIC_PERIODIC_PAYMENT_REFUND",
               "READ_INTERNATIONAL_SINGLE_REFUND",
-              "READ_INTERNATIONAL_SCHEDULED_REFUND"
+              "READ_INTERNATIONAL_SCHEDULED_REFUND",
+              "ACCOUNT_BENEFICIARIES"
             ]
           }
         }
@@ -6539,6 +6640,7 @@
             "ACCOUNTS_WITHOUT_BALANCE",
             "ACCOUNT_WITHOUT_BALANCE",
             "ACCOUNT_BALANCES",
+            "ACCOUNT_BENEFICIARIES",
             "INITIATE_SINGLE_PAYMENT_SORTCODE",
             "EXISTING_PAYMENT_INITIATION_DETAILS",
             "CREATE_SINGLE_PAYMENT_SORTCODE",
@@ -7695,7 +7797,8 @@
               "READ_DOMESTIC_SCHEDULED_REFUND",
               "READ_DOMESTIC_PERIODIC_PAYMENT_REFUND",
               "READ_INTERNATIONAL_SINGLE_REFUND",
-              "READ_INTERNATIONAL_SCHEDULED_REFUND"
+              "READ_INTERNATIONAL_SCHEDULED_REFUND",
+              "ACCOUNT_BENEFICIARIES"
             ]
           }
         },
@@ -7967,7 +8070,8 @@
               "READ_DOMESTIC_SCHEDULED_REFUND",
               "READ_DOMESTIC_PERIODIC_PAYMENT_REFUND",
               "READ_INTERNATIONAL_SINGLE_REFUND",
-              "READ_INTERNATIONAL_SCHEDULED_REFUND"
+              "READ_INTERNATIONAL_SCHEDULED_REFUND",
+              "ACCOUNT_BENEFICIARIES"
             ]
           }
         },
