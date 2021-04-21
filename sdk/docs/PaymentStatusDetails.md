@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **statusReasonDescription** | **String** |  |  [optional]
 **statusUpdateDate** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
 **multiAuthorisationStatus** | [**MultiAuthorisation**](MultiAuthorisation.md) |  |  [optional]
+**isoStatus** | [**PaymentIsoStatus**](PaymentIsoStatus.md) |  |  [optional]
 
 
 <a name="StatusEnum"></a>

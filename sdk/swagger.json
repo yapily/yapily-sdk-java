@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "To access endpoints that require authentication, use your application key and secret created in the Dashboard (https://dashboard.yapily.com)",
-    "version": "0.0.333",
+    "version": "0.0.334",
     "title": "Yapily API"
   },
   "host": "api.yapily.com",
@@ -4462,6 +4462,33 @@
         }
       }
     },
+    "PaymentIsoStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "enum": [
+            "ACCC",
+            "ACCP",
+            "ACSC",
+            "ACSP",
+            "ACTC",
+            "ACWC",
+            "ACWP",
+            "RCVD",
+            "PDNG",
+            "RJCT",
+            "CANC",
+            "ACFC",
+            "PATC",
+            "PART"
+          ]
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
     "OtherType": {
       "type": "object",
       "properties": {
@@ -5695,6 +5722,9 @@
         },
         "multiAuthorisationStatus": {
           "$ref": "#/definitions/MultiAuthorisation"
+        },
+        "isoStatus": {
+          "$ref": "#/definitions/PaymentIsoStatus"
         }
       }
     },

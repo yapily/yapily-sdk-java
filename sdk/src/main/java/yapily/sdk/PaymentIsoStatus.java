@@ -20,31 +20,48 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.time.OffsetDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import yapily.sdk.ConsentDeleteResponse;
 
 /**
- * UserDeleteResponse
+ * PaymentIsoStatus
  */
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class UserDeleteResponse {
-  @JsonProperty("id")
-  private String id = null;
-
+public class PaymentIsoStatus {
   /**
-   * Gets or Sets deleteStatus
+   * Gets or Sets code
    */
-  public enum DeleteStatusEnum {
-    SUCCESS("SUCCESS"),
+  public enum CodeEnum {
+    ACCC("ACCC"),
     
-    FAILED("FAILED");
+    ACCP("ACCP"),
+    
+    ACSC("ACSC"),
+    
+    ACSP("ACSP"),
+    
+    ACTC("ACTC"),
+    
+    ACWC("ACWC"),
+    
+    ACWP("ACWP"),
+    
+    RCVD("RCVD"),
+    
+    PDNG("PDNG"),
+    
+    RJCT("RJCT"),
+    
+    CANC("CANC"),
+    
+    ACFC("ACFC"),
+    
+    PATC("PATC"),
+    
+    PART("PART");
 
     private String value;
 
-    DeleteStatusEnum(String value) {
+    CodeEnum(String value) {
       this.value = value;
     }
 
@@ -59,8 +76,8 @@ public class UserDeleteResponse {
     }
 
     @JsonCreator
-    public static DeleteStatusEnum fromValue(String text) {
-      for (DeleteStatusEnum b : DeleteStatusEnum.values()) {
+    public static CodeEnum fromValue(String text) {
+      for (CodeEnum b : CodeEnum.values()) {
         if (String.valueOf(b.value).equals(text)) {
           return b;
         }
@@ -69,14 +86,11 @@ public class UserDeleteResponse {
     }
   }
 
-  @JsonProperty("deleteStatus")
-  private DeleteStatusEnum deleteStatus = null;
+  @JsonProperty("code")
+  private CodeEnum code = null;
 
-  @JsonProperty("creationDate")
-  private OffsetDateTime creationDate = null;
-
-  @JsonProperty("userConsents")
-  private List<ConsentDeleteResponse> userConsents = null;
+  @JsonProperty("name")
+  private String name = null;
 
 }
 
