@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-04-27T12:09:20.633Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-04-27T17:43:34.097Z")
 public class TransactionsApi {
   private ApiClient apiClient;
 
@@ -39,6 +39,9 @@ public class TransactionsApi {
    * 
    * @param consent Consent Token (required)
    * @param accountId accountId (required)
+   * @param psuId PSU ID (optional)
+   * @param psuCorporateId PSU ID CORPORATE (optional)
+   * @param psuIpAddress PSU IP ADDRESS (optional)
    * @param with with (optional)
    * @param from from (optional)
    * @param before before (optional)
@@ -49,7 +52,7 @@ public class TransactionsApi {
    * @return ApiListResponseOfTransaction
    * @throws ApiException if fails to make API call
    */
-  public ApiListResponseOfTransaction getTransactionsUsingGET(String consent, String accountId, List<String> with, String from, String before, Integer limit, String sort, Integer offset, String cursor) throws ApiException {
+  public ApiListResponseOfTransaction getTransactionsUsingGET(String consent, String accountId, String psuId, String psuCorporateId, String psuIpAddress, List<String> with, String from, String before, Integer limit, String sort, Integer offset, String cursor) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'consent' is set
@@ -81,6 +84,12 @@ public class TransactionsApi {
 
     if (consent != null)
       localVarHeaderParams.put("consent", apiClient.parameterToString(consent));
+if (psuId != null)
+      localVarHeaderParams.put("psu-id", apiClient.parameterToString(psuId));
+if (psuCorporateId != null)
+      localVarHeaderParams.put("psu-corporate-id", apiClient.parameterToString(psuCorporateId));
+if (psuIpAddress != null)
+      localVarHeaderParams.put("psu-ip-address", apiClient.parameterToString(psuIpAddress));
 
     
     final String[] localVarAccepts = {

@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="getAccountBalancesUsingGET"></a>
 # **getAccountBalancesUsingGET**
-> ApiResponseOfBalances getAccountBalancesUsingGET(consent, accountId)
+> ApiResponseOfBalances getAccountBalancesUsingGET(consent, accountId, psuId, psuCorporateId, psuIpAddress)
 
 Get account balances
 
@@ -36,8 +36,11 @@ tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 BalancesApi apiInstance = new BalancesApi();
 String consent = "consent_example"; // String | Consent Token
 String accountId = "accountId_example"; // String | accountId
+String psuId = "psuId_example"; // String | PSU ID
+String psuCorporateId = "psuCorporateId_example"; // String | PSU ID CORPORATE
+String psuIpAddress = "psuIpAddress_example"; // String | PSU IP ADDRESS
 try {
-    ApiResponseOfBalances result = apiInstance.getAccountBalancesUsingGET(consent, accountId);
+    ApiResponseOfBalances result = apiInstance.getAccountBalancesUsingGET(consent, accountId, psuId, psuCorporateId, psuIpAddress);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BalancesApi#getAccountBalancesUsingGET");
@@ -51,6 +54,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consent** | **String**| Consent Token |
  **accountId** | **String**| accountId |
+ **psuId** | **String**| PSU ID | [optional]
+ **psuCorporateId** | **String**| PSU ID CORPORATE | [optional]
+ **psuIpAddress** | **String**| PSU IP ADDRESS | [optional]
 
 ### Return type
 

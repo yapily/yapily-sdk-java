@@ -44,6 +44,9 @@ public class TransactionsApiTest {
     public void getTransactionsUsingGETTest() throws ApiException {
         String consent = null;
         String accountId = null;
+        String psuId = null;
+        String psuCorporateId = null;
+        String psuIpAddress = null;
         List<String> with = null;
         String from = null;
         String before = null;
@@ -51,7 +54,7 @@ public class TransactionsApiTest {
         String sort = null;
         Integer offset = null;
         String cursor = null;
-        ApiListResponseOfTransaction response = api.getTransactionsUsingGET(consent, accountId, with, from, before, limit, sort, offset, cursor);
+        ApiListResponseOfTransaction response = api.getTransactionsUsingGET(consent, accountId, psuId, psuCorporateId, psuIpAddress, with, from, before, limit, sort, offset, cursor);
 
         // TODO: test validations
     }

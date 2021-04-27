@@ -44,7 +44,10 @@ public class BalancesApiTest {
     public void getAccountBalancesUsingGETTest() throws ApiException {
         String consent = null;
         String accountId = null;
-        ApiResponseOfBalances response = api.getAccountBalancesUsingGET(consent, accountId);
+        String psuId = null;
+        String psuCorporateId = null;
+        String psuIpAddress = null;
+        ApiResponseOfBalances response = api.getAccountBalancesUsingGET(consent, accountId, psuId, psuCorporateId, psuIpAddress);
 
         // TODO: test validations
     }

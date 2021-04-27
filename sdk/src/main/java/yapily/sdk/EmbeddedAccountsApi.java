@@ -7,8 +7,8 @@ import yapily.Pair;
 
 import javax.ws.rs.core.GenericType;
 
-import yapily.sdk.ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse;
-import yapily.sdk.PaymentEmbeddedAuthorisationRequest;
+import yapily.sdk.AccountEmbeddedAuthorisationRequest;
+import yapily.sdk.ApiResponseOfAuthorisationEmbeddedRequestResponse;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,14 +16,14 @@ import java.util.List;
 import java.util.Map;
 
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-04-27T17:43:34.097Z")
-public class EmbeddedPaymentsApi {
+public class EmbeddedAccountsApi {
   private ApiClient apiClient;
 
-  public EmbeddedPaymentsApi() {
+  public EmbeddedAccountsApi() {
     this(Configuration.getDefaultApiClient());
   }
 
-  public EmbeddedPaymentsApi(ApiClient apiClient) {
+  public EmbeddedAccountsApi(ApiClient apiClient) {
     this.apiClient = apiClient;
   }
 
@@ -36,25 +36,25 @@ public class EmbeddedPaymentsApi {
   }
 
   /**
-   * Initiate an embedded payment for user to authorise
+   * Initiate a new embedded account request for user to authorize
    * 
-   * @param paymentAuthRequest paymentAuthRequest (required)
+   * @param accountAuthRequest accountAuthRequest (required)
    * @param psuId PSU ID (optional)
    * @param psuCorporateId PSU ID CORPORATE (optional)
    * @param psuIpAddress PSU IP ADDRESS (optional)
-   * @return ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse
+   * @return ApiResponseOfAuthorisationEmbeddedRequestResponse
    * @throws ApiException if fails to make API call
    */
-  public ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse createEmbeddedPaymentAuthorisationUsingPOST(PaymentEmbeddedAuthorisationRequest paymentAuthRequest, String psuId, String psuCorporateId, String psuIpAddress) throws ApiException {
-    Object localVarPostBody = paymentAuthRequest;
+  public ApiResponseOfAuthorisationEmbeddedRequestResponse initiateEmbeddedAccountRequestUsingPOST(AccountEmbeddedAuthorisationRequest accountAuthRequest, String psuId, String psuCorporateId, String psuIpAddress) throws ApiException {
+    Object localVarPostBody = accountAuthRequest;
     
-    // verify the required parameter 'paymentAuthRequest' is set
-    if (paymentAuthRequest == null) {
-      throw new ApiException(400, "Missing the required parameter 'paymentAuthRequest' when calling createEmbeddedPaymentAuthorisationUsingPOST");
+    // verify the required parameter 'accountAuthRequest' is set
+    if (accountAuthRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'accountAuthRequest' when calling initiateEmbeddedAccountRequestUsingPOST");
     }
     
     // create path and map variables
-    String localVarPath = "/embedded-payment-auth-requests";
+    String localVarPath = "/embedded-account-auth-requests";
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -82,35 +82,35 @@ if (psuIpAddress != null)
 
     String[] localVarAuthNames = new String[] { "basicAuth", "tokenAuth" };
 
-    GenericType<ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse> localVarReturnType = new GenericType<ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse>() {};
+    GenericType<ApiResponseOfAuthorisationEmbeddedRequestResponse> localVarReturnType = new GenericType<ApiResponseOfAuthorisationEmbeddedRequestResponse>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
   /**
-   * Update an embedded payment initiation with SCA info
+   * Update an embedded account request with SCA info
    * 
    * @param consentId consentId (required)
-   * @param paymentAuthRequest paymentAuthRequest (required)
+   * @param accountAuthRequest accountAuthRequest (required)
    * @param psuId PSU ID (optional)
    * @param psuCorporateId PSU ID CORPORATE (optional)
    * @param psuIpAddress PSU IP ADDRESS (optional)
-   * @return ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse
+   * @return ApiResponseOfAuthorisationEmbeddedRequestResponse
    * @throws ApiException if fails to make API call
    */
-  public ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse updateEmbeddedPaymentAuthorisationUsingPUT(String consentId, PaymentEmbeddedAuthorisationRequest paymentAuthRequest, String psuId, String psuCorporateId, String psuIpAddress) throws ApiException {
-    Object localVarPostBody = paymentAuthRequest;
+  public ApiResponseOfAuthorisationEmbeddedRequestResponse updateEmbeddedAccountRequestUsingPUT(String consentId, AccountEmbeddedAuthorisationRequest accountAuthRequest, String psuId, String psuCorporateId, String psuIpAddress) throws ApiException {
+    Object localVarPostBody = accountAuthRequest;
     
     // verify the required parameter 'consentId' is set
     if (consentId == null) {
-      throw new ApiException(400, "Missing the required parameter 'consentId' when calling updateEmbeddedPaymentAuthorisationUsingPUT");
+      throw new ApiException(400, "Missing the required parameter 'consentId' when calling updateEmbeddedAccountRequestUsingPUT");
     }
     
-    // verify the required parameter 'paymentAuthRequest' is set
-    if (paymentAuthRequest == null) {
-      throw new ApiException(400, "Missing the required parameter 'paymentAuthRequest' when calling updateEmbeddedPaymentAuthorisationUsingPUT");
+    // verify the required parameter 'accountAuthRequest' is set
+    if (accountAuthRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'accountAuthRequest' when calling updateEmbeddedAccountRequestUsingPUT");
     }
     
     // create path and map variables
-    String localVarPath = "/embedded-payment-auth-requests/{consentId}"
+    String localVarPath = "/embedded-account-auth-requests/{consentId}"
       .replaceAll("\\{" + "consentId" + "\\}", apiClient.escapeString(consentId.toString()));
 
     // query params
@@ -139,7 +139,7 @@ if (psuIpAddress != null)
 
     String[] localVarAuthNames = new String[] { "basicAuth", "tokenAuth" };
 
-    GenericType<ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse> localVarReturnType = new GenericType<ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse>() {};
+    GenericType<ApiResponseOfAuthorisationEmbeddedRequestResponse> localVarReturnType = new GenericType<ApiResponseOfAuthorisationEmbeddedRequestResponse>() {};
     return apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
 }

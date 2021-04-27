@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="getTransactionsUsingGET"></a>
 # **getTransactionsUsingGET**
-> ApiListResponseOfTransaction getTransactionsUsingGET(consent, accountId, with, from, before, limit, sort, offset, cursor)
+> ApiListResponseOfTransaction getTransactionsUsingGET(consent, accountId, psuId, psuCorporateId, psuIpAddress, with, from, before, limit, sort, offset, cursor)
 
 Get account transactions
 
@@ -36,6 +36,9 @@ tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 TransactionsApi apiInstance = new TransactionsApi();
 String consent = "consent_example"; // String | Consent Token
 String accountId = "accountId_example"; // String | accountId
+String psuId = "psuId_example"; // String | PSU ID
+String psuCorporateId = "psuCorporateId_example"; // String | PSU ID CORPORATE
+String psuIpAddress = "psuIpAddress_example"; // String | PSU IP ADDRESS
 List<String> with = Arrays.asList("with_example"); // List<String> | with
 String from = "from_example"; // String | from
 String before = "before_example"; // String | before
@@ -44,7 +47,7 @@ String sort = "sort_example"; // String | sort
 Integer offset = 56; // Integer | offset
 String cursor = "cursor_example"; // String | cursor
 try {
-    ApiListResponseOfTransaction result = apiInstance.getTransactionsUsingGET(consent, accountId, with, from, before, limit, sort, offset, cursor);
+    ApiListResponseOfTransaction result = apiInstance.getTransactionsUsingGET(consent, accountId, psuId, psuCorporateId, psuIpAddress, with, from, before, limit, sort, offset, cursor);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling TransactionsApi#getTransactionsUsingGET");
@@ -58,6 +61,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consent** | **String**| Consent Token |
  **accountId** | **String**| accountId |
+ **psuId** | **String**| PSU ID | [optional]
+ **psuCorporateId** | **String**| PSU ID CORPORATE | [optional]
+ **psuIpAddress** | **String**| PSU IP ADDRESS | [optional]
  **with** | [**List&lt;String&gt;**](String.md)| with | [optional]
  **from** | **String**| from | [optional]
  **before** | **String**| before | [optional]

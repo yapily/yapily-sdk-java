@@ -102,7 +102,10 @@ public class AccountsApiTest {
     public void getAccountUsingGETTest() throws ApiException {
         String consent = null;
         String accountId = null;
-        ApiResponseOfAccount response = api.getAccountUsingGET(consent, accountId);
+        String psuId = null;
+        String psuCorporateId = null;
+        String psuIpAddress = null;
+        ApiResponseOfAccount response = api.getAccountUsingGET(consent, accountId, psuId, psuCorporateId, psuIpAddress);
 
         // TODO: test validations
     }
@@ -118,7 +121,10 @@ public class AccountsApiTest {
     @Test
     public void getAccountsUsingGETTest() throws ApiException {
         String consent = null;
-        ApiListResponseOfAccount response = api.getAccountsUsingGET(consent);
+        String psuId = null;
+        String psuCorporateId = null;
+        String psuIpAddress = null;
+        ApiListResponseOfAccount response = api.getAccountsUsingGET(consent, psuId, psuCorporateId, psuIpAddress);
 
         // TODO: test validations
     }

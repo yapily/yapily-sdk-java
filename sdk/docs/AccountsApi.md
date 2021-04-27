@@ -196,7 +196,7 @@ Name | Type | Description  | Notes
 
 <a name="getAccountUsingGET"></a>
 # **getAccountUsingGET**
-> ApiResponseOfAccount getAccountUsingGET(consent, accountId)
+> ApiResponseOfAccount getAccountUsingGET(consent, accountId, psuId, psuCorporateId, psuIpAddress)
 
 Get account
 
@@ -223,8 +223,11 @@ tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 AccountsApi apiInstance = new AccountsApi();
 String consent = "consent_example"; // String | Consent Token
 String accountId = "accountId_example"; // String | accountId
+String psuId = "psuId_example"; // String | PSU ID
+String psuCorporateId = "psuCorporateId_example"; // String | PSU ID CORPORATE
+String psuIpAddress = "psuIpAddress_example"; // String | PSU IP ADDRESS
 try {
-    ApiResponseOfAccount result = apiInstance.getAccountUsingGET(consent, accountId);
+    ApiResponseOfAccount result = apiInstance.getAccountUsingGET(consent, accountId, psuId, psuCorporateId, psuIpAddress);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AccountsApi#getAccountUsingGET");
@@ -238,6 +241,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consent** | **String**| Consent Token |
  **accountId** | **String**| accountId |
+ **psuId** | **String**| PSU ID | [optional]
+ **psuCorporateId** | **String**| PSU ID CORPORATE | [optional]
+ **psuIpAddress** | **String**| PSU IP ADDRESS | [optional]
 
 ### Return type
 
@@ -254,7 +260,7 @@ Name | Type | Description  | Notes
 
 <a name="getAccountsUsingGET"></a>
 # **getAccountsUsingGET**
-> ApiListResponseOfAccount getAccountsUsingGET(consent)
+> ApiListResponseOfAccount getAccountsUsingGET(consent, psuId, psuCorporateId, psuIpAddress)
 
 Get accounts
 
@@ -280,8 +286,11 @@ tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 AccountsApi apiInstance = new AccountsApi();
 String consent = "consent_example"; // String | Consent Token
+String psuId = "psuId_example"; // String | PSU ID
+String psuCorporateId = "psuCorporateId_example"; // String | PSU ID CORPORATE
+String psuIpAddress = "psuIpAddress_example"; // String | PSU IP ADDRESS
 try {
-    ApiListResponseOfAccount result = apiInstance.getAccountsUsingGET(consent);
+    ApiListResponseOfAccount result = apiInstance.getAccountsUsingGET(consent, psuId, psuCorporateId, psuIpAddress);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AccountsApi#getAccountsUsingGET");
@@ -294,6 +303,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consent** | **String**| Consent Token |
+ **psuId** | **String**| PSU ID | [optional]
+ **psuCorporateId** | **String**| PSU ID CORPORATE | [optional]
+ **psuIpAddress** | **String**| PSU IP ADDRESS | [optional]
 
 ### Return type
 

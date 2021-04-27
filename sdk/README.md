@@ -129,6 +129,8 @@ Class | Method | HTTP request | Description
 *ConsentsApi* | [**getConsentBySingleAccessConsentUsingPOST**](docs/ConsentsApi.md#getConsentBySingleAccessConsentUsingPOST) | **POST** /consent-one-time-token | Post one time token
 *ConsentsApi* | [**getConsentsUsingGET**](docs/ConsentsApi.md#getConsentsUsingGET) | **GET** /consents | Get consents sorted by creation date
 *ConsentsApi* | [**getUserConsentsUsingGET**](docs/ConsentsApi.md#getUserConsentsUsingGET) | **GET** /users/{userUuid}/consents | Get latest user consents
+*EmbeddedAccountsApi* | [**initiateEmbeddedAccountRequestUsingPOST**](docs/EmbeddedAccountsApi.md#initiateEmbeddedAccountRequestUsingPOST) | **POST** /embedded-account-auth-requests | Initiate a new embedded account request for user to authorize
+*EmbeddedAccountsApi* | [**updateEmbeddedAccountRequestUsingPUT**](docs/EmbeddedAccountsApi.md#updateEmbeddedAccountRequestUsingPUT) | **PUT** /embedded-account-auth-requests/{consentId} | Update an embedded account request with SCA info
 *EmbeddedPaymentsApi* | [**createEmbeddedPaymentAuthorisationUsingPOST**](docs/EmbeddedPaymentsApi.md#createEmbeddedPaymentAuthorisationUsingPOST) | **POST** /embedded-payment-auth-requests | Initiate an embedded payment for user to authorise
 *EmbeddedPaymentsApi* | [**updateEmbeddedPaymentAuthorisationUsingPUT**](docs/EmbeddedPaymentsApi.md#updateEmbeddedPaymentAuthorisationUsingPUT) | **PUT** /embedded-payment-auth-requests/{consentId} | Update an embedded payment initiation with SCA info
 *IdentityApi* | [**getIdentityUsingGET**](docs/IdentityApi.md#getIdentityUsingGET) | **GET** /identity | Get identity
@@ -162,6 +164,7 @@ Class | Method | HTTP request | Description
  - [Account](docs/Account.md)
  - [AccountAuthorisationRequest](docs/AccountAuthorisationRequest.md)
  - [AccountBalance](docs/AccountBalance.md)
+ - [AccountEmbeddedAuthorisationRequest](docs/AccountEmbeddedAuthorisationRequest.md)
  - [AccountIdentification](docs/AccountIdentification.md)
  - [AccountInfo](docs/AccountInfo.md)
  - [AccountName](docs/AccountName.md)
@@ -183,6 +186,7 @@ Class | Method | HTTP request | Description
  - [ApiListResponseOfTransaction](docs/ApiListResponseOfTransaction.md)
  - [ApiResponseOfAccount](docs/ApiResponseOfAccount.md)
  - [ApiResponseOfAccountStatement](docs/ApiResponseOfAccountStatement.md)
+ - [ApiResponseOfAuthorisationEmbeddedRequestResponse](docs/ApiResponseOfAuthorisationEmbeddedRequestResponse.md)
  - [ApiResponseOfAuthorisationRequestResponse](docs/ApiResponseOfAuthorisationRequestResponse.md)
  - [ApiResponseOfBalances](docs/ApiResponseOfBalances.md)
  - [ApiResponseOfBulkUserDeleteDetails](docs/ApiResponseOfBulkUserDeleteDetails.md)
@@ -204,6 +208,7 @@ Class | Method | HTTP request | Description
  - [ApiResponseOfUserDeleteResponse](docs/ApiResponseOfUserDeleteResponse.md)
  - [Application](docs/Application.md)
  - [ApplicationUser](docs/ApplicationUser.md)
+ - [AuthorisationEmbeddedRequestResponse](docs/AuthorisationEmbeddedRequestResponse.md)
  - [AuthorisationRequestResponse](docs/AuthorisationRequestResponse.md)
  - [Balance](docs/Balance.md)
  - [Balances](docs/Balances.md)
