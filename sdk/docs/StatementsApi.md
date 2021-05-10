@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 <a name="getStatementFileUsingGET"></a>
 # **getStatementFileUsingGET**
-> String getStatementFileUsingGET(consent, accountId, statementId)
+> String getStatementFileUsingGET(consent, accountId, statementId, xYapilyApiVersion)
 
 Get account statement file
 
@@ -37,10 +37,11 @@ tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 StatementsApi apiInstance = new StatementsApi();
 String consent = "consent_example"; // String | Consent Token
-String accountId = "accountId_example"; // String | accountId
-String statementId = "statementId_example"; // String | statementId
+String accountId = "accountId_example"; // String | Account Id
+String statementId = "statementId_example"; // String | Statement Id
+String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
 try {
-    String result = apiInstance.getStatementFileUsingGET(consent, accountId, statementId);
+    String result = apiInstance.getStatementFileUsingGET(consent, accountId, statementId, xYapilyApiVersion);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling StatementsApi#getStatementFileUsingGET");
@@ -53,8 +54,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consent** | **String**| Consent Token |
- **accountId** | **String**| accountId |
- **statementId** | **String**| statementId |
+ **accountId** | **String**| Account Id |
+ **statementId** | **String**| Statement Id |
+ **xYapilyApiVersion** | **String**| Api Version | [optional]
 
 ### Return type
 
@@ -71,7 +73,7 @@ Name | Type | Description  | Notes
 
 <a name="getStatementUsingGET"></a>
 # **getStatementUsingGET**
-> ApiResponseOfAccountStatement getStatementUsingGET(consent, accountId, statementId)
+> ApiResponseOfAccountStatement getStatementUsingGET(consent, accountId, statementId, xYapilyApiVersion)
 
 Get account statement
 
@@ -97,10 +99,11 @@ tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 StatementsApi apiInstance = new StatementsApi();
 String consent = "consent_example"; // String | Consent Token
-String accountId = "accountId_example"; // String | accountId
-String statementId = "statementId_example"; // String | statementId
+String accountId = "accountId_example"; // String | Account Id
+String statementId = "statementId_example"; // String | Statement Id
+String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
 try {
-    ApiResponseOfAccountStatement result = apiInstance.getStatementUsingGET(consent, accountId, statementId);
+    ApiResponseOfAccountStatement result = apiInstance.getStatementUsingGET(consent, accountId, statementId, xYapilyApiVersion);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling StatementsApi#getStatementUsingGET");
@@ -113,8 +116,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consent** | **String**| Consent Token |
- **accountId** | **String**| accountId |
- **statementId** | **String**| statementId |
+ **accountId** | **String**| Account Id |
+ **statementId** | **String**| Statement Id |
+ **xYapilyApiVersion** | **String**| Api Version | [optional]
 
 ### Return type
 
@@ -131,7 +135,7 @@ Name | Type | Description  | Notes
 
 <a name="getStatementsUsingGET"></a>
 # **getStatementsUsingGET**
-> ApiListResponseOfAccountStatement getStatementsUsingGET(consent, accountId, from, before, limit, sort, offset)
+> ApiListResponseOfAccountStatement getStatementsUsingGET(consent, accountId, xYapilyApiVersion, from, before, limit, sort, offset)
 
 Get account statements
 
@@ -157,14 +161,15 @@ tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 StatementsApi apiInstance = new StatementsApi();
 String consent = "consent_example"; // String | Consent Token
-String accountId = "accountId_example"; // String | accountId
+String accountId = "accountId_example"; // String | Account Id
+String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
 String from = "from_example"; // String | from
 String before = "before_example"; // String | before
 Integer limit = 56; // Integer | limit
 String sort = "sort_example"; // String | sort
 Integer offset = 56; // Integer | offset
 try {
-    ApiListResponseOfAccountStatement result = apiInstance.getStatementsUsingGET(consent, accountId, from, before, limit, sort, offset);
+    ApiListResponseOfAccountStatement result = apiInstance.getStatementsUsingGET(consent, accountId, xYapilyApiVersion, from, before, limit, sort, offset);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling StatementsApi#getStatementsUsingGET");
@@ -177,7 +182,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consent** | **String**| Consent Token |
- **accountId** | **String**| accountId |
+ **accountId** | **String**| Account Id |
+ **xYapilyApiVersion** | **String**| Api Version | [optional]
  **from** | **String**| from | [optional]
  **before** | **String**| before | [optional]
  **limit** | **Integer**| limit | [optional]

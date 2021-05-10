@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-05-06T17:24:15.799Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-05-10T17:19:47.452Z")
 public class PaymentsApi {
   private ApiClient apiClient;
 
@@ -47,13 +47,14 @@ public class PaymentsApi {
    * Initiate bulk payment for user to authorise
    * 
    * @param paymentAuthRequest paymentAuthRequest (required)
+   * @param xYapilyApiVersion Api Version (optional)
    * @param psuId PSU ID (optional)
    * @param psuCorporateId PSU ID CORPORATE (optional)
    * @param psuIpAddress PSU IP ADDRESS (optional)
    * @return ApiResponseOfPaymentAuthorisationRequestResponse
    * @throws ApiException if fails to make API call
    */
-  public ApiResponseOfPaymentAuthorisationRequestResponse createBulkPaymentAuthorisationUsingPOST(BulkPaymentAuthorisationRequest paymentAuthRequest, String psuId, String psuCorporateId, String psuIpAddress) throws ApiException {
+  public ApiResponseOfPaymentAuthorisationRequestResponse createBulkPaymentAuthorisationUsingPOST(BulkPaymentAuthorisationRequest paymentAuthRequest, String xYapilyApiVersion, String psuId, String psuCorporateId, String psuIpAddress) throws ApiException {
     Object localVarPostBody = paymentAuthRequest;
     
     // verify the required parameter 'paymentAuthRequest' is set
@@ -70,7 +71,9 @@ public class PaymentsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    if (psuId != null)
+    if (xYapilyApiVersion != null)
+      localVarHeaderParams.put("x-yapily-api-version", apiClient.parameterToString(xYapilyApiVersion));
+if (psuId != null)
       localVarHeaderParams.put("psu-id", apiClient.parameterToString(psuId));
 if (psuCorporateId != null)
       localVarHeaderParams.put("psu-corporate-id", apiClient.parameterToString(psuCorporateId));
@@ -98,13 +101,14 @@ if (psuIpAddress != null)
    * 
    * @param consent Consent Token (required)
    * @param paymentRequest paymentRequest (required)
+   * @param xYapilyApiVersion Api Version (optional)
    * @param psuId PSU ID (optional)
    * @param psuCorporateId PSU ID CORPORATE (optional)
    * @param psuIpAddress PSU IP ADDRESS (optional)
    * @return ApiResponseOfPaymentResponse
    * @throws ApiException if fails to make API call
    */
-  public ApiResponseOfPaymentResponse createBulkPaymentUsingPOST(String consent, BulkPaymentRequest paymentRequest, String psuId, String psuCorporateId, String psuIpAddress) throws ApiException {
+  public ApiResponseOfPaymentResponse createBulkPaymentUsingPOST(String consent, BulkPaymentRequest paymentRequest, String xYapilyApiVersion, String psuId, String psuCorporateId, String psuIpAddress) throws ApiException {
     Object localVarPostBody = paymentRequest;
     
     // verify the required parameter 'consent' is set
@@ -126,7 +130,9 @@ if (psuIpAddress != null)
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    if (consent != null)
+    if (xYapilyApiVersion != null)
+      localVarHeaderParams.put("x-yapily-api-version", apiClient.parameterToString(xYapilyApiVersion));
+if (consent != null)
       localVarHeaderParams.put("consent", apiClient.parameterToString(consent));
 if (psuId != null)
       localVarHeaderParams.put("psu-id", apiClient.parameterToString(psuId));
@@ -155,13 +161,14 @@ if (psuIpAddress != null)
    * Initiate a payment for user to authorise
    * 
    * @param paymentAuthRequest paymentAuthRequest (required)
+   * @param xYapilyApiVersion Api Version (optional)
    * @param psuId PSU ID (optional)
    * @param psuCorporateId PSU ID CORPORATE (optional)
    * @param psuIpAddress PSU IP ADDRESS (optional)
    * @return ApiResponseOfPaymentAuthorisationRequestResponse
    * @throws ApiException if fails to make API call
    */
-  public ApiResponseOfPaymentAuthorisationRequestResponse createPaymentAuthorisationUsingPOST(PaymentAuthorisationRequest paymentAuthRequest, String psuId, String psuCorporateId, String psuIpAddress) throws ApiException {
+  public ApiResponseOfPaymentAuthorisationRequestResponse createPaymentAuthorisationUsingPOST(PaymentAuthorisationRequest paymentAuthRequest, String xYapilyApiVersion, String psuId, String psuCorporateId, String psuIpAddress) throws ApiException {
     Object localVarPostBody = paymentAuthRequest;
     
     // verify the required parameter 'paymentAuthRequest' is set
@@ -178,7 +185,9 @@ if (psuIpAddress != null)
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    if (psuId != null)
+    if (xYapilyApiVersion != null)
+      localVarHeaderParams.put("x-yapily-api-version", apiClient.parameterToString(xYapilyApiVersion));
+if (psuId != null)
       localVarHeaderParams.put("psu-id", apiClient.parameterToString(psuId));
 if (psuCorporateId != null)
       localVarHeaderParams.put("psu-corporate-id", apiClient.parameterToString(psuCorporateId));
@@ -205,6 +214,7 @@ if (psuIpAddress != null)
    * Initiate a new single payment for user to authorise
    * 
    * @param paymentAuthRequest paymentAuthRequest (required)
+   * @param xYapilyApiVersion Api Version (optional)
    * @param psuId PSU ID (optional)
    * @param psuCorporateId PSU ID CORPORATE (optional)
    * @param psuIpAddress PSU IP ADDRESS (optional)
@@ -213,7 +223,7 @@ if (psuIpAddress != null)
    * @deprecated
    */
   @Deprecated
-  public ApiResponseOfAuthorisationRequestResponse createPaymentAuthorisationWithSortCodeUsingPOST(SortCodePaymentAuthRequest paymentAuthRequest, String psuId, String psuCorporateId, String psuIpAddress) throws ApiException {
+  public ApiResponseOfAuthorisationRequestResponse createPaymentAuthorisationWithSortCodeUsingPOST(SortCodePaymentAuthRequest paymentAuthRequest, String xYapilyApiVersion, String psuId, String psuCorporateId, String psuIpAddress) throws ApiException {
     Object localVarPostBody = paymentAuthRequest;
     
     // verify the required parameter 'paymentAuthRequest' is set
@@ -230,7 +240,9 @@ if (psuIpAddress != null)
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    if (psuId != null)
+    if (xYapilyApiVersion != null)
+      localVarHeaderParams.put("x-yapily-api-version", apiClient.parameterToString(xYapilyApiVersion));
+if (psuId != null)
       localVarHeaderParams.put("psu-id", apiClient.parameterToString(psuId));
 if (psuCorporateId != null)
       localVarHeaderParams.put("psu-corporate-id", apiClient.parameterToString(psuCorporateId));
@@ -258,13 +270,14 @@ if (psuIpAddress != null)
    * 
    * @param consent Consent Token (required)
    * @param paymentRequest paymentRequest (required)
+   * @param xYapilyApiVersion Api Version (optional)
    * @param psuId PSU ID (optional)
    * @param psuCorporateId PSU ID CORPORATE (optional)
    * @param psuIpAddress PSU IP ADDRESS (optional)
    * @return ApiResponseOfPaymentResponse
    * @throws ApiException if fails to make API call
    */
-  public ApiResponseOfPaymentResponse createPaymentUsingPOST(String consent, PaymentRequest paymentRequest, String psuId, String psuCorporateId, String psuIpAddress) throws ApiException {
+  public ApiResponseOfPaymentResponse createPaymentUsingPOST(String consent, PaymentRequest paymentRequest, String xYapilyApiVersion, String psuId, String psuCorporateId, String psuIpAddress) throws ApiException {
     Object localVarPostBody = paymentRequest;
     
     // verify the required parameter 'consent' is set
@@ -286,7 +299,9 @@ if (psuIpAddress != null)
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    if (consent != null)
+    if (xYapilyApiVersion != null)
+      localVarHeaderParams.put("x-yapily-api-version", apiClient.parameterToString(xYapilyApiVersion));
+if (consent != null)
       localVarHeaderParams.put("consent", apiClient.parameterToString(consent));
 if (psuId != null)
       localVarHeaderParams.put("psu-id", apiClient.parameterToString(psuId));
@@ -316,6 +331,7 @@ if (psuIpAddress != null)
    * 
    * @param consent Consent Token (required)
    * @param paymentRequest paymentRequest (required)
+   * @param xYapilyApiVersion Api Version (optional)
    * @param psuId PSU ID (optional)
    * @param psuCorporateId PSU ID CORPORATE (optional)
    * @param psuIpAddress PSU IP ADDRESS (optional)
@@ -324,7 +340,7 @@ if (psuIpAddress != null)
    * @deprecated
    */
   @Deprecated
-  public ApiResponseOfPaymentResponse createPaymentWithSortCodeUsingPOST(String consent, SortCodePaymentRequest paymentRequest, String psuId, String psuCorporateId, String psuIpAddress) throws ApiException {
+  public ApiResponseOfPaymentResponse createPaymentWithSortCodeUsingPOST(String consent, SortCodePaymentRequest paymentRequest, String xYapilyApiVersion, String psuId, String psuCorporateId, String psuIpAddress) throws ApiException {
     Object localVarPostBody = paymentRequest;
     
     // verify the required parameter 'consent' is set
@@ -346,7 +362,9 @@ if (psuIpAddress != null)
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    if (consent != null)
+    if (xYapilyApiVersion != null)
+      localVarHeaderParams.put("x-yapily-api-version", apiClient.parameterToString(xYapilyApiVersion));
+if (consent != null)
       localVarHeaderParams.put("consent", apiClient.parameterToString(consent));
 if (psuId != null)
       localVarHeaderParams.put("psu-id", apiClient.parameterToString(psuId));
@@ -374,15 +392,16 @@ if (psuIpAddress != null)
   /**
    * Get status of a payment
    * 
-   * @param paymentId paymentId (required)
+   * @param paymentId Payment Id (required)
    * @param consent Consent Token (required)
+   * @param xYapilyApiVersion Api Version (optional)
    * @param psuId PSU ID (optional)
    * @param psuCorporateId PSU ID CORPORATE (optional)
    * @param psuIpAddress PSU IP ADDRESS (optional)
    * @return ApiResponseOfPaymentResponse
    * @throws ApiException if fails to make API call
    */
-  public ApiResponseOfPaymentResponse getPaymentStatusUsingGET(String paymentId, String consent, String psuId, String psuCorporateId, String psuIpAddress) throws ApiException {
+  public ApiResponseOfPaymentResponse getPaymentStatusUsingGET(String paymentId, String consent, String xYapilyApiVersion, String psuId, String psuCorporateId, String psuIpAddress) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'paymentId' is set
@@ -397,7 +416,7 @@ if (psuIpAddress != null)
     
     // create path and map variables
     String localVarPath = "/payments/{paymentId}"
-      .replaceAll("\\{" + "paymentId" + "\\}", apiClient.escapeString(paymentId.toString()));
+      .replaceAll("\\{" + "payment-id" + "\\}", apiClient.escapeString(paymentId.toString()));
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -405,7 +424,9 @@ if (psuIpAddress != null)
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    if (consent != null)
+    if (xYapilyApiVersion != null)
+      localVarHeaderParams.put("x-yapily-api-version", apiClient.parameterToString(xYapilyApiVersion));
+if (consent != null)
       localVarHeaderParams.put("consent", apiClient.parameterToString(consent));
 if (psuId != null)
       localVarHeaderParams.put("psu-id", apiClient.parameterToString(psuId));
@@ -433,15 +454,16 @@ if (psuIpAddress != null)
   /**
    * Get payments detail
    * 
-   * @param paymentId paymentId (required)
+   * @param paymentId Payment Id (required)
    * @param consent Consent Token (required)
+   * @param xYapilyApiVersion Api Version (optional)
    * @param psuId PSU ID (optional)
    * @param psuCorporateId PSU ID CORPORATE (optional)
    * @param psuIpAddress PSU IP ADDRESS (optional)
    * @return ApiResponseOfPaymentResponses
    * @throws ApiException if fails to make API call
    */
-  public ApiResponseOfPaymentResponses getPaymentsUsingGET(String paymentId, String consent, String psuId, String psuCorporateId, String psuIpAddress) throws ApiException {
+  public ApiResponseOfPaymentResponses getPaymentsUsingGET(String paymentId, String consent, String xYapilyApiVersion, String psuId, String psuCorporateId, String psuIpAddress) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'paymentId' is set
@@ -456,7 +478,7 @@ if (psuIpAddress != null)
     
     // create path and map variables
     String localVarPath = "/payments/{paymentId}/details"
-      .replaceAll("\\{" + "paymentId" + "\\}", apiClient.escapeString(paymentId.toString()));
+      .replaceAll("\\{" + "payment-id" + "\\}", apiClient.escapeString(paymentId.toString()));
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -464,7 +486,9 @@ if (psuIpAddress != null)
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    if (consent != null)
+    if (xYapilyApiVersion != null)
+      localVarHeaderParams.put("x-yapily-api-version", apiClient.parameterToString(xYapilyApiVersion));
+if (consent != null)
       localVarHeaderParams.put("consent", apiClient.parameterToString(consent));
 if (psuId != null)
       localVarHeaderParams.put("psu-id", apiClient.parameterToString(psuId));
@@ -494,13 +518,14 @@ if (psuIpAddress != null)
    * 
    * @param consent Consent Token (required)
    * @param paymentAuthRequest paymentAuthRequest (required)
+   * @param xYapilyApiVersion Api Version (optional)
    * @param psuId PSU ID (optional)
    * @param psuCorporateId PSU ID CORPORATE (optional)
    * @param psuIpAddress PSU IP ADDRESS (optional)
    * @return ApiResponseOfPaymentAuthorisationRequestResponse
    * @throws ApiException if fails to make API call
    */
-  public ApiResponseOfPaymentAuthorisationRequestResponse updatePaymentAuthorisationUsingPUT(String consent, PaymentAuthorisationRequest paymentAuthRequest, String psuId, String psuCorporateId, String psuIpAddress) throws ApiException {
+  public ApiResponseOfPaymentAuthorisationRequestResponse updatePaymentAuthorisationUsingPUT(String consent, PaymentAuthorisationRequest paymentAuthRequest, String xYapilyApiVersion, String psuId, String psuCorporateId, String psuIpAddress) throws ApiException {
     Object localVarPostBody = paymentAuthRequest;
     
     // verify the required parameter 'consent' is set
@@ -522,7 +547,9 @@ if (psuIpAddress != null)
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    if (psuId != null)
+    if (xYapilyApiVersion != null)
+      localVarHeaderParams.put("x-yapily-api-version", apiClient.parameterToString(xYapilyApiVersion));
+if (psuId != null)
       localVarHeaderParams.put("psu-id", apiClient.parameterToString(psuId));
 if (psuCorporateId != null)
       localVarHeaderParams.put("psu-corporate-id", apiClient.parameterToString(psuCorporateId));

@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 <a name="createEmbeddedPaymentAuthorisationUsingPOST"></a>
 # **createEmbeddedPaymentAuthorisationUsingPOST**
-> ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse createEmbeddedPaymentAuthorisationUsingPOST(paymentAuthRequest, psuId, psuCorporateId, psuIpAddress)
+> ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse createEmbeddedPaymentAuthorisationUsingPOST(paymentAuthRequest, xYapilyApiVersion, psuId, psuCorporateId, psuIpAddress)
 
 Initiate an embedded payment for user to authorise
 
@@ -36,11 +36,12 @@ tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 EmbeddedPaymentsApi apiInstance = new EmbeddedPaymentsApi();
 PaymentEmbeddedAuthorisationRequest paymentAuthRequest = new PaymentEmbeddedAuthorisationRequest(); // PaymentEmbeddedAuthorisationRequest | paymentAuthRequest
+String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
 String psuId = "psuId_example"; // String | PSU ID
 String psuCorporateId = "psuCorporateId_example"; // String | PSU ID CORPORATE
 String psuIpAddress = "psuIpAddress_example"; // String | PSU IP ADDRESS
 try {
-    ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse result = apiInstance.createEmbeddedPaymentAuthorisationUsingPOST(paymentAuthRequest, psuId, psuCorporateId, psuIpAddress);
+    ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse result = apiInstance.createEmbeddedPaymentAuthorisationUsingPOST(paymentAuthRequest, xYapilyApiVersion, psuId, psuCorporateId, psuIpAddress);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling EmbeddedPaymentsApi#createEmbeddedPaymentAuthorisationUsingPOST");
@@ -53,6 +54,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **paymentAuthRequest** | [**PaymentEmbeddedAuthorisationRequest**](PaymentEmbeddedAuthorisationRequest.md)| paymentAuthRequest |
+ **xYapilyApiVersion** | **String**| Api Version | [optional]
  **psuId** | **String**| PSU ID | [optional]
  **psuCorporateId** | **String**| PSU ID CORPORATE | [optional]
  **psuIpAddress** | **String**| PSU IP ADDRESS | [optional]
@@ -72,7 +74,7 @@ Name | Type | Description  | Notes
 
 <a name="updateEmbeddedPaymentAuthorisationUsingPUT"></a>
 # **updateEmbeddedPaymentAuthorisationUsingPUT**
-> ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse updateEmbeddedPaymentAuthorisationUsingPUT(consentId, paymentAuthRequest, psuId, psuCorporateId, psuIpAddress)
+> ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse updateEmbeddedPaymentAuthorisationUsingPUT(consentId, paymentAuthRequest, xYapilyApiVersion, psuId, psuCorporateId, psuIpAddress)
 
 Update an embedded payment initiation with SCA info
 
@@ -97,13 +99,14 @@ OAuth tokenAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
 tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 EmbeddedPaymentsApi apiInstance = new EmbeddedPaymentsApi();
-String consentId = "consentId_example"; // String | consentId
+String consentId = "consentId_example"; // String | Consent Id
 PaymentEmbeddedAuthorisationRequest paymentAuthRequest = new PaymentEmbeddedAuthorisationRequest(); // PaymentEmbeddedAuthorisationRequest | paymentAuthRequest
+String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
 String psuId = "psuId_example"; // String | PSU ID
 String psuCorporateId = "psuCorporateId_example"; // String | PSU ID CORPORATE
 String psuIpAddress = "psuIpAddress_example"; // String | PSU IP ADDRESS
 try {
-    ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse result = apiInstance.updateEmbeddedPaymentAuthorisationUsingPUT(consentId, paymentAuthRequest, psuId, psuCorporateId, psuIpAddress);
+    ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse result = apiInstance.updateEmbeddedPaymentAuthorisationUsingPUT(consentId, paymentAuthRequest, xYapilyApiVersion, psuId, psuCorporateId, psuIpAddress);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling EmbeddedPaymentsApi#updateEmbeddedPaymentAuthorisationUsingPUT");
@@ -115,8 +118,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **consentId** | **String**| consentId |
+ **consentId** | **String**| Consent Id |
  **paymentAuthRequest** | [**PaymentEmbeddedAuthorisationRequest**](PaymentEmbeddedAuthorisationRequest.md)| paymentAuthRequest |
+ **xYapilyApiVersion** | **String**| Api Version | [optional]
  **psuId** | **String**| PSU ID | [optional]
  **psuCorporateId** | **String**| PSU ID CORPORATE | [optional]
  **psuIpAddress** | **String**| PSU IP ADDRESS | [optional]

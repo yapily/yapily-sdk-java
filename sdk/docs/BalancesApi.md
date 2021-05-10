@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="getAccountBalancesUsingGET"></a>
 # **getAccountBalancesUsingGET**
-> ApiResponseOfBalances getAccountBalancesUsingGET(consent, accountId, psuId, psuCorporateId, psuIpAddress)
+> ApiResponseOfBalances getAccountBalancesUsingGET(accountId, xYapilyApiVersion, consent, psuId, psuCorporateId, psuIpAddress)
 
 Get account balances
 
@@ -34,13 +34,14 @@ OAuth tokenAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
 tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 BalancesApi apiInstance = new BalancesApi();
+String accountId = "accountId_example"; // String | Account Id
+String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
 String consent = "consent_example"; // String | Consent Token
-String accountId = "accountId_example"; // String | accountId
 String psuId = "psuId_example"; // String | PSU ID
 String psuCorporateId = "psuCorporateId_example"; // String | PSU ID CORPORATE
 String psuIpAddress = "psuIpAddress_example"; // String | PSU IP ADDRESS
 try {
-    ApiResponseOfBalances result = apiInstance.getAccountBalancesUsingGET(consent, accountId, psuId, psuCorporateId, psuIpAddress);
+    ApiResponseOfBalances result = apiInstance.getAccountBalancesUsingGET(accountId, xYapilyApiVersion, consent, psuId, psuCorporateId, psuIpAddress);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BalancesApi#getAccountBalancesUsingGET");
@@ -52,8 +53,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **consent** | **String**| Consent Token |
- **accountId** | **String**| accountId |
+ **accountId** | **String**| Account Id |
+ **xYapilyApiVersion** | **String**| Api Version | [optional]
+ **consent** | **String**| Consent Token | [optional]
  **psuId** | **String**| PSU ID | [optional]
  **psuCorporateId** | **String**| PSU ID CORPORATE | [optional]
  **psuIpAddress** | **String**| PSU IP ADDRESS | [optional]

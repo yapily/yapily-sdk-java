@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="transferUsingPUT"></a>
 # **transferUsingPUT**
-> ApiResponseOfTransferResponse transferUsingPUT(consent, accountId, transferRequest)
+> ApiResponseOfTransferResponse transferUsingPUT(consent, accountId, xYapilyApiVersion, transferRequest)
 
 Transfer money from one account to another account accessible with the same consent
 
@@ -35,10 +35,11 @@ tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 TransfersApi apiInstance = new TransfersApi();
 String consent = "consent_example"; // String | Consent Token
-String accountId = "accountId_example"; // String | accountId
+String accountId = "accountId_example"; // String | Account Id
+String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
 TransferRequest transferRequest = new TransferRequest(); // TransferRequest | transferRequest
 try {
-    ApiResponseOfTransferResponse result = apiInstance.transferUsingPUT(consent, accountId, transferRequest);
+    ApiResponseOfTransferResponse result = apiInstance.transferUsingPUT(consent, accountId, xYapilyApiVersion, transferRequest);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling TransfersApi#transferUsingPUT");
@@ -51,7 +52,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consent** | **String**| Consent Token |
- **accountId** | **String**| accountId |
+ **accountId** | **String**| Account Id |
+ **xYapilyApiVersion** | **String**| Api Version | [optional]
  **transferRequest** | [**TransferRequest**](TransferRequest.md)| transferRequest | [optional]
 
 ### Return type

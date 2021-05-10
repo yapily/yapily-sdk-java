@@ -19,7 +19,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-05-06T17:24:15.799Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-05-10T17:19:47.452Z")
 public class ApplicationUsersApi {
   private ApiClient apiClient;
 
@@ -43,10 +43,11 @@ public class ApplicationUsersApi {
    * Add an application user
    * 
    * @param newApplicationUser newApplicationUser (required)
+   * @param xYapilyApiVersion Api Version (optional)
    * @return ApplicationUser
    * @throws ApiException if fails to make API call
    */
-  public ApplicationUser addUserUsingPOST(NewApplicationUser newApplicationUser) throws ApiException {
+  public ApplicationUser addUserUsingPOST(NewApplicationUser newApplicationUser, String xYapilyApiVersion) throws ApiException {
     Object localVarPostBody = newApplicationUser;
     
     // verify the required parameter 'newApplicationUser' is set
@@ -63,7 +64,9 @@ public class ApplicationUsersApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    
+    if (xYapilyApiVersion != null)
+      localVarHeaderParams.put("x-yapily-api-version", apiClient.parameterToString(xYapilyApiVersion));
+
     
     final String[] localVarAccepts = {
       "application/json;charset=UTF-8"
@@ -83,11 +86,12 @@ public class ApplicationUsersApi {
   /**
    * Delete an application user and sub-resources (including consent resources on institution APIs if they exist)
    * 
-   * @param userUuid userUuid (required)
+   * @param userUuid User uuid (required)
+   * @param xYapilyApiVersion Api Version (optional)
    * @return ApiResponseOfUserDeleteResponse
    * @throws ApiException if fails to make API call
    */
-  public ApiResponseOfUserDeleteResponse deleteUserUsingDELETE(String userUuid) throws ApiException {
+  public ApiResponseOfUserDeleteResponse deleteUserUsingDELETE(String userUuid, String xYapilyApiVersion) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'userUuid' is set
@@ -97,7 +101,7 @@ public class ApplicationUsersApi {
     
     // create path and map variables
     String localVarPath = "/users/{userUuid}"
-      .replaceAll("\\{" + "userUuid" + "\\}", apiClient.escapeString(userUuid.toString()));
+      .replaceAll("\\{" + "user-uuid" + "\\}", apiClient.escapeString(userUuid.toString()));
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -105,7 +109,9 @@ public class ApplicationUsersApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    
+    if (xYapilyApiVersion != null)
+      localVarHeaderParams.put("x-yapily-api-version", apiClient.parameterToString(xYapilyApiVersion));
+
     
     final String[] localVarAccepts = {
       "application/json;charset=UTF-8"
@@ -202,11 +208,12 @@ public class ApplicationUsersApi {
   /**
    * Get an application user
    * 
-   * @param userUuid userUuid (required)
+   * @param userUuid User uuid (required)
+   * @param xYapilyApiVersion Api Version (optional)
    * @return ApplicationUser
    * @throws ApiException if fails to make API call
    */
-  public ApplicationUser getUserUsingGET(String userUuid) throws ApiException {
+  public ApplicationUser getUserUsingGET(String userUuid, String xYapilyApiVersion) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'userUuid' is set
@@ -216,7 +223,7 @@ public class ApplicationUsersApi {
     
     // create path and map variables
     String localVarPath = "/users/{userUuid}"
-      .replaceAll("\\{" + "userUuid" + "\\}", apiClient.escapeString(userUuid.toString()));
+      .replaceAll("\\{" + "user-uuid" + "\\}", apiClient.escapeString(userUuid.toString()));
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -224,7 +231,9 @@ public class ApplicationUsersApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    
+    if (xYapilyApiVersion != null)
+      localVarHeaderParams.put("x-yapily-api-version", apiClient.parameterToString(xYapilyApiVersion));
+
     
     final String[] localVarAccepts = {
       "application/json;charset=UTF-8"
@@ -244,11 +253,12 @@ public class ApplicationUsersApi {
   /**
    * Get application users
    * 
+   * @param xYapilyApiVersion Api Version (optional)
    * @param filterApplicationUserId Filter users by the provided application user Id (applicationUserId) when the user was created. (optional)
    * @return List&lt;ApplicationUser&gt;
    * @throws ApiException if fails to make API call
    */
-  public List<ApplicationUser> getUsersUsingGET(List<String> filterApplicationUserId) throws ApiException {
+  public List<ApplicationUser> getUsersUsingGET(String xYapilyApiVersion, List<String> filterApplicationUserId) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -261,7 +271,9 @@ public class ApplicationUsersApi {
 
     localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "filter[applicationUserId]", filterApplicationUserId));
 
-    
+    if (xYapilyApiVersion != null)
+      localVarHeaderParams.put("x-yapily-api-version", apiClient.parameterToString(xYapilyApiVersion));
+
     
     final String[] localVarAccepts = {
       "application/json;charset=UTF-8"

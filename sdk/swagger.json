@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "To access endpoints that require authentication, use your application key and secret created in the Dashboard (https://dashboard.yapily.com)",
-    "version": "0.0.339",
+    "version": "0.0.340",
     "title": "Yapily API"
   },
   "host": "api.yapily.com",
@@ -27,6 +27,10 @@
     {
       "name": "Categories",
       "description": " "
+    },
+    {
+      "name": "Payments",
+      "description": "Payment Consent Controller"
     },
     {
       "name": "Accounts",
@@ -67,10 +71,6 @@
     {
       "name": "Embedded Payments",
       "description": " "
-    },
-    {
-      "name": "Payments",
-      "description": " "
     }
   ],
   "schemes": [
@@ -91,6 +91,13 @@
           "application/json;charset=UTF-8"
         ],
         "parameters": [
+          {
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "Api Version",
+            "required": false,
+            "type": "string"
+          },
           {
             "name": "psu-id",
             "in": "header",
@@ -165,6 +172,13 @@
         ],
         "parameters": [
           {
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "Api Version",
+            "required": false,
+            "type": "string"
+          },
+          {
             "name": "consent",
             "in": "header",
             "description": "Consent Token",
@@ -235,7 +249,7 @@
         "tags": [
           "Accounts"
         ],
-        "summary": "Re-authorize account request",
+        "summary": "Re-authorise account request",
         "operationId": "reAuthoriseAccountUsingPATCH",
         "consumes": [
           "application/json;charset=UTF-8"
@@ -244,6 +258,13 @@
           "application/json;charset=UTF-8"
         ],
         "parameters": [
+          {
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "Api Version",
+            "required": false,
+            "type": "string"
+          },
           {
             "name": "consent",
             "in": "header",
@@ -315,6 +336,13 @@
         ],
         "parameters": [
           {
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "Api Version",
+            "required": false,
+            "type": "string"
+          },
+          {
             "name": "consent",
             "in": "header",
             "description": "Consent Token",
@@ -385,6 +413,13 @@
         ],
         "parameters": [
           {
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "Api Version",
+            "required": false,
+            "type": "string"
+          },
+          {
             "name": "consent",
             "in": "header",
             "description": "Consent Token",
@@ -392,9 +427,9 @@
             "type": "string"
           },
           {
-            "name": "accountId",
+            "name": "account-id",
             "in": "path",
-            "description": "accountId",
+            "description": "Account Id",
             "required": true,
             "type": "string"
           },
@@ -462,16 +497,23 @@
         ],
         "parameters": [
           {
-            "name": "consent",
+            "name": "x-yapily-api-version",
             "in": "header",
-            "description": "Consent Token",
-            "required": true,
+            "description": "Api Version",
+            "required": false,
             "type": "string"
           },
           {
-            "name": "accountId",
+            "name": "consent",
+            "in": "header",
+            "description": "Consent Token",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "account-id",
             "in": "path",
-            "description": "accountId",
+            "description": "Account Id",
             "required": true,
             "type": "string"
           },
@@ -539,9 +581,16 @@
         ],
         "parameters": [
           {
-            "name": "accountId",
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "Api Version",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "account-id",
             "in": "path",
-            "description": "accountId",
+            "description": "Account Id",
             "required": true,
             "type": "string"
           },
@@ -595,9 +644,16 @@
         ],
         "parameters": [
           {
-            "name": "accountId",
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "Api Version",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "account-id",
             "in": "path",
-            "description": "accountId",
+            "description": "Account Id",
             "required": true,
             "type": "string"
           },
@@ -659,9 +715,16 @@
         ],
         "parameters": [
           {
-            "name": "accountId",
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "Api Version",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "account-id",
             "in": "path",
-            "description": "accountId",
+            "description": "Account Id",
             "required": true,
             "type": "string"
           },
@@ -723,9 +786,16 @@
         ],
         "parameters": [
           {
-            "name": "accountId",
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "Api Version",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "account-id",
             "in": "path",
-            "description": "accountId",
+            "description": "Account Id",
             "required": true,
             "type": "string"
           },
@@ -787,6 +857,13 @@
         ],
         "parameters": [
           {
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "Api Version",
+            "required": false,
+            "type": "string"
+          },
+          {
             "name": "consent",
             "in": "header",
             "description": "Consent Token",
@@ -794,9 +871,9 @@
             "type": "string"
           },
           {
-            "name": "accountId",
+            "name": "account-id",
             "in": "path",
-            "description": "accountId",
+            "description": "Account Id",
             "required": true,
             "type": "string"
           },
@@ -884,6 +961,13 @@
         ],
         "parameters": [
           {
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "Api Version",
+            "required": false,
+            "type": "string"
+          },
+          {
             "name": "consent",
             "in": "header",
             "description": "Consent Token",
@@ -891,16 +975,16 @@
             "type": "string"
           },
           {
-            "name": "accountId",
+            "name": "account-id",
             "in": "path",
-            "description": "accountId",
+            "description": "Account Id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "statementId",
+            "name": "statement-id",
             "in": "path",
-            "description": "statementId",
+            "description": "Statement Id",
             "required": true,
             "type": "string"
           }
@@ -947,6 +1031,13 @@
         ],
         "parameters": [
           {
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "Api Version",
+            "required": false,
+            "type": "string"
+          },
+          {
             "name": "consent",
             "in": "header",
             "description": "Consent Token",
@@ -954,16 +1045,16 @@
             "type": "string"
           },
           {
-            "name": "accountId",
+            "name": "account-id",
             "in": "path",
-            "description": "accountId",
+            "description": "Account Id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "statementId",
+            "name": "statement-id",
             "in": "path",
-            "description": "statementId",
+            "description": "Statement Id",
             "required": true,
             "type": "string"
           }
@@ -1010,6 +1101,13 @@
         ],
         "parameters": [
           {
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "Api Version",
+            "required": false,
+            "type": "string"
+          },
+          {
             "name": "consent",
             "in": "header",
             "description": "Consent Token",
@@ -1017,9 +1115,9 @@
             "type": "string"
           },
           {
-            "name": "accountId",
+            "name": "account-id",
             "in": "path",
-            "description": "accountId",
+            "description": "Account Id",
             "required": true,
             "type": "string"
           },
@@ -1146,6 +1244,13 @@
         ],
         "parameters": [
           {
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "Api Version",
+            "required": false,
+            "type": "string"
+          },
+          {
             "name": "consent",
             "in": "header",
             "description": "Consent Token",
@@ -1153,9 +1258,9 @@
             "type": "string"
           },
           {
-            "name": "accountId",
+            "name": "account-id",
             "in": "path",
-            "description": "accountId",
+            "description": "Account Id",
             "required": true,
             "type": "string"
           },
@@ -1213,6 +1318,13 @@
           "application/json;charset=UTF-8"
         ],
         "parameters": [
+          {
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "Api Version",
+            "required": false,
+            "type": "string"
+          },
           {
             "name": "psu-id",
             "in": "header",
@@ -1288,6 +1400,13 @@
           "application/json;charset=UTF-8"
         ],
         "parameters": [
+          {
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "Api Version",
+            "required": false,
+            "type": "string"
+          },
           {
             "name": "consent",
             "in": "header",
@@ -1420,6 +1539,13 @@
         ],
         "parameters": [
           {
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "Api Version",
+            "required": false,
+            "type": "string"
+          },
+          {
             "in": "body",
             "name": "consentByAuthCode",
             "description": "consentByAuthCode",
@@ -1474,6 +1600,13 @@
         ],
         "parameters": [
           {
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "Api Version",
+            "required": false,
+            "type": "string"
+          },
+          {
             "in": "body",
             "name": "oneTimeToken",
             "description": "oneTimeToken",
@@ -1527,6 +1660,13 @@
           "application/json;charset=UTF-8"
         ],
         "parameters": [
+          {
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "Api Version",
+            "required": false,
+            "type": "string"
+          },
           {
             "name": "filter[applicationUserId]",
             "in": "query",
@@ -1645,10 +1785,17 @@
         ],
         "parameters": [
           {
-            "name": "consentId",
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "Api Version",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "consent-id",
             "in": "path",
-            "description": "consentId",
-            "required": true,
+            "description": "Consent Id",
+            "required": false,
             "type": "string"
           }
         ],
@@ -1692,16 +1839,23 @@
         ],
         "parameters": [
           {
-            "name": "consentId",
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "Api Version",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "consent-id",
             "in": "path",
-            "description": "consentId",
-            "required": true,
+            "description": "Consent Id",
+            "required": false,
             "type": "string"
           },
           {
             "name": "forceDelete",
             "in": "query",
-            "description": "forceDelete",
+            "description": "Force delete",
             "required": false,
             "type": "boolean",
             "default": true
@@ -2050,6 +2204,13 @@
         ],
         "parameters": [
           {
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "Api Version",
+            "required": false,
+            "type": "string"
+          },
+          {
             "name": "psu-id",
             "in": "header",
             "description": "PSU ID",
@@ -2125,9 +2286,16 @@
         ],
         "parameters": [
           {
-            "name": "consentId",
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "Api Version",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "consent-id",
             "in": "path",
-            "description": "consentId",
+            "description": "Consent Id",
             "required": true,
             "type": "string"
           },
@@ -2205,6 +2373,15 @@
         "produces": [
           "application/json;charset=UTF-8"
         ],
+        "parameters": [
+          {
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "Api Version",
+            "required": false,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -2246,6 +2423,13 @@
           "application/json;charset=UTF-8"
         ],
         "parameters": [
+          {
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "Api Version",
+            "required": false,
+            "type": "string"
+          },
           {
             "name": "consent",
             "in": "header",
@@ -2294,6 +2478,15 @@
         "produces": [
           "application/json;charset=UTF-8"
         ],
+        "parameters": [
+          {
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "Api Version",
+            "required": false,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -2336,9 +2529,16 @@
         ],
         "parameters": [
           {
-            "name": "institutionId",
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "Api Version",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "institution-id",
             "in": "path",
-            "description": "institutionId",
+            "description": "Institution Id",
             "required": true,
             "type": "string"
           }
@@ -2481,6 +2681,15 @@
         "produces": [
           "application/json;charset=UTF-8"
         ],
+        "parameters": [
+          {
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "Api Version",
+            "required": false,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -2522,6 +2731,13 @@
           "application/json;charset=UTF-8"
         ],
         "parameters": [
+          {
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "Api Version",
+            "required": false,
+            "type": "string"
+          },
           {
             "name": "psu-id",
             "in": "header",
@@ -2595,6 +2811,13 @@
           "application/json;charset=UTF-8"
         ],
         "parameters": [
+          {
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "Api Version",
+            "required": false,
+            "type": "string"
+          },
           {
             "name": "psu-id",
             "in": "header",
@@ -2677,6 +2900,13 @@
           "application/json;charset=UTF-8"
         ],
         "parameters": [
+          {
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "Api Version",
+            "required": false,
+            "type": "string"
+          },
           {
             "name": "consent",
             "in": "header",
@@ -2761,6 +2991,13 @@
         ],
         "parameters": [
           {
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "Api Version",
+            "required": false,
+            "type": "string"
+          },
+          {
             "name": "psu-id",
             "in": "header",
             "description": "PSU ID",
@@ -2836,6 +3073,13 @@
           "application/json;charset=UTF-8"
         ],
         "parameters": [
+          {
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "Api Version",
+            "required": false,
+            "type": "string"
+          },
           {
             "name": "consent",
             "in": "header",
@@ -2919,9 +3163,16 @@
         ],
         "parameters": [
           {
-            "name": "paymentId",
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "Api Version",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "payment-id",
             "in": "path",
-            "description": "paymentId",
+            "description": "Payment Id",
             "required": true,
             "type": "string"
           },
@@ -2996,9 +3247,16 @@
         ],
         "parameters": [
           {
-            "name": "paymentId",
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "Api Version",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "payment-id",
             "in": "path",
-            "description": "paymentId",
+            "description": "Payment Id",
             "required": true,
             "type": "string"
           },
@@ -3073,6 +3331,13 @@
         ],
         "parameters": [
           {
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "Api Version",
+            "required": false,
+            "type": "string"
+          },
+          {
             "in": "body",
             "name": "preAuthorisationRequest",
             "description": "preAuthorisationRequest",
@@ -3126,6 +3391,13 @@
           "application/json;charset=UTF-8"
         ],
         "parameters": [
+          {
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "Api Version",
+            "required": false,
+            "type": "string"
+          },
           {
             "name": "filter[applicationUserId]",
             "in": "query",
@@ -3181,6 +3453,13 @@
         ],
         "parameters": [
           {
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "Api Version",
+            "required": false,
+            "type": "string"
+          },
+          {
             "in": "body",
             "name": "newApplicationUser",
             "description": "newApplicationUser",
@@ -3235,9 +3514,16 @@
         ],
         "parameters": [
           {
-            "name": "userUuid",
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "Api Version",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "user-uuid",
             "in": "path",
-            "description": "userUuid",
+            "description": "User uuid",
             "required": true,
             "type": "string"
           }
@@ -3282,9 +3568,16 @@
         ],
         "parameters": [
           {
-            "name": "userUuid",
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "Api Version",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "user-uuid",
             "in": "path",
-            "description": "userUuid",
+            "description": "User uuid",
             "required": true,
             "type": "string"
           }
@@ -3331,9 +3624,16 @@
         ],
         "parameters": [
           {
-            "name": "userUuid",
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "Api Version",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "user-uuid",
             "in": "path",
-            "description": "userUuid",
+            "description": "User uuid",
             "required": true,
             "type": "string"
           },
@@ -3397,9 +3697,16 @@
         ],
         "parameters": [
           {
-            "name": "userUuid",
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "Api Version",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "user-uuid",
             "in": "path",
-            "description": "userUuid",
+            "description": "User uuid",
             "required": true,
             "type": "string"
           },
@@ -4725,11 +5032,13 @@
       "required": [
         "callback",
         "institutionId",
-        "oneTimeToken"
+        "oneTimeToken",
+        "scope"
       ],
       "properties": {
         "scope": {
-          "type": "string"
+          "type": "string",
+          "description": "Defines the scope of the pre-authorisation request."
         },
         "userUuid": {
           "type": "string",

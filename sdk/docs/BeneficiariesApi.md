@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="getBeneficiariesUsingGET"></a>
 # **getBeneficiariesUsingGET**
-> ApiResponseOfListOfBeneficiary getBeneficiariesUsingGET(accountId, consent)
+> ApiResponseOfListOfBeneficiary getBeneficiariesUsingGET(accountId, consent, xYapilyApiVersion)
 
 Get beneficiaries
 
@@ -34,10 +34,11 @@ OAuth tokenAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
 tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 BeneficiariesApi apiInstance = new BeneficiariesApi();
-String accountId = "accountId_example"; // String | accountId
+String accountId = "accountId_example"; // String | Account Id
 String consent = "consent_example"; // String | Consent Token
+String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
 try {
-    ApiResponseOfListOfBeneficiary result = apiInstance.getBeneficiariesUsingGET(accountId, consent);
+    ApiResponseOfListOfBeneficiary result = apiInstance.getBeneficiariesUsingGET(accountId, consent, xYapilyApiVersion);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BeneficiariesApi#getBeneficiariesUsingGET");
@@ -49,8 +50,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **accountId** | **String**| accountId |
+ **accountId** | **String**| Account Id |
  **consent** | **String**| Consent Token |
+ **xYapilyApiVersion** | **String**| Api Version | [optional]
 
 ### Return type
 

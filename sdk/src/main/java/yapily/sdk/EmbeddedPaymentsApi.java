@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-05-06T17:24:15.799Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-05-10T17:19:47.452Z")
 public class EmbeddedPaymentsApi {
   private ApiClient apiClient;
 
@@ -39,13 +39,14 @@ public class EmbeddedPaymentsApi {
    * Initiate an embedded payment for user to authorise
    * 
    * @param paymentAuthRequest paymentAuthRequest (required)
+   * @param xYapilyApiVersion Api Version (optional)
    * @param psuId PSU ID (optional)
    * @param psuCorporateId PSU ID CORPORATE (optional)
    * @param psuIpAddress PSU IP ADDRESS (optional)
    * @return ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse
    * @throws ApiException if fails to make API call
    */
-  public ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse createEmbeddedPaymentAuthorisationUsingPOST(PaymentEmbeddedAuthorisationRequest paymentAuthRequest, String psuId, String psuCorporateId, String psuIpAddress) throws ApiException {
+  public ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse createEmbeddedPaymentAuthorisationUsingPOST(PaymentEmbeddedAuthorisationRequest paymentAuthRequest, String xYapilyApiVersion, String psuId, String psuCorporateId, String psuIpAddress) throws ApiException {
     Object localVarPostBody = paymentAuthRequest;
     
     // verify the required parameter 'paymentAuthRequest' is set
@@ -62,7 +63,9 @@ public class EmbeddedPaymentsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    if (psuId != null)
+    if (xYapilyApiVersion != null)
+      localVarHeaderParams.put("x-yapily-api-version", apiClient.parameterToString(xYapilyApiVersion));
+if (psuId != null)
       localVarHeaderParams.put("psu-id", apiClient.parameterToString(psuId));
 if (psuCorporateId != null)
       localVarHeaderParams.put("psu-corporate-id", apiClient.parameterToString(psuCorporateId));
@@ -88,15 +91,16 @@ if (psuIpAddress != null)
   /**
    * Update an embedded payment initiation with SCA info
    * 
-   * @param consentId consentId (required)
+   * @param consentId Consent Id (required)
    * @param paymentAuthRequest paymentAuthRequest (required)
+   * @param xYapilyApiVersion Api Version (optional)
    * @param psuId PSU ID (optional)
    * @param psuCorporateId PSU ID CORPORATE (optional)
    * @param psuIpAddress PSU IP ADDRESS (optional)
    * @return ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse
    * @throws ApiException if fails to make API call
    */
-  public ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse updateEmbeddedPaymentAuthorisationUsingPUT(String consentId, PaymentEmbeddedAuthorisationRequest paymentAuthRequest, String psuId, String psuCorporateId, String psuIpAddress) throws ApiException {
+  public ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse updateEmbeddedPaymentAuthorisationUsingPUT(String consentId, PaymentEmbeddedAuthorisationRequest paymentAuthRequest, String xYapilyApiVersion, String psuId, String psuCorporateId, String psuIpAddress) throws ApiException {
     Object localVarPostBody = paymentAuthRequest;
     
     // verify the required parameter 'consentId' is set
@@ -111,7 +115,7 @@ if (psuIpAddress != null)
     
     // create path and map variables
     String localVarPath = "/embedded-payment-auth-requests/{consentId}"
-      .replaceAll("\\{" + "consentId" + "\\}", apiClient.escapeString(consentId.toString()));
+      .replaceAll("\\{" + "consent-id" + "\\}", apiClient.escapeString(consentId.toString()));
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -119,7 +123,9 @@ if (psuIpAddress != null)
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    if (psuId != null)
+    if (xYapilyApiVersion != null)
+      localVarHeaderParams.put("x-yapily-api-version", apiClient.parameterToString(xYapilyApiVersion));
+if (psuId != null)
       localVarHeaderParams.put("psu-id", apiClient.parameterToString(psuId));
 if (psuCorporateId != null)
       localVarHeaderParams.put("psu-corporate-id", apiClient.parameterToString(psuCorporateId));

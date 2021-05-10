@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 <a name="addUserUsingPOST"></a>
 # **addUserUsingPOST**
-> ApplicationUser addUserUsingPOST(newApplicationUser)
+> ApplicationUser addUserUsingPOST(newApplicationUser, xYapilyApiVersion)
 
 Add an application user
 
@@ -41,8 +41,9 @@ tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 ApplicationUsersApi apiInstance = new ApplicationUsersApi();
 NewApplicationUser newApplicationUser = new NewApplicationUser(); // NewApplicationUser | newApplicationUser
+String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
 try {
-    ApplicationUser result = apiInstance.addUserUsingPOST(newApplicationUser);
+    ApplicationUser result = apiInstance.addUserUsingPOST(newApplicationUser, xYapilyApiVersion);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ApplicationUsersApi#addUserUsingPOST");
@@ -55,6 +56,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **newApplicationUser** | [**NewApplicationUser**](NewApplicationUser.md)| newApplicationUser |
+ **xYapilyApiVersion** | **String**| Api Version | [optional]
 
 ### Return type
 
@@ -71,7 +73,7 @@ Name | Type | Description  | Notes
 
 <a name="deleteUserUsingDELETE"></a>
 # **deleteUserUsingDELETE**
-> ApiResponseOfUserDeleteResponse deleteUserUsingDELETE(userUuid)
+> ApiResponseOfUserDeleteResponse deleteUserUsingDELETE(userUuid, xYapilyApiVersion)
 
 Delete an application user and sub-resources (including consent resources on institution APIs if they exist)
 
@@ -96,9 +98,10 @@ OAuth tokenAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
 tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 ApplicationUsersApi apiInstance = new ApplicationUsersApi();
-String userUuid = "userUuid_example"; // String | userUuid
+String userUuid = "userUuid_example"; // String | User uuid
+String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
 try {
-    ApiResponseOfUserDeleteResponse result = apiInstance.deleteUserUsingDELETE(userUuid);
+    ApiResponseOfUserDeleteResponse result = apiInstance.deleteUserUsingDELETE(userUuid, xYapilyApiVersion);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ApplicationUsersApi#deleteUserUsingDELETE");
@@ -110,7 +113,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userUuid** | **String**| userUuid |
+ **userUuid** | **String**| User uuid |
+ **xYapilyApiVersion** | **String**| Api Version | [optional]
 
 ### Return type
 
@@ -235,7 +239,7 @@ This endpoint does not need any parameter.
 
 <a name="getUserUsingGET"></a>
 # **getUserUsingGET**
-> ApplicationUser getUserUsingGET(userUuid)
+> ApplicationUser getUserUsingGET(userUuid, xYapilyApiVersion)
 
 Get an application user
 
@@ -260,9 +264,10 @@ OAuth tokenAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
 tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 ApplicationUsersApi apiInstance = new ApplicationUsersApi();
-String userUuid = "userUuid_example"; // String | userUuid
+String userUuid = "userUuid_example"; // String | User uuid
+String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
 try {
-    ApplicationUser result = apiInstance.getUserUsingGET(userUuid);
+    ApplicationUser result = apiInstance.getUserUsingGET(userUuid, xYapilyApiVersion);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ApplicationUsersApi#getUserUsingGET");
@@ -274,7 +279,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userUuid** | **String**| userUuid |
+ **userUuid** | **String**| User uuid |
+ **xYapilyApiVersion** | **String**| Api Version | [optional]
 
 ### Return type
 
@@ -291,7 +297,7 @@ Name | Type | Description  | Notes
 
 <a name="getUsersUsingGET"></a>
 # **getUsersUsingGET**
-> List&lt;ApplicationUser&gt; getUsersUsingGET(filterApplicationUserId)
+> List&lt;ApplicationUser&gt; getUsersUsingGET(xYapilyApiVersion, filterApplicationUserId)
 
 Get application users
 
@@ -316,9 +322,10 @@ OAuth tokenAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
 tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 ApplicationUsersApi apiInstance = new ApplicationUsersApi();
+String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
 List<String> filterApplicationUserId = Arrays.asList("filterApplicationUserId_example"); // List<String> | Filter users by the provided application user Id (applicationUserId) when the user was created.
 try {
-    List<ApplicationUser> result = apiInstance.getUsersUsingGET(filterApplicationUserId);
+    List<ApplicationUser> result = apiInstance.getUsersUsingGET(xYapilyApiVersion, filterApplicationUserId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ApplicationUsersApi#getUsersUsingGET");
@@ -330,6 +337,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **xYapilyApiVersion** | **String**| Api Version | [optional]
  **filterApplicationUserId** | [**List&lt;String&gt;**](String.md)| Filter users by the provided application user Id (applicationUserId) when the user was created. | [optional]
 
 ### Return type

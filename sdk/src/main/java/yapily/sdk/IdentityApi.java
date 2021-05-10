@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-05-06T17:24:15.799Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-05-10T17:19:47.452Z")
 public class IdentityApi {
   private ApiClient apiClient;
 
@@ -38,10 +38,11 @@ public class IdentityApi {
    * Get identity
    * 
    * @param consent Consent Token (required)
+   * @param xYapilyApiVersion Api Version (optional)
    * @return ApiResponseOfIdentity
    * @throws ApiException if fails to make API call
    */
-  public ApiResponseOfIdentity getIdentityUsingGET(String consent) throws ApiException {
+  public ApiResponseOfIdentity getIdentityUsingGET(String consent, String xYapilyApiVersion) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'consent' is set
@@ -58,7 +59,9 @@ public class IdentityApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    if (consent != null)
+    if (xYapilyApiVersion != null)
+      localVarHeaderParams.put("x-yapily-api-version", apiClient.parameterToString(xYapilyApiVersion));
+if (consent != null)
       localVarHeaderParams.put("consent", apiClient.parameterToString(consent));
 
     

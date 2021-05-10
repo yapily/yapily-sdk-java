@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-05-06T17:24:15.799Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-05-10T17:19:47.452Z")
 public class BalancesApi {
   private ApiClient apiClient;
 
@@ -37,21 +37,17 @@ public class BalancesApi {
   /**
    * Get account balances
    * 
-   * @param consent Consent Token (required)
-   * @param accountId accountId (required)
+   * @param accountId Account Id (required)
+   * @param xYapilyApiVersion Api Version (optional)
+   * @param consent Consent Token (optional)
    * @param psuId PSU ID (optional)
    * @param psuCorporateId PSU ID CORPORATE (optional)
    * @param psuIpAddress PSU IP ADDRESS (optional)
    * @return ApiResponseOfBalances
    * @throws ApiException if fails to make API call
    */
-  public ApiResponseOfBalances getAccountBalancesUsingGET(String consent, String accountId, String psuId, String psuCorporateId, String psuIpAddress) throws ApiException {
+  public ApiResponseOfBalances getAccountBalancesUsingGET(String accountId, String xYapilyApiVersion, String consent, String psuId, String psuCorporateId, String psuIpAddress) throws ApiException {
     Object localVarPostBody = null;
-    
-    // verify the required parameter 'consent' is set
-    if (consent == null) {
-      throw new ApiException(400, "Missing the required parameter 'consent' when calling getAccountBalancesUsingGET");
-    }
     
     // verify the required parameter 'accountId' is set
     if (accountId == null) {
@@ -60,7 +56,7 @@ public class BalancesApi {
     
     // create path and map variables
     String localVarPath = "/accounts/{accountId}/balances"
-      .replaceAll("\\{" + "accountId" + "\\}", apiClient.escapeString(accountId.toString()));
+      .replaceAll("\\{" + "account-id" + "\\}", apiClient.escapeString(accountId.toString()));
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -68,7 +64,9 @@ public class BalancesApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    if (consent != null)
+    if (xYapilyApiVersion != null)
+      localVarHeaderParams.put("x-yapily-api-version", apiClient.parameterToString(xYapilyApiVersion));
+if (consent != null)
       localVarHeaderParams.put("consent", apiClient.parameterToString(consent));
 if (psuId != null)
       localVarHeaderParams.put("psu-id", apiClient.parameterToString(psuId));

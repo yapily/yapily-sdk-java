@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>yapily</groupId>
     <artifactId>yapily-sdk</artifactId>
-    <version>0.0.339</version>
+    <version>0.0.340</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "yapily:yapily-sdk:0.0.339"
+compile "yapily:yapily-sdk:0.0.340"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/yapily-sdk-0.0.339.jar
+* target/yapily-sdk-0.0.340.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -81,11 +81,12 @@ public class AccountsApiExample {
         tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
         AccountsApi apiInstance = new AccountsApi();
-        String accountId = "accountId_example"; // String | accountId
+        String accountId = "accountId_example"; // String | Account Id
         String consent = "consent_example"; // String | Consent Token
+        String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
         Integer limit = 56; // Integer | Use this parameter to limit account's direct debit results
         try {
-            ApiListResponseOfPaymentResponse result = apiInstance.getAccountDirectDebitsUsingGET(accountId, consent, limit);
+            ApiListResponseOfPaymentResponse result = apiInstance.getAccountDirectDebitsUsingGET(accountId, consent, xYapilyApiVersion, limit);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AccountsApi#getAccountDirectDebitsUsingGET");
@@ -108,7 +109,7 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**getAccountUsingGET**](docs/AccountsApi.md#getAccountUsingGET) | **GET** /accounts/{accountId} | Get account
 *AccountsApi* | [**getAccountsUsingGET**](docs/AccountsApi.md#getAccountsUsingGET) | **GET** /accounts | Get accounts
 *AccountsApi* | [**initiateAccountRequestUsingPOST**](docs/AccountsApi.md#initiateAccountRequestUsingPOST) | **POST** /account-auth-requests | Initiate a new account request for user to authorize
-*AccountsApi* | [**reAuthoriseAccountUsingPATCH**](docs/AccountsApi.md#reAuthoriseAccountUsingPATCH) | **PATCH** /account-auth-requests | Re-authorize account request
+*AccountsApi* | [**reAuthoriseAccountUsingPATCH**](docs/AccountsApi.md#reAuthoriseAccountUsingPATCH) | **PATCH** /account-auth-requests | Re-authorise account request
 *AccountsApi* | [**updatePreAuthoriseAccountConsentUsingPUT**](docs/AccountsApi.md#updatePreAuthoriseAccountConsentUsingPUT) | **PUT** /account-auth-requests | Update pre authorize consent for user to authorise account
 *ApplicationUsersApi* | [**addUserUsingPOST**](docs/ApplicationUsersApi.md#addUserUsingPOST) | **POST** /users | Add an application user
 *ApplicationUsersApi* | [**deleteUserUsingDELETE**](docs/ApplicationUsersApi.md#deleteUserUsingDELETE) | **DELETE** /users/{userUuid} | Delete an application user and sub-resources (including consent resources on institution APIs if they exist)

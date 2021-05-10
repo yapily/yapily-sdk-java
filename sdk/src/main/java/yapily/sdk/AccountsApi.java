@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-05-06T17:24:15.799Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-05-10T17:19:47.452Z")
 public class AccountsApi {
   private ApiClient apiClient;
 
@@ -41,13 +41,14 @@ public class AccountsApi {
   /**
    * Get account direct debits
    * 
-   * @param accountId accountId (required)
+   * @param accountId Account Id (required)
    * @param consent Consent Token (required)
+   * @param xYapilyApiVersion Api Version (optional)
    * @param limit Use this parameter to limit account&#39;s direct debit results (optional)
    * @return ApiListResponseOfPaymentResponse
    * @throws ApiException if fails to make API call
    */
-  public ApiListResponseOfPaymentResponse getAccountDirectDebitsUsingGET(String accountId, String consent, Integer limit) throws ApiException {
+  public ApiListResponseOfPaymentResponse getAccountDirectDebitsUsingGET(String accountId, String consent, String xYapilyApiVersion, Integer limit) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'accountId' is set
@@ -62,7 +63,7 @@ public class AccountsApi {
     
     // create path and map variables
     String localVarPath = "/accounts/{accountId}/direct-debits"
-      .replaceAll("\\{" + "accountId" + "\\}", apiClient.escapeString(accountId.toString()));
+      .replaceAll("\\{" + "account-id" + "\\}", apiClient.escapeString(accountId.toString()));
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -71,7 +72,9 @@ public class AccountsApi {
 
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
 
-    if (consent != null)
+    if (xYapilyApiVersion != null)
+      localVarHeaderParams.put("x-yapily-api-version", apiClient.parameterToString(xYapilyApiVersion));
+if (consent != null)
       localVarHeaderParams.put("consent", apiClient.parameterToString(consent));
 
     
@@ -93,13 +96,14 @@ public class AccountsApi {
   /**
    * Get account payments detail
    * 
-   * @param accountId accountId (required)
+   * @param accountId Account Id (required)
    * @param consent Consent Token (required)
+   * @param xYapilyApiVersion Api Version (optional)
    * @param limit Use this parameter to limit account&#39;s periodic payment order results (optional)
    * @return ApiListResponseOfPaymentResponse
    * @throws ApiException if fails to make API call
    */
-  public ApiListResponseOfPaymentResponse getAccountPeriodicPaymentsUsingGET(String accountId, String consent, Integer limit) throws ApiException {
+  public ApiListResponseOfPaymentResponse getAccountPeriodicPaymentsUsingGET(String accountId, String consent, String xYapilyApiVersion, Integer limit) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'accountId' is set
@@ -114,7 +118,7 @@ public class AccountsApi {
     
     // create path and map variables
     String localVarPath = "/accounts/{accountId}/periodic-payments"
-      .replaceAll("\\{" + "accountId" + "\\}", apiClient.escapeString(accountId.toString()));
+      .replaceAll("\\{" + "account-id" + "\\}", apiClient.escapeString(accountId.toString()));
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -123,7 +127,9 @@ public class AccountsApi {
 
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
 
-    if (consent != null)
+    if (xYapilyApiVersion != null)
+      localVarHeaderParams.put("x-yapily-api-version", apiClient.parameterToString(xYapilyApiVersion));
+if (consent != null)
       localVarHeaderParams.put("consent", apiClient.parameterToString(consent));
 
     
@@ -145,13 +151,14 @@ public class AccountsApi {
   /**
    * Get account scheduled payments
    * 
-   * @param accountId accountId (required)
+   * @param accountId Account Id (required)
    * @param consent Consent Token (required)
+   * @param xYapilyApiVersion Api Version (optional)
    * @param limit Use this parameter to limit account&#39;s scheduled payment results (optional)
    * @return ApiListResponseOfPaymentResponse
    * @throws ApiException if fails to make API call
    */
-  public ApiListResponseOfPaymentResponse getAccountScheduledPaymentsUsingGET(String accountId, String consent, Integer limit) throws ApiException {
+  public ApiListResponseOfPaymentResponse getAccountScheduledPaymentsUsingGET(String accountId, String consent, String xYapilyApiVersion, Integer limit) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'accountId' is set
@@ -166,7 +173,7 @@ public class AccountsApi {
     
     // create path and map variables
     String localVarPath = "/accounts/{accountId}/scheduled-payments"
-      .replaceAll("\\{" + "accountId" + "\\}", apiClient.escapeString(accountId.toString()));
+      .replaceAll("\\{" + "account-id" + "\\}", apiClient.escapeString(accountId.toString()));
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -175,7 +182,9 @@ public class AccountsApi {
 
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
 
-    if (consent != null)
+    if (xYapilyApiVersion != null)
+      localVarHeaderParams.put("x-yapily-api-version", apiClient.parameterToString(xYapilyApiVersion));
+if (consent != null)
       localVarHeaderParams.put("consent", apiClient.parameterToString(consent));
 
     
@@ -198,14 +207,15 @@ public class AccountsApi {
    * Get account
    * 
    * @param consent Consent Token (required)
-   * @param accountId accountId (required)
+   * @param accountId Account Id (required)
+   * @param xYapilyApiVersion Api Version (optional)
    * @param psuId PSU ID (optional)
    * @param psuCorporateId PSU ID CORPORATE (optional)
    * @param psuIpAddress PSU IP ADDRESS (optional)
    * @return ApiResponseOfAccount
    * @throws ApiException if fails to make API call
    */
-  public ApiResponseOfAccount getAccountUsingGET(String consent, String accountId, String psuId, String psuCorporateId, String psuIpAddress) throws ApiException {
+  public ApiResponseOfAccount getAccountUsingGET(String consent, String accountId, String xYapilyApiVersion, String psuId, String psuCorporateId, String psuIpAddress) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'consent' is set
@@ -220,7 +230,7 @@ public class AccountsApi {
     
     // create path and map variables
     String localVarPath = "/accounts/{accountId}"
-      .replaceAll("\\{" + "accountId" + "\\}", apiClient.escapeString(accountId.toString()));
+      .replaceAll("\\{" + "account-id" + "\\}", apiClient.escapeString(accountId.toString()));
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -228,7 +238,9 @@ public class AccountsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    if (consent != null)
+    if (xYapilyApiVersion != null)
+      localVarHeaderParams.put("x-yapily-api-version", apiClient.parameterToString(xYapilyApiVersion));
+if (consent != null)
       localVarHeaderParams.put("consent", apiClient.parameterToString(consent));
 if (psuId != null)
       localVarHeaderParams.put("psu-id", apiClient.parameterToString(psuId));
@@ -257,13 +269,14 @@ if (psuIpAddress != null)
    * Get accounts
    * 
    * @param consent Consent Token (required)
+   * @param xYapilyApiVersion Api Version (optional)
    * @param psuId PSU ID (optional)
    * @param psuCorporateId PSU ID CORPORATE (optional)
    * @param psuIpAddress PSU IP ADDRESS (optional)
    * @return ApiListResponseOfAccount
    * @throws ApiException if fails to make API call
    */
-  public ApiListResponseOfAccount getAccountsUsingGET(String consent, String psuId, String psuCorporateId, String psuIpAddress) throws ApiException {
+  public ApiListResponseOfAccount getAccountsUsingGET(String consent, String xYapilyApiVersion, String psuId, String psuCorporateId, String psuIpAddress) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'consent' is set
@@ -280,7 +293,9 @@ if (psuIpAddress != null)
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    if (consent != null)
+    if (xYapilyApiVersion != null)
+      localVarHeaderParams.put("x-yapily-api-version", apiClient.parameterToString(xYapilyApiVersion));
+if (consent != null)
       localVarHeaderParams.put("consent", apiClient.parameterToString(consent));
 if (psuId != null)
       localVarHeaderParams.put("psu-id", apiClient.parameterToString(psuId));
@@ -309,13 +324,14 @@ if (psuIpAddress != null)
    * Initiate a new account request for user to authorize
    * 
    * @param accountAuthRequest accountAuthRequest (required)
+   * @param xYapilyApiVersion Api Version (optional)
    * @param psuId PSU ID (optional)
    * @param psuCorporateId PSU ID CORPORATE (optional)
    * @param psuIpAddress PSU IP ADDRESS (optional)
    * @return ApiResponseOfAuthorisationRequestResponse
    * @throws ApiException if fails to make API call
    */
-  public ApiResponseOfAuthorisationRequestResponse initiateAccountRequestUsingPOST(AccountAuthorisationRequest accountAuthRequest, String psuId, String psuCorporateId, String psuIpAddress) throws ApiException {
+  public ApiResponseOfAuthorisationRequestResponse initiateAccountRequestUsingPOST(AccountAuthorisationRequest accountAuthRequest, String xYapilyApiVersion, String psuId, String psuCorporateId, String psuIpAddress) throws ApiException {
     Object localVarPostBody = accountAuthRequest;
     
     // verify the required parameter 'accountAuthRequest' is set
@@ -332,7 +348,9 @@ if (psuIpAddress != null)
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    if (psuId != null)
+    if (xYapilyApiVersion != null)
+      localVarHeaderParams.put("x-yapily-api-version", apiClient.parameterToString(xYapilyApiVersion));
+if (psuId != null)
       localVarHeaderParams.put("psu-id", apiClient.parameterToString(psuId));
 if (psuCorporateId != null)
       localVarHeaderParams.put("psu-corporate-id", apiClient.parameterToString(psuCorporateId));
@@ -356,16 +374,17 @@ if (psuIpAddress != null)
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
   /**
-   * Re-authorize account request
+   * Re-authorise account request
    * 
    * @param consent Consent Token (required)
+   * @param xYapilyApiVersion Api Version (optional)
    * @param psuId PSU ID (optional)
    * @param psuCorporateId PSU ID CORPORATE (optional)
    * @param psuIpAddress PSU IP ADDRESS (optional)
    * @return ApiResponseOfAuthorisationRequestResponse
    * @throws ApiException if fails to make API call
    */
-  public ApiResponseOfAuthorisationRequestResponse reAuthoriseAccountUsingPATCH(String consent, String psuId, String psuCorporateId, String psuIpAddress) throws ApiException {
+  public ApiResponseOfAuthorisationRequestResponse reAuthoriseAccountUsingPATCH(String consent, String xYapilyApiVersion, String psuId, String psuCorporateId, String psuIpAddress) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'consent' is set
@@ -382,7 +401,9 @@ if (psuIpAddress != null)
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    if (consent != null)
+    if (xYapilyApiVersion != null)
+      localVarHeaderParams.put("x-yapily-api-version", apiClient.parameterToString(xYapilyApiVersion));
+if (consent != null)
       localVarHeaderParams.put("consent", apiClient.parameterToString(consent));
 if (psuId != null)
       localVarHeaderParams.put("psu-id", apiClient.parameterToString(psuId));
@@ -412,13 +433,14 @@ if (psuIpAddress != null)
    * 
    * @param consent Consent Token (required)
    * @param accountAuthRequest accountAuthRequest (required)
+   * @param xYapilyApiVersion Api Version (optional)
    * @param psuId PSU ID (optional)
    * @param psuCorporateId PSU ID CORPORATE (optional)
    * @param psuIpAddress PSU IP ADDRESS (optional)
    * @return ApiResponseOfAuthorisationRequestResponse
    * @throws ApiException if fails to make API call
    */
-  public ApiResponseOfAuthorisationRequestResponse updatePreAuthoriseAccountConsentUsingPUT(String consent, AccountAuthorisationRequest accountAuthRequest, String psuId, String psuCorporateId, String psuIpAddress) throws ApiException {
+  public ApiResponseOfAuthorisationRequestResponse updatePreAuthoriseAccountConsentUsingPUT(String consent, AccountAuthorisationRequest accountAuthRequest, String xYapilyApiVersion, String psuId, String psuCorporateId, String psuIpAddress) throws ApiException {
     Object localVarPostBody = accountAuthRequest;
     
     // verify the required parameter 'consent' is set
@@ -440,7 +462,9 @@ if (psuIpAddress != null)
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    if (consent != null)
+    if (xYapilyApiVersion != null)
+      localVarHeaderParams.put("x-yapily-api-version", apiClient.parameterToString(xYapilyApiVersion));
+if (consent != null)
       localVarHeaderParams.put("consent", apiClient.parameterToString(consent));
 if (psuId != null)
       localVarHeaderParams.put("psu-id", apiClient.parameterToString(psuId));

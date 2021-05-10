@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="getIdentityUsingGET"></a>
 # **getIdentityUsingGET**
-> ApiResponseOfIdentity getIdentityUsingGET(consent)
+> ApiResponseOfIdentity getIdentityUsingGET(consent, xYapilyApiVersion)
 
 Get identity
 
@@ -35,8 +35,9 @@ tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 IdentityApi apiInstance = new IdentityApi();
 String consent = "consent_example"; // String | Consent Token
+String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
 try {
-    ApiResponseOfIdentity result = apiInstance.getIdentityUsingGET(consent);
+    ApiResponseOfIdentity result = apiInstance.getIdentityUsingGET(consent, xYapilyApiVersion);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IdentityApi#getIdentityUsingGET");
@@ -49,6 +50,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consent** | **String**| Consent Token |
+ **xYapilyApiVersion** | **String**| Api Version | [optional]
 
 ### Return type
 

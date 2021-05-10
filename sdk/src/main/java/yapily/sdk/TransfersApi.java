@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-05-06T17:24:15.799Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-05-10T17:19:47.452Z")
 public class TransfersApi {
   private ApiClient apiClient;
 
@@ -39,12 +39,13 @@ public class TransfersApi {
    * Transfer money from one account to another account accessible with the same consent
    * 
    * @param consent Consent Token (required)
-   * @param accountId accountId (required)
+   * @param accountId Account Id (required)
+   * @param xYapilyApiVersion Api Version (optional)
    * @param transferRequest transferRequest (optional)
    * @return ApiResponseOfTransferResponse
    * @throws ApiException if fails to make API call
    */
-  public ApiResponseOfTransferResponse transferUsingPUT(String consent, String accountId, TransferRequest transferRequest) throws ApiException {
+  public ApiResponseOfTransferResponse transferUsingPUT(String consent, String accountId, String xYapilyApiVersion, TransferRequest transferRequest) throws ApiException {
     Object localVarPostBody = transferRequest;
     
     // verify the required parameter 'consent' is set
@@ -59,7 +60,7 @@ public class TransfersApi {
     
     // create path and map variables
     String localVarPath = "/accounts/{accountId}/transfer"
-      .replaceAll("\\{" + "accountId" + "\\}", apiClient.escapeString(accountId.toString()));
+      .replaceAll("\\{" + "account-id" + "\\}", apiClient.escapeString(accountId.toString()));
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -67,7 +68,9 @@ public class TransfersApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    if (consent != null)
+    if (xYapilyApiVersion != null)
+      localVarHeaderParams.put("x-yapily-api-version", apiClient.parameterToString(xYapilyApiVersion));
+if (consent != null)
       localVarHeaderParams.put("consent", apiClient.parameterToString(consent));
 
     

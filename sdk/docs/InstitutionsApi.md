@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 <a name="getFeatureDetailsUsingGET"></a>
 # **getFeatureDetailsUsingGET**
-> ApiListResponseOfFeatureDetails getFeatureDetailsUsingGET()
+> ApiListResponseOfFeatureDetails getFeatureDetailsUsingGET(xYapilyApiVersion)
 
 Retrieve details for Yapily&#39;s institution features
 
@@ -36,8 +36,9 @@ OAuth tokenAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
 tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 InstitutionsApi apiInstance = new InstitutionsApi();
+String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
 try {
-    ApiListResponseOfFeatureDetails result = apiInstance.getFeatureDetailsUsingGET();
+    ApiListResponseOfFeatureDetails result = apiInstance.getFeatureDetailsUsingGET(xYapilyApiVersion);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling InstitutionsApi#getFeatureDetailsUsingGET");
@@ -46,7 +47,10 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xYapilyApiVersion** | **String**| Api Version | [optional]
 
 ### Return type
 
@@ -63,7 +67,7 @@ This endpoint does not need any parameter.
 
 <a name="getInstitutionUsingGET"></a>
 # **getInstitutionUsingGET**
-> Institution getInstitutionUsingGET(institutionId)
+> Institution getInstitutionUsingGET(institutionId, xYapilyApiVersion)
 
 Retrieves details of a specific institution available in Yapily
 
@@ -88,9 +92,10 @@ OAuth tokenAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
 tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 InstitutionsApi apiInstance = new InstitutionsApi();
-String institutionId = "institutionId_example"; // String | institutionId
+String institutionId = "institutionId_example"; // String | Institution Id
+String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
 try {
-    Institution result = apiInstance.getInstitutionUsingGET(institutionId);
+    Institution result = apiInstance.getInstitutionUsingGET(institutionId, xYapilyApiVersion);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling InstitutionsApi#getInstitutionUsingGET");
@@ -102,7 +107,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **institutionId** | **String**| institutionId |
+ **institutionId** | **String**| Institution Id |
+ **xYapilyApiVersion** | **String**| Api Version | [optional]
 
 ### Return type
 
@@ -119,7 +125,7 @@ Name | Type | Description  | Notes
 
 <a name="getInstitutionsUsingGET"></a>
 # **getInstitutionsUsingGET**
-> ApiListResponseOfInstitution getInstitutionsUsingGET()
+> ApiListResponseOfInstitution getInstitutionsUsingGET(xYapilyApiVersion)
 
 Retrieves the list of institutions available in Yapily
 
@@ -144,8 +150,9 @@ OAuth tokenAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
 tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 InstitutionsApi apiInstance = new InstitutionsApi();
+String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
 try {
-    ApiListResponseOfInstitution result = apiInstance.getInstitutionsUsingGET();
+    ApiListResponseOfInstitution result = apiInstance.getInstitutionsUsingGET(xYapilyApiVersion);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling InstitutionsApi#getInstitutionsUsingGET");
@@ -154,7 +161,10 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xYapilyApiVersion** | **String**| Api Version | [optional]
 
 ### Return type
 

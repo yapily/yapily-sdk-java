@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-05-06T17:24:15.799Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-05-10T17:19:47.452Z")
 public class TransactionsApi {
   private ApiClient apiClient;
 
@@ -38,7 +38,8 @@ public class TransactionsApi {
    * Get account transactions
    * 
    * @param consent Consent Token (required)
-   * @param accountId accountId (required)
+   * @param accountId Account Id (required)
+   * @param xYapilyApiVersion Api Version (optional)
    * @param psuId PSU ID (optional)
    * @param psuCorporateId PSU ID CORPORATE (optional)
    * @param psuIpAddress PSU IP ADDRESS (optional)
@@ -52,7 +53,7 @@ public class TransactionsApi {
    * @return ApiListResponseOfTransaction
    * @throws ApiException if fails to make API call
    */
-  public ApiListResponseOfTransaction getTransactionsUsingGET(String consent, String accountId, String psuId, String psuCorporateId, String psuIpAddress, List<String> with, String from, String before, Integer limit, String sort, Integer offset, String cursor) throws ApiException {
+  public ApiListResponseOfTransaction getTransactionsUsingGET(String consent, String accountId, String xYapilyApiVersion, String psuId, String psuCorporateId, String psuIpAddress, List<String> with, String from, String before, Integer limit, String sort, Integer offset, String cursor) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'consent' is set
@@ -67,7 +68,7 @@ public class TransactionsApi {
     
     // create path and map variables
     String localVarPath = "/accounts/{accountId}/transactions"
-      .replaceAll("\\{" + "accountId" + "\\}", apiClient.escapeString(accountId.toString()));
+      .replaceAll("\\{" + "account-id" + "\\}", apiClient.escapeString(accountId.toString()));
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -82,7 +83,9 @@ public class TransactionsApi {
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "offset", offset));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "cursor", cursor));
 
-    if (consent != null)
+    if (xYapilyApiVersion != null)
+      localVarHeaderParams.put("x-yapily-api-version", apiClient.parameterToString(xYapilyApiVersion));
+if (consent != null)
       localVarHeaderParams.put("consent", apiClient.parameterToString(consent));
 if (psuId != null)
       localVarHeaderParams.put("psu-id", apiClient.parameterToString(psuId));

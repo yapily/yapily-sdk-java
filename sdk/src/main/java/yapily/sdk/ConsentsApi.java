@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-05-06T17:24:15.799Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-05-10T17:19:47.452Z")
 public class ConsentsApi {
   private ApiClient apiClient;
 
@@ -45,12 +45,13 @@ public class ConsentsApi {
   /**
    * Post consent
    * 
-   * @param userUuid userUuid (required)
+   * @param userUuid User uuid (required)
    * @param createConsentAccessToken createConsentAccessToken (required)
+   * @param xYapilyApiVersion Api Version (optional)
    * @return Consent
    * @throws ApiException if fails to make API call
    */
-  public Consent addConsentUsingPOST(String userUuid, CreateConsentAccessToken createConsentAccessToken) throws ApiException {
+  public Consent addConsentUsingPOST(String userUuid, CreateConsentAccessToken createConsentAccessToken, String xYapilyApiVersion) throws ApiException {
     Object localVarPostBody = createConsentAccessToken;
     
     // verify the required parameter 'userUuid' is set
@@ -65,7 +66,7 @@ public class ConsentsApi {
     
     // create path and map variables
     String localVarPath = "/users/{userUuid}/consents"
-      .replaceAll("\\{" + "userUuid" + "\\}", apiClient.escapeString(userUuid.toString()));
+      .replaceAll("\\{" + "user-uuid" + "\\}", apiClient.escapeString(userUuid.toString()));
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -73,7 +74,9 @@ public class ConsentsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    
+    if (xYapilyApiVersion != null)
+      localVarHeaderParams.put("x-yapily-api-version", apiClient.parameterToString(xYapilyApiVersion));
+
     
     final String[] localVarAccepts = {
       "application/json;charset=UTF-8"
@@ -94,10 +97,11 @@ public class ConsentsApi {
    * Post auth-code and auth-state
    * 
    * @param consentByAuthCode consentByAuthCode (required)
+   * @param xYapilyApiVersion Api Version (optional)
    * @return Consent
    * @throws ApiException if fails to make API call
    */
-  public Consent createConsentWithCodeUsingPOST(ConsentAuthCodeRequest consentByAuthCode) throws ApiException {
+  public Consent createConsentWithCodeUsingPOST(ConsentAuthCodeRequest consentByAuthCode, String xYapilyApiVersion) throws ApiException {
     Object localVarPostBody = consentByAuthCode;
     
     // verify the required parameter 'consentByAuthCode' is set
@@ -114,7 +118,9 @@ public class ConsentsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    
+    if (xYapilyApiVersion != null)
+      localVarHeaderParams.put("x-yapily-api-version", apiClient.parameterToString(xYapilyApiVersion));
+
     
     final String[] localVarAccepts = {
       "application/json;charset=UTF-8"
@@ -135,10 +141,11 @@ public class ConsentsApi {
    * Initiate request for user to pre authorise
    * 
    * @param preAuthorisationRequest preAuthorisationRequest (required)
+   * @param xYapilyApiVersion Api Version (optional)
    * @return ApiResponseOfAuthorisationRequestResponse
    * @throws ApiException if fails to make API call
    */
-  public ApiResponseOfAuthorisationRequestResponse createPreAuthorisationRequestUsingPOST(PreAuthorisationRequest preAuthorisationRequest) throws ApiException {
+  public ApiResponseOfAuthorisationRequestResponse createPreAuthorisationRequestUsingPOST(PreAuthorisationRequest preAuthorisationRequest, String xYapilyApiVersion) throws ApiException {
     Object localVarPostBody = preAuthorisationRequest;
     
     // verify the required parameter 'preAuthorisationRequest' is set
@@ -155,7 +162,9 @@ public class ConsentsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    
+    if (xYapilyApiVersion != null)
+      localVarHeaderParams.put("x-yapily-api-version", apiClient.parameterToString(xYapilyApiVersion));
+
     
     final String[] localVarAccepts = {
       "application/json;charset=UTF-8"
@@ -175,12 +184,13 @@ public class ConsentsApi {
   /**
    * Delete consent
    * 
-   * @param consentId consentId (required)
-   * @param forceDelete forceDelete (optional, default to true)
+   * @param consentId Consent Id (required)
+   * @param xYapilyApiVersion Api Version (optional)
+   * @param forceDelete Force delete (optional, default to true)
    * @return ApiResponseOfConsentDeleteResponse
    * @throws ApiException if fails to make API call
    */
-  public ApiResponseOfConsentDeleteResponse deleteUsingDELETE(String consentId, Boolean forceDelete) throws ApiException {
+  public ApiResponseOfConsentDeleteResponse deleteUsingDELETE(String consentId, String xYapilyApiVersion, Boolean forceDelete) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'consentId' is set
@@ -190,7 +200,7 @@ public class ConsentsApi {
     
     // create path and map variables
     String localVarPath = "/consents/{consentId}"
-      .replaceAll("\\{" + "consentId" + "\\}", apiClient.escapeString(consentId.toString()));
+      .replaceAll("\\{" + "consent-id" + "\\}", apiClient.escapeString(consentId.toString()));
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -199,7 +209,9 @@ public class ConsentsApi {
 
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "forceDelete", forceDelete));
 
-    
+    if (xYapilyApiVersion != null)
+      localVarHeaderParams.put("x-yapily-api-version", apiClient.parameterToString(xYapilyApiVersion));
+
     
     final String[] localVarAccepts = {
       "application/json;charset=UTF-8"
@@ -219,11 +231,12 @@ public class ConsentsApi {
   /**
    * Get consent
    * 
-   * @param consentId consentId (required)
+   * @param consentId Consent Id (required)
+   * @param xYapilyApiVersion Api Version (optional)
    * @return ApiResponseOfConsent
    * @throws ApiException if fails to make API call
    */
-  public ApiResponseOfConsent getConsentByIdUsingGET(String consentId) throws ApiException {
+  public ApiResponseOfConsent getConsentByIdUsingGET(String consentId, String xYapilyApiVersion) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'consentId' is set
@@ -233,7 +246,7 @@ public class ConsentsApi {
     
     // create path and map variables
     String localVarPath = "/consents/{consentId}"
-      .replaceAll("\\{" + "consentId" + "\\}", apiClient.escapeString(consentId.toString()));
+      .replaceAll("\\{" + "consent-id" + "\\}", apiClient.escapeString(consentId.toString()));
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -241,7 +254,9 @@ public class ConsentsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    
+    if (xYapilyApiVersion != null)
+      localVarHeaderParams.put("x-yapily-api-version", apiClient.parameterToString(xYapilyApiVersion));
+
     
     final String[] localVarAccepts = {
       "application/json;charset=UTF-8"
@@ -262,10 +277,11 @@ public class ConsentsApi {
    * Post one time token
    * 
    * @param oneTimeToken oneTimeToken (required)
+   * @param xYapilyApiVersion Api Version (optional)
    * @return Consent
    * @throws ApiException if fails to make API call
    */
-  public Consent getConsentBySingleAccessConsentUsingPOST(OneTimeTokenRequest oneTimeToken) throws ApiException {
+  public Consent getConsentBySingleAccessConsentUsingPOST(OneTimeTokenRequest oneTimeToken, String xYapilyApiVersion) throws ApiException {
     Object localVarPostBody = oneTimeToken;
     
     // verify the required parameter 'oneTimeToken' is set
@@ -282,7 +298,9 @@ public class ConsentsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    
+    if (xYapilyApiVersion != null)
+      localVarHeaderParams.put("x-yapily-api-version", apiClient.parameterToString(xYapilyApiVersion));
+
     
     final String[] localVarAccepts = {
       "application/json;charset=UTF-8"
@@ -302,6 +320,7 @@ public class ConsentsApi {
   /**
    * Get consents sorted by creation date
    * 
+   * @param xYapilyApiVersion Api Version (optional)
    * @param filterApplicationUserId Filter consents by your application user Id (applicationUserId) (optional)
    * @param filterUserUuid Filter consents by Yapily user Id (userUuid) (optional)
    * @param filterInstitution Use this parameter to filter consent by institution, using the Yapily institution Id (optional)
@@ -313,7 +332,7 @@ public class ConsentsApi {
    * @return ApiListResponseOfConsent
    * @throws ApiException if fails to make API call
    */
-  public ApiListResponseOfConsent getConsentsUsingGET(List<String> filterApplicationUserId, List<String> filterUserUuid, List<String> filterInstitution, List<String> filterStatus, String from, String before, Integer limit, Integer offset) throws ApiException {
+  public ApiListResponseOfConsent getConsentsUsingGET(String xYapilyApiVersion, List<String> filterApplicationUserId, List<String> filterUserUuid, List<String> filterInstitution, List<String> filterStatus, String from, String before, Integer limit, Integer offset) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -333,7 +352,9 @@ public class ConsentsApi {
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "offset", offset));
 
-    
+    if (xYapilyApiVersion != null)
+      localVarHeaderParams.put("x-yapily-api-version", apiClient.parameterToString(xYapilyApiVersion));
+
     
     final String[] localVarAccepts = {
       "application/json;charset=UTF-8"
@@ -353,7 +374,8 @@ public class ConsentsApi {
   /**
    * Get latest user consents
    * 
-   * @param userUuid userUuid (required)
+   * @param userUuid User uuid (required)
+   * @param xYapilyApiVersion Api Version (optional)
    * @param filterInstitution Use this parameter to filter consent by institution, using the Yapily institution Id. This replaces the deprecated &#x60;institutionId&#x60; query param. (optional)
    * @param limit Use this parameter to limit consent results, max limit is 20 (optional)
    * @return List&lt;Consent&gt;
@@ -361,7 +383,7 @@ public class ConsentsApi {
    * @deprecated
    */
   @Deprecated
-  public List<Consent> getUserConsentsUsingGET(String userUuid, String filterInstitution, Integer limit) throws ApiException {
+  public List<Consent> getUserConsentsUsingGET(String userUuid, String xYapilyApiVersion, String filterInstitution, Integer limit) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'userUuid' is set
@@ -371,7 +393,7 @@ public class ConsentsApi {
     
     // create path and map variables
     String localVarPath = "/users/{userUuid}/consents"
-      .replaceAll("\\{" + "userUuid" + "\\}", apiClient.escapeString(userUuid.toString()));
+      .replaceAll("\\{" + "user-uuid" + "\\}", apiClient.escapeString(userUuid.toString()));
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -381,7 +403,9 @@ public class ConsentsApi {
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter[institution]", filterInstitution));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
 
-    
+    if (xYapilyApiVersion != null)
+      localVarHeaderParams.put("x-yapily-api-version", apiClient.parameterToString(xYapilyApiVersion));
+
     
     final String[] localVarAccepts = {
       "application/json;charset=UTF-8"

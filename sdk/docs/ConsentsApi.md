@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 <a name="addConsentUsingPOST"></a>
 # **addConsentUsingPOST**
-> Consent addConsentUsingPOST(userUuid, createConsentAccessToken)
+> Consent addConsentUsingPOST(userUuid, createConsentAccessToken, xYapilyApiVersion)
 
 Post consent
 
@@ -41,10 +41,11 @@ OAuth tokenAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
 tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 ConsentsApi apiInstance = new ConsentsApi();
-String userUuid = "userUuid_example"; // String | userUuid
+String userUuid = "userUuid_example"; // String | User uuid
 CreateConsentAccessToken createConsentAccessToken = new CreateConsentAccessToken(); // CreateConsentAccessToken | createConsentAccessToken
+String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
 try {
-    Consent result = apiInstance.addConsentUsingPOST(userUuid, createConsentAccessToken);
+    Consent result = apiInstance.addConsentUsingPOST(userUuid, createConsentAccessToken, xYapilyApiVersion);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ConsentsApi#addConsentUsingPOST");
@@ -56,8 +57,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userUuid** | **String**| userUuid |
+ **userUuid** | **String**| User uuid |
  **createConsentAccessToken** | [**CreateConsentAccessToken**](CreateConsentAccessToken.md)| createConsentAccessToken |
+ **xYapilyApiVersion** | **String**| Api Version | [optional]
 
 ### Return type
 
@@ -74,7 +76,7 @@ Name | Type | Description  | Notes
 
 <a name="createConsentWithCodeUsingPOST"></a>
 # **createConsentWithCodeUsingPOST**
-> Consent createConsentWithCodeUsingPOST(consentByAuthCode)
+> Consent createConsentWithCodeUsingPOST(consentByAuthCode, xYapilyApiVersion)
 
 Post auth-code and auth-state
 
@@ -100,8 +102,9 @@ tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 ConsentsApi apiInstance = new ConsentsApi();
 ConsentAuthCodeRequest consentByAuthCode = new ConsentAuthCodeRequest(); // ConsentAuthCodeRequest | consentByAuthCode
+String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
 try {
-    Consent result = apiInstance.createConsentWithCodeUsingPOST(consentByAuthCode);
+    Consent result = apiInstance.createConsentWithCodeUsingPOST(consentByAuthCode, xYapilyApiVersion);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ConsentsApi#createConsentWithCodeUsingPOST");
@@ -114,6 +117,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consentByAuthCode** | [**ConsentAuthCodeRequest**](ConsentAuthCodeRequest.md)| consentByAuthCode |
+ **xYapilyApiVersion** | **String**| Api Version | [optional]
 
 ### Return type
 
@@ -130,7 +134,7 @@ Name | Type | Description  | Notes
 
 <a name="createPreAuthorisationRequestUsingPOST"></a>
 # **createPreAuthorisationRequestUsingPOST**
-> ApiResponseOfAuthorisationRequestResponse createPreAuthorisationRequestUsingPOST(preAuthorisationRequest)
+> ApiResponseOfAuthorisationRequestResponse createPreAuthorisationRequestUsingPOST(preAuthorisationRequest, xYapilyApiVersion)
 
 Initiate request for user to pre authorise
 
@@ -156,8 +160,9 @@ tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 ConsentsApi apiInstance = new ConsentsApi();
 PreAuthorisationRequest preAuthorisationRequest = new PreAuthorisationRequest(); // PreAuthorisationRequest | preAuthorisationRequest
+String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
 try {
-    ApiResponseOfAuthorisationRequestResponse result = apiInstance.createPreAuthorisationRequestUsingPOST(preAuthorisationRequest);
+    ApiResponseOfAuthorisationRequestResponse result = apiInstance.createPreAuthorisationRequestUsingPOST(preAuthorisationRequest, xYapilyApiVersion);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ConsentsApi#createPreAuthorisationRequestUsingPOST");
@@ -170,6 +175,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **preAuthorisationRequest** | [**PreAuthorisationRequest**](PreAuthorisationRequest.md)| preAuthorisationRequest |
+ **xYapilyApiVersion** | **String**| Api Version | [optional]
 
 ### Return type
 
@@ -186,7 +192,7 @@ Name | Type | Description  | Notes
 
 <a name="deleteUsingDELETE"></a>
 # **deleteUsingDELETE**
-> ApiResponseOfConsentDeleteResponse deleteUsingDELETE(consentId, forceDelete)
+> ApiResponseOfConsentDeleteResponse deleteUsingDELETE(consentId, xYapilyApiVersion, forceDelete)
 
 Delete consent
 
@@ -211,10 +217,11 @@ OAuth tokenAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
 tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 ConsentsApi apiInstance = new ConsentsApi();
-String consentId = "consentId_example"; // String | consentId
-Boolean forceDelete = true; // Boolean | forceDelete
+String consentId = "consentId_example"; // String | Consent Id
+String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
+Boolean forceDelete = true; // Boolean | Force delete
 try {
-    ApiResponseOfConsentDeleteResponse result = apiInstance.deleteUsingDELETE(consentId, forceDelete);
+    ApiResponseOfConsentDeleteResponse result = apiInstance.deleteUsingDELETE(consentId, xYapilyApiVersion, forceDelete);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ConsentsApi#deleteUsingDELETE");
@@ -226,8 +233,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **consentId** | **String**| consentId |
- **forceDelete** | **Boolean**| forceDelete | [optional] [default to true]
+ **consentId** | **String**| Consent Id |
+ **xYapilyApiVersion** | **String**| Api Version | [optional]
+ **forceDelete** | **Boolean**| Force delete | [optional] [default to true]
 
 ### Return type
 
@@ -244,7 +252,7 @@ Name | Type | Description  | Notes
 
 <a name="getConsentByIdUsingGET"></a>
 # **getConsentByIdUsingGET**
-> ApiResponseOfConsent getConsentByIdUsingGET(consentId)
+> ApiResponseOfConsent getConsentByIdUsingGET(consentId, xYapilyApiVersion)
 
 Get consent
 
@@ -269,9 +277,10 @@ OAuth tokenAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
 tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 ConsentsApi apiInstance = new ConsentsApi();
-String consentId = "consentId_example"; // String | consentId
+String consentId = "consentId_example"; // String | Consent Id
+String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
 try {
-    ApiResponseOfConsent result = apiInstance.getConsentByIdUsingGET(consentId);
+    ApiResponseOfConsent result = apiInstance.getConsentByIdUsingGET(consentId, xYapilyApiVersion);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ConsentsApi#getConsentByIdUsingGET");
@@ -283,7 +292,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **consentId** | **String**| consentId |
+ **consentId** | **String**| Consent Id |
+ **xYapilyApiVersion** | **String**| Api Version | [optional]
 
 ### Return type
 
@@ -300,7 +310,7 @@ Name | Type | Description  | Notes
 
 <a name="getConsentBySingleAccessConsentUsingPOST"></a>
 # **getConsentBySingleAccessConsentUsingPOST**
-> Consent getConsentBySingleAccessConsentUsingPOST(oneTimeToken)
+> Consent getConsentBySingleAccessConsentUsingPOST(oneTimeToken, xYapilyApiVersion)
 
 Post one time token
 
@@ -326,8 +336,9 @@ tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 ConsentsApi apiInstance = new ConsentsApi();
 OneTimeTokenRequest oneTimeToken = new OneTimeTokenRequest(); // OneTimeTokenRequest | oneTimeToken
+String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
 try {
-    Consent result = apiInstance.getConsentBySingleAccessConsentUsingPOST(oneTimeToken);
+    Consent result = apiInstance.getConsentBySingleAccessConsentUsingPOST(oneTimeToken, xYapilyApiVersion);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ConsentsApi#getConsentBySingleAccessConsentUsingPOST");
@@ -340,6 +351,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **oneTimeToken** | [**OneTimeTokenRequest**](OneTimeTokenRequest.md)| oneTimeToken |
+ **xYapilyApiVersion** | **String**| Api Version | [optional]
 
 ### Return type
 
@@ -356,7 +368,7 @@ Name | Type | Description  | Notes
 
 <a name="getConsentsUsingGET"></a>
 # **getConsentsUsingGET**
-> ApiListResponseOfConsent getConsentsUsingGET(filterApplicationUserId, filterUserUuid, filterInstitution, filterStatus, from, before, limit, offset)
+> ApiListResponseOfConsent getConsentsUsingGET(xYapilyApiVersion, filterApplicationUserId, filterUserUuid, filterInstitution, filterStatus, from, before, limit, offset)
 
 Get consents sorted by creation date
 
@@ -381,6 +393,7 @@ OAuth tokenAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
 tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 ConsentsApi apiInstance = new ConsentsApi();
+String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
 List<String> filterApplicationUserId = Arrays.asList("filterApplicationUserId_example"); // List<String> | Filter consents by your application user Id (applicationUserId)
 List<String> filterUserUuid = Arrays.asList("filterUserUuid_example"); // List<String> | Filter consents by Yapily user Id (userUuid)
 List<String> filterInstitution = Arrays.asList("filterInstitution_example"); // List<String> | Use this parameter to filter consent by institution, using the Yapily institution Id
@@ -390,7 +403,7 @@ String before = "before_example"; // String | Use this parameter to filter conse
 Integer limit = 56; // Integer | Use this parameter to limit consent results, max limit is 20
 Integer offset = 0; // Integer | Use this parameter to specify the offset of the results
 try {
-    ApiListResponseOfConsent result = apiInstance.getConsentsUsingGET(filterApplicationUserId, filterUserUuid, filterInstitution, filterStatus, from, before, limit, offset);
+    ApiListResponseOfConsent result = apiInstance.getConsentsUsingGET(xYapilyApiVersion, filterApplicationUserId, filterUserUuid, filterInstitution, filterStatus, from, before, limit, offset);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ConsentsApi#getConsentsUsingGET");
@@ -402,6 +415,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **xYapilyApiVersion** | **String**| Api Version | [optional]
  **filterApplicationUserId** | [**List&lt;String&gt;**](String.md)| Filter consents by your application user Id (applicationUserId) | [optional]
  **filterUserUuid** | [**List&lt;String&gt;**](String.md)| Filter consents by Yapily user Id (userUuid) | [optional]
  **filterInstitution** | [**List&lt;String&gt;**](String.md)| Use this parameter to filter consent by institution, using the Yapily institution Id | [optional]
@@ -426,7 +440,7 @@ Name | Type | Description  | Notes
 
 <a name="getUserConsentsUsingGET"></a>
 # **getUserConsentsUsingGET**
-> List&lt;Consent&gt; getUserConsentsUsingGET(userUuid, filterInstitution, limit)
+> List&lt;Consent&gt; getUserConsentsUsingGET(userUuid, xYapilyApiVersion, filterInstitution, limit)
 
 Get latest user consents
 
@@ -451,11 +465,12 @@ OAuth tokenAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
 tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 ConsentsApi apiInstance = new ConsentsApi();
-String userUuid = "userUuid_example"; // String | userUuid
+String userUuid = "userUuid_example"; // String | User uuid
+String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
 String filterInstitution = "filterInstitution_example"; // String | Use this parameter to filter consent by institution, using the Yapily institution Id. This replaces the deprecated `institutionId` query param.
 Integer limit = 56; // Integer | Use this parameter to limit consent results, max limit is 20
 try {
-    List<Consent> result = apiInstance.getUserConsentsUsingGET(userUuid, filterInstitution, limit);
+    List<Consent> result = apiInstance.getUserConsentsUsingGET(userUuid, xYapilyApiVersion, filterInstitution, limit);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ConsentsApi#getUserConsentsUsingGET");
@@ -467,7 +482,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userUuid** | **String**| userUuid |
+ **userUuid** | **String**| User uuid |
+ **xYapilyApiVersion** | **String**| Api Version | [optional]
  **filterInstitution** | **String**| Use this parameter to filter consent by institution, using the Yapily institution Id. This replaces the deprecated &#x60;institutionId&#x60; query param. | [optional]
  **limit** | **Integer**| Use this parameter to limit consent results, max limit is 20 | [optional]
 

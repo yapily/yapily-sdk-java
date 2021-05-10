@@ -10,13 +10,13 @@ Method | HTTP request | Description
 [**getAccountUsingGET**](AccountsApi.md#getAccountUsingGET) | **GET** /accounts/{accountId} | Get account
 [**getAccountsUsingGET**](AccountsApi.md#getAccountsUsingGET) | **GET** /accounts | Get accounts
 [**initiateAccountRequestUsingPOST**](AccountsApi.md#initiateAccountRequestUsingPOST) | **POST** /account-auth-requests | Initiate a new account request for user to authorize
-[**reAuthoriseAccountUsingPATCH**](AccountsApi.md#reAuthoriseAccountUsingPATCH) | **PATCH** /account-auth-requests | Re-authorize account request
+[**reAuthoriseAccountUsingPATCH**](AccountsApi.md#reAuthoriseAccountUsingPATCH) | **PATCH** /account-auth-requests | Re-authorise account request
 [**updatePreAuthoriseAccountConsentUsingPUT**](AccountsApi.md#updatePreAuthoriseAccountConsentUsingPUT) | **PUT** /account-auth-requests | Update pre authorize consent for user to authorise account
 
 
 <a name="getAccountDirectDebitsUsingGET"></a>
 # **getAccountDirectDebitsUsingGET**
-> ApiListResponseOfPaymentResponse getAccountDirectDebitsUsingGET(accountId, consent, limit)
+> ApiListResponseOfPaymentResponse getAccountDirectDebitsUsingGET(accountId, consent, xYapilyApiVersion, limit)
 
 Get account direct debits
 
@@ -41,11 +41,12 @@ OAuth tokenAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
 tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 AccountsApi apiInstance = new AccountsApi();
-String accountId = "accountId_example"; // String | accountId
+String accountId = "accountId_example"; // String | Account Id
 String consent = "consent_example"; // String | Consent Token
+String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
 Integer limit = 56; // Integer | Use this parameter to limit account's direct debit results
 try {
-    ApiListResponseOfPaymentResponse result = apiInstance.getAccountDirectDebitsUsingGET(accountId, consent, limit);
+    ApiListResponseOfPaymentResponse result = apiInstance.getAccountDirectDebitsUsingGET(accountId, consent, xYapilyApiVersion, limit);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AccountsApi#getAccountDirectDebitsUsingGET");
@@ -57,8 +58,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **accountId** | **String**| accountId |
+ **accountId** | **String**| Account Id |
  **consent** | **String**| Consent Token |
+ **xYapilyApiVersion** | **String**| Api Version | [optional]
  **limit** | **Integer**| Use this parameter to limit account&#39;s direct debit results | [optional]
 
 ### Return type
@@ -76,7 +78,7 @@ Name | Type | Description  | Notes
 
 <a name="getAccountPeriodicPaymentsUsingGET"></a>
 # **getAccountPeriodicPaymentsUsingGET**
-> ApiListResponseOfPaymentResponse getAccountPeriodicPaymentsUsingGET(accountId, consent, limit)
+> ApiListResponseOfPaymentResponse getAccountPeriodicPaymentsUsingGET(accountId, consent, xYapilyApiVersion, limit)
 
 Get account payments detail
 
@@ -101,11 +103,12 @@ OAuth tokenAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
 tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 AccountsApi apiInstance = new AccountsApi();
-String accountId = "accountId_example"; // String | accountId
+String accountId = "accountId_example"; // String | Account Id
 String consent = "consent_example"; // String | Consent Token
+String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
 Integer limit = 56; // Integer | Use this parameter to limit account's periodic payment order results
 try {
-    ApiListResponseOfPaymentResponse result = apiInstance.getAccountPeriodicPaymentsUsingGET(accountId, consent, limit);
+    ApiListResponseOfPaymentResponse result = apiInstance.getAccountPeriodicPaymentsUsingGET(accountId, consent, xYapilyApiVersion, limit);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AccountsApi#getAccountPeriodicPaymentsUsingGET");
@@ -117,8 +120,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **accountId** | **String**| accountId |
+ **accountId** | **String**| Account Id |
  **consent** | **String**| Consent Token |
+ **xYapilyApiVersion** | **String**| Api Version | [optional]
  **limit** | **Integer**| Use this parameter to limit account&#39;s periodic payment order results | [optional]
 
 ### Return type
@@ -136,7 +140,7 @@ Name | Type | Description  | Notes
 
 <a name="getAccountScheduledPaymentsUsingGET"></a>
 # **getAccountScheduledPaymentsUsingGET**
-> ApiListResponseOfPaymentResponse getAccountScheduledPaymentsUsingGET(accountId, consent, limit)
+> ApiListResponseOfPaymentResponse getAccountScheduledPaymentsUsingGET(accountId, consent, xYapilyApiVersion, limit)
 
 Get account scheduled payments
 
@@ -161,11 +165,12 @@ OAuth tokenAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
 tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 AccountsApi apiInstance = new AccountsApi();
-String accountId = "accountId_example"; // String | accountId
+String accountId = "accountId_example"; // String | Account Id
 String consent = "consent_example"; // String | Consent Token
+String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
 Integer limit = 56; // Integer | Use this parameter to limit account's scheduled payment results
 try {
-    ApiListResponseOfPaymentResponse result = apiInstance.getAccountScheduledPaymentsUsingGET(accountId, consent, limit);
+    ApiListResponseOfPaymentResponse result = apiInstance.getAccountScheduledPaymentsUsingGET(accountId, consent, xYapilyApiVersion, limit);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AccountsApi#getAccountScheduledPaymentsUsingGET");
@@ -177,8 +182,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **accountId** | **String**| accountId |
+ **accountId** | **String**| Account Id |
  **consent** | **String**| Consent Token |
+ **xYapilyApiVersion** | **String**| Api Version | [optional]
  **limit** | **Integer**| Use this parameter to limit account&#39;s scheduled payment results | [optional]
 
 ### Return type
@@ -196,7 +202,7 @@ Name | Type | Description  | Notes
 
 <a name="getAccountUsingGET"></a>
 # **getAccountUsingGET**
-> ApiResponseOfAccount getAccountUsingGET(consent, accountId, psuId, psuCorporateId, psuIpAddress)
+> ApiResponseOfAccount getAccountUsingGET(consent, accountId, xYapilyApiVersion, psuId, psuCorporateId, psuIpAddress)
 
 Get account
 
@@ -222,12 +228,13 @@ tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 AccountsApi apiInstance = new AccountsApi();
 String consent = "consent_example"; // String | Consent Token
-String accountId = "accountId_example"; // String | accountId
+String accountId = "accountId_example"; // String | Account Id
+String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
 String psuId = "psuId_example"; // String | PSU ID
 String psuCorporateId = "psuCorporateId_example"; // String | PSU ID CORPORATE
 String psuIpAddress = "psuIpAddress_example"; // String | PSU IP ADDRESS
 try {
-    ApiResponseOfAccount result = apiInstance.getAccountUsingGET(consent, accountId, psuId, psuCorporateId, psuIpAddress);
+    ApiResponseOfAccount result = apiInstance.getAccountUsingGET(consent, accountId, xYapilyApiVersion, psuId, psuCorporateId, psuIpAddress);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AccountsApi#getAccountUsingGET");
@@ -240,7 +247,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consent** | **String**| Consent Token |
- **accountId** | **String**| accountId |
+ **accountId** | **String**| Account Id |
+ **xYapilyApiVersion** | **String**| Api Version | [optional]
  **psuId** | **String**| PSU ID | [optional]
  **psuCorporateId** | **String**| PSU ID CORPORATE | [optional]
  **psuIpAddress** | **String**| PSU IP ADDRESS | [optional]
@@ -260,7 +268,7 @@ Name | Type | Description  | Notes
 
 <a name="getAccountsUsingGET"></a>
 # **getAccountsUsingGET**
-> ApiListResponseOfAccount getAccountsUsingGET(consent, psuId, psuCorporateId, psuIpAddress)
+> ApiListResponseOfAccount getAccountsUsingGET(consent, xYapilyApiVersion, psuId, psuCorporateId, psuIpAddress)
 
 Get accounts
 
@@ -286,11 +294,12 @@ tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 AccountsApi apiInstance = new AccountsApi();
 String consent = "consent_example"; // String | Consent Token
+String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
 String psuId = "psuId_example"; // String | PSU ID
 String psuCorporateId = "psuCorporateId_example"; // String | PSU ID CORPORATE
 String psuIpAddress = "psuIpAddress_example"; // String | PSU IP ADDRESS
 try {
-    ApiListResponseOfAccount result = apiInstance.getAccountsUsingGET(consent, psuId, psuCorporateId, psuIpAddress);
+    ApiListResponseOfAccount result = apiInstance.getAccountsUsingGET(consent, xYapilyApiVersion, psuId, psuCorporateId, psuIpAddress);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AccountsApi#getAccountsUsingGET");
@@ -303,6 +312,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consent** | **String**| Consent Token |
+ **xYapilyApiVersion** | **String**| Api Version | [optional]
  **psuId** | **String**| PSU ID | [optional]
  **psuCorporateId** | **String**| PSU ID CORPORATE | [optional]
  **psuIpAddress** | **String**| PSU IP ADDRESS | [optional]
@@ -322,7 +332,7 @@ Name | Type | Description  | Notes
 
 <a name="initiateAccountRequestUsingPOST"></a>
 # **initiateAccountRequestUsingPOST**
-> ApiResponseOfAuthorisationRequestResponse initiateAccountRequestUsingPOST(accountAuthRequest, psuId, psuCorporateId, psuIpAddress)
+> ApiResponseOfAuthorisationRequestResponse initiateAccountRequestUsingPOST(accountAuthRequest, xYapilyApiVersion, psuId, psuCorporateId, psuIpAddress)
 
 Initiate a new account request for user to authorize
 
@@ -348,11 +358,12 @@ tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 AccountsApi apiInstance = new AccountsApi();
 AccountAuthorisationRequest accountAuthRequest = new AccountAuthorisationRequest(); // AccountAuthorisationRequest | accountAuthRequest
+String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
 String psuId = "psuId_example"; // String | PSU ID
 String psuCorporateId = "psuCorporateId_example"; // String | PSU ID CORPORATE
 String psuIpAddress = "psuIpAddress_example"; // String | PSU IP ADDRESS
 try {
-    ApiResponseOfAuthorisationRequestResponse result = apiInstance.initiateAccountRequestUsingPOST(accountAuthRequest, psuId, psuCorporateId, psuIpAddress);
+    ApiResponseOfAuthorisationRequestResponse result = apiInstance.initiateAccountRequestUsingPOST(accountAuthRequest, xYapilyApiVersion, psuId, psuCorporateId, psuIpAddress);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AccountsApi#initiateAccountRequestUsingPOST");
@@ -365,6 +376,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **accountAuthRequest** | [**AccountAuthorisationRequest**](AccountAuthorisationRequest.md)| accountAuthRequest |
+ **xYapilyApiVersion** | **String**| Api Version | [optional]
  **psuId** | **String**| PSU ID | [optional]
  **psuCorporateId** | **String**| PSU ID CORPORATE | [optional]
  **psuIpAddress** | **String**| PSU IP ADDRESS | [optional]
@@ -384,9 +396,9 @@ Name | Type | Description  | Notes
 
 <a name="reAuthoriseAccountUsingPATCH"></a>
 # **reAuthoriseAccountUsingPATCH**
-> ApiResponseOfAuthorisationRequestResponse reAuthoriseAccountUsingPATCH(consent, psuId, psuCorporateId, psuIpAddress)
+> ApiResponseOfAuthorisationRequestResponse reAuthoriseAccountUsingPATCH(consent, xYapilyApiVersion, psuId, psuCorporateId, psuIpAddress)
 
-Re-authorize account request
+Re-authorise account request
 
 ### Example
 ```java
@@ -410,11 +422,12 @@ tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 AccountsApi apiInstance = new AccountsApi();
 String consent = "consent_example"; // String | Consent Token
+String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
 String psuId = "psuId_example"; // String | PSU ID
 String psuCorporateId = "psuCorporateId_example"; // String | PSU ID CORPORATE
 String psuIpAddress = "psuIpAddress_example"; // String | PSU IP ADDRESS
 try {
-    ApiResponseOfAuthorisationRequestResponse result = apiInstance.reAuthoriseAccountUsingPATCH(consent, psuId, psuCorporateId, psuIpAddress);
+    ApiResponseOfAuthorisationRequestResponse result = apiInstance.reAuthoriseAccountUsingPATCH(consent, xYapilyApiVersion, psuId, psuCorporateId, psuIpAddress);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AccountsApi#reAuthoriseAccountUsingPATCH");
@@ -427,6 +440,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consent** | **String**| Consent Token |
+ **xYapilyApiVersion** | **String**| Api Version | [optional]
  **psuId** | **String**| PSU ID | [optional]
  **psuCorporateId** | **String**| PSU ID CORPORATE | [optional]
  **psuIpAddress** | **String**| PSU IP ADDRESS | [optional]
@@ -446,7 +460,7 @@ Name | Type | Description  | Notes
 
 <a name="updatePreAuthoriseAccountConsentUsingPUT"></a>
 # **updatePreAuthoriseAccountConsentUsingPUT**
-> ApiResponseOfAuthorisationRequestResponse updatePreAuthoriseAccountConsentUsingPUT(consent, accountAuthRequest, psuId, psuCorporateId, psuIpAddress)
+> ApiResponseOfAuthorisationRequestResponse updatePreAuthoriseAccountConsentUsingPUT(consent, accountAuthRequest, xYapilyApiVersion, psuId, psuCorporateId, psuIpAddress)
 
 Update pre authorize consent for user to authorise account
 
@@ -473,11 +487,12 @@ tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 AccountsApi apiInstance = new AccountsApi();
 String consent = "consent_example"; // String | Consent Token
 AccountAuthorisationRequest accountAuthRequest = new AccountAuthorisationRequest(); // AccountAuthorisationRequest | accountAuthRequest
+String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
 String psuId = "psuId_example"; // String | PSU ID
 String psuCorporateId = "psuCorporateId_example"; // String | PSU ID CORPORATE
 String psuIpAddress = "psuIpAddress_example"; // String | PSU IP ADDRESS
 try {
-    ApiResponseOfAuthorisationRequestResponse result = apiInstance.updatePreAuthoriseAccountConsentUsingPUT(consent, accountAuthRequest, psuId, psuCorporateId, psuIpAddress);
+    ApiResponseOfAuthorisationRequestResponse result = apiInstance.updatePreAuthoriseAccountConsentUsingPUT(consent, accountAuthRequest, xYapilyApiVersion, psuId, psuCorporateId, psuIpAddress);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AccountsApi#updatePreAuthoriseAccountConsentUsingPUT");
@@ -491,6 +506,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consent** | **String**| Consent Token |
  **accountAuthRequest** | [**AccountAuthorisationRequest**](AccountAuthorisationRequest.md)| accountAuthRequest |
+ **xYapilyApiVersion** | **String**| Api Version | [optional]
  **psuId** | **String**| PSU ID | [optional]
  **psuCorporateId** | **String**| PSU ID CORPORATE | [optional]
  **psuIpAddress** | **String**| PSU IP ADDRESS | [optional]

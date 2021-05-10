@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 <a name="createBulkPaymentAuthorisationUsingPOST"></a>
 # **createBulkPaymentAuthorisationUsingPOST**
-> ApiResponseOfPaymentAuthorisationRequestResponse createBulkPaymentAuthorisationUsingPOST(paymentAuthRequest, psuId, psuCorporateId, psuIpAddress)
+> ApiResponseOfPaymentAuthorisationRequestResponse createBulkPaymentAuthorisationUsingPOST(paymentAuthRequest, xYapilyApiVersion, psuId, psuCorporateId, psuIpAddress)
 
 Initiate bulk payment for user to authorise
 
@@ -43,11 +43,12 @@ tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 PaymentsApi apiInstance = new PaymentsApi();
 BulkPaymentAuthorisationRequest paymentAuthRequest = new BulkPaymentAuthorisationRequest(); // BulkPaymentAuthorisationRequest | paymentAuthRequest
+String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
 String psuId = "psuId_example"; // String | PSU ID
 String psuCorporateId = "psuCorporateId_example"; // String | PSU ID CORPORATE
 String psuIpAddress = "psuIpAddress_example"; // String | PSU IP ADDRESS
 try {
-    ApiResponseOfPaymentAuthorisationRequestResponse result = apiInstance.createBulkPaymentAuthorisationUsingPOST(paymentAuthRequest, psuId, psuCorporateId, psuIpAddress);
+    ApiResponseOfPaymentAuthorisationRequestResponse result = apiInstance.createBulkPaymentAuthorisationUsingPOST(paymentAuthRequest, xYapilyApiVersion, psuId, psuCorporateId, psuIpAddress);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PaymentsApi#createBulkPaymentAuthorisationUsingPOST");
@@ -60,6 +61,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **paymentAuthRequest** | [**BulkPaymentAuthorisationRequest**](BulkPaymentAuthorisationRequest.md)| paymentAuthRequest |
+ **xYapilyApiVersion** | **String**| Api Version | [optional]
  **psuId** | **String**| PSU ID | [optional]
  **psuCorporateId** | **String**| PSU ID CORPORATE | [optional]
  **psuIpAddress** | **String**| PSU IP ADDRESS | [optional]
@@ -79,7 +81,7 @@ Name | Type | Description  | Notes
 
 <a name="createBulkPaymentUsingPOST"></a>
 # **createBulkPaymentUsingPOST**
-> ApiResponseOfPaymentResponse createBulkPaymentUsingPOST(consent, paymentRequest, psuId, psuCorporateId, psuIpAddress)
+> ApiResponseOfPaymentResponse createBulkPaymentUsingPOST(consent, paymentRequest, xYapilyApiVersion, psuId, psuCorporateId, psuIpAddress)
 
 Create bulk payment
 
@@ -106,11 +108,12 @@ tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 PaymentsApi apiInstance = new PaymentsApi();
 String consent = "consent_example"; // String | Consent Token
 BulkPaymentRequest paymentRequest = new BulkPaymentRequest(); // BulkPaymentRequest | paymentRequest
+String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
 String psuId = "psuId_example"; // String | PSU ID
 String psuCorporateId = "psuCorporateId_example"; // String | PSU ID CORPORATE
 String psuIpAddress = "psuIpAddress_example"; // String | PSU IP ADDRESS
 try {
-    ApiResponseOfPaymentResponse result = apiInstance.createBulkPaymentUsingPOST(consent, paymentRequest, psuId, psuCorporateId, psuIpAddress);
+    ApiResponseOfPaymentResponse result = apiInstance.createBulkPaymentUsingPOST(consent, paymentRequest, xYapilyApiVersion, psuId, psuCorporateId, psuIpAddress);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PaymentsApi#createBulkPaymentUsingPOST");
@@ -124,6 +127,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consent** | **String**| Consent Token |
  **paymentRequest** | [**BulkPaymentRequest**](BulkPaymentRequest.md)| paymentRequest |
+ **xYapilyApiVersion** | **String**| Api Version | [optional]
  **psuId** | **String**| PSU ID | [optional]
  **psuCorporateId** | **String**| PSU ID CORPORATE | [optional]
  **psuIpAddress** | **String**| PSU IP ADDRESS | [optional]
@@ -143,7 +147,7 @@ Name | Type | Description  | Notes
 
 <a name="createPaymentAuthorisationUsingPOST"></a>
 # **createPaymentAuthorisationUsingPOST**
-> ApiResponseOfPaymentAuthorisationRequestResponse createPaymentAuthorisationUsingPOST(paymentAuthRequest, psuId, psuCorporateId, psuIpAddress)
+> ApiResponseOfPaymentAuthorisationRequestResponse createPaymentAuthorisationUsingPOST(paymentAuthRequest, xYapilyApiVersion, psuId, psuCorporateId, psuIpAddress)
 
 Initiate a payment for user to authorise
 
@@ -169,11 +173,12 @@ tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 PaymentsApi apiInstance = new PaymentsApi();
 PaymentAuthorisationRequest paymentAuthRequest = new PaymentAuthorisationRequest(); // PaymentAuthorisationRequest | paymentAuthRequest
+String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
 String psuId = "psuId_example"; // String | PSU ID
 String psuCorporateId = "psuCorporateId_example"; // String | PSU ID CORPORATE
 String psuIpAddress = "psuIpAddress_example"; // String | PSU IP ADDRESS
 try {
-    ApiResponseOfPaymentAuthorisationRequestResponse result = apiInstance.createPaymentAuthorisationUsingPOST(paymentAuthRequest, psuId, psuCorporateId, psuIpAddress);
+    ApiResponseOfPaymentAuthorisationRequestResponse result = apiInstance.createPaymentAuthorisationUsingPOST(paymentAuthRequest, xYapilyApiVersion, psuId, psuCorporateId, psuIpAddress);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PaymentsApi#createPaymentAuthorisationUsingPOST");
@@ -186,6 +191,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **paymentAuthRequest** | [**PaymentAuthorisationRequest**](PaymentAuthorisationRequest.md)| paymentAuthRequest |
+ **xYapilyApiVersion** | **String**| Api Version | [optional]
  **psuId** | **String**| PSU ID | [optional]
  **psuCorporateId** | **String**| PSU ID CORPORATE | [optional]
  **psuIpAddress** | **String**| PSU IP ADDRESS | [optional]
@@ -205,7 +211,7 @@ Name | Type | Description  | Notes
 
 <a name="createPaymentAuthorisationWithSortCodeUsingPOST"></a>
 # **createPaymentAuthorisationWithSortCodeUsingPOST**
-> ApiResponseOfAuthorisationRequestResponse createPaymentAuthorisationWithSortCodeUsingPOST(paymentAuthRequest, psuId, psuCorporateId, psuIpAddress)
+> ApiResponseOfAuthorisationRequestResponse createPaymentAuthorisationWithSortCodeUsingPOST(paymentAuthRequest, xYapilyApiVersion, psuId, psuCorporateId, psuIpAddress)
 
 Initiate a new single payment for user to authorise
 
@@ -231,11 +237,12 @@ tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 PaymentsApi apiInstance = new PaymentsApi();
 SortCodePaymentAuthRequest paymentAuthRequest = new SortCodePaymentAuthRequest(); // SortCodePaymentAuthRequest | paymentAuthRequest
+String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
 String psuId = "psuId_example"; // String | PSU ID
 String psuCorporateId = "psuCorporateId_example"; // String | PSU ID CORPORATE
 String psuIpAddress = "psuIpAddress_example"; // String | PSU IP ADDRESS
 try {
-    ApiResponseOfAuthorisationRequestResponse result = apiInstance.createPaymentAuthorisationWithSortCodeUsingPOST(paymentAuthRequest, psuId, psuCorporateId, psuIpAddress);
+    ApiResponseOfAuthorisationRequestResponse result = apiInstance.createPaymentAuthorisationWithSortCodeUsingPOST(paymentAuthRequest, xYapilyApiVersion, psuId, psuCorporateId, psuIpAddress);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PaymentsApi#createPaymentAuthorisationWithSortCodeUsingPOST");
@@ -248,6 +255,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **paymentAuthRequest** | [**SortCodePaymentAuthRequest**](SortCodePaymentAuthRequest.md)| paymentAuthRequest |
+ **xYapilyApiVersion** | **String**| Api Version | [optional]
  **psuId** | **String**| PSU ID | [optional]
  **psuCorporateId** | **String**| PSU ID CORPORATE | [optional]
  **psuIpAddress** | **String**| PSU IP ADDRESS | [optional]
@@ -267,7 +275,7 @@ Name | Type | Description  | Notes
 
 <a name="createPaymentUsingPOST"></a>
 # **createPaymentUsingPOST**
-> ApiResponseOfPaymentResponse createPaymentUsingPOST(consent, paymentRequest, psuId, psuCorporateId, psuIpAddress)
+> ApiResponseOfPaymentResponse createPaymentUsingPOST(consent, paymentRequest, xYapilyApiVersion, psuId, psuCorporateId, psuIpAddress)
 
 Create a payment
 
@@ -294,11 +302,12 @@ tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 PaymentsApi apiInstance = new PaymentsApi();
 String consent = "consent_example"; // String | Consent Token
 PaymentRequest paymentRequest = new PaymentRequest(); // PaymentRequest | paymentRequest
+String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
 String psuId = "psuId_example"; // String | PSU ID
 String psuCorporateId = "psuCorporateId_example"; // String | PSU ID CORPORATE
 String psuIpAddress = "psuIpAddress_example"; // String | PSU IP ADDRESS
 try {
-    ApiResponseOfPaymentResponse result = apiInstance.createPaymentUsingPOST(consent, paymentRequest, psuId, psuCorporateId, psuIpAddress);
+    ApiResponseOfPaymentResponse result = apiInstance.createPaymentUsingPOST(consent, paymentRequest, xYapilyApiVersion, psuId, psuCorporateId, psuIpAddress);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PaymentsApi#createPaymentUsingPOST");
@@ -312,6 +321,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consent** | **String**| Consent Token |
  **paymentRequest** | [**PaymentRequest**](PaymentRequest.md)| paymentRequest |
+ **xYapilyApiVersion** | **String**| Api Version | [optional]
  **psuId** | **String**| PSU ID | [optional]
  **psuCorporateId** | **String**| PSU ID CORPORATE | [optional]
  **psuIpAddress** | **String**| PSU IP ADDRESS | [optional]
@@ -331,7 +341,7 @@ Name | Type | Description  | Notes
 
 <a name="createPaymentWithSortCodeUsingPOST"></a>
 # **createPaymentWithSortCodeUsingPOST**
-> ApiResponseOfPaymentResponse createPaymentWithSortCodeUsingPOST(consent, paymentRequest, psuId, psuCorporateId, psuIpAddress)
+> ApiResponseOfPaymentResponse createPaymentWithSortCodeUsingPOST(consent, paymentRequest, xYapilyApiVersion, psuId, psuCorporateId, psuIpAddress)
 
 Create a new single payment
 
@@ -358,11 +368,12 @@ tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 PaymentsApi apiInstance = new PaymentsApi();
 String consent = "consent_example"; // String | Consent Token
 SortCodePaymentRequest paymentRequest = new SortCodePaymentRequest(); // SortCodePaymentRequest | paymentRequest
+String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
 String psuId = "psuId_example"; // String | PSU ID
 String psuCorporateId = "psuCorporateId_example"; // String | PSU ID CORPORATE
 String psuIpAddress = "psuIpAddress_example"; // String | PSU IP ADDRESS
 try {
-    ApiResponseOfPaymentResponse result = apiInstance.createPaymentWithSortCodeUsingPOST(consent, paymentRequest, psuId, psuCorporateId, psuIpAddress);
+    ApiResponseOfPaymentResponse result = apiInstance.createPaymentWithSortCodeUsingPOST(consent, paymentRequest, xYapilyApiVersion, psuId, psuCorporateId, psuIpAddress);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PaymentsApi#createPaymentWithSortCodeUsingPOST");
@@ -376,6 +387,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consent** | **String**| Consent Token |
  **paymentRequest** | [**SortCodePaymentRequest**](SortCodePaymentRequest.md)| paymentRequest |
+ **xYapilyApiVersion** | **String**| Api Version | [optional]
  **psuId** | **String**| PSU ID | [optional]
  **psuCorporateId** | **String**| PSU ID CORPORATE | [optional]
  **psuIpAddress** | **String**| PSU IP ADDRESS | [optional]
@@ -395,7 +407,7 @@ Name | Type | Description  | Notes
 
 <a name="getPaymentStatusUsingGET"></a>
 # **getPaymentStatusUsingGET**
-> ApiResponseOfPaymentResponse getPaymentStatusUsingGET(paymentId, consent, psuId, psuCorporateId, psuIpAddress)
+> ApiResponseOfPaymentResponse getPaymentStatusUsingGET(paymentId, consent, xYapilyApiVersion, psuId, psuCorporateId, psuIpAddress)
 
 Get status of a payment
 
@@ -420,13 +432,14 @@ OAuth tokenAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
 tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 PaymentsApi apiInstance = new PaymentsApi();
-String paymentId = "paymentId_example"; // String | paymentId
+String paymentId = "paymentId_example"; // String | Payment Id
 String consent = "consent_example"; // String | Consent Token
+String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
 String psuId = "psuId_example"; // String | PSU ID
 String psuCorporateId = "psuCorporateId_example"; // String | PSU ID CORPORATE
 String psuIpAddress = "psuIpAddress_example"; // String | PSU IP ADDRESS
 try {
-    ApiResponseOfPaymentResponse result = apiInstance.getPaymentStatusUsingGET(paymentId, consent, psuId, psuCorporateId, psuIpAddress);
+    ApiResponseOfPaymentResponse result = apiInstance.getPaymentStatusUsingGET(paymentId, consent, xYapilyApiVersion, psuId, psuCorporateId, psuIpAddress);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PaymentsApi#getPaymentStatusUsingGET");
@@ -438,8 +451,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **paymentId** | **String**| paymentId |
+ **paymentId** | **String**| Payment Id |
  **consent** | **String**| Consent Token |
+ **xYapilyApiVersion** | **String**| Api Version | [optional]
  **psuId** | **String**| PSU ID | [optional]
  **psuCorporateId** | **String**| PSU ID CORPORATE | [optional]
  **psuIpAddress** | **String**| PSU IP ADDRESS | [optional]
@@ -459,7 +473,7 @@ Name | Type | Description  | Notes
 
 <a name="getPaymentsUsingGET"></a>
 # **getPaymentsUsingGET**
-> ApiResponseOfPaymentResponses getPaymentsUsingGET(paymentId, consent, psuId, psuCorporateId, psuIpAddress)
+> ApiResponseOfPaymentResponses getPaymentsUsingGET(paymentId, consent, xYapilyApiVersion, psuId, psuCorporateId, psuIpAddress)
 
 Get payments detail
 
@@ -484,13 +498,14 @@ OAuth tokenAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
 tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 PaymentsApi apiInstance = new PaymentsApi();
-String paymentId = "paymentId_example"; // String | paymentId
+String paymentId = "paymentId_example"; // String | Payment Id
 String consent = "consent_example"; // String | Consent Token
+String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
 String psuId = "psuId_example"; // String | PSU ID
 String psuCorporateId = "psuCorporateId_example"; // String | PSU ID CORPORATE
 String psuIpAddress = "psuIpAddress_example"; // String | PSU IP ADDRESS
 try {
-    ApiResponseOfPaymentResponses result = apiInstance.getPaymentsUsingGET(paymentId, consent, psuId, psuCorporateId, psuIpAddress);
+    ApiResponseOfPaymentResponses result = apiInstance.getPaymentsUsingGET(paymentId, consent, xYapilyApiVersion, psuId, psuCorporateId, psuIpAddress);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PaymentsApi#getPaymentsUsingGET");
@@ -502,8 +517,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **paymentId** | **String**| paymentId |
+ **paymentId** | **String**| Payment Id |
  **consent** | **String**| Consent Token |
+ **xYapilyApiVersion** | **String**| Api Version | [optional]
  **psuId** | **String**| PSU ID | [optional]
  **psuCorporateId** | **String**| PSU ID CORPORATE | [optional]
  **psuIpAddress** | **String**| PSU IP ADDRESS | [optional]
@@ -523,7 +539,7 @@ Name | Type | Description  | Notes
 
 <a name="updatePaymentAuthorisationUsingPUT"></a>
 # **updatePaymentAuthorisationUsingPUT**
-> ApiResponseOfPaymentAuthorisationRequestResponse updatePaymentAuthorisationUsingPUT(consent, paymentAuthRequest, psuId, psuCorporateId, psuIpAddress)
+> ApiResponseOfPaymentAuthorisationRequestResponse updatePaymentAuthorisationUsingPUT(consent, paymentAuthRequest, xYapilyApiVersion, psuId, psuCorporateId, psuIpAddress)
 
 Update pre authorize consent for user to authorise payment
 
@@ -550,11 +566,12 @@ tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 PaymentsApi apiInstance = new PaymentsApi();
 String consent = "consent_example"; // String | Consent Token
 PaymentAuthorisationRequest paymentAuthRequest = new PaymentAuthorisationRequest(); // PaymentAuthorisationRequest | paymentAuthRequest
+String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
 String psuId = "psuId_example"; // String | PSU ID
 String psuCorporateId = "psuCorporateId_example"; // String | PSU ID CORPORATE
 String psuIpAddress = "psuIpAddress_example"; // String | PSU IP ADDRESS
 try {
-    ApiResponseOfPaymentAuthorisationRequestResponse result = apiInstance.updatePaymentAuthorisationUsingPUT(consent, paymentAuthRequest, psuId, psuCorporateId, psuIpAddress);
+    ApiResponseOfPaymentAuthorisationRequestResponse result = apiInstance.updatePaymentAuthorisationUsingPUT(consent, paymentAuthRequest, xYapilyApiVersion, psuId, psuCorporateId, psuIpAddress);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PaymentsApi#updatePaymentAuthorisationUsingPUT");
@@ -568,6 +585,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **consent** | **String**| Consent Token |
  **paymentAuthRequest** | [**PaymentAuthorisationRequest**](PaymentAuthorisationRequest.md)| paymentAuthRequest |
+ **xYapilyApiVersion** | **String**| Api Version | [optional]
  **psuId** | **String**| PSU ID | [optional]
  **psuCorporateId** | **String**| PSU ID CORPORATE | [optional]
  **psuIpAddress** | **String**| PSU IP ADDRESS | [optional]

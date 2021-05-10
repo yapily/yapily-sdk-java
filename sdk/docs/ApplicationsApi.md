@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="getApplicationMeUsingGET"></a>
 # **getApplicationMeUsingGET**
-> Application getApplicationMeUsingGET()
+> Application getApplicationMeUsingGET(xYapilyApiVersion)
 
 Returns the details of the application that owns the request credentials
 
@@ -34,8 +34,9 @@ OAuth tokenAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
 tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 ApplicationsApi apiInstance = new ApplicationsApi();
+String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
 try {
-    Application result = apiInstance.getApplicationMeUsingGET();
+    Application result = apiInstance.getApplicationMeUsingGET(xYapilyApiVersion);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ApplicationsApi#getApplicationMeUsingGET");
@@ -44,7 +45,10 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xYapilyApiVersion** | **String**| Api Version | [optional]
 
 ### Return type
 

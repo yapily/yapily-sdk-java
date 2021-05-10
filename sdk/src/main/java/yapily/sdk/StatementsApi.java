@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-05-06T17:24:15.799Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-05-10T17:19:47.452Z")
 public class StatementsApi {
   private ApiClient apiClient;
 
@@ -39,12 +39,13 @@ public class StatementsApi {
    * Get account statement file
    * 
    * @param consent Consent Token (required)
-   * @param accountId accountId (required)
-   * @param statementId statementId (required)
+   * @param accountId Account Id (required)
+   * @param statementId Statement Id (required)
+   * @param xYapilyApiVersion Api Version (optional)
    * @return String
    * @throws ApiException if fails to make API call
    */
-  public String getStatementFileUsingGET(String consent, String accountId, String statementId) throws ApiException {
+  public String getStatementFileUsingGET(String consent, String accountId, String statementId, String xYapilyApiVersion) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'consent' is set
@@ -64,8 +65,8 @@ public class StatementsApi {
     
     // create path and map variables
     String localVarPath = "/accounts/{accountId}/statements/{statementId}/file"
-      .replaceAll("\\{" + "accountId" + "\\}", apiClient.escapeString(accountId.toString()))
-      .replaceAll("\\{" + "statementId" + "\\}", apiClient.escapeString(statementId.toString()));
+      .replaceAll("\\{" + "account-id" + "\\}", apiClient.escapeString(accountId.toString()))
+      .replaceAll("\\{" + "statement-id" + "\\}", apiClient.escapeString(statementId.toString()));
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -73,7 +74,9 @@ public class StatementsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    if (consent != null)
+    if (xYapilyApiVersion != null)
+      localVarHeaderParams.put("x-yapily-api-version", apiClient.parameterToString(xYapilyApiVersion));
+if (consent != null)
       localVarHeaderParams.put("consent", apiClient.parameterToString(consent));
 
     
@@ -96,12 +99,13 @@ public class StatementsApi {
    * Get account statement
    * 
    * @param consent Consent Token (required)
-   * @param accountId accountId (required)
-   * @param statementId statementId (required)
+   * @param accountId Account Id (required)
+   * @param statementId Statement Id (required)
+   * @param xYapilyApiVersion Api Version (optional)
    * @return ApiResponseOfAccountStatement
    * @throws ApiException if fails to make API call
    */
-  public ApiResponseOfAccountStatement getStatementUsingGET(String consent, String accountId, String statementId) throws ApiException {
+  public ApiResponseOfAccountStatement getStatementUsingGET(String consent, String accountId, String statementId, String xYapilyApiVersion) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'consent' is set
@@ -121,8 +125,8 @@ public class StatementsApi {
     
     // create path and map variables
     String localVarPath = "/accounts/{accountId}/statements/{statementId}"
-      .replaceAll("\\{" + "accountId" + "\\}", apiClient.escapeString(accountId.toString()))
-      .replaceAll("\\{" + "statementId" + "\\}", apiClient.escapeString(statementId.toString()));
+      .replaceAll("\\{" + "account-id" + "\\}", apiClient.escapeString(accountId.toString()))
+      .replaceAll("\\{" + "statement-id" + "\\}", apiClient.escapeString(statementId.toString()));
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -130,7 +134,9 @@ public class StatementsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    if (consent != null)
+    if (xYapilyApiVersion != null)
+      localVarHeaderParams.put("x-yapily-api-version", apiClient.parameterToString(xYapilyApiVersion));
+if (consent != null)
       localVarHeaderParams.put("consent", apiClient.parameterToString(consent));
 
     
@@ -153,7 +159,8 @@ public class StatementsApi {
    * Get account statements
    * 
    * @param consent Consent Token (required)
-   * @param accountId accountId (required)
+   * @param accountId Account Id (required)
+   * @param xYapilyApiVersion Api Version (optional)
    * @param from from (optional)
    * @param before before (optional)
    * @param limit limit (optional)
@@ -162,7 +169,7 @@ public class StatementsApi {
    * @return ApiListResponseOfAccountStatement
    * @throws ApiException if fails to make API call
    */
-  public ApiListResponseOfAccountStatement getStatementsUsingGET(String consent, String accountId, String from, String before, Integer limit, String sort, Integer offset) throws ApiException {
+  public ApiListResponseOfAccountStatement getStatementsUsingGET(String consent, String accountId, String xYapilyApiVersion, String from, String before, Integer limit, String sort, Integer offset) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'consent' is set
@@ -177,7 +184,7 @@ public class StatementsApi {
     
     // create path and map variables
     String localVarPath = "/accounts/{accountId}/statements"
-      .replaceAll("\\{" + "accountId" + "\\}", apiClient.escapeString(accountId.toString()));
+      .replaceAll("\\{" + "account-id" + "\\}", apiClient.escapeString(accountId.toString()));
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -190,7 +197,9 @@ public class StatementsApi {
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "sort", sort));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "offset", offset));
 
-    if (consent != null)
+    if (xYapilyApiVersion != null)
+      localVarHeaderParams.put("x-yapily-api-version", apiClient.parameterToString(xYapilyApiVersion));
+if (consent != null)
       localVarHeaderParams.put("consent", apiClient.parameterToString(consent));
 
     

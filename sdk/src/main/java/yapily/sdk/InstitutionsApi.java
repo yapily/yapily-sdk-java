@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-05-06T17:24:15.799Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-05-10T17:19:47.452Z")
 public class InstitutionsApi {
   private ApiClient apiClient;
 
@@ -39,10 +39,11 @@ public class InstitutionsApi {
   /**
    * Retrieve details for Yapily&#39;s institution features
    * 
+   * @param xYapilyApiVersion Api Version (optional)
    * @return ApiListResponseOfFeatureDetails
    * @throws ApiException if fails to make API call
    */
-  public ApiListResponseOfFeatureDetails getFeatureDetailsUsingGET() throws ApiException {
+  public ApiListResponseOfFeatureDetails getFeatureDetailsUsingGET(String xYapilyApiVersion) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -54,7 +55,9 @@ public class InstitutionsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    
+    if (xYapilyApiVersion != null)
+      localVarHeaderParams.put("x-yapily-api-version", apiClient.parameterToString(xYapilyApiVersion));
+
     
     final String[] localVarAccepts = {
       "application/json;charset=UTF-8"
@@ -74,11 +77,12 @@ public class InstitutionsApi {
   /**
    * Retrieves details of a specific institution available in Yapily
    * 
-   * @param institutionId institutionId (required)
+   * @param institutionId Institution Id (required)
+   * @param xYapilyApiVersion Api Version (optional)
    * @return Institution
    * @throws ApiException if fails to make API call
    */
-  public Institution getInstitutionUsingGET(String institutionId) throws ApiException {
+  public Institution getInstitutionUsingGET(String institutionId, String xYapilyApiVersion) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'institutionId' is set
@@ -88,7 +92,7 @@ public class InstitutionsApi {
     
     // create path and map variables
     String localVarPath = "/institutions/{institutionId}"
-      .replaceAll("\\{" + "institutionId" + "\\}", apiClient.escapeString(institutionId.toString()));
+      .replaceAll("\\{" + "institution-id" + "\\}", apiClient.escapeString(institutionId.toString()));
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -96,7 +100,9 @@ public class InstitutionsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    
+    if (xYapilyApiVersion != null)
+      localVarHeaderParams.put("x-yapily-api-version", apiClient.parameterToString(xYapilyApiVersion));
+
     
     final String[] localVarAccepts = {
       "application/json;charset=UTF-8"
@@ -116,10 +122,11 @@ public class InstitutionsApi {
   /**
    * Retrieves the list of institutions available in Yapily
    * 
+   * @param xYapilyApiVersion Api Version (optional)
    * @return ApiListResponseOfInstitution
    * @throws ApiException if fails to make API call
    */
-  public ApiListResponseOfInstitution getInstitutionsUsingGET() throws ApiException {
+  public ApiListResponseOfInstitution getInstitutionsUsingGET(String xYapilyApiVersion) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -131,7 +138,9 @@ public class InstitutionsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    
+    if (xYapilyApiVersion != null)
+      localVarHeaderParams.put("x-yapily-api-version", apiClient.parameterToString(xYapilyApiVersion));
+
     
     final String[] localVarAccepts = {
       "application/json;charset=UTF-8"
