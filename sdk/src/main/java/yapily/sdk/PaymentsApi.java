@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-05-13T11:49:45.788Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-05-17T17:55:46.414Z")
 public class PaymentsApi {
   private ApiClient apiClient;
 
@@ -416,7 +416,7 @@ if (psuIpAddress != null)
     
     // create path and map variables
     String localVarPath = "/payments/{paymentId}"
-      .replaceAll("\\{" + "payment-id" + "\\}", apiClient.escapeString(paymentId.toString()));
+      .replaceAll("\\{" + "paymentId" + "\\}", apiClient.escapeString(paymentId.toString()));
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -478,7 +478,7 @@ if (psuIpAddress != null)
     
     // create path and map variables
     String localVarPath = "/payments/{paymentId}/details"
-      .replaceAll("\\{" + "payment-id" + "\\}", apiClient.escapeString(paymentId.toString()));
+      .replaceAll("\\{" + "paymentId" + "\\}", apiClient.escapeString(paymentId.toString()));
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();

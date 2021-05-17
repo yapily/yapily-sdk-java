@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-05-13T11:49:45.788Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-05-17T17:55:46.414Z")
 public class InstitutionsApi {
   private ApiClient apiClient;
 
@@ -92,7 +92,7 @@ public class InstitutionsApi {
     
     // create path and map variables
     String localVarPath = "/institutions/{institutionId}"
-      .replaceAll("\\{" + "institution-id" + "\\}", apiClient.escapeString(institutionId.toString()));
+      .replaceAll("\\{" + "institutionId" + "\\}", apiClient.escapeString(institutionId.toString()));
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();

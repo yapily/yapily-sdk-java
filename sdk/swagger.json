@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "To access endpoints that require authentication, use your application key and secret created in the Dashboard (https://dashboard.yapily.com)",
-    "version": "0.0.342",
+    "version": "0.0.343",
     "title": "Yapily API"
   },
   "host": "api.yapily.com",
@@ -427,7 +427,7 @@
             "type": "string"
           },
           {
-            "name": "account-id",
+            "name": "accountId",
             "in": "path",
             "description": "Account Id",
             "required": true,
@@ -511,7 +511,7 @@
             "type": "string"
           },
           {
-            "name": "account-id",
+            "name": "accountId",
             "in": "path",
             "description": "Account Id",
             "required": true,
@@ -588,7 +588,7 @@
             "type": "string"
           },
           {
-            "name": "account-id",
+            "name": "accountId",
             "in": "path",
             "description": "Account Id",
             "required": true,
@@ -651,7 +651,7 @@
             "type": "string"
           },
           {
-            "name": "account-id",
+            "name": "accountId",
             "in": "path",
             "description": "Account Id",
             "required": true,
@@ -722,7 +722,7 @@
             "type": "string"
           },
           {
-            "name": "account-id",
+            "name": "accountId",
             "in": "path",
             "description": "Account Id",
             "required": true,
@@ -793,7 +793,7 @@
             "type": "string"
           },
           {
-            "name": "account-id",
+            "name": "accountId",
             "in": "path",
             "description": "Account Id",
             "required": true,
@@ -871,7 +871,7 @@
             "type": "string"
           },
           {
-            "name": "account-id",
+            "name": "accountId",
             "in": "path",
             "description": "Account Id",
             "required": true,
@@ -975,14 +975,14 @@
             "type": "string"
           },
           {
-            "name": "account-id",
+            "name": "accountId",
             "in": "path",
             "description": "Account Id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "statement-id",
+            "name": "statementId",
             "in": "path",
             "description": "Statement Id",
             "required": true,
@@ -1045,14 +1045,14 @@
             "type": "string"
           },
           {
-            "name": "account-id",
+            "name": "accountId",
             "in": "path",
             "description": "Account Id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "statement-id",
+            "name": "statementId",
             "in": "path",
             "description": "Statement Id",
             "required": true,
@@ -1115,7 +1115,7 @@
             "type": "string"
           },
           {
-            "name": "account-id",
+            "name": "accountId",
             "in": "path",
             "description": "Account Id",
             "required": true,
@@ -1258,7 +1258,7 @@
             "type": "string"
           },
           {
-            "name": "account-id",
+            "name": "accountId",
             "in": "path",
             "description": "Account Id",
             "required": true,
@@ -1792,7 +1792,7 @@
             "type": "string"
           },
           {
-            "name": "consent-id",
+            "name": "consentId",
             "in": "path",
             "description": "Consent Id",
             "required": false,
@@ -1846,7 +1846,7 @@
             "type": "string"
           },
           {
-            "name": "consent-id",
+            "name": "consentId",
             "in": "path",
             "description": "Consent Id",
             "required": false,
@@ -2293,7 +2293,7 @@
             "type": "string"
           },
           {
-            "name": "consent-id",
+            "name": "consentId",
             "in": "path",
             "description": "Consent Id",
             "required": true,
@@ -2536,7 +2536,7 @@
             "type": "string"
           },
           {
-            "name": "institution-id",
+            "name": "institutionId",
             "in": "path",
             "description": "Institution Id",
             "required": true,
@@ -3170,7 +3170,7 @@
             "type": "string"
           },
           {
-            "name": "payment-id",
+            "name": "paymentId",
             "in": "path",
             "description": "Payment Id",
             "required": true,
@@ -3254,7 +3254,7 @@
             "type": "string"
           },
           {
-            "name": "payment-id",
+            "name": "paymentId",
             "in": "path",
             "description": "Payment Id",
             "required": true,
@@ -3521,7 +3521,7 @@
             "type": "string"
           },
           {
-            "name": "user-uuid",
+            "name": "userUuid",
             "in": "path",
             "description": "User uuid",
             "required": true,
@@ -3575,7 +3575,7 @@
             "type": "string"
           },
           {
-            "name": "user-uuid",
+            "name": "userUuid",
             "in": "path",
             "description": "User uuid",
             "required": true,
@@ -3631,7 +3631,7 @@
             "type": "string"
           },
           {
-            "name": "user-uuid",
+            "name": "userUuid",
             "in": "path",
             "description": "User uuid",
             "required": true,
@@ -3704,7 +3704,7 @@
             "type": "string"
           },
           {
-            "name": "user-uuid",
+            "name": "userUuid",
             "in": "path",
             "description": "User uuid",
             "required": true,

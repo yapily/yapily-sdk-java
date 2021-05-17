@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-05-13T11:49:45.788Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-05-17T17:55:46.414Z")
 public class ConsentsApi {
   private ApiClient apiClient;
 
@@ -66,7 +66,7 @@ public class ConsentsApi {
     
     // create path and map variables
     String localVarPath = "/users/{userUuid}/consents"
-      .replaceAll("\\{" + "user-uuid" + "\\}", apiClient.escapeString(userUuid.toString()));
+      .replaceAll("\\{" + "userUuid" + "\\}", apiClient.escapeString(userUuid.toString()));
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -200,7 +200,7 @@ public class ConsentsApi {
     
     // create path and map variables
     String localVarPath = "/consents/{consentId}"
-      .replaceAll("\\{" + "consent-id" + "\\}", apiClient.escapeString(consentId.toString()));
+      .replaceAll("\\{" + "consentId" + "\\}", apiClient.escapeString(consentId.toString()));
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -246,7 +246,7 @@ public class ConsentsApi {
     
     // create path and map variables
     String localVarPath = "/consents/{consentId}"
-      .replaceAll("\\{" + "consent-id" + "\\}", apiClient.escapeString(consentId.toString()));
+      .replaceAll("\\{" + "consentId" + "\\}", apiClient.escapeString(consentId.toString()));
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -393,7 +393,7 @@ public class ConsentsApi {
     
     // create path and map variables
     String localVarPath = "/users/{userUuid}/consents"
-      .replaceAll("\\{" + "user-uuid" + "\\}", apiClient.escapeString(userUuid.toString()));
+      .replaceAll("\\{" + "userUuid" + "\\}", apiClient.escapeString(userUuid.toString()));
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();

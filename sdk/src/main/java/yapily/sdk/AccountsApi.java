@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-05-13T11:49:45.788Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-05-17T17:55:46.414Z")
 public class AccountsApi {
   private ApiClient apiClient;
 
@@ -63,7 +63,7 @@ public class AccountsApi {
     
     // create path and map variables
     String localVarPath = "/accounts/{accountId}/direct-debits"
-      .replaceAll("\\{" + "account-id" + "\\}", apiClient.escapeString(accountId.toString()));
+      .replaceAll("\\{" + "accountId" + "\\}", apiClient.escapeString(accountId.toString()));
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -118,7 +118,7 @@ if (consent != null)
     
     // create path and map variables
     String localVarPath = "/accounts/{accountId}/periodic-payments"
-      .replaceAll("\\{" + "account-id" + "\\}", apiClient.escapeString(accountId.toString()));
+      .replaceAll("\\{" + "accountId" + "\\}", apiClient.escapeString(accountId.toString()));
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -173,7 +173,7 @@ if (consent != null)
     
     // create path and map variables
     String localVarPath = "/accounts/{accountId}/scheduled-payments"
-      .replaceAll("\\{" + "account-id" + "\\}", apiClient.escapeString(accountId.toString()));
+      .replaceAll("\\{" + "accountId" + "\\}", apiClient.escapeString(accountId.toString()));
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -230,7 +230,7 @@ if (consent != null)
     
     // create path and map variables
     String localVarPath = "/accounts/{accountId}"
-      .replaceAll("\\{" + "account-id" + "\\}", apiClient.escapeString(accountId.toString()));
+      .replaceAll("\\{" + "accountId" + "\\}", apiClient.escapeString(accountId.toString()));
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
