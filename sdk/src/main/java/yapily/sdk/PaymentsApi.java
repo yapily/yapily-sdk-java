@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-06-15T17:00:36.568Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-06-16T16:45:36.603Z")
 public class PaymentsApi {
   private ApiClient apiClient;
 
@@ -47,10 +47,10 @@ public class PaymentsApi {
    * Initiate bulk payment for user to authorise
    * 
    * @param paymentAuthRequest paymentAuthRequest (required)
-   * @param xYapilyApiVersion Api Version (optional)
-   * @param psuId PSU ID (optional)
-   * @param psuCorporateId PSU ID CORPORATE (optional)
-   * @param psuIpAddress PSU IP ADDRESS (optional)
+   * @param xYapilyApiVersion __Optional__. Determines the API version to use. Valid values are &#x60;1.0&#x60; or &#x60;2.0-ALPHA&#x60;. Defaults to &#x60;1.0&#x60; (optional)
+   * @param psuId __Conditional__. Represents the user&#39;s login ID for the &#x60;Institution&#x60; to a personal account. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
+   * @param psuCorporateId __Conditional__. Represents the user&#39;s login ID for the &#x60;Institution&#x60; to a business account. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
+   * @param psuIpAddress __Conditional__. The IP address of the PSU. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
    * @return ApiResponseOfPaymentAuthorisationRequestResponse
    * @throws ApiException if fails to make API call
    */
@@ -99,12 +99,12 @@ if (psuIpAddress != null)
   /**
    * Create bulk payment
    * 
-   * @param consent Consent Token (required)
+   * @param consent __Mandatory__. The &#x60;consent-token&#x60; containing the user&#39;s authorisation to make the request. (required)
    * @param paymentRequest paymentRequest (required)
-   * @param xYapilyApiVersion Api Version (optional)
-   * @param psuId PSU ID (optional)
-   * @param psuCorporateId PSU ID CORPORATE (optional)
-   * @param psuIpAddress PSU IP ADDRESS (optional)
+   * @param xYapilyApiVersion __Optional__. Determines the API version to use. Valid values are &#x60;1.0&#x60; or &#x60;2.0-ALPHA&#x60;. Defaults to &#x60;1.0&#x60; (optional)
+   * @param psuId __Conditional__. Represents the user&#39;s login ID for the &#x60;Institution&#x60; to a personal account. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
+   * @param psuCorporateId __Conditional__. Represents the user&#39;s login ID for the &#x60;Institution&#x60; to a business account. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
+   * @param psuIpAddress __Conditional__. The IP address of the PSU. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
    * @return ApiResponseOfPaymentResponse
    * @throws ApiException if fails to make API call
    */
@@ -161,10 +161,10 @@ if (psuIpAddress != null)
    * Initiate a payment for user to authorise
    * 
    * @param paymentAuthRequest paymentAuthRequest (required)
-   * @param xYapilyApiVersion Api Version (optional)
-   * @param psuId PSU ID (optional)
-   * @param psuCorporateId PSU ID CORPORATE (optional)
-   * @param psuIpAddress PSU IP ADDRESS (optional)
+   * @param xYapilyApiVersion __Optional__. Determines the API version to use. Valid values are &#x60;1.0&#x60; or &#x60;2.0-ALPHA&#x60;. Defaults to &#x60;1.0&#x60; (optional)
+   * @param psuId __Conditional__. Represents the user&#39;s login ID for the &#x60;Institution&#x60; to a personal account. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
+   * @param psuCorporateId __Conditional__. Represents the user&#39;s login ID for the &#x60;Institution&#x60; to a business account. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
+   * @param psuIpAddress __Conditional__. The IP address of the PSU. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
    * @return ApiResponseOfPaymentAuthorisationRequestResponse
    * @throws ApiException if fails to make API call
    */
@@ -214,10 +214,10 @@ if (psuIpAddress != null)
    * Initiate a new single payment for user to authorise
    * 
    * @param paymentAuthRequest paymentAuthRequest (required)
-   * @param xYapilyApiVersion Api Version (optional)
-   * @param psuId PSU ID (optional)
-   * @param psuCorporateId PSU ID CORPORATE (optional)
-   * @param psuIpAddress PSU IP ADDRESS (optional)
+   * @param xYapilyApiVersion __Optional__. Determines the API version to use. Valid values are &#x60;1.0&#x60; or &#x60;2.0-ALPHA&#x60;. Defaults to &#x60;1.0&#x60; (optional)
+   * @param psuId __Conditional__. Represents the user&#39;s login ID for the &#x60;Institution&#x60; to a personal account. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
+   * @param psuCorporateId __Conditional__. Represents the user&#39;s login ID for the &#x60;Institution&#x60; to a business account. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
+   * @param psuIpAddress __Conditional__. The IP address of the PSU. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
    * @return ApiResponseOfAuthorisationRequestResponse
    * @throws ApiException if fails to make API call
    * @deprecated
@@ -268,12 +268,12 @@ if (psuIpAddress != null)
   /**
    * Create a payment
    * 
-   * @param consent Consent Token (required)
+   * @param consent __Mandatory__. The &#x60;consent-token&#x60; containing the user&#39;s authorisation to make the request. (required)
    * @param paymentRequest paymentRequest (required)
-   * @param xYapilyApiVersion Api Version (optional)
-   * @param psuId PSU ID (optional)
-   * @param psuCorporateId PSU ID CORPORATE (optional)
-   * @param psuIpAddress PSU IP ADDRESS (optional)
+   * @param xYapilyApiVersion __Optional__. Determines the API version to use. Valid values are &#x60;1.0&#x60; or &#x60;2.0-ALPHA&#x60;. Defaults to &#x60;1.0&#x60; (optional)
+   * @param psuId __Conditional__. Represents the user&#39;s login ID for the &#x60;Institution&#x60; to a personal account. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
+   * @param psuCorporateId __Conditional__. Represents the user&#39;s login ID for the &#x60;Institution&#x60; to a business account. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
+   * @param psuIpAddress __Conditional__. The IP address of the PSU. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
    * @return ApiResponseOfPaymentResponse
    * @throws ApiException if fails to make API call
    */
@@ -329,12 +329,12 @@ if (psuIpAddress != null)
   /**
    * Create a new single payment
    * 
-   * @param consent Consent Token (required)
+   * @param consent __Mandatory__. The &#x60;consent-token&#x60; containing the user&#39;s authorisation to make the request. (required)
    * @param paymentRequest paymentRequest (required)
-   * @param xYapilyApiVersion Api Version (optional)
-   * @param psuId PSU ID (optional)
-   * @param psuCorporateId PSU ID CORPORATE (optional)
-   * @param psuIpAddress PSU IP ADDRESS (optional)
+   * @param xYapilyApiVersion __Optional__. Determines the API version to use. Valid values are &#x60;1.0&#x60; or &#x60;2.0-ALPHA&#x60;. Defaults to &#x60;1.0&#x60; (optional)
+   * @param psuId __Conditional__. Represents the user&#39;s login ID for the &#x60;Institution&#x60; to a personal account. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
+   * @param psuCorporateId __Conditional__. Represents the user&#39;s login ID for the &#x60;Institution&#x60; to a business account. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
+   * @param psuIpAddress __Conditional__. The IP address of the PSU. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
    * @return ApiResponseOfPaymentResponse
    * @throws ApiException if fails to make API call
    * @deprecated
@@ -392,12 +392,12 @@ if (psuIpAddress != null)
   /**
    * Get status of a payment
    * 
-   * @param paymentId Payment Id (required)
-   * @param consent Consent Token (required)
-   * @param xYapilyApiVersion Api Version (optional)
-   * @param psuId PSU ID (optional)
-   * @param psuCorporateId PSU ID CORPORATE (optional)
-   * @param psuIpAddress PSU IP ADDRESS (optional)
+   * @param paymentId __Mandatory__. The payment Id of the payment. (required)
+   * @param consent __Mandatory__. The &#x60;consent-token&#x60; containing the user&#39;s authorisation to make the request. (required)
+   * @param xYapilyApiVersion __Optional__. Determines the API version to use. Valid values are &#x60;1.0&#x60; or &#x60;2.0-ALPHA&#x60;. Defaults to &#x60;1.0&#x60; (optional)
+   * @param psuId __Conditional__. Represents the user&#39;s login ID for the &#x60;Institution&#x60; to a personal account. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
+   * @param psuCorporateId __Conditional__. Represents the user&#39;s login ID for the &#x60;Institution&#x60; to a business account. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
+   * @param psuIpAddress __Conditional__. The IP address of the PSU. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
    * @return ApiResponseOfPaymentResponse
    * @throws ApiException if fails to make API call
    */
@@ -452,14 +452,14 @@ if (psuIpAddress != null)
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
   /**
-   * Get payments detail
+   * Get payments details
    * 
-   * @param paymentId Payment Id (required)
-   * @param consent Consent Token (required)
-   * @param xYapilyApiVersion Api Version (optional)
-   * @param psuId PSU ID (optional)
-   * @param psuCorporateId PSU ID CORPORATE (optional)
-   * @param psuIpAddress PSU IP ADDRESS (optional)
+   * @param paymentId __Mandatory__. The payment Id of the payment. (required)
+   * @param consent __Mandatory__. The &#x60;consent-token&#x60; containing the user&#39;s authorisation to make the request. (required)
+   * @param xYapilyApiVersion __Optional__. Determines the API version to use. Valid values are &#x60;1.0&#x60; or &#x60;2.0-ALPHA&#x60;. Defaults to &#x60;1.0&#x60; (optional)
+   * @param psuId __Conditional__. Represents the user&#39;s login ID for the &#x60;Institution&#x60; to a personal account. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
+   * @param psuCorporateId __Conditional__. Represents the user&#39;s login ID for the &#x60;Institution&#x60; to a business account. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
+   * @param psuIpAddress __Conditional__. The IP address of the PSU. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
    * @return ApiResponseOfPaymentResponses
    * @throws ApiException if fails to make API call
    */
@@ -516,12 +516,12 @@ if (psuIpAddress != null)
   /**
    * Update pre authorize consent for user to authorise payment
    * 
-   * @param consent Consent Token (required)
+   * @param consent __Mandatory__. The &#x60;consent-token&#x60; containing the user&#39;s authorisation to make the request. (required)
    * @param paymentAuthRequest paymentAuthRequest (required)
-   * @param xYapilyApiVersion Api Version (optional)
-   * @param psuId PSU ID (optional)
-   * @param psuCorporateId PSU ID CORPORATE (optional)
-   * @param psuIpAddress PSU IP ADDRESS (optional)
+   * @param xYapilyApiVersion __Optional__. Determines the API version to use. Valid values are &#x60;1.0&#x60; or &#x60;2.0-ALPHA&#x60;. Defaults to &#x60;1.0&#x60; (optional)
+   * @param psuId __Conditional__. Represents the user&#39;s login ID for the &#x60;Institution&#x60; to a personal account. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
+   * @param psuCorporateId __Conditional__. Represents the user&#39;s login ID for the &#x60;Institution&#x60; to a business account. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
+   * @param psuIpAddress __Conditional__. The IP address of the PSU. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
    * @return ApiResponseOfPaymentAuthorisationRequestResponse
    * @throws ApiException if fails to make API call
    */

@@ -41,7 +41,7 @@ tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 ApplicationUsersApi apiInstance = new ApplicationUsersApi();
 NewApplicationUser newApplicationUser = new NewApplicationUser(); // NewApplicationUser | newApplicationUser
-String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
+String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | __Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`
 try {
     ApplicationUser result = apiInstance.addUserUsingPOST(newApplicationUser, xYapilyApiVersion);
     System.out.println(result);
@@ -56,7 +56,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **newApplicationUser** | [**NewApplicationUser**](NewApplicationUser.md)| newApplicationUser |
- **xYapilyApiVersion** | **String**| Api Version | [optional]
+ **xYapilyApiVersion** | **String**| __Optional__. Determines the API version to use. Valid values are &#x60;1.0&#x60; or &#x60;2.0-ALPHA&#x60;. Defaults to &#x60;1.0&#x60; | [optional]
 
 ### Return type
 
@@ -98,8 +98,8 @@ OAuth tokenAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
 tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 ApplicationUsersApi apiInstance = new ApplicationUsersApi();
-String userUuid = "userUuid_example"; // String | User uuid
-String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
+String userUuid = "userUuid_example"; // String | __Mandatory__. The Yapily generated UUID for the user.
+String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | __Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`
 try {
     ApiResponseOfUserDeleteResponse result = apiInstance.deleteUserUsingDELETE(userUuid, xYapilyApiVersion);
     System.out.println(result);
@@ -113,8 +113,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userUuid** | **String**| User uuid |
- **xYapilyApiVersion** | **String**| Api Version | [optional]
+ **userUuid** | **String**| __Mandatory__. The Yapily generated UUID for the user. |
+ **xYapilyApiVersion** | **String**| __Optional__. Determines the API version to use. Valid values are &#x60;1.0&#x60; or &#x60;2.0-ALPHA&#x60;. Defaults to &#x60;1.0&#x60; | [optional]
 
 ### Return type
 
@@ -264,8 +264,8 @@ OAuth tokenAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
 tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 ApplicationUsersApi apiInstance = new ApplicationUsersApi();
-String userUuid = "userUuid_example"; // String | User uuid
-String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
+String userUuid = "userUuid_example"; // String | __Mandatory__. The Yapily generated UUID for the user.
+String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | __Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`
 try {
     ApplicationUser result = apiInstance.getUserUsingGET(userUuid, xYapilyApiVersion);
     System.out.println(result);
@@ -279,8 +279,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userUuid** | **String**| User uuid |
- **xYapilyApiVersion** | **String**| Api Version | [optional]
+ **userUuid** | **String**| __Mandatory__. The Yapily generated UUID for the user. |
+ **xYapilyApiVersion** | **String**| __Optional__. Determines the API version to use. Valid values are &#x60;1.0&#x60; or &#x60;2.0-ALPHA&#x60;. Defaults to &#x60;1.0&#x60; | [optional]
 
 ### Return type
 
@@ -322,8 +322,8 @@ OAuth tokenAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
 tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 ApplicationUsersApi apiInstance = new ApplicationUsersApi();
-String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
-List<String> filterApplicationUserId = Arrays.asList("filterApplicationUserId_example"); // List<String> | Filter users by the provided application user Id (applicationUserId) when the user was created.
+String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | __Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`
+List<String> filterApplicationUserId = Arrays.asList("filterApplicationUserId_example"); // List<String> | __Optional__. Filter records based on the list of `applicationUserId` users provided.
 try {
     List<ApplicationUser> result = apiInstance.getUsersUsingGET(xYapilyApiVersion, filterApplicationUserId);
     System.out.println(result);
@@ -337,8 +337,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xYapilyApiVersion** | **String**| Api Version | [optional]
- **filterApplicationUserId** | [**List&lt;String&gt;**](String.md)| Filter users by the provided application user Id (applicationUserId) when the user was created. | [optional]
+ **xYapilyApiVersion** | **String**| __Optional__. Determines the API version to use. Valid values are &#x60;1.0&#x60; or &#x60;2.0-ALPHA&#x60;. Defaults to &#x60;1.0&#x60; | [optional]
+ **filterApplicationUserId** | [**List&lt;String&gt;**](String.md)| __Optional__. Filter records based on the list of &#x60;applicationUserId&#x60; users provided. | [optional]
 
 ### Return type
 

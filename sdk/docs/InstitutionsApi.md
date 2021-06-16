@@ -36,7 +36,7 @@ OAuth tokenAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
 tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 InstitutionsApi apiInstance = new InstitutionsApi();
-String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
+String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | __Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`
 try {
     ApiListResponseOfFeatureDetails result = apiInstance.getFeatureDetailsUsingGET(xYapilyApiVersion);
     System.out.println(result);
@@ -50,7 +50,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xYapilyApiVersion** | **String**| Api Version | [optional]
+ **xYapilyApiVersion** | **String**| __Optional__. Determines the API version to use. Valid values are &#x60;1.0&#x60; or &#x60;2.0-ALPHA&#x60;. Defaults to &#x60;1.0&#x60; | [optional]
 
 ### Return type
 
@@ -92,8 +92,8 @@ OAuth tokenAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
 tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 InstitutionsApi apiInstance = new InstitutionsApi();
-String institutionId = "institutionId_example"; // String | Institution Id
-String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
+String institutionId = "institutionId_example"; // String | __Mandatory__. The Yapily institution Id for the `Institution`.
+String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | __Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`
 try {
     Institution result = apiInstance.getInstitutionUsingGET(institutionId, xYapilyApiVersion);
     System.out.println(result);
@@ -107,8 +107,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **institutionId** | **String**| Institution Id |
- **xYapilyApiVersion** | **String**| Api Version | [optional]
+ **institutionId** | **String**| __Mandatory__. The Yapily institution Id for the &#x60;Institution&#x60;. |
+ **xYapilyApiVersion** | **String**| __Optional__. Determines the API version to use. Valid values are &#x60;1.0&#x60; or &#x60;2.0-ALPHA&#x60;. Defaults to &#x60;1.0&#x60; | [optional]
 
 ### Return type
 
@@ -150,7 +150,7 @@ OAuth tokenAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
 tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
 InstitutionsApi apiInstance = new InstitutionsApi();
-String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
+String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | __Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`
 try {
     ApiListResponseOfInstitution result = apiInstance.getInstitutionsUsingGET(xYapilyApiVersion);
     System.out.println(result);
@@ -164,7 +164,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xYapilyApiVersion** | **String**| Api Version | [optional]
+ **xYapilyApiVersion** | **String**| __Optional__. Determines the API version to use. Valid values are &#x60;1.0&#x60; or &#x60;2.0-ALPHA&#x60;. Defaults to &#x60;1.0&#x60; | [optional]
 
 ### Return type
 

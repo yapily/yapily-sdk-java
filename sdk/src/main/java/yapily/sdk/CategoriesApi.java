@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-06-15T17:00:36.568Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-06-16T16:45:36.603Z")
 public class CategoriesApi {
   private ApiClient apiClient;
 
@@ -37,11 +37,12 @@ public class CategoriesApi {
   /**
    * Retrieves a list of categories returned by the Yapily Categorisation engine for a given locale
    * 
-   * @param country country (required)
+   * @param country __Mandatory__. The 2 letter country code e.g. &#39;GB&#39;. (required)
+   * @param xYapilyApiVersion __Optional__. Determines the API version to use. Valid values are &#x60;1.0&#x60; or &#x60;2.0-ALPHA&#x60;. Defaults to &#x60;1.0&#x60; (optional)
    * @return ApiListResponseOfCategory
    * @throws ApiException if fails to make API call
    */
-  public ApiListResponseOfCategory getCategoriesUsingGET(String country) throws ApiException {
+  public ApiListResponseOfCategory getCategoriesUsingGET(String country, String xYapilyApiVersion) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'country' is set
@@ -59,7 +60,9 @@ public class CategoriesApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    
+    if (xYapilyApiVersion != null)
+      localVarHeaderParams.put("x-yapily-api-version", apiClient.parameterToString(xYapilyApiVersion));
+
     
     final String[] localVarAccepts = {
       "application/json;charset=UTF-8"

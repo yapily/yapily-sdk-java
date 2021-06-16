@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-06-15T17:00:36.568Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-06-16T16:45:36.603Z")
 public class ConsentsApi {
   private ApiClient apiClient;
 
@@ -45,9 +45,9 @@ public class ConsentsApi {
   /**
    * Post consent
    * 
-   * @param userUuid User uuid (required)
+   * @param userUuid __Mandatory__. The Yapily generated UUID for the user. (required)
    * @param createConsentAccessToken createConsentAccessToken (required)
-   * @param xYapilyApiVersion Api Version (optional)
+   * @param xYapilyApiVersion __Optional__. Determines the API version to use. Valid values are &#x60;1.0&#x60; or &#x60;2.0-ALPHA&#x60;. Defaults to &#x60;1.0&#x60; (optional)
    * @return Consent
    * @throws ApiException if fails to make API call
    */
@@ -97,7 +97,7 @@ public class ConsentsApi {
    * Post auth-code and auth-state
    * 
    * @param consentByAuthCode consentByAuthCode (required)
-   * @param xYapilyApiVersion Api Version (optional)
+   * @param xYapilyApiVersion __Optional__. Determines the API version to use. Valid values are &#x60;1.0&#x60; or &#x60;2.0-ALPHA&#x60;. Defaults to &#x60;1.0&#x60; (optional)
    * @return Consent
    * @throws ApiException if fails to make API call
    */
@@ -141,7 +141,7 @@ public class ConsentsApi {
    * Initiate request for user to pre authorise
    * 
    * @param preAuthorisationRequest preAuthorisationRequest (required)
-   * @param xYapilyApiVersion Api Version (optional)
+   * @param xYapilyApiVersion __Optional__. Determines the API version to use. Valid values are &#x60;1.0&#x60; or &#x60;2.0-ALPHA&#x60;. Defaults to &#x60;1.0&#x60; (optional)
    * @return ApiResponseOfAuthorisationRequestResponse
    * @throws ApiException if fails to make API call
    */
@@ -184,9 +184,9 @@ public class ConsentsApi {
   /**
    * Delete consent
    * 
-   * @param consentId Consent Id (required)
-   * @param xYapilyApiVersion Api Version (optional)
-   * @param forceDelete Force delete (optional, default to true)
+   * @param consentId __Mandatory__. The consent Id of the &#x60;Consent&#x60; to update. (required)
+   * @param xYapilyApiVersion __Optional__. Determines the API version to use. Valid values are &#x60;1.0&#x60; or &#x60;2.0-ALPHA&#x60;. Defaults to &#x60;1.0&#x60; (optional)
+   * @param forceDelete __Optional__. Whether to force the deletion. (optional, default to true)
    * @return ApiResponseOfConsentDeleteResponse
    * @throws ApiException if fails to make API call
    */
@@ -231,8 +231,8 @@ public class ConsentsApi {
   /**
    * Get consent
    * 
-   * @param consentId Consent Id (required)
-   * @param xYapilyApiVersion Api Version (optional)
+   * @param consentId __Mandatory__. The consent Id of the &#x60;Consent&#x60; to update. (required)
+   * @param xYapilyApiVersion __Optional__. Determines the API version to use. Valid values are &#x60;1.0&#x60; or &#x60;2.0-ALPHA&#x60;. Defaults to &#x60;1.0&#x60; (optional)
    * @return ApiResponseOfConsent
    * @throws ApiException if fails to make API call
    */
@@ -277,7 +277,7 @@ public class ConsentsApi {
    * Post one time token
    * 
    * @param oneTimeToken oneTimeToken (required)
-   * @param xYapilyApiVersion Api Version (optional)
+   * @param xYapilyApiVersion __Optional__. Determines the API version to use. Valid values are &#x60;1.0&#x60; or &#x60;2.0-ALPHA&#x60;. Defaults to &#x60;1.0&#x60; (optional)
    * @return Consent
    * @throws ApiException if fails to make API call
    */
@@ -320,15 +320,15 @@ public class ConsentsApi {
   /**
    * Get consents sorted by creation date
    * 
-   * @param xYapilyApiVersion Api Version (optional)
-   * @param filterApplicationUserId Filter consents by your application user Id (applicationUserId) (optional)
-   * @param filterUserUuid Filter consents by Yapily user Id (userUuid) (optional)
-   * @param filterInstitution Use this parameter to filter consent by institution, using the Yapily institution Id (optional)
-   * @param filterStatus Use this parameter to filter consent by status (optional)
-   * @param from Use this parameter to filter consents created after the date specified (optional)
-   * @param before Use this parameter to filter consents created before the date specified (optional)
+   * @param xYapilyApiVersion __Optional__. Determines the API version to use. Valid values are &#x60;1.0&#x60; or &#x60;2.0-ALPHA&#x60;. Defaults to &#x60;1.0&#x60; (optional)
+   * @param filterApplicationUserId __Optional__. Filter records based on the list of &#x60;applicationUserId&#x60; users provided. (optional)
+   * @param filterUserUuid __Optional__. Filter records based on the list of &#x60;userUuid&#x60; users provided. (optional)
+   * @param filterInstitution __Optional__. Filter records based on the list of &#x60;Institution&#x60; provided. (optional)
+   * @param filterStatus __Optional__. Filter records based on the list of &#x60;Consent&#x60; [statuses](https://docs.yapily.com/api/#tocS_AuthorisationStatus). (optional)
+   * @param from __Optional__. Returned transactions will be on or after this date (yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ).  (optional)
+   * @param before __Optional__. Returned transactions will be on or before this date (yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ). (optional)
    * @param limit Use this parameter to limit consent results, max limit is 20 (optional)
-   * @param offset Use this parameter to specify the offset of the results (optional, default to 0)
+   * @param offset __Optional__. The number of transaction records to be skipped. Used primarily with paginated results. (optional, default to 0)
    * @return ApiListResponseOfConsent
    * @throws ApiException if fails to make API call
    */
@@ -374,16 +374,16 @@ public class ConsentsApi {
   /**
    * Get latest user consents
    * 
-   * @param userUuid User uuid (required)
-   * @param xYapilyApiVersion Api Version (optional)
-   * @param filterInstitution Use this parameter to filter consent by institution, using the Yapily institution Id. This replaces the deprecated &#x60;institutionId&#x60; query param. (optional)
+   * @param userUuid __Mandatory__. The Yapily generated UUID for the user. (required)
+   * @param xYapilyApiVersion __Optional__. Determines the API version to use. Valid values are &#x60;1.0&#x60; or &#x60;2.0-ALPHA&#x60;. Defaults to &#x60;1.0&#x60; (optional)
+   * @param institutionId Use this parameter to filter consent by institution, using the Yapily institution Id. This replaces the deprecated &#x60;institutionId&#x60; query param. (optional)
    * @param limit Use this parameter to limit consent results, max limit is 20 (optional)
    * @return List&lt;Consent&gt;
    * @throws ApiException if fails to make API call
    * @deprecated
    */
   @Deprecated
-  public List<Consent> getUserConsentsUsingGET(String userUuid, String xYapilyApiVersion, String filterInstitution, Integer limit) throws ApiException {
+  public List<Consent> getUserConsentsUsingGET(String userUuid, String xYapilyApiVersion, String institutionId, Integer limit) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'userUuid' is set
@@ -400,7 +400,7 @@ public class ConsentsApi {
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter[institution]", filterInstitution));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "institutionId", institutionId));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
 
     if (xYapilyApiVersion != null)

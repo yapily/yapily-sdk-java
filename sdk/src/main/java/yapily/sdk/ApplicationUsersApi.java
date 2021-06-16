@@ -19,7 +19,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-06-15T17:00:36.568Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-06-16T16:45:36.603Z")
 public class ApplicationUsersApi {
   private ApiClient apiClient;
 
@@ -43,7 +43,7 @@ public class ApplicationUsersApi {
    * Add an application user
    * 
    * @param newApplicationUser newApplicationUser (required)
-   * @param xYapilyApiVersion Api Version (optional)
+   * @param xYapilyApiVersion __Optional__. Determines the API version to use. Valid values are &#x60;1.0&#x60; or &#x60;2.0-ALPHA&#x60;. Defaults to &#x60;1.0&#x60; (optional)
    * @return ApplicationUser
    * @throws ApiException if fails to make API call
    */
@@ -86,8 +86,8 @@ public class ApplicationUsersApi {
   /**
    * Delete an application user and sub-resources (including consent resources on institution APIs if they exist)
    * 
-   * @param userUuid User uuid (required)
-   * @param xYapilyApiVersion Api Version (optional)
+   * @param userUuid __Mandatory__. The Yapily generated UUID for the user. (required)
+   * @param xYapilyApiVersion __Optional__. Determines the API version to use. Valid values are &#x60;1.0&#x60; or &#x60;2.0-ALPHA&#x60;. Defaults to &#x60;1.0&#x60; (optional)
    * @return ApiResponseOfUserDeleteResponse
    * @throws ApiException if fails to make API call
    */
@@ -208,8 +208,8 @@ public class ApplicationUsersApi {
   /**
    * Get an application user
    * 
-   * @param userUuid User uuid (required)
-   * @param xYapilyApiVersion Api Version (optional)
+   * @param userUuid __Mandatory__. The Yapily generated UUID for the user. (required)
+   * @param xYapilyApiVersion __Optional__. Determines the API version to use. Valid values are &#x60;1.0&#x60; or &#x60;2.0-ALPHA&#x60;. Defaults to &#x60;1.0&#x60; (optional)
    * @return ApplicationUser
    * @throws ApiException if fails to make API call
    */
@@ -253,8 +253,8 @@ public class ApplicationUsersApi {
   /**
    * Get application users
    * 
-   * @param xYapilyApiVersion Api Version (optional)
-   * @param filterApplicationUserId Filter users by the provided application user Id (applicationUserId) when the user was created. (optional)
+   * @param xYapilyApiVersion __Optional__. Determines the API version to use. Valid values are &#x60;1.0&#x60; or &#x60;2.0-ALPHA&#x60;. Defaults to &#x60;1.0&#x60; (optional)
+   * @param filterApplicationUserId __Optional__. Filter records based on the list of &#x60;applicationUserId&#x60; users provided. (optional)
    * @return List&lt;ApplicationUser&gt;
    * @throws ApiException if fails to make API call
    */

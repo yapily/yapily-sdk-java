@@ -14,15 +14,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-06-15T17:00:36.568Z")
-public class ApplicationsApi {
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-06-16T16:45:36.603Z")
+public class ApplicationApi {
   private ApiClient apiClient;
 
-  public ApplicationsApi() {
+  public ApplicationApi() {
     this(Configuration.getDefaultApiClient());
   }
 
-  public ApplicationsApi(ApiClient apiClient) {
+  public ApplicationApi(ApiClient apiClient) {
     this.apiClient = apiClient;
   }
 
@@ -37,7 +37,7 @@ public class ApplicationsApi {
   /**
    * Returns the details of the application that owns the request credentials
    * 
-   * @param xYapilyApiVersion Api Version (optional)
+   * @param xYapilyApiVersion __Optional__. Determines the API version to use. Valid values are &#x60;1.0&#x60; or &#x60;2.0-ALPHA&#x60;. Defaults to &#x60;1.0&#x60; (optional)
    * @return Application
    * @throws ApiException if fails to make API call
    */

@@ -2,75 +2,75 @@
   "swagger": "2.0",
   "info": {
     "description": "To access endpoints that require authentication, use your application key and secret created in the Dashboard (https://dashboard.yapily.com)",
-    "version": "0.0.355",
+    "version": "0.0.356",
     "title": "Yapily API"
   },
   "host": "api.yapily.com",
   "basePath": "/",
   "tags": [
     {
-      "name": "Embedded Accounts",
-      "description": " "
+      "name": "Identity",
+      "description": "Identity Consent Controller"
     },
     {
-      "name": "Statements",
-      "description": " "
-    },
-    {
-      "name": "Transfers",
-      "description": " "
+      "name": "Balances",
+      "description": "Balances Consent Controller"
     },
     {
       "name": "Applications",
       "description": " "
     },
     {
+      "name": "Consents",
+      "description": "Pre Auth Consent Controller"
+    },
+    {
       "name": "Categories",
-      "description": " "
+      "description": "Transaction Categories Controller"
     },
     {
       "name": "Payments",
       "description": "Payment Consent Controller"
     },
     {
+      "name": "Institutions Open Data",
+      "description": "Institutions Open Data Controller"
+    },
+    {
       "name": "Accounts",
-      "description": " "
+      "description": "Account Consent Controller"
     },
     {
-      "name": "Balances",
-      "description": " "
+      "name": "Transfers",
+      "description": "Transfer Consent Controller"
     },
     {
-      "name": "Institutions",
-      "description": " "
-    },
-    {
-      "name": "Consents",
-      "description": " "
-    },
-    {
-      "name": "Identity",
-      "description": " "
-    },
-    {
-      "name": "Beneficiaries",
-      "description": " "
+      "name": "Application",
+      "description": "Applications Controller"
     },
     {
       "name": "Transactions",
-      "description": " "
-    },
-    {
-      "name": "Institutions Open Data",
-      "description": " "
-    },
-    {
-      "name": "Application Users",
-      "description": " "
+      "description": "Transactions Consent Controller"
     },
     {
       "name": "Embedded Payments",
-      "description": " "
+      "description": "Payment Embedded Consent Controller"
+    },
+    {
+      "name": "Institutions",
+      "description": "Institutions Controller"
+    },
+    {
+      "name": "Statements",
+      "description": "Statements Consent Controller"
+    },
+    {
+      "name": "Embedded Accounts",
+      "description": "Account Embedded Consent Controller"
+    },
+    {
+      "name": "Application Users",
+      "description": "Users Controller"
     }
   ],
   "schemes": [
@@ -94,28 +94,28 @@
           {
             "name": "x-yapily-api-version",
             "in": "header",
-            "description": "Api Version",
+            "description": "__Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`",
             "required": false,
             "type": "string"
           },
           {
             "name": "psu-id",
             "in": "header",
-            "description": "PSU ID",
+            "description": "__Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
           {
             "name": "psu-corporate-id",
             "in": "header",
-            "description": "PSU ID CORPORATE",
+            "description": "__Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
           {
             "name": "psu-ip-address",
             "in": "header",
-            "description": "PSU IP ADDRESS",
+            "description": "__Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
@@ -174,35 +174,35 @@
           {
             "name": "x-yapily-api-version",
             "in": "header",
-            "description": "Api Version",
+            "description": "__Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`",
             "required": false,
             "type": "string"
           },
           {
             "name": "consent",
             "in": "header",
-            "description": "Consent Token",
+            "description": "__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             "required": true,
             "type": "string"
           },
           {
             "name": "psu-id",
             "in": "header",
-            "description": "PSU ID",
+            "description": "__Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
           {
             "name": "psu-corporate-id",
             "in": "header",
-            "description": "PSU ID CORPORATE",
+            "description": "__Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
           {
             "name": "psu-ip-address",
             "in": "header",
-            "description": "PSU IP ADDRESS",
+            "description": "__Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
@@ -261,35 +261,35 @@
           {
             "name": "x-yapily-api-version",
             "in": "header",
-            "description": "Api Version",
+            "description": "__Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`",
             "required": false,
             "type": "string"
           },
           {
             "name": "consent",
             "in": "header",
-            "description": "Consent Token",
+            "description": "__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             "required": true,
             "type": "string"
           },
           {
             "name": "psu-id",
             "in": "header",
-            "description": "PSU ID",
+            "description": "__Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
           {
             "name": "psu-corporate-id",
             "in": "header",
-            "description": "PSU ID CORPORATE",
+            "description": "__Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
           {
             "name": "psu-ip-address",
             "in": "header",
-            "description": "PSU IP ADDRESS",
+            "description": "__Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           }
@@ -338,35 +338,35 @@
           {
             "name": "x-yapily-api-version",
             "in": "header",
-            "description": "Api Version",
+            "description": "__Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`",
             "required": false,
             "type": "string"
           },
           {
             "name": "consent",
             "in": "header",
-            "description": "Consent Token",
+            "description": "__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             "required": true,
             "type": "string"
           },
           {
             "name": "psu-id",
             "in": "header",
-            "description": "PSU ID",
+            "description": "__Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
           {
             "name": "psu-corporate-id",
             "in": "header",
-            "description": "PSU ID CORPORATE",
+            "description": "__Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
           {
             "name": "psu-ip-address",
             "in": "header",
-            "description": "PSU IP ADDRESS",
+            "description": "__Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           }
@@ -413,44 +413,44 @@
         ],
         "parameters": [
           {
-            "name": "x-yapily-api-version",
-            "in": "header",
-            "description": "Api Version",
-            "required": false,
+            "name": "accountId",
+            "in": "path",
+            "description": "__Mandatory__. The account Id of the user's bank account.",
+            "required": true,
             "type": "string"
           },
           {
             "name": "consent",
             "in": "header",
-            "description": "Consent Token",
+            "description": "__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             "required": true,
             "type": "string"
           },
           {
-            "name": "accountId",
-            "in": "path",
-            "description": "Account Id",
-            "required": true,
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "__Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`",
+            "required": false,
             "type": "string"
           },
           {
             "name": "psu-id",
             "in": "header",
-            "description": "PSU ID",
+            "description": "__Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
           {
             "name": "psu-corporate-id",
             "in": "header",
-            "description": "PSU ID CORPORATE",
+            "description": "__Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
           {
             "name": "psu-ip-address",
             "in": "header",
-            "description": "PSU IP ADDRESS",
+            "description": "__Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           }
@@ -497,44 +497,44 @@
         ],
         "parameters": [
           {
+            "name": "accountId",
+            "in": "path",
+            "description": "__Mandatory__. The account Id of the user's bank account.",
+            "required": true,
+            "type": "string"
+          },
+          {
             "name": "x-yapily-api-version",
             "in": "header",
-            "description": "Api Version",
+            "description": "__Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`",
             "required": false,
             "type": "string"
           },
           {
             "name": "consent",
             "in": "header",
-            "description": "Consent Token",
+            "description": "__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             "required": false,
-            "type": "string"
-          },
-          {
-            "name": "accountId",
-            "in": "path",
-            "description": "Account Id",
-            "required": true,
             "type": "string"
           },
           {
             "name": "psu-id",
             "in": "header",
-            "description": "PSU ID",
+            "description": "__Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
           {
             "name": "psu-corporate-id",
             "in": "header",
-            "description": "PSU ID CORPORATE",
+            "description": "__Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
           {
             "name": "psu-ip-address",
             "in": "header",
-            "description": "PSU IP ADDRESS",
+            "description": "__Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           }
@@ -569,9 +569,9 @@
     "/accounts/{accountId}/beneficiaries": {
       "get": {
         "tags": [
-          "Beneficiaries"
+          "Accounts"
         ],
-        "summary": "Get beneficiaries",
+        "summary": "Get Beneficiaries",
         "operationId": "getBeneficiariesUsingGET",
         "consumes": [
           "application/json"
@@ -581,23 +581,23 @@
         ],
         "parameters": [
           {
-            "name": "x-yapily-api-version",
-            "in": "header",
-            "description": "Api Version",
-            "required": false,
+            "name": "accountId",
+            "in": "path",
+            "description": "__Mandatory__. The account Id of the user's bank account.",
+            "required": true,
             "type": "string"
           },
           {
-            "name": "accountId",
-            "in": "path",
-            "description": "Account Id",
-            "required": true,
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "__Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`",
+            "required": false,
             "type": "string"
           },
           {
             "name": "consent",
             "in": "header",
-            "description": "Consent Token",
+            "description": "__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             "required": true,
             "type": "string"
           }
@@ -644,30 +644,30 @@
         ],
         "parameters": [
           {
-            "name": "x-yapily-api-version",
-            "in": "header",
-            "description": "Api Version",
-            "required": false,
+            "name": "accountId",
+            "in": "path",
+            "description": "__Mandatory__. The account Id of the user's bank account.",
+            "required": true,
             "type": "string"
           },
           {
-            "name": "accountId",
-            "in": "path",
-            "description": "Account Id",
-            "required": true,
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "__Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`",
+            "required": false,
             "type": "string"
           },
           {
             "name": "consent",
             "in": "header",
-            "description": "Consent Token",
+            "description": "__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             "required": true,
             "type": "string"
           },
           {
             "name": "limit",
             "in": "query",
-            "description": "Use this parameter to limit account's direct debit results",
+            "description": "__Optional__. The maximum number of transaction records to be returned. Must be between 0 and 1000.",
             "required": false,
             "type": "integer",
             "format": "int32"
@@ -715,30 +715,30 @@
         ],
         "parameters": [
           {
-            "name": "x-yapily-api-version",
-            "in": "header",
-            "description": "Api Version",
-            "required": false,
+            "name": "accountId",
+            "in": "path",
+            "description": "__Mandatory__. The account Id of the user's bank account.",
+            "required": true,
             "type": "string"
           },
           {
-            "name": "accountId",
-            "in": "path",
-            "description": "Account Id",
-            "required": true,
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "__Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`",
+            "required": false,
             "type": "string"
           },
           {
             "name": "consent",
             "in": "header",
-            "description": "Consent Token",
+            "description": "__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             "required": true,
             "type": "string"
           },
           {
             "name": "limit",
             "in": "query",
-            "description": "Use this parameter to limit account's periodic payment order results",
+            "description": "__Optional__. The maximum number of transaction records to be returned. Must be between 0 and 1000.",
             "required": false,
             "type": "integer",
             "format": "int32"
@@ -786,30 +786,30 @@
         ],
         "parameters": [
           {
-            "name": "x-yapily-api-version",
-            "in": "header",
-            "description": "Api Version",
-            "required": false,
+            "name": "accountId",
+            "in": "path",
+            "description": "__Mandatory__. The account Id of the user's bank account.",
+            "required": true,
             "type": "string"
           },
           {
-            "name": "accountId",
-            "in": "path",
-            "description": "Account Id",
-            "required": true,
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "__Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`",
+            "required": false,
             "type": "string"
           },
           {
             "name": "consent",
             "in": "header",
-            "description": "Consent Token",
+            "description": "__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             "required": true,
             "type": "string"
           },
           {
             "name": "limit",
             "in": "query",
-            "description": "Use this parameter to limit account's scheduled payment results",
+            "description": "__Optional__. The maximum number of transaction records to be returned. Must be between 0 and 1000.",
             "required": false,
             "type": "integer",
             "format": "int32"
@@ -859,42 +859,42 @@
           {
             "name": "x-yapily-api-version",
             "in": "header",
-            "description": "Api Version",
+            "description": "__Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`",
             "required": false,
             "type": "string"
           },
           {
             "name": "consent",
             "in": "header",
-            "description": "Consent Token",
+            "description": "__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             "required": true,
             "type": "string"
           },
           {
             "name": "accountId",
             "in": "path",
-            "description": "Account Id",
+            "description": "__Mandatory__. The account Id of the user's bank account.",
             "required": true,
             "type": "string"
           },
           {
             "name": "from",
             "in": "query",
-            "description": "from",
+            "description": "__Optional__. Returned transactions will be on or after this date (yyyy-MM-dd'T'HH:mm:ss.SSSZ). ",
             "required": false,
             "type": "string"
           },
           {
             "name": "before",
             "in": "query",
-            "description": "before",
+            "description": "__Optional__. Returned transactions will be on or before this date (yyyy-MM-dd'T'HH:mm:ss.SSSZ).",
             "required": false,
             "type": "string"
           },
           {
             "name": "limit",
             "in": "query",
-            "description": "limit",
+            "description": "__Optional__. The maximum number of transaction records to be returned. Must be between 0 and 1000.",
             "required": false,
             "type": "integer",
             "format": "int32"
@@ -902,7 +902,7 @@
           {
             "name": "sort",
             "in": "query",
-            "description": "sort",
+            "description": "__Optional__. Sort transaction records by date ascending with 'date' or descending with '-date'. The default sort order is descending",
             "required": false,
             "type": "string",
             "enum": [
@@ -913,7 +913,7 @@
           {
             "name": "offset",
             "in": "query",
-            "description": "offset",
+            "description": "__Optional__. The number of transaction records to be skipped. Used primarily with paginated results.",
             "required": false,
             "type": "integer",
             "format": "int32"
@@ -963,28 +963,28 @@
           {
             "name": "x-yapily-api-version",
             "in": "header",
-            "description": "Api Version",
+            "description": "__Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`",
             "required": false,
             "type": "string"
           },
           {
             "name": "consent",
             "in": "header",
-            "description": "Consent Token",
+            "description": "__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             "required": true,
             "type": "string"
           },
           {
             "name": "accountId",
             "in": "path",
-            "description": "Account Id",
+            "description": "__Mandatory__. The account Id of the user's bank account.",
             "required": true,
             "type": "string"
           },
           {
             "name": "statementId",
             "in": "path",
-            "description": "Statement Id",
+            "description": "__Mandatory__. The statement Id of the statement file.",
             "required": true,
             "type": "string"
           }
@@ -1033,28 +1033,28 @@
           {
             "name": "x-yapily-api-version",
             "in": "header",
-            "description": "Api Version",
+            "description": "__Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`",
             "required": false,
             "type": "string"
           },
           {
             "name": "consent",
             "in": "header",
-            "description": "Consent Token",
+            "description": "__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             "required": true,
             "type": "string"
           },
           {
             "name": "accountId",
             "in": "path",
-            "description": "Account Id",
+            "description": "__Mandatory__. The account Id of the user's bank account.",
             "required": true,
             "type": "string"
           },
           {
             "name": "statementId",
             "in": "path",
-            "description": "Statement Id",
+            "description": "__Mandatory__. The statement Id of the statement file.",
             "required": true,
             "type": "string"
           }
@@ -1101,51 +1101,51 @@
         ],
         "parameters": [
           {
+            "name": "accountId",
+            "in": "path",
+            "description": "__Mandatory__. The account Id of the user's bank account.",
+            "required": true,
+            "type": "string"
+          },
+          {
             "name": "x-yapily-api-version",
             "in": "header",
-            "description": "Api Version",
+            "description": "__Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`",
             "required": false,
             "type": "string"
           },
           {
             "name": "consent",
             "in": "header",
-            "description": "Consent Token",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "accountId",
-            "in": "path",
-            "description": "Account Id",
+            "description": "__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             "required": true,
             "type": "string"
           },
           {
             "name": "psu-id",
             "in": "header",
-            "description": "PSU ID",
+            "description": "__Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
           {
             "name": "psu-corporate-id",
             "in": "header",
-            "description": "PSU ID CORPORATE",
+            "description": "__Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
           {
             "name": "psu-ip-address",
             "in": "header",
-            "description": "PSU IP ADDRESS",
+            "description": "__Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
           {
             "name": "with",
             "in": "query",
-            "description": "with",
+            "description": "__Optional__. Can be `categories` or `merchant`. When set, will include enrichment data in the transactions returned. <br><br>Enrichment data is optional, e.g. when 'merchant' enrichment data is requested, the enrichment response will include merchant data only if it can be evaluated from the transaction.",
             "required": false,
             "type": "array",
             "items": {
@@ -1156,21 +1156,21 @@
           {
             "name": "from",
             "in": "query",
-            "description": "from",
+            "description": "__Optional__. Returned transactions will be on or after this date (yyyy-MM-dd'T'HH:mm:ss.SSSZ). ",
             "required": false,
             "type": "string"
           },
           {
             "name": "before",
             "in": "query",
-            "description": "before",
+            "description": "__Optional__. Returned transactions will be on or before this date (yyyy-MM-dd'T'HH:mm:ss.SSSZ).",
             "required": false,
             "type": "string"
           },
           {
             "name": "limit",
             "in": "query",
-            "description": "limit",
+            "description": "__Optional__. The maximum number of transaction records to be returned. Must be between 0 and 1000.",
             "required": false,
             "type": "integer",
             "format": "int32"
@@ -1178,7 +1178,7 @@
           {
             "name": "sort",
             "in": "query",
-            "description": "sort",
+            "description": "__Optional__. Sort transaction records by date ascending with 'date' or descending with '-date'. The default sort order is descending",
             "required": false,
             "type": "string",
             "enum": [
@@ -1189,7 +1189,7 @@
           {
             "name": "offset",
             "in": "query",
-            "description": "offset",
+            "description": "__Optional__. The number of transaction records to be skipped. Used primarily with paginated results.",
             "required": false,
             "type": "integer",
             "format": "int32"
@@ -1197,7 +1197,7 @@
           {
             "name": "cursor",
             "in": "query",
-            "description": "cursor",
+            "description": "__Optional__. This property is not currently in use.",
             "required": false,
             "type": "string"
           }
@@ -1246,21 +1246,21 @@
           {
             "name": "x-yapily-api-version",
             "in": "header",
-            "description": "Api Version",
+            "description": "__Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`",
             "required": false,
             "type": "string"
           },
           {
             "name": "consent",
             "in": "header",
-            "description": "Consent Token",
+            "description": "__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             "required": true,
             "type": "string"
           },
           {
             "name": "accountId",
             "in": "path",
-            "description": "Account Id",
+            "description": "__Mandatory__. The account Id of the user's bank account.",
             "required": true,
             "type": "string"
           },
@@ -1321,28 +1321,28 @@
           {
             "name": "x-yapily-api-version",
             "in": "header",
-            "description": "Api Version",
+            "description": "__Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`",
             "required": false,
             "type": "string"
           },
           {
             "name": "psu-id",
             "in": "header",
-            "description": "PSU ID",
+            "description": "__Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
           {
             "name": "psu-corporate-id",
             "in": "header",
-            "description": "PSU ID CORPORATE",
+            "description": "__Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
           {
             "name": "psu-ip-address",
             "in": "header",
-            "description": "PSU IP ADDRESS",
+            "description": "__Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
@@ -1403,35 +1403,35 @@
           {
             "name": "x-yapily-api-version",
             "in": "header",
-            "description": "Api Version",
+            "description": "__Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`",
             "required": false,
             "type": "string"
           },
           {
             "name": "consent",
             "in": "header",
-            "description": "Consent Token",
+            "description": "__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             "required": true,
             "type": "string"
           },
           {
             "name": "psu-id",
             "in": "header",
-            "description": "PSU ID",
+            "description": "__Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
           {
             "name": "psu-corporate-id",
             "in": "header",
-            "description": "PSU ID CORPORATE",
+            "description": "__Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
           {
             "name": "psu-ip-address",
             "in": "header",
-            "description": "PSU IP ADDRESS",
+            "description": "__Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
@@ -1490,9 +1490,16 @@
         ],
         "parameters": [
           {
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "__Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`",
+            "required": false,
+            "type": "string"
+          },
+          {
             "name": "country",
             "in": "path",
-            "description": "country",
+            "description": "__Mandatory__. The 2 letter country code e.g. 'GB'.",
             "required": true,
             "type": "string"
           }
@@ -1541,7 +1548,7 @@
           {
             "name": "x-yapily-api-version",
             "in": "header",
-            "description": "Api Version",
+            "description": "__Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`",
             "required": false,
             "type": "string"
           },
@@ -1602,7 +1609,7 @@
           {
             "name": "x-yapily-api-version",
             "in": "header",
-            "description": "Api Version",
+            "description": "__Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`",
             "required": false,
             "type": "string"
           },
@@ -1663,14 +1670,14 @@
           {
             "name": "x-yapily-api-version",
             "in": "header",
-            "description": "Api Version",
+            "description": "__Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`",
             "required": false,
             "type": "string"
           },
           {
             "name": "filter[applicationUserId]",
             "in": "query",
-            "description": "Filter consents by your application user Id (applicationUserId)",
+            "description": "__Optional__. Filter records based on the list of `applicationUserId` users provided.",
             "required": false,
             "type": "array",
             "items": {
@@ -1681,7 +1688,7 @@
           {
             "name": "filter[userUuid]",
             "in": "query",
-            "description": "Filter consents by Yapily user Id (userUuid)",
+            "description": "__Optional__. Filter records based on the list of `userUuid` users provided.",
             "required": false,
             "type": "array",
             "items": {
@@ -1692,7 +1699,7 @@
           {
             "name": "filter[institution]",
             "in": "query",
-            "description": "Use this parameter to filter consent by institution, using the Yapily institution Id",
+            "description": "__Optional__. Filter records based on the list of `Institution` provided.",
             "required": false,
             "type": "array",
             "items": {
@@ -1703,7 +1710,7 @@
           {
             "name": "filter[status]",
             "in": "query",
-            "description": "Use this parameter to filter consent by status",
+            "description": "__Optional__. Filter records based on the list of `Consent` [statuses](https://docs.yapily.com/api/#tocS_AuthorisationStatus).",
             "required": false,
             "type": "array",
             "items": {
@@ -1714,14 +1721,14 @@
           {
             "name": "from",
             "in": "query",
-            "description": "Use this parameter to filter consents created after the date specified",
+            "description": "__Optional__. Returned transactions will be on or after this date (yyyy-MM-dd'T'HH:mm:ss.SSSZ). ",
             "required": false,
             "type": "string"
           },
           {
             "name": "before",
             "in": "query",
-            "description": "Use this parameter to filter consents created before the date specified",
+            "description": "__Optional__. Returned transactions will be on or before this date (yyyy-MM-dd'T'HH:mm:ss.SSSZ).",
             "required": false,
             "type": "string"
           },
@@ -1736,7 +1743,7 @@
           {
             "name": "offset",
             "in": "query",
-            "description": "Use this parameter to specify the offset of the results",
+            "description": "__Optional__. The number of transaction records to be skipped. Used primarily with paginated results.",
             "required": false,
             "type": "integer",
             "default": 0,
@@ -1787,15 +1794,15 @@
           {
             "name": "x-yapily-api-version",
             "in": "header",
-            "description": "Api Version",
+            "description": "__Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`",
             "required": false,
             "type": "string"
           },
           {
             "name": "consentId",
             "in": "path",
-            "description": "Consent Id",
-            "required": false,
+            "description": "__Mandatory__. The consent Id of the `Consent` to update.",
+            "required": true,
             "type": "string"
           }
         ],
@@ -1841,21 +1848,21 @@
           {
             "name": "x-yapily-api-version",
             "in": "header",
-            "description": "Api Version",
+            "description": "__Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`",
             "required": false,
             "type": "string"
           },
           {
             "name": "consentId",
             "in": "path",
-            "description": "Consent Id",
-            "required": false,
+            "description": "__Mandatory__. The consent Id of the `Consent` to update.",
+            "required": true,
             "type": "string"
           },
           {
             "name": "forceDelete",
             "in": "query",
-            "description": "Force delete",
+            "description": "__Optional__. Whether to force the deletion.",
             "required": false,
             "type": "boolean",
             "default": true
@@ -2047,23 +2054,30 @@
         ],
         "parameters": [
           {
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "__Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`",
+            "required": false,
+            "type": "string"
+          },
+          {
             "name": "psu-id",
             "in": "header",
-            "description": "PSU ID",
+            "description": "__Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
           {
             "name": "psu-corporate-id",
             "in": "header",
-            "description": "PSU ID CORPORATE",
+            "description": "__Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
           {
             "name": "psu-ip-address",
             "in": "header",
-            "description": "PSU IP ADDRESS",
+            "description": "__Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
@@ -2124,28 +2138,35 @@
           {
             "name": "consentId",
             "in": "path",
-            "description": "consentId",
+            "description": "__Mandatory__. The consent Id of the `Consent` to update.",
             "required": true,
+            "type": "string"
+          },
+          {
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "__Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`",
+            "required": false,
             "type": "string"
           },
           {
             "name": "psu-id",
             "in": "header",
-            "description": "PSU ID",
+            "description": "__Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
           {
             "name": "psu-corporate-id",
             "in": "header",
-            "description": "PSU ID CORPORATE",
+            "description": "__Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
           {
             "name": "psu-ip-address",
             "in": "header",
-            "description": "PSU IP ADDRESS",
+            "description": "__Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
@@ -2206,28 +2227,28 @@
           {
             "name": "x-yapily-api-version",
             "in": "header",
-            "description": "Api Version",
+            "description": "__Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`",
             "required": false,
             "type": "string"
           },
           {
             "name": "psu-id",
             "in": "header",
-            "description": "PSU ID",
+            "description": "__Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
           {
             "name": "psu-corporate-id",
             "in": "header",
-            "description": "PSU ID CORPORATE",
+            "description": "__Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
           {
             "name": "psu-ip-address",
             "in": "header",
-            "description": "PSU IP ADDRESS",
+            "description": "__Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
@@ -2286,37 +2307,37 @@
         ],
         "parameters": [
           {
-            "name": "x-yapily-api-version",
-            "in": "header",
-            "description": "Api Version",
-            "required": false,
+            "name": "consentId",
+            "in": "path",
+            "description": "__Mandatory__. The consent Id of the `Consent` to update.",
+            "required": true,
             "type": "string"
           },
           {
-            "name": "consentId",
-            "in": "path",
-            "description": "Consent Id",
-            "required": true,
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "__Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`",
+            "required": false,
             "type": "string"
           },
           {
             "name": "psu-id",
             "in": "header",
-            "description": "PSU ID",
+            "description": "__Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
           {
             "name": "psu-corporate-id",
             "in": "header",
-            "description": "PSU ID CORPORATE",
+            "description": "__Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
           {
             "name": "psu-ip-address",
             "in": "header",
-            "description": "PSU IP ADDRESS",
+            "description": "__Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
@@ -2377,7 +2398,7 @@
           {
             "name": "x-yapily-api-version",
             "in": "header",
-            "description": "Api Version",
+            "description": "__Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`",
             "required": false,
             "type": "string"
           }
@@ -2426,14 +2447,14 @@
           {
             "name": "x-yapily-api-version",
             "in": "header",
-            "description": "Api Version",
+            "description": "__Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`",
             "required": false,
             "type": "string"
           },
           {
             "name": "consent",
             "in": "header",
-            "description": "Consent Token",
+            "description": "__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             "required": true,
             "type": "string"
           }
@@ -2482,7 +2503,7 @@
           {
             "name": "x-yapily-api-version",
             "in": "header",
-            "description": "Api Version",
+            "description": "__Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`",
             "required": false,
             "type": "string"
           }
@@ -2531,14 +2552,14 @@
           {
             "name": "x-yapily-api-version",
             "in": "header",
-            "description": "Api Version",
+            "description": "__Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`",
             "required": false,
             "type": "string"
           },
           {
             "name": "institutionId",
             "in": "path",
-            "description": "Institution Id",
+            "description": "__Mandatory__. The Yapily institution Id for the `Institution`.",
             "required": true,
             "type": "string"
           }
@@ -2671,7 +2692,7 @@
     "/me": {
       "get": {
         "tags": [
-          "Applications"
+          "Application"
         ],
         "summary": "Returns the details of the application that owns the request credentials",
         "operationId": "getApplicationMeUsingGET",
@@ -2685,7 +2706,7 @@
           {
             "name": "x-yapily-api-version",
             "in": "header",
-            "description": "Api Version",
+            "description": "__Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`",
             "required": false,
             "type": "string"
           }
@@ -2734,28 +2755,28 @@
           {
             "name": "x-yapily-api-version",
             "in": "header",
-            "description": "Api Version",
+            "description": "__Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`",
             "required": false,
             "type": "string"
           },
           {
             "name": "psu-id",
             "in": "header",
-            "description": "PSU ID",
+            "description": "__Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
           {
             "name": "psu-corporate-id",
             "in": "header",
-            "description": "PSU ID CORPORATE",
+            "description": "__Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
           {
             "name": "psu-ip-address",
             "in": "header",
-            "description": "PSU IP ADDRESS",
+            "description": "__Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
@@ -2814,35 +2835,35 @@
           {
             "name": "x-yapily-api-version",
             "in": "header",
-            "description": "Api Version",
+            "description": "__Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`",
             "required": false,
             "type": "string"
           },
           {
             "name": "psu-id",
             "in": "header",
-            "description": "PSU ID",
+            "description": "__Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
           {
             "name": "psu-corporate-id",
             "in": "header",
-            "description": "PSU ID CORPORATE",
+            "description": "__Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
           {
             "name": "psu-ip-address",
             "in": "header",
-            "description": "PSU IP ADDRESS",
+            "description": "__Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
           {
             "name": "consent",
             "in": "header",
-            "description": "Consent Token",
+            "description": "__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             "required": true,
             "type": "string"
           },
@@ -2903,35 +2924,35 @@
           {
             "name": "x-yapily-api-version",
             "in": "header",
-            "description": "Api Version",
+            "description": "__Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`",
             "required": false,
             "type": "string"
           },
           {
             "name": "consent",
             "in": "header",
-            "description": "Consent Token",
+            "description": "__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             "required": true,
             "type": "string"
           },
           {
             "name": "psu-id",
             "in": "header",
-            "description": "PSU ID",
+            "description": "__Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
           {
             "name": "psu-corporate-id",
             "in": "header",
-            "description": "PSU ID CORPORATE",
+            "description": "__Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
           {
             "name": "psu-ip-address",
             "in": "header",
-            "description": "PSU IP ADDRESS",
+            "description": "__Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
@@ -2993,28 +3014,28 @@
           {
             "name": "x-yapily-api-version",
             "in": "header",
-            "description": "Api Version",
+            "description": "__Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`",
             "required": false,
             "type": "string"
           },
           {
             "name": "psu-id",
             "in": "header",
-            "description": "PSU ID",
+            "description": "__Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
           {
             "name": "psu-corporate-id",
             "in": "header",
-            "description": "PSU ID CORPORATE",
+            "description": "__Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
           {
             "name": "psu-ip-address",
             "in": "header",
-            "description": "PSU IP ADDRESS",
+            "description": "__Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
@@ -3076,35 +3097,35 @@
           {
             "name": "x-yapily-api-version",
             "in": "header",
-            "description": "Api Version",
+            "description": "__Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`",
             "required": false,
             "type": "string"
           },
           {
             "name": "consent",
             "in": "header",
-            "description": "Consent Token",
+            "description": "__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             "required": true,
             "type": "string"
           },
           {
             "name": "psu-id",
             "in": "header",
-            "description": "PSU ID",
+            "description": "__Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
           {
             "name": "psu-corporate-id",
             "in": "header",
-            "description": "PSU ID CORPORATE",
+            "description": "__Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
           {
             "name": "psu-ip-address",
             "in": "header",
-            "description": "PSU IP ADDRESS",
+            "description": "__Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
@@ -3165,42 +3186,42 @@
           {
             "name": "x-yapily-api-version",
             "in": "header",
-            "description": "Api Version",
+            "description": "__Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`",
             "required": false,
             "type": "string"
           },
           {
             "name": "paymentId",
             "in": "path",
-            "description": "Payment Id",
+            "description": "__Mandatory__. The payment Id of the payment.",
             "required": true,
             "type": "string"
           },
           {
             "name": "consent",
             "in": "header",
-            "description": "Consent Token",
+            "description": "__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             "required": true,
             "type": "string"
           },
           {
             "name": "psu-id",
             "in": "header",
-            "description": "PSU ID",
+            "description": "__Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
           {
             "name": "psu-corporate-id",
             "in": "header",
-            "description": "PSU ID CORPORATE",
+            "description": "__Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
           {
             "name": "psu-ip-address",
             "in": "header",
-            "description": "PSU IP ADDRESS",
+            "description": "__Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           }
@@ -3237,7 +3258,7 @@
         "tags": [
           "Payments"
         ],
-        "summary": "Get payments detail",
+        "summary": "Get payments details",
         "operationId": "getPaymentsUsingGET",
         "consumes": [
           "application/json"
@@ -3247,44 +3268,44 @@
         ],
         "parameters": [
           {
-            "name": "x-yapily-api-version",
-            "in": "header",
-            "description": "Api Version",
-            "required": false,
+            "name": "paymentId",
+            "in": "path",
+            "description": "__Mandatory__. The payment Id of the payment.",
+            "required": true,
             "type": "string"
           },
           {
-            "name": "paymentId",
-            "in": "path",
-            "description": "Payment Id",
-            "required": true,
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "__Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`",
+            "required": false,
             "type": "string"
           },
           {
             "name": "consent",
             "in": "header",
-            "description": "Consent Token",
+            "description": "__Mandatory__. The `consent-token` containing the user's authorisation to make the request.",
             "required": true,
             "type": "string"
           },
           {
             "name": "psu-id",
             "in": "header",
-            "description": "PSU ID",
+            "description": "__Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
           {
             "name": "psu-corporate-id",
             "in": "header",
-            "description": "PSU ID CORPORATE",
+            "description": "__Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           },
           {
             "name": "psu-ip-address",
             "in": "header",
-            "description": "PSU IP ADDRESS",
+            "description": "__Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
             "required": false,
             "type": "string"
           }
@@ -3333,7 +3354,7 @@
           {
             "name": "x-yapily-api-version",
             "in": "header",
-            "description": "Api Version",
+            "description": "__Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`",
             "required": false,
             "type": "string"
           },
@@ -3394,14 +3415,14 @@
           {
             "name": "x-yapily-api-version",
             "in": "header",
-            "description": "Api Version",
+            "description": "__Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`",
             "required": false,
             "type": "string"
           },
           {
             "name": "filter[applicationUserId]",
             "in": "query",
-            "description": "Filter users by the provided application user Id (applicationUserId) when the user was created.",
+            "description": "__Optional__. Filter records based on the list of `applicationUserId` users provided.",
             "required": false,
             "type": "array",
             "items": {
@@ -3455,7 +3476,7 @@
           {
             "name": "x-yapily-api-version",
             "in": "header",
-            "description": "Api Version",
+            "description": "__Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`",
             "required": false,
             "type": "string"
           },
@@ -3516,14 +3537,14 @@
           {
             "name": "x-yapily-api-version",
             "in": "header",
-            "description": "Api Version",
+            "description": "__Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`",
             "required": false,
             "type": "string"
           },
           {
             "name": "userUuid",
             "in": "path",
-            "description": "User uuid",
+            "description": "__Mandatory__. The Yapily generated UUID for the user.",
             "required": true,
             "type": "string"
           }
@@ -3570,14 +3591,14 @@
           {
             "name": "x-yapily-api-version",
             "in": "header",
-            "description": "Api Version",
+            "description": "__Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`",
             "required": false,
             "type": "string"
           },
           {
             "name": "userUuid",
             "in": "path",
-            "description": "User uuid",
+            "description": "__Mandatory__. The Yapily generated UUID for the user.",
             "required": true,
             "type": "string"
           }
@@ -3626,19 +3647,19 @@
           {
             "name": "x-yapily-api-version",
             "in": "header",
-            "description": "Api Version",
+            "description": "__Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`",
             "required": false,
             "type": "string"
           },
           {
             "name": "userUuid",
             "in": "path",
-            "description": "User uuid",
+            "description": "__Mandatory__. The Yapily generated UUID for the user.",
             "required": true,
             "type": "string"
           },
           {
-            "name": "filter[institution]",
+            "name": "institutionId",
             "in": "query",
             "description": "Use this parameter to filter consent by institution, using the Yapily institution Id. This replaces the deprecated `institutionId` query param.",
             "required": false,
@@ -3699,14 +3720,14 @@
           {
             "name": "x-yapily-api-version",
             "in": "header",
-            "description": "Api Version",
+            "description": "__Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`",
             "required": false,
             "type": "string"
           },
           {
             "name": "userUuid",
             "in": "path",
-            "description": "User uuid",
+            "description": "__Mandatory__. The Yapily generated UUID for the user.",
             "required": true,
             "type": "string"
           },

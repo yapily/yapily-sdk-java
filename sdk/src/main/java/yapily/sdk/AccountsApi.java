@@ -12,13 +12,14 @@ import yapily.sdk.ApiListResponseOfAccount;
 import yapily.sdk.ApiListResponseOfPaymentResponse;
 import yapily.sdk.ApiResponseOfAccount;
 import yapily.sdk.ApiResponseOfAuthorisationRequestResponse;
+import yapily.sdk.ApiResponseOfListOfBeneficiary;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-06-15T17:00:36.568Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-06-16T16:45:36.603Z")
 public class AccountsApi {
   private ApiClient apiClient;
 
@@ -41,10 +42,10 @@ public class AccountsApi {
   /**
    * Get account direct debits
    * 
-   * @param accountId Account Id (required)
-   * @param consent Consent Token (required)
-   * @param xYapilyApiVersion Api Version (optional)
-   * @param limit Use this parameter to limit account&#39;s direct debit results (optional)
+   * @param accountId __Mandatory__. The account Id of the user&#39;s bank account. (required)
+   * @param consent __Mandatory__. The &#x60;consent-token&#x60; containing the user&#39;s authorisation to make the request. (required)
+   * @param xYapilyApiVersion __Optional__. Determines the API version to use. Valid values are &#x60;1.0&#x60; or &#x60;2.0-ALPHA&#x60;. Defaults to &#x60;1.0&#x60; (optional)
+   * @param limit __Optional__. The maximum number of transaction records to be returned. Must be between 0 and 1000. (optional)
    * @return ApiListResponseOfPaymentResponse
    * @throws ApiException if fails to make API call
    */
@@ -96,10 +97,10 @@ if (consent != null)
   /**
    * Get account payments detail
    * 
-   * @param accountId Account Id (required)
-   * @param consent Consent Token (required)
-   * @param xYapilyApiVersion Api Version (optional)
-   * @param limit Use this parameter to limit account&#39;s periodic payment order results (optional)
+   * @param accountId __Mandatory__. The account Id of the user&#39;s bank account. (required)
+   * @param consent __Mandatory__. The &#x60;consent-token&#x60; containing the user&#39;s authorisation to make the request. (required)
+   * @param xYapilyApiVersion __Optional__. Determines the API version to use. Valid values are &#x60;1.0&#x60; or &#x60;2.0-ALPHA&#x60;. Defaults to &#x60;1.0&#x60; (optional)
+   * @param limit __Optional__. The maximum number of transaction records to be returned. Must be between 0 and 1000. (optional)
    * @return ApiListResponseOfPaymentResponse
    * @throws ApiException if fails to make API call
    */
@@ -151,10 +152,10 @@ if (consent != null)
   /**
    * Get account scheduled payments
    * 
-   * @param accountId Account Id (required)
-   * @param consent Consent Token (required)
-   * @param xYapilyApiVersion Api Version (optional)
-   * @param limit Use this parameter to limit account&#39;s scheduled payment results (optional)
+   * @param accountId __Mandatory__. The account Id of the user&#39;s bank account. (required)
+   * @param consent __Mandatory__. The &#x60;consent-token&#x60; containing the user&#39;s authorisation to make the request. (required)
+   * @param xYapilyApiVersion __Optional__. Determines the API version to use. Valid values are &#x60;1.0&#x60; or &#x60;2.0-ALPHA&#x60;. Defaults to &#x60;1.0&#x60; (optional)
+   * @param limit __Optional__. The maximum number of transaction records to be returned. Must be between 0 and 1000. (optional)
    * @return ApiListResponseOfPaymentResponse
    * @throws ApiException if fails to make API call
    */
@@ -206,26 +207,26 @@ if (consent != null)
   /**
    * Get account
    * 
-   * @param consent Consent Token (required)
-   * @param accountId Account Id (required)
-   * @param xYapilyApiVersion Api Version (optional)
-   * @param psuId PSU ID (optional)
-   * @param psuCorporateId PSU ID CORPORATE (optional)
-   * @param psuIpAddress PSU IP ADDRESS (optional)
+   * @param accountId __Mandatory__. The account Id of the user&#39;s bank account. (required)
+   * @param consent __Mandatory__. The &#x60;consent-token&#x60; containing the user&#39;s authorisation to make the request. (required)
+   * @param xYapilyApiVersion __Optional__. Determines the API version to use. Valid values are &#x60;1.0&#x60; or &#x60;2.0-ALPHA&#x60;. Defaults to &#x60;1.0&#x60; (optional)
+   * @param psuId __Conditional__. Represents the user&#39;s login ID for the &#x60;Institution&#x60; to a personal account. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
+   * @param psuCorporateId __Conditional__. Represents the user&#39;s login ID for the &#x60;Institution&#x60; to a business account. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
+   * @param psuIpAddress __Conditional__. The IP address of the PSU. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
    * @return ApiResponseOfAccount
    * @throws ApiException if fails to make API call
    */
-  public ApiResponseOfAccount getAccountUsingGET(String consent, String accountId, String xYapilyApiVersion, String psuId, String psuCorporateId, String psuIpAddress) throws ApiException {
+  public ApiResponseOfAccount getAccountUsingGET(String accountId, String consent, String xYapilyApiVersion, String psuId, String psuCorporateId, String psuIpAddress) throws ApiException {
     Object localVarPostBody = null;
-    
-    // verify the required parameter 'consent' is set
-    if (consent == null) {
-      throw new ApiException(400, "Missing the required parameter 'consent' when calling getAccountUsingGET");
-    }
     
     // verify the required parameter 'accountId' is set
     if (accountId == null) {
       throw new ApiException(400, "Missing the required parameter 'accountId' when calling getAccountUsingGET");
+    }
+    
+    // verify the required parameter 'consent' is set
+    if (consent == null) {
+      throw new ApiException(400, "Missing the required parameter 'consent' when calling getAccountUsingGET");
     }
     
     // create path and map variables
@@ -238,10 +239,10 @@ if (consent != null)
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
 
-    if (xYapilyApiVersion != null)
-      localVarHeaderParams.put("x-yapily-api-version", apiClient.parameterToString(xYapilyApiVersion));
-if (consent != null)
+    if (consent != null)
       localVarHeaderParams.put("consent", apiClient.parameterToString(consent));
+if (xYapilyApiVersion != null)
+      localVarHeaderParams.put("x-yapily-api-version", apiClient.parameterToString(xYapilyApiVersion));
 if (psuId != null)
       localVarHeaderParams.put("psu-id", apiClient.parameterToString(psuId));
 if (psuCorporateId != null)
@@ -268,11 +269,11 @@ if (psuIpAddress != null)
   /**
    * Get accounts
    * 
-   * @param consent Consent Token (required)
-   * @param xYapilyApiVersion Api Version (optional)
-   * @param psuId PSU ID (optional)
-   * @param psuCorporateId PSU ID CORPORATE (optional)
-   * @param psuIpAddress PSU IP ADDRESS (optional)
+   * @param consent __Mandatory__. The &#x60;consent-token&#x60; containing the user&#39;s authorisation to make the request. (required)
+   * @param xYapilyApiVersion __Optional__. Determines the API version to use. Valid values are &#x60;1.0&#x60; or &#x60;2.0-ALPHA&#x60;. Defaults to &#x60;1.0&#x60; (optional)
+   * @param psuId __Conditional__. Represents the user&#39;s login ID for the &#x60;Institution&#x60; to a personal account. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
+   * @param psuCorporateId __Conditional__. Represents the user&#39;s login ID for the &#x60;Institution&#x60; to a business account. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
+   * @param psuIpAddress __Conditional__. The IP address of the PSU. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
    * @return ApiListResponseOfAccount
    * @throws ApiException if fails to make API call
    */
@@ -321,13 +322,66 @@ if (psuIpAddress != null)
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
   /**
+   * Get Beneficiaries
+   * 
+   * @param accountId __Mandatory__. The account Id of the user&#39;s bank account. (required)
+   * @param consent __Mandatory__. The &#x60;consent-token&#x60; containing the user&#39;s authorisation to make the request. (required)
+   * @param xYapilyApiVersion __Optional__. Determines the API version to use. Valid values are &#x60;1.0&#x60; or &#x60;2.0-ALPHA&#x60;. Defaults to &#x60;1.0&#x60; (optional)
+   * @return ApiResponseOfListOfBeneficiary
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponseOfListOfBeneficiary getBeneficiariesUsingGET(String accountId, String consent, String xYapilyApiVersion) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'accountId' is set
+    if (accountId == null) {
+      throw new ApiException(400, "Missing the required parameter 'accountId' when calling getBeneficiariesUsingGET");
+    }
+    
+    // verify the required parameter 'consent' is set
+    if (consent == null) {
+      throw new ApiException(400, "Missing the required parameter 'consent' when calling getBeneficiariesUsingGET");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/accounts/{accountId}/beneficiaries"
+      .replaceAll("\\{" + "accountId" + "\\}", apiClient.escapeString(accountId.toString()));
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+
+    if (xYapilyApiVersion != null)
+      localVarHeaderParams.put("x-yapily-api-version", apiClient.parameterToString(xYapilyApiVersion));
+if (consent != null)
+      localVarHeaderParams.put("consent", apiClient.parameterToString(consent));
+
+    
+    final String[] localVarAccepts = {
+      "application/json;charset=UTF-8"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "basicAuth", "tokenAuth" };
+
+    GenericType<ApiResponseOfListOfBeneficiary> localVarReturnType = new GenericType<ApiResponseOfListOfBeneficiary>() {};
+    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+      }
+  /**
    * Initiate a new account request for user to authorize
    * 
    * @param accountAuthRequest accountAuthRequest (required)
-   * @param xYapilyApiVersion Api Version (optional)
-   * @param psuId PSU ID (optional)
-   * @param psuCorporateId PSU ID CORPORATE (optional)
-   * @param psuIpAddress PSU IP ADDRESS (optional)
+   * @param xYapilyApiVersion __Optional__. Determines the API version to use. Valid values are &#x60;1.0&#x60; or &#x60;2.0-ALPHA&#x60;. Defaults to &#x60;1.0&#x60; (optional)
+   * @param psuId __Conditional__. Represents the user&#39;s login ID for the &#x60;Institution&#x60; to a personal account. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
+   * @param psuCorporateId __Conditional__. Represents the user&#39;s login ID for the &#x60;Institution&#x60; to a business account. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
+   * @param psuIpAddress __Conditional__. The IP address of the PSU. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
    * @return ApiResponseOfAuthorisationRequestResponse
    * @throws ApiException if fails to make API call
    */
@@ -376,11 +430,11 @@ if (psuIpAddress != null)
   /**
    * Re-authorise account request
    * 
-   * @param consent Consent Token (required)
-   * @param xYapilyApiVersion Api Version (optional)
-   * @param psuId PSU ID (optional)
-   * @param psuCorporateId PSU ID CORPORATE (optional)
-   * @param psuIpAddress PSU IP ADDRESS (optional)
+   * @param consent __Mandatory__. The &#x60;consent-token&#x60; containing the user&#39;s authorisation to make the request. (required)
+   * @param xYapilyApiVersion __Optional__. Determines the API version to use. Valid values are &#x60;1.0&#x60; or &#x60;2.0-ALPHA&#x60;. Defaults to &#x60;1.0&#x60; (optional)
+   * @param psuId __Conditional__. Represents the user&#39;s login ID for the &#x60;Institution&#x60; to a personal account. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
+   * @param psuCorporateId __Conditional__. Represents the user&#39;s login ID for the &#x60;Institution&#x60; to a business account. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
+   * @param psuIpAddress __Conditional__. The IP address of the PSU. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
    * @return ApiResponseOfAuthorisationRequestResponse
    * @throws ApiException if fails to make API call
    */
@@ -431,12 +485,12 @@ if (psuIpAddress != null)
   /**
    * Update pre authorize consent for user to authorise account
    * 
-   * @param consent Consent Token (required)
+   * @param consent __Mandatory__. The &#x60;consent-token&#x60; containing the user&#39;s authorisation to make the request. (required)
    * @param accountAuthRequest accountAuthRequest (required)
-   * @param xYapilyApiVersion Api Version (optional)
-   * @param psuId PSU ID (optional)
-   * @param psuCorporateId PSU ID CORPORATE (optional)
-   * @param psuIpAddress PSU IP ADDRESS (optional)
+   * @param xYapilyApiVersion __Optional__. Determines the API version to use. Valid values are &#x60;1.0&#x60; or &#x60;2.0-ALPHA&#x60;. Defaults to &#x60;1.0&#x60; (optional)
+   * @param psuId __Conditional__. Represents the user&#39;s login ID for the &#x60;Institution&#x60; to a personal account. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
+   * @param psuCorporateId __Conditional__. Represents the user&#39;s login ID for the &#x60;Institution&#x60; to a business account. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
+   * @param psuIpAddress __Conditional__. The IP address of the PSU. &lt;br&gt;&lt;br&gt;See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required. (optional)
    * @return ApiResponseOfAuthorisationRequestResponse
    * @throws ApiException if fails to make API call
    */

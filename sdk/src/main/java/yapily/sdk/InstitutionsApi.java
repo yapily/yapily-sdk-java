@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-06-15T17:00:36.568Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-06-16T16:45:36.603Z")
 public class InstitutionsApi {
   private ApiClient apiClient;
 
@@ -39,7 +39,7 @@ public class InstitutionsApi {
   /**
    * Retrieve details for Yapily&#39;s institution features
    * 
-   * @param xYapilyApiVersion Api Version (optional)
+   * @param xYapilyApiVersion __Optional__. Determines the API version to use. Valid values are &#x60;1.0&#x60; or &#x60;2.0-ALPHA&#x60;. Defaults to &#x60;1.0&#x60; (optional)
    * @return ApiListResponseOfFeatureDetails
    * @throws ApiException if fails to make API call
    */
@@ -77,8 +77,8 @@ public class InstitutionsApi {
   /**
    * Retrieves details of a specific institution available in Yapily
    * 
-   * @param institutionId Institution Id (required)
-   * @param xYapilyApiVersion Api Version (optional)
+   * @param institutionId __Mandatory__. The Yapily institution Id for the &#x60;Institution&#x60;. (required)
+   * @param xYapilyApiVersion __Optional__. Determines the API version to use. Valid values are &#x60;1.0&#x60; or &#x60;2.0-ALPHA&#x60;. Defaults to &#x60;1.0&#x60; (optional)
    * @return Institution
    * @throws ApiException if fails to make API call
    */
@@ -122,7 +122,7 @@ public class InstitutionsApi {
   /**
    * Retrieves the list of institutions available in Yapily
    * 
-   * @param xYapilyApiVersion Api Version (optional)
+   * @param xYapilyApiVersion __Optional__. Determines the API version to use. Valid values are &#x60;1.0&#x60; or &#x60;2.0-ALPHA&#x60;. Defaults to &#x60;1.0&#x60; (optional)
    * @return ApiListResponseOfInstitution
    * @throws ApiException if fails to make API call
    */

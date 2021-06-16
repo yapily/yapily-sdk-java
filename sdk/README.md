@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>yapily</groupId>
     <artifactId>yapily-sdk</artifactId>
-    <version>0.0.355</version>
+    <version>0.0.356</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "yapily:yapily-sdk:0.0.355"
+compile "yapily:yapily-sdk:0.0.356"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/yapily-sdk-0.0.355.jar
+* target/yapily-sdk-0.0.356.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -81,10 +81,10 @@ public class AccountsApiExample {
         tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
         AccountsApi apiInstance = new AccountsApi();
-        String accountId = "accountId_example"; // String | Account Id
-        String consent = "consent_example"; // String | Consent Token
-        String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
-        Integer limit = 56; // Integer | Use this parameter to limit account's direct debit results
+        String accountId = "accountId_example"; // String | __Mandatory__. The account Id of the user's bank account.
+        String consent = "consent_example"; // String | __Mandatory__. The `consent-token` containing the user's authorisation to make the request.
+        String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | __Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`
+        Integer limit = 56; // Integer | __Optional__. The maximum number of transaction records to be returned. Must be between 0 and 1000.
         try {
             ApiListResponseOfPaymentResponse result = apiInstance.getAccountDirectDebitsUsingGET(accountId, consent, xYapilyApiVersion, limit);
             System.out.println(result);
@@ -108,9 +108,11 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**getAccountScheduledPaymentsUsingGET**](docs/AccountsApi.md#getAccountScheduledPaymentsUsingGET) | **GET** /accounts/{accountId}/scheduled-payments | Get account scheduled payments
 *AccountsApi* | [**getAccountUsingGET**](docs/AccountsApi.md#getAccountUsingGET) | **GET** /accounts/{accountId} | Get account
 *AccountsApi* | [**getAccountsUsingGET**](docs/AccountsApi.md#getAccountsUsingGET) | **GET** /accounts | Get accounts
+*AccountsApi* | [**getBeneficiariesUsingGET**](docs/AccountsApi.md#getBeneficiariesUsingGET) | **GET** /accounts/{accountId}/beneficiaries | Get Beneficiaries
 *AccountsApi* | [**initiateAccountRequestUsingPOST**](docs/AccountsApi.md#initiateAccountRequestUsingPOST) | **POST** /account-auth-requests | Initiate a new account request for user to authorize
 *AccountsApi* | [**reAuthoriseAccountUsingPATCH**](docs/AccountsApi.md#reAuthoriseAccountUsingPATCH) | **PATCH** /account-auth-requests | Re-authorise account request
 *AccountsApi* | [**updatePreAuthoriseAccountConsentUsingPUT**](docs/AccountsApi.md#updatePreAuthoriseAccountConsentUsingPUT) | **PUT** /account-auth-requests | Update pre authorize consent for user to authorise account
+*ApplicationApi* | [**getApplicationMeUsingGET**](docs/ApplicationApi.md#getApplicationMeUsingGET) | **GET** /me | Returns the details of the application that owns the request credentials
 *ApplicationUsersApi* | [**addUserUsingPOST**](docs/ApplicationUsersApi.md#addUserUsingPOST) | **POST** /users | Add an application user
 *ApplicationUsersApi* | [**deleteUserUsingDELETE**](docs/ApplicationUsersApi.md#deleteUserUsingDELETE) | **DELETE** /users/{userUuid} | Delete an application user and sub-resources (including consent resources on institution APIs if they exist)
 *ApplicationUsersApi* | [**getDeleteUsersJobUsingGET**](docs/ApplicationUsersApi.md#getDeleteUsersJobUsingGET) | **GET** /delete-users/{job-id} | Get details of a user deletion job
@@ -118,9 +120,7 @@ Class | Method | HTTP request | Description
 *ApplicationUsersApi* | [**getUserUsingGET**](docs/ApplicationUsersApi.md#getUserUsingGET) | **GET** /users/{userUuid} | Get an application user
 *ApplicationUsersApi* | [**getUsersUsingGET**](docs/ApplicationUsersApi.md#getUsersUsingGET) | **GET** /users | Get application users
 *ApplicationUsersApi* | [**startDeleteUsersJobUsingPOST**](docs/ApplicationUsersApi.md#startDeleteUsersJobUsingPOST) | **POST** /delete-users | Start a job to delete application users by specifying their identifiers
-*ApplicationsApi* | [**getApplicationMeUsingGET**](docs/ApplicationsApi.md#getApplicationMeUsingGET) | **GET** /me | Returns the details of the application that owns the request credentials
 *BalancesApi* | [**getAccountBalancesUsingGET**](docs/BalancesApi.md#getAccountBalancesUsingGET) | **GET** /accounts/{accountId}/balances | Get account balances
-*BeneficiariesApi* | [**getBeneficiariesUsingGET**](docs/BeneficiariesApi.md#getBeneficiariesUsingGET) | **GET** /accounts/{accountId}/beneficiaries | Get beneficiaries
 *CategoriesApi* | [**getCategoriesUsingGET**](docs/CategoriesApi.md#getCategoriesUsingGET) | **GET** /categories/{country} | Retrieves a list of categories returned by the Yapily Categorisation engine for a given locale
 *ConsentsApi* | [**addConsentUsingPOST**](docs/ConsentsApi.md#addConsentUsingPOST) | **POST** /users/{userUuid}/consents | Post consent
 *ConsentsApi* | [**createConsentWithCodeUsingPOST**](docs/ConsentsApi.md#createConsentWithCodeUsingPOST) | **POST** /consent-auth-code | Post auth-code and auth-state
@@ -147,7 +147,7 @@ Class | Method | HTTP request | Description
 *PaymentsApi* | [**createPaymentUsingPOST**](docs/PaymentsApi.md#createPaymentUsingPOST) | **POST** /payments | Create a payment
 *PaymentsApi* | [**createPaymentWithSortCodeUsingPOST**](docs/PaymentsApi.md#createPaymentWithSortCodeUsingPOST) | **POST** /payment-sortcode | Create a new single payment
 *PaymentsApi* | [**getPaymentStatusUsingGET**](docs/PaymentsApi.md#getPaymentStatusUsingGET) | **GET** /payments/{paymentId} | Get status of a payment
-*PaymentsApi* | [**getPaymentsUsingGET**](docs/PaymentsApi.md#getPaymentsUsingGET) | **GET** /payments/{paymentId}/details | Get payments detail
+*PaymentsApi* | [**getPaymentsUsingGET**](docs/PaymentsApi.md#getPaymentsUsingGET) | **GET** /payments/{paymentId}/details | Get payments details
 *PaymentsApi* | [**updatePaymentAuthorisationUsingPUT**](docs/PaymentsApi.md#updatePaymentAuthorisationUsingPUT) | **PUT** /payment-auth-requests | Update pre authorize consent for user to authorise payment
 *StatementsApi* | [**getStatementFileUsingGET**](docs/StatementsApi.md#getStatementFileUsingGET) | **GET** /accounts/{accountId}/statements/{statementId}/file | Get account statement file
 *StatementsApi* | [**getStatementUsingGET**](docs/StatementsApi.md#getStatementUsingGET) | **GET** /accounts/{accountId}/statements/{statementId} | Get account statement

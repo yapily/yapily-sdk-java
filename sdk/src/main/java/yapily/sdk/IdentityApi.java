@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-06-15T17:00:36.568Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-06-16T16:45:36.603Z")
 public class IdentityApi {
   private ApiClient apiClient;
 
@@ -37,8 +37,8 @@ public class IdentityApi {
   /**
    * Get identity
    * 
-   * @param consent Consent Token (required)
-   * @param xYapilyApiVersion Api Version (optional)
+   * @param consent __Mandatory__. The &#x60;consent-token&#x60; containing the user&#39;s authorisation to make the request. (required)
+   * @param xYapilyApiVersion __Optional__. Determines the API version to use. Valid values are &#x60;1.0&#x60; or &#x60;2.0-ALPHA&#x60;. Defaults to &#x60;1.0&#x60; (optional)
    * @return ApiResponseOfIdentity
    * @throws ApiException if fails to make API call
    */

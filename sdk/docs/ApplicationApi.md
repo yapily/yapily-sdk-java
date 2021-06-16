@@ -1,17 +1,17 @@
-# BeneficiariesApi
+# ApplicationApi
 
 All URIs are relative to *https://api.yapily.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getBeneficiariesUsingGET**](BeneficiariesApi.md#getBeneficiariesUsingGET) | **GET** /accounts/{accountId}/beneficiaries | Get beneficiaries
+[**getApplicationMeUsingGET**](ApplicationApi.md#getApplicationMeUsingGET) | **GET** /me | Returns the details of the application that owns the request credentials
 
 
-<a name="getBeneficiariesUsingGET"></a>
-# **getBeneficiariesUsingGET**
-> ApiResponseOfListOfBeneficiary getBeneficiariesUsingGET(accountId, consent, xYapilyApiVersion)
+<a name="getApplicationMeUsingGET"></a>
+# **getApplicationMeUsingGET**
+> Application getApplicationMeUsingGET(xYapilyApiVersion)
 
-Get beneficiaries
+Returns the details of the application that owns the request credentials
 
 ### Example
 ```java
@@ -20,7 +20,7 @@ Get beneficiaries
 //import yapily.ApiException;
 //import yapily.Configuration;
 //import yapily.auth.*;
-//import yapily.sdk.BeneficiariesApi;
+//import yapily.sdk.ApplicationApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -33,15 +33,13 @@ basicAuth.setPassword("YOUR PASSWORD");
 OAuth tokenAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
 tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
 
-BeneficiariesApi apiInstance = new BeneficiariesApi();
-String accountId = "accountId_example"; // String | Account Id
-String consent = "consent_example"; // String | Consent Token
-String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | Api Version
+ApplicationApi apiInstance = new ApplicationApi();
+String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | __Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`
 try {
-    ApiResponseOfListOfBeneficiary result = apiInstance.getBeneficiariesUsingGET(accountId, consent, xYapilyApiVersion);
+    Application result = apiInstance.getApplicationMeUsingGET(xYapilyApiVersion);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling BeneficiariesApi#getBeneficiariesUsingGET");
+    System.err.println("Exception when calling ApplicationApi#getApplicationMeUsingGET");
     e.printStackTrace();
 }
 ```
@@ -50,13 +48,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **accountId** | **String**| Account Id |
- **consent** | **String**| Consent Token |
- **xYapilyApiVersion** | **String**| Api Version | [optional]
+ **xYapilyApiVersion** | **String**| __Optional__. Determines the API version to use. Valid values are &#x60;1.0&#x60; or &#x60;2.0-ALPHA&#x60;. Defaults to &#x60;1.0&#x60; | [optional]
 
 ### Return type
 
-[**ApiResponseOfListOfBeneficiary**](ApiResponseOfListOfBeneficiary.md)
+[**Application**](Application.md)
 
 ### Authorization
 

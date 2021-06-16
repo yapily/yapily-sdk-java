@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-06-15T17:00:36.568Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2021-06-16T16:45:36.603Z")
 public class StatementsApi {
   private ApiClient apiClient;
 
@@ -38,10 +38,10 @@ public class StatementsApi {
   /**
    * Get account statement file
    * 
-   * @param consent Consent Token (required)
-   * @param accountId Account Id (required)
-   * @param statementId Statement Id (required)
-   * @param xYapilyApiVersion Api Version (optional)
+   * @param consent __Mandatory__. The &#x60;consent-token&#x60; containing the user&#39;s authorisation to make the request. (required)
+   * @param accountId __Mandatory__. The account Id of the user&#39;s bank account. (required)
+   * @param statementId __Mandatory__. The statement Id of the statement file. (required)
+   * @param xYapilyApiVersion __Optional__. Determines the API version to use. Valid values are &#x60;1.0&#x60; or &#x60;2.0-ALPHA&#x60;. Defaults to &#x60;1.0&#x60; (optional)
    * @return String
    * @throws ApiException if fails to make API call
    */
@@ -98,10 +98,10 @@ if (consent != null)
   /**
    * Get account statement
    * 
-   * @param consent Consent Token (required)
-   * @param accountId Account Id (required)
-   * @param statementId Statement Id (required)
-   * @param xYapilyApiVersion Api Version (optional)
+   * @param consent __Mandatory__. The &#x60;consent-token&#x60; containing the user&#39;s authorisation to make the request. (required)
+   * @param accountId __Mandatory__. The account Id of the user&#39;s bank account. (required)
+   * @param statementId __Mandatory__. The statement Id of the statement file. (required)
+   * @param xYapilyApiVersion __Optional__. Determines the API version to use. Valid values are &#x60;1.0&#x60; or &#x60;2.0-ALPHA&#x60;. Defaults to &#x60;1.0&#x60; (optional)
    * @return ApiResponseOfAccountStatement
    * @throws ApiException if fails to make API call
    */
@@ -158,14 +158,14 @@ if (consent != null)
   /**
    * Get account statements
    * 
-   * @param consent Consent Token (required)
-   * @param accountId Account Id (required)
-   * @param xYapilyApiVersion Api Version (optional)
-   * @param from from (optional)
-   * @param before before (optional)
-   * @param limit limit (optional)
-   * @param sort sort (optional)
-   * @param offset offset (optional)
+   * @param consent __Mandatory__. The &#x60;consent-token&#x60; containing the user&#39;s authorisation to make the request. (required)
+   * @param accountId __Mandatory__. The account Id of the user&#39;s bank account. (required)
+   * @param xYapilyApiVersion __Optional__. Determines the API version to use. Valid values are &#x60;1.0&#x60; or &#x60;2.0-ALPHA&#x60;. Defaults to &#x60;1.0&#x60; (optional)
+   * @param from __Optional__. Returned transactions will be on or after this date (yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ).  (optional)
+   * @param before __Optional__. Returned transactions will be on or before this date (yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ). (optional)
+   * @param limit __Optional__. The maximum number of transaction records to be returned. Must be between 0 and 1000. (optional)
+   * @param sort __Optional__. Sort transaction records by date ascending with &#39;date&#39; or descending with &#39;-date&#39;. The default sort order is descending (optional)
+   * @param offset __Optional__. The number of transaction records to be skipped. Used primarily with paginated results. (optional)
    * @return ApiListResponseOfAccountStatement
    * @throws ApiException if fails to make API call
    */
