@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **forwardParameters** | **List&lt;String&gt;** |  |  [optional]
 **institutionId** | **String** |  | 
 **callback** | **String** |  | 
+**redirect** | [**RedirectRequest**](RedirectRequest.md) |  |  [optional]
 **oneTimeToken** | **Boolean** |  | 
 
 

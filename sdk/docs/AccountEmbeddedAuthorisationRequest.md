@@ -9,8 +9,9 @@ Name | Type | Description | Notes
 **forwardParameters** | **List&lt;String&gt;** |  |  [optional]
 **institutionId** | **String** |  | 
 **callback** | **String** |  | 
-**oneTimeToken** | **Boolean** |  | 
+**redirect** | [**RedirectRequest**](RedirectRequest.md) |  |  [optional]
 **accountRequest** | [**AccountRequest**](AccountRequest.md) |  |  [optional]
+**oneTimeToken** | **Boolean** |  | 
 **userCredentials** | [**UserCredentials**](UserCredentials.md) |  |  [optional]
 **selectedScaMethod** | [**ScaMethod**](ScaMethod.md) |  |  [optional]
 **scaCode** | **String** |  |  [optional]

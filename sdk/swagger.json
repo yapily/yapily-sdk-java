@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "To access endpoints that require authentication, use your application key and secret created in the Dashboard (https://dashboard.yapily.com)",
-    "version": "0.0.359",
+    "version": "0.0.360",
     "title": "Yapily API"
   },
   "host": "api.yapily.com",
@@ -3908,6 +3908,9 @@
         "callback": {
           "type": "string"
         },
+        "redirect": {
+          "$ref": "#/definitions/RedirectRequest"
+        },
         "oneTimeToken": {
           "type": "boolean",
           "example": false
@@ -5012,6 +5015,9 @@
         "callback": {
           "type": "string"
         },
+        "redirect": {
+          "$ref": "#/definitions/RedirectRequest"
+        },
         "oneTimeToken": {
           "type": "boolean",
           "example": false
@@ -5080,6 +5086,9 @@
         },
         "callback": {
           "type": "string"
+        },
+        "redirect": {
+          "$ref": "#/definitions/RedirectRequest"
         },
         "oneTimeToken": {
           "type": "boolean",
@@ -5409,12 +5418,15 @@
         "callback": {
           "type": "string"
         },
-        "oneTimeToken": {
-          "type": "boolean",
-          "example": false
+        "redirect": {
+          "$ref": "#/definitions/RedirectRequest"
         },
         "accountRequest": {
           "$ref": "#/definitions/AccountRequest"
+        },
+        "oneTimeToken": {
+          "type": "boolean",
+          "example": false
         },
         "userCredentials": {
           "$ref": "#/definitions/UserCredentials"
@@ -5633,6 +5645,17 @@
         }
       },
       "description": "The group of tiers or bands for which credit interest can be applied."
+    },
+    "RedirectRequest": {
+      "type": "object",
+      "required": [
+        "url"
+      ],
+      "properties": {
+        "url": {
+          "type": "string"
+        }
+      }
     },
     "ApiListResponseOfPaymentResponse": {
       "type": "object",
@@ -6184,6 +6207,9 @@
           "type": "boolean",
           "example": false
         },
+        "redirect": {
+          "$ref": "#/definitions/RedirectRequest"
+        },
         "paymentRequest": {
           "$ref": "#/definitions/BulkPaymentRequest"
         }
@@ -6620,6 +6646,9 @@
         },
         "callback": {
           "type": "string"
+        },
+        "redirect": {
+          "$ref": "#/definitions/RedirectRequest"
         },
         "oneTimeToken": {
           "type": "boolean",
@@ -7621,12 +7650,15 @@
         "callback": {
           "type": "string"
         },
-        "oneTimeToken": {
-          "type": "boolean",
-          "example": false
+        "redirect": {
+          "$ref": "#/definitions/RedirectRequest"
         },
         "accountRequest": {
           "$ref": "#/definitions/AccountRequest"
+        },
+        "oneTimeToken": {
+          "type": "boolean",
+          "example": false
         }
       }
     },

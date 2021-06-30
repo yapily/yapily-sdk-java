@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **forwardParameters** | **List&lt;String&gt;** |  |  [optional]
 **institutionId** | **String** |  | 
 **callback** | **String** |  | 
+**redirect** | [**RedirectRequest**](RedirectRequest.md) |  |  [optional]
 **oneTimeToken** | **Boolean** |  | 
 **totalMaxAmount** | [**BigDecimal**](BigDecimal.md) |  |  [optional]
 **totalMaxAmountFrequency** | [**TotalMaxAmountFrequencyEnum**](#TotalMaxAmountFrequencyEnum) |  |  [optional]

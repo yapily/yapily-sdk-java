@@ -22,13 +22,13 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * ResponseMeta
+ * RedirectRequest
  */
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ResponseMeta {
-  @JsonProperty("tracingId")
-  private String tracingId = null;
+public class RedirectRequest {
+  @JsonProperty("url")
+  private String url = null;
 
 }
 
