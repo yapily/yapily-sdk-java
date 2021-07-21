@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "To access endpoints that require authentication, use your application key and secret created in the Dashboard (https://dashboard.yapily.com)",
-    "version": "0.0.365",
+    "version": "0.0.366",
     "title": "Yapily API"
   },
   "host": "api.yapily.com",
@@ -2210,6 +2210,177 @@
         ]
       }
     },
+    "/embedded-bulk-payment-auth-requests": {
+      "post": {
+        "tags": [
+          "Embedded Payments"
+        ],
+        "summary": "Initiate an embedded bulk payment for user to authorise",
+        "operationId": "createEmbeddedBulkPaymentAuthorisationUsingPOST",
+        "consumes": [
+          "application/json;charset=UTF-8"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "__Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "psu-id",
+            "in": "header",
+            "description": "__Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "psu-corporate-id",
+            "in": "header",
+            "description": "__Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "psu-ip-address",
+            "in": "header",
+            "description": "__Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "bulkPaymentEmbeddedAuthorisationRequest",
+            "description": "bulkPaymentEmbeddedAuthorisationRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/BulkPaymentEmbeddedAuthorisationRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ]
+      }
+    },
+    "/embedded-bulk-payment-auth-requests/{consentId}": {
+      "put": {
+        "tags": [
+          "Embedded Payments"
+        ],
+        "summary": "Update an embedded bulk payment initiation with SCA info",
+        "operationId": "updateEmbeddedBulkPaymentAuthorisationUsingPUT",
+        "consumes": [
+          "application/json;charset=UTF-8"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "name": "consentId",
+            "in": "path",
+            "description": "__Mandatory__. The consent Id of the `Consent` to update.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "x-yapily-api-version",
+            "in": "header",
+            "description": "__Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "psu-id",
+            "in": "header",
+            "description": "__Conditional__. Represents the user's login ID for the `Institution` to a personal account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "psu-corporate-id",
+            "in": "header",
+            "description": "__Conditional__. Represents the user's login ID for the `Institution` to a business account. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "psu-ip-address",
+            "in": "header",
+            "description": "__Conditional__. The IP address of the PSU. <br><br>See [PSU identifiers](https://docs.yapily.com/knowledge/psu_identifiers/) to see if this header is required.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "bulkPaymentEmbeddedAuthorisationRequest",
+            "description": "bulkPaymentEmbeddedAuthorisationRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/BulkPaymentEmbeddedAuthorisationRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          },
+          {
+            "tokenAuth": []
+          }
+        ]
+      }
+    },
     "/embedded-payment-auth-requests": {
       "post": {
         "tags": [
@@ -4138,6 +4309,8 @@
             "type": "string",
             "enum": [
               "INITIATE_PRE_AUTHORISATION",
+              "INITIATE_PRE_AUTHORISATION_ACCOUNTS",
+              "INITIATE_PRE_AUTHORISATION_PAYMENTS",
               "INITIATE_ACCOUNT_REQUEST",
               "INITIATE_EMBEDDED_ACCOUNT_REQUEST",
               "ACCOUNT_REQUEST_DETAILS",
@@ -4287,6 +4460,8 @@
             "type": "string",
             "enum": [
               "INITIATE_PRE_AUTHORISATION",
+              "INITIATE_PRE_AUTHORISATION_ACCOUNTS",
+              "INITIATE_PRE_AUTHORISATION_PAYMENTS",
               "INITIATE_ACCOUNT_REQUEST",
               "INITIATE_EMBEDDED_ACCOUNT_REQUEST",
               "ACCOUNT_REQUEST_DETAILS",
@@ -4519,6 +4694,8 @@
             "type": "string",
             "enum": [
               "INITIATE_PRE_AUTHORISATION",
+              "INITIATE_PRE_AUTHORISATION_ACCOUNTS",
+              "INITIATE_PRE_AUTHORISATION_PAYMENTS",
               "INITIATE_ACCOUNT_REQUEST",
               "INITIATE_EMBEDDED_ACCOUNT_REQUEST",
               "ACCOUNT_REQUEST_DETAILS",
@@ -4756,6 +4933,8 @@
             "type": "string",
             "enum": [
               "INITIATE_PRE_AUTHORISATION",
+              "INITIATE_PRE_AUTHORISATION_ACCOUNTS",
+              "INITIATE_PRE_AUTHORISATION_PAYMENTS",
               "INITIATE_ACCOUNT_REQUEST",
               "INITIATE_EMBEDDED_ACCOUNT_REQUEST",
               "ACCOUNT_REQUEST_DETAILS",
@@ -6949,6 +7128,8 @@
             "type": "string",
             "enum": [
               "INITIATE_PRE_AUTHORISATION",
+              "INITIATE_PRE_AUTHORISATION_ACCOUNTS",
+              "INITIATE_PRE_AUTHORISATION_PAYMENTS",
               "INITIATE_ACCOUNT_REQUEST",
               "INITIATE_EMBEDDED_ACCOUNT_REQUEST",
               "ACCOUNT_REQUEST_DETAILS",
@@ -7329,6 +7510,54 @@
         }
       }
     },
+    "BulkPaymentEmbeddedAuthorisationRequest": {
+      "type": "object",
+      "required": [
+        "callback",
+        "institutionId",
+        "oneTimeToken",
+        "paymentRequest"
+      ],
+      "properties": {
+        "userUuid": {
+          "type": "string"
+        },
+        "applicationUserId": {
+          "type": "string"
+        },
+        "forwardParameters": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "institutionId": {
+          "type": "string"
+        },
+        "callback": {
+          "type": "string"
+        },
+        "oneTimeToken": {
+          "type": "boolean",
+          "example": false
+        },
+        "redirect": {
+          "$ref": "#/definitions/RedirectRequest"
+        },
+        "paymentRequest": {
+          "$ref": "#/definitions/BulkPaymentRequest"
+        },
+        "userCredentials": {
+          "$ref": "#/definitions/UserCredentials"
+        },
+        "selectedScaMethod": {
+          "$ref": "#/definitions/ScaMethod"
+        },
+        "scaCode": {
+          "type": "string"
+        }
+      }
+    },
     "ApiResponseOfAccountStatement": {
       "type": "object",
       "properties": {
@@ -7475,6 +7704,8 @@
           "type": "string",
           "enum": [
             "INITIATE_PRE_AUTHORISATION",
+            "INITIATE_PRE_AUTHORISATION_ACCOUNTS",
+            "INITIATE_PRE_AUTHORISATION_PAYMENTS",
             "INITIATE_ACCOUNT_REQUEST",
             "INITIATE_EMBEDDED_ACCOUNT_REQUEST",
             "ACCOUNT_REQUEST_DETAILS",
@@ -8602,6 +8833,8 @@
             "type": "string",
             "enum": [
               "INITIATE_PRE_AUTHORISATION",
+              "INITIATE_PRE_AUTHORISATION_ACCOUNTS",
+              "INITIATE_PRE_AUTHORISATION_PAYMENTS",
               "INITIATE_ACCOUNT_REQUEST",
               "INITIATE_EMBEDDED_ACCOUNT_REQUEST",
               "ACCOUNT_REQUEST_DETAILS",
@@ -8875,6 +9108,8 @@
             "type": "string",
             "enum": [
               "INITIATE_PRE_AUTHORISATION",
+              "INITIATE_PRE_AUTHORISATION_ACCOUNTS",
+              "INITIATE_PRE_AUTHORISATION_PAYMENTS",
               "INITIATE_ACCOUNT_REQUEST",
               "INITIATE_EMBEDDED_ACCOUNT_REQUEST",
               "ACCOUNT_REQUEST_DETAILS",

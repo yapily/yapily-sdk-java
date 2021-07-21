@@ -20,21 +20,19 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.math.BigDecimal;
-import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import yapily.sdk.PaymentRequest;
+import yapily.sdk.BulkPaymentRequest;
 import yapily.sdk.RedirectRequest;
 import yapily.sdk.ScaMethod;
 import yapily.sdk.UserCredentials;
 
 /**
- * PaymentEmbeddedAuthorisationRequest
+ * BulkPaymentEmbeddedAuthorisationRequest
  */
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class PaymentEmbeddedAuthorisationRequest {
+public class BulkPaymentEmbeddedAuthorisationRequest {
   @JsonProperty("userUuid")
   private String userUuid = null;
 
@@ -50,71 +48,14 @@ public class PaymentEmbeddedAuthorisationRequest {
   @JsonProperty("callback")
   private String callback = null;
 
-  @JsonProperty("redirect")
-  private RedirectRequest redirect = null;
-
   @JsonProperty("oneTimeToken")
   private Boolean oneTimeToken = null;
 
-  @JsonProperty("totalMaxAmount")
-  private BigDecimal totalMaxAmount = null;
-
-  /**
-   * Gets or Sets totalMaxAmountFrequency
-   */
-  public enum TotalMaxAmountFrequencyEnum {
-    DAILY("DAILY"),
-    
-    WEEKLY("WEEKLY"),
-    
-    MONTHLY("MONTHLY"),
-    
-    YEARLY("YEARLY");
-
-    private String value;
-
-    TotalMaxAmountFrequencyEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static TotalMaxAmountFrequencyEnum fromValue(String text) {
-      for (TotalMaxAmountFrequencyEnum b : TotalMaxAmountFrequencyEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
-  @JsonProperty("totalMaxAmountFrequency")
-  private TotalMaxAmountFrequencyEnum totalMaxAmountFrequency = null;
-
-  @JsonProperty("maxAmountPerRequest")
-  private BigDecimal maxAmountPerRequest = null;
-
-  @JsonProperty("startsAt")
-  private OffsetDateTime startsAt = null;
-
-  @JsonProperty("expiresAt")
-  private OffsetDateTime expiresAt = null;
-
-  @JsonProperty("allowOverdraft")
-  private Boolean allowOverdraft = null;
+  @JsonProperty("redirect")
+  private RedirectRequest redirect = null;
 
   @JsonProperty("paymentRequest")
-  private PaymentRequest paymentRequest = null;
+  private BulkPaymentRequest paymentRequest = null;
 
   @JsonProperty("userCredentials")
   private UserCredentials userCredentials = null;

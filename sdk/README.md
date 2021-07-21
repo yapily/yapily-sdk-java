@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>yapily</groupId>
     <artifactId>yapily-sdk</artifactId>
-    <version>0.0.365</version>
+    <version>0.0.366</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "yapily:yapily-sdk:0.0.365"
+compile "yapily:yapily-sdk:0.0.366"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/yapily-sdk-0.0.365.jar
+* target/yapily-sdk-0.0.366.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -132,7 +132,9 @@ Class | Method | HTTP request | Description
 *ConsentsApi* | [**getUserConsentsUsingGET**](docs/ConsentsApi.md#getUserConsentsUsingGET) | **GET** /users/{userUuid}/consents | Get latest user consents
 *EmbeddedAccountsApi* | [**initiateEmbeddedAccountRequestUsingPOST**](docs/EmbeddedAccountsApi.md#initiateEmbeddedAccountRequestUsingPOST) | **POST** /embedded-account-auth-requests | Initiate a new embedded account request for user to authorize
 *EmbeddedAccountsApi* | [**updateEmbeddedAccountRequestUsingPUT**](docs/EmbeddedAccountsApi.md#updateEmbeddedAccountRequestUsingPUT) | **PUT** /embedded-account-auth-requests/{consentId} | Update an embedded account request with SCA info
+*EmbeddedPaymentsApi* | [**createEmbeddedBulkPaymentAuthorisationUsingPOST**](docs/EmbeddedPaymentsApi.md#createEmbeddedBulkPaymentAuthorisationUsingPOST) | **POST** /embedded-bulk-payment-auth-requests | Initiate an embedded bulk payment for user to authorise
 *EmbeddedPaymentsApi* | [**createEmbeddedPaymentAuthorisationUsingPOST**](docs/EmbeddedPaymentsApi.md#createEmbeddedPaymentAuthorisationUsingPOST) | **POST** /embedded-payment-auth-requests | Initiate an embedded payment for user to authorise
+*EmbeddedPaymentsApi* | [**updateEmbeddedBulkPaymentAuthorisationUsingPUT**](docs/EmbeddedPaymentsApi.md#updateEmbeddedBulkPaymentAuthorisationUsingPUT) | **PUT** /embedded-bulk-payment-auth-requests/{consentId} | Update an embedded bulk payment initiation with SCA info
 *EmbeddedPaymentsApi* | [**updateEmbeddedPaymentAuthorisationUsingPUT**](docs/EmbeddedPaymentsApi.md#updateEmbeddedPaymentAuthorisationUsingPUT) | **PUT** /embedded-payment-auth-requests/{consentId} | Update an embedded payment initiation with SCA info
 *IdentityApi* | [**getIdentityUsingGET**](docs/IdentityApi.md#getIdentityUsingGET) | **GET** /identity | Get identity
 *InstitutionsApi* | [**getFeatureDetailsUsingGET**](docs/InstitutionsApi.md#getFeatureDetailsUsingGET) | **GET** /features | Retrieve details for Yapily&#39;s institution features
@@ -216,6 +218,7 @@ Class | Method | HTTP request | Description
  - [Beneficiary](docs/Beneficiary.md)
  - [Branch](docs/Branch.md)
  - [BulkPaymentAuthorisationRequest](docs/BulkPaymentAuthorisationRequest.md)
+ - [BulkPaymentEmbeddedAuthorisationRequest](docs/BulkPaymentEmbeddedAuthorisationRequest.md)
  - [BulkPaymentRequest](docs/BulkPaymentRequest.md)
  - [BulkUserDelete](docs/BulkUserDelete.md)
  - [BulkUserDeleteDetails](docs/BulkUserDeleteDetails.md)
