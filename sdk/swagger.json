@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "To access endpoints that require authentication, use your application key and secret created in the Dashboard (https://dashboard.yapily.com)",
-    "version": "0.0.401",
+    "version": "1.44.0",
     "title": "Yapily API"
   },
   "host": "api.yapily.com",
@@ -1145,7 +1145,7 @@
           {
             "name": "with",
             "in": "query",
-            "description": "__Optional__. Can be `categories` or `merchant`. When set, will include enrichment data in the transactions returned. <br><br>Enrichment data is optional, e.g. when 'merchant' enrichment data is requested, the enrichment response will include merchant data only if it can be evaluated from the transaction.",
+            "description": "__Optional__. Can be `categories`, `categories-business` or `merchant`. When set, will include enrichment data in the transactions returned. <br><br>Enrichment data is optional, e.g. when 'merchant' enrichment data is requested, the enrichment response will include merchant data only if it can be evaluated from the transaction.",
             "required": false,
             "type": "array",
             "items": {
@@ -4272,6 +4272,7 @@
             "UNKNOWN",
             "INVALID",
             "AWAITING_PRE_AUTHORIZATION",
+            "AWAITING_DECOUPLED_PRE_AUTHORIZATION",
             "PRE_AUTHORIZED",
             "AWAITING_DECOUPLED_AUTHORIZATION",
             "AWAITING_SCA_METHOD",
@@ -4657,6 +4658,7 @@
             "UNKNOWN",
             "INVALID",
             "AWAITING_PRE_AUTHORIZATION",
+            "AWAITING_DECOUPLED_PRE_AUTHORIZATION",
             "PRE_AUTHORIZED",
             "AWAITING_DECOUPLED_AUTHORIZATION",
             "AWAITING_SCA_METHOD",
@@ -4896,6 +4898,7 @@
             "UNKNOWN",
             "INVALID",
             "AWAITING_PRE_AUTHORIZATION",
+            "AWAITING_DECOUPLED_PRE_AUTHORIZATION",
             "PRE_AUTHORIZED",
             "AWAITING_DECOUPLED_AUTHORIZATION",
             "AWAITING_SCA_METHOD",
@@ -8147,6 +8150,27 @@
         "transactionHash": {
           "description": "TransactionHash",
           "$ref": "#/definitions/TransactionHash"
+        },
+        "cleansedDescription": {
+          "type": "string",
+          "description": "CleansedDescription"
+        },
+        "merchant": {
+          "description": "Merchant",
+          "$ref": "#/definitions/Merchant"
+        },
+        "location": {
+          "type": "string",
+          "description": "Location"
+        },
+        "paymentProcessor": {
+          "type": "string",
+          "description": "PaymentProcessor"
+        },
+        "correctedDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "CorrectedDate"
         }
       }
     },
@@ -8208,11 +8232,23 @@
     "Category": {
       "type": "object",
       "properties": {
-        "label": {
-          "type": "string"
-        },
         "id": {
-          "type": "string"
+          "type": "string",
+          "description": "Category ID"
+        },
+        "label": {
+          "type": "string",
+          "description": "Category label"
+        },
+        "country": {
+          "type": "string",
+          "description": "Category country"
+        },
+        "subcategories": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Subcategory"
+          }
         }
       }
     },
@@ -8549,9 +8585,16 @@
     "Categorisation": {
       "type": "object",
       "properties": {
-        "category": {
-          "description": "Category",
-          "$ref": "#/definitions/Category"
+        "categories": {
+          "type": "array",
+          "description": "Categories",
+          "items": {
+            "type": "string"
+          }
+        },
+        "source": {
+          "type": "string",
+          "description": "Source"
         }
       }
     },
@@ -8796,6 +8839,7 @@
             "UNKNOWN",
             "INVALID",
             "AWAITING_PRE_AUTHORIZATION",
+            "AWAITING_DECOUPLED_PRE_AUTHORIZATION",
             "PRE_AUTHORIZED",
             "AWAITING_DECOUPLED_AUTHORIZATION",
             "AWAITING_SCA_METHOD",
@@ -8914,6 +8958,9 @@
         "authorizedAt": {
           "type": "string",
           "format": "date-time"
+        },
+        "explanation": {
+          "type": "string"
         },
         "scaMethods": {
           "type": "array",
@@ -9071,6 +9118,7 @@
             "UNKNOWN",
             "INVALID",
             "AWAITING_PRE_AUTHORIZATION",
+            "AWAITING_DECOUPLED_PRE_AUTHORIZATION",
             "PRE_AUTHORIZED",
             "AWAITING_DECOUPLED_AUTHORIZATION",
             "AWAITING_SCA_METHOD",
@@ -9189,6 +9237,9 @@
         "authorizedAt": {
           "type": "string",
           "format": "date-time"
+        },
+        "explanation": {
+          "type": "string"
         },
         "institutionConsentId": {
           "type": "string"

@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **state** | **String** |  |  [optional]
 **qrCodeUrl** | **String** |  |  [optional]
 **authorizedAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
+**explanation** | **String** |  |  [optional]
 **scaMethods** | [**List&lt;ScaMethod&gt;**](ScaMethod.md) |  |  [optional]
 **institutionConsentId** | **String** |  |  [optional]
 **selectedScaMethod** | [**ScaMethod**](ScaMethod.md) |  |  [optional]
@@ -45,6 +46,7 @@ EXPIRED | &quot;EXPIRED&quot;
 UNKNOWN | &quot;UNKNOWN&quot;
 INVALID | &quot;INVALID&quot;
 AWAITING_PRE_AUTHORIZATION | &quot;AWAITING_PRE_AUTHORIZATION&quot;
+AWAITING_DECOUPLED_PRE_AUTHORIZATION | &quot;AWAITING_DECOUPLED_PRE_AUTHORIZATION&quot;
 PRE_AUTHORIZED | &quot;PRE_AUTHORIZED&quot;
 AWAITING_DECOUPLED_AUTHORIZATION | &quot;AWAITING_DECOUPLED_AUTHORIZATION&quot;
 AWAITING_SCA_METHOD | &quot;AWAITING_SCA_METHOD&quot;

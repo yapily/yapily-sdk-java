@@ -4,7 +4,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**category** | [**Category**](Category.md) | Category |  [optional]
+**categories** | **List&lt;String&gt;** | Categories |  [optional]
+**source** | **String** | Source |  [optional]
 
 
 
