@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>yapily</groupId>
     <artifactId>yapily-sdk</artifactId>
-    <version>1.73.0</version>
+    <version>1.81.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "yapily:yapily-sdk:1.73.0"
+compile "yapily:yapily-sdk:1.81.0"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/yapily-sdk-1.73.0.jar
+* target/yapily-sdk-1.81.0.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -242,6 +242,7 @@ Class | Method | HTTP request | Description
  - [Eligibility](docs/Eligibility.md)
  - [EligibilityOtherEligibility](docs/EligibilityOtherEligibility.md)
  - [Enrichment](docs/Enrichment.md)
+ - [EnrichmentMerchant](docs/EnrichmentMerchant.md)
  - [ExchangeRateInformation](docs/ExchangeRateInformation.md)
  - [ExchangeRateInformationResponse](docs/ExchangeRateInformationResponse.md)
  - [FeatureDetails](docs/FeatureDetails.md)

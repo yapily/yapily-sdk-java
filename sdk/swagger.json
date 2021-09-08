@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "To access endpoints that require authentication, use your application key and secret created in the Dashboard (https://dashboard.yapily.com)",
-    "version": "1.69.0",
+    "version": "1.73.0",
     "title": "Yapily API"
   },
   "host": "api.yapily.com",
@@ -6469,6 +6469,19 @@
       },
       "description": "Enter a new code , name and description for any other ATM accessibility options"
     },
+    "EnrichmentMerchant": {
+      "type": "object",
+      "properties": {
+        "merchantName": {
+          "type": "string",
+          "description": "MerchantName"
+        },
+        "parentGroup": {
+          "type": "string",
+          "description": "ParentGroup"
+        }
+      }
+    },
     "InstitutionError": {
       "type": "object",
       "properties": {
@@ -8163,7 +8176,7 @@
         },
         "merchant": {
           "description": "Merchant",
-          "$ref": "#/definitions/Merchant"
+          "$ref": "#/definitions/EnrichmentMerchant"
         },
         "location": {
           "type": "string",

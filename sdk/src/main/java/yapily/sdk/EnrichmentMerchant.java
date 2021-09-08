@@ -22,19 +22,16 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * SSAResult
+ * EnrichmentMerchant
  */
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class SSAResult {
-  @JsonProperty("applicationId")
-  private String applicationId = null;
+public class EnrichmentMerchant {
+  @JsonProperty("merchantName")
+  private String merchantName = null;
 
-  @JsonProperty("institutionId")
-  private String institutionId = null;
-
-  @JsonProperty("ssaJwt")
-  private String ssaJwt = null;
+  @JsonProperty("parentGroup")
+  private String parentGroup = null;
 
 }
 
