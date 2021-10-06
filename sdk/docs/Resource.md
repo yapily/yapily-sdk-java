@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **description** | **String** |  |  [optional]
-**file** | [**File**](File.md) |  |  [optional]
+**file** | [**java.io.File**](java.io.File.md) |  |  [optional]
 **filename** | **String** |  |  [optional]
 **inputStream** | [**InputStream**](InputStream.md) |  |  [optional]
 **open** | **Boolean** |  |  [optional]

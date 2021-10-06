@@ -5,9 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **accessToken** | **String** |  | 
-**refreshToken** | **String** |  | 
+**refreshToken** | **String** |  |  [optional]
 **institutionId** | **String** |  | 
-**scope** | **String** |  | 
+**scope** | **String** |  |  [optional]
 
 
 

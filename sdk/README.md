@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>yapily</groupId>
     <artifactId>yapily-sdk</artifactId>
-    <version>1.90.0</version>
+    <version>1.120.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "yapily:yapily-sdk:1.90.0"
+compile "yapily:yapily-sdk:1.120.0"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/yapily-sdk-1.90.0.jar
+* target/yapily-sdk-1.120.0.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -351,13 +351,13 @@ Authentication schemes defined for the API:
 - **Flow**: application
 - **Authorization URL**: 
 - **Scopes**: 
-  - institutions: Getting institution data
+  - user: Manage users
+  - consent: Consents access
+  - accounts: Account data
   - payments: Executing payments
   - certificate: Manage certificates
-  - accounts: Account data
-  - consent: Consents access
-  - user: Manage users
   - register: Institution registration management
+  - institutions: Getting institution data
 
 
 ## Recommendation

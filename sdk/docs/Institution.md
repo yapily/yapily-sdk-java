@@ -4,24 +4,15 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** |  |  [optional]
-**name** | **String** |  |  [optional]
-**fullName** | **String** |  |  [optional]
-**countries** | [**List&lt;Country&gt;**](Country.md) |  |  [optional]
-**environmentType** | [**EnvironmentTypeEnum**](#EnvironmentTypeEnum) |  |  [optional]
+**countries** | [**List&lt;Country&gt;**](Country.md) | An array of &#x60;Country&#x60; denoting which regions the &#x60;Institution&#x60; provides coverage for |  [optional]
 **credentialsType** | [**CredentialsTypeEnum**](#CredentialsTypeEnum) |  |  [optional]
-**media** | [**List&lt;Media&gt;**](Media.md) |  |  [optional]
+**environmentType** | [**EnvironmentTypeEnum**](#EnvironmentTypeEnum) |  |  [optional]
 **features** | [**List&lt;FeaturesEnum&gt;**](#List&lt;FeaturesEnum&gt;) |  |  [optional]
+**fullName** | **String** | The full name of the &#x60;Institution&#x60; |  [optional]
+**id** | **String** | The Yapily Id for the &#x60;Institution&#x60; |  [optional]
+**media** | [**List&lt;Media&gt;**](Media.md) | Contains links to the logo and the icons for the &#x60;Institution&#x60; |  [optional]
 **monitoring** | [**Map&lt;String, MonitoringFeatureStatus&gt;**](MonitoringFeatureStatus.md) |  |  [optional]
-
-
-<a name="EnvironmentTypeEnum"></a>
-## Enum: EnvironmentTypeEnum
-Name | Value
----- | -----
-SANDBOX | &quot;SANDBOX&quot;
-MOCK | &quot;MOCK&quot;
-LIVE | &quot;LIVE&quot;
+**name** | **String** | The friendly name of the &#x60;Institution&#x60; |  [optional]
 
 
 <a name="CredentialsTypeEnum"></a>
@@ -44,6 +35,15 @@ API_KEY | &quot;API_KEY&quot;
 OPEN_BANKING_NO_KEY | &quot;OPEN_BANKING_NO_KEY&quot;
 OPEN_BANKING_NO_TRANSPORT | &quot;OPEN_BANKING_NO_TRANSPORT&quot;
 TOKEN_IO | &quot;TOKEN_IO&quot;
+
+
+<a name="EnvironmentTypeEnum"></a>
+## Enum: EnvironmentTypeEnum
+Name | Value
+---- | -----
+SANDBOX | &quot;SANDBOX&quot;
+MOCK | &quot;MOCK&quot;
+LIVE | &quot;LIVE&quot;
 
 
 <a name="List<FeaturesEnum>"></a>
@@ -77,6 +77,7 @@ CREATE_SINGLE_PAYMENT_SORTCODE | &quot;CREATE_SINGLE_PAYMENT_SORTCODE&quot;
 EXISTING_PAYMENTS_DETAILS | &quot;EXISTING_PAYMENTS_DETAILS&quot;
 INITIATE_DOMESTIC_SINGLE_PAYMENT | &quot;INITIATE_DOMESTIC_SINGLE_PAYMENT&quot;
 INITIATE_EMBEDDED_DOMESTIC_SINGLE_PAYMENT | &quot;INITIATE_EMBEDDED_DOMESTIC_SINGLE_PAYMENT&quot;
+INITIATE_EMBEDDED_BULK_PAYMENT | &quot;INITIATE_EMBEDDED_BULK_PAYMENT&quot;
 CREATE_DOMESTIC_SINGLE_PAYMENT | &quot;CREATE_DOMESTIC_SINGLE_PAYMENT&quot;
 INITIATE_DOMESTIC_SINGLE_INSTANT_PAYMENT | &quot;INITIATE_DOMESTIC_SINGLE_INSTANT_PAYMENT&quot;
 CREATE_DOMESTIC_SINGLE_INSTANT_PAYMENT | &quot;CREATE_DOMESTIC_SINGLE_INSTANT_PAYMENT&quot;
@@ -97,7 +98,6 @@ INITIATE_INTERNATIONAL_SINGLE_PAYMENT | &quot;INITIATE_INTERNATIONAL_SINGLE_PAYM
 CREATE_INTERNATIONAL_SINGLE_PAYMENT | &quot;CREATE_INTERNATIONAL_SINGLE_PAYMENT&quot;
 INITIATE_BULK_PAYMENT | &quot;INITIATE_BULK_PAYMENT&quot;
 CREATE_BULK_PAYMENT | &quot;CREATE_BULK_PAYMENT&quot;
-INITIATE_EMBEDDED_BULK_PAYMENT | &quot;INITIATE_EMBEDDED_BULK_PAYMENT&quot;
 TRANSFER | &quot;TRANSFER&quot;
 OPEN_DATA_PERSONAL_CURRENT_ACCOUNTS | &quot;OPEN_DATA_PERSONAL_CURRENT_ACCOUNTS&quot;
 OPEN_DATA_ATMS | &quot;OPEN_DATA_ATMS&quot;
