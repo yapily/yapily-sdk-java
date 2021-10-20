@@ -4,11 +4,11 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**uuid** | **String** | User UUID |  [optional]
-**applicationUuid** | **String** |  |  [optional]
 **applicationUserId** | **String** |  |  [optional]
-**referenceId** | **String** |  |  [optional]
+**applicationUuid** | **String** |  |  [optional]
 **institutionConsents** | [**List&lt;InstitutionConsent&gt;**](InstitutionConsent.md) |  |  [optional]
+**referenceId** | **String** |  |  [optional]
+**uuid** | **String** |  |  [optional]
 
 
 

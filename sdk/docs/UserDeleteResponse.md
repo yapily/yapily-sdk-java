@@ -4,9 +4,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** |  |  [optional]
-**deleteStatus** | [**DeleteStatusEnum**](#DeleteStatusEnum) |  |  [optional]
 **creationDate** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
+**deleteStatus** | [**DeleteStatusEnum**](#DeleteStatusEnum) |  |  [optional]
+**id** | **String** |  |  [optional]
 **userConsents** | [**List&lt;ConsentDeleteResponse&gt;**](ConsentDeleteResponse.md) |  |  [optional]
 
 

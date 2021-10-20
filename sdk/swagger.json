@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "To access endpoints that require authentication, use your application key and secret created in the Dashboard (https://dashboard.yapily.com)",
-    "version": "1.127.0",
+    "version": "1.138.0",
     "title": "Yapily API"
   },
   "host": "api.yapily.com",
@@ -5140,13 +5140,6 @@
     "Application": {
       "type": "object",
       "properties": {
-        "uuid": {
-          "type": "string",
-          "description": "Application UUID"
-        },
-        "name": {
-          "type": "string"
-        },
         "active": {
           "type": "boolean",
           "example": false
@@ -5156,6 +5149,10 @@
           "items": {
             "type": "string"
           }
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time"
         },
         "institutions": {
           "type": "array",
@@ -5169,30 +5166,25 @@
             "$ref": "#/definitions/Media"
           }
         },
-        "created": {
-          "type": "string",
-          "format": "date-time"
+        "name": {
+          "type": "string"
         },
         "updated": {
           "type": "string",
           "format": "date-time"
+        },
+        "uuid": {
+          "type": "string"
         }
       }
     },
     "ApplicationUser": {
       "type": "object",
       "properties": {
-        "uuid": {
-          "type": "string",
-          "description": "User UUID"
-        },
-        "applicationUuid": {
-          "type": "string"
-        },
         "applicationUserId": {
           "type": "string"
         },
-        "referenceId": {
+        "applicationUuid": {
           "type": "string"
         },
         "institutionConsents": {
@@ -5200,6 +5192,12 @@
           "items": {
             "$ref": "#/definitions/InstitutionConsent"
           }
+        },
+        "referenceId": {
+          "type": "string"
+        },
+        "uuid": {
+          "type": "string"
         }
       }
     },
@@ -5780,17 +5778,14 @@
     "Category": {
       "type": "object",
       "properties": {
+        "country": {
+          "type": "string"
+        },
         "id": {
-          "type": "string",
-          "description": "Category ID"
+          "type": "string"
         },
         "label": {
-          "type": "string",
-          "description": "Category label"
-        },
-        "country": {
-          "type": "string",
-          "description": "Category country"
+          "type": "string"
         },
         "subcategories": {
           "type": "array",
@@ -5971,8 +5966,9 @@
     "ConsentDeleteResponse": {
       "type": "object",
       "properties": {
-        "id": {
-          "type": "string"
+        "creationDate": {
+          "type": "string",
+          "format": "date-time"
         },
         "deleteStatus": {
           "type": "string",
@@ -5981,15 +5977,14 @@
             "FAILED"
           ]
         },
-        "institutionId": {
+        "id": {
           "type": "string"
         },
         "institutionConsentId": {
           "type": "string"
         },
-        "creationDate": {
-          "type": "string",
-          "format": "date-time"
+        "institutionId": {
+          "type": "string"
         }
       }
     },
@@ -7336,10 +7331,13 @@
       "type": "object",
       "properties": {
         "applicationUserId": {
-          "type": "string"
+          "type": "string",
+          "example": "user-234562290",
+          "description": "__Optional__. An additional unique identifier that you can specify when creating a new `User` to more easily reference it"
         },
         "referenceId": {
-          "type": "string"
+          "type": "string",
+          "description": "__Deprecated__. A non-unique reference Id for the `User`"
         }
       }
     },
@@ -9298,12 +9296,10 @@
       "type": "object",
       "properties": {
         "id": {
-          "type": "string",
-          "description": "Subcategory ID"
+          "type": "string"
         },
         "label": {
-          "type": "string",
-          "description": "Subcategory label"
+          "type": "string"
         }
       }
     },
@@ -9628,8 +9624,9 @@
     "UserDeleteResponse": {
       "type": "object",
       "properties": {
-        "id": {
-          "type": "string"
+        "creationDate": {
+          "type": "string",
+          "format": "date-time"
         },
         "deleteStatus": {
           "type": "string",
@@ -9638,9 +9635,8 @@
             "FAILED"
           ]
         },
-        "creationDate": {
-          "type": "string",
-          "format": "date-time"
+        "id": {
+          "type": "string"
         },
         "userConsents": {
           "type": "array",
