@@ -4,46 +4,23 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** |  |  [optional]
-**userUuid** | **String** |  |  [optional]
 **applicationUserId** | **String** |  |  [optional]
-**referenceId** | **String** |  |  [optional]
-**institutionId** | **String** |  |  [optional]
-**status** | [**StatusEnum**](#StatusEnum) |  |  [optional]
+**authorizedAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
+**consentToken** | **String** |  |  [optional]
 **createdAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
+**expiresAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
+**featureScope** | [**List&lt;FeatureScopeEnum&gt;**](#List&lt;FeatureScopeEnum&gt;) |  |  [optional]
+**id** | **String** |  |  [optional]
+**institutionConsentId** | **String** |  |  [optional]
+**institutionId** | **String** |  |  [optional]
+**referenceId** | **String** |  |  [optional]
+**state** | **String** |  |  [optional]
+**status** | [**StatusEnum**](#StatusEnum) |  |  [optional]
+**timeToExpire** | **String** |  |  [optional]
+**timeToExpireInMillis** | **Long** |  |  [optional]
 **transactionFrom** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
 **transactionTo** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
-**expiresAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
-**timeToExpireInMillis** | **Long** | Deprecated. Use &#x60;timeToExpire&#x60; instead. |  [optional]
-**timeToExpire** | **String** | ISO 8601 duration |  [optional]
-**featureScope** | [**List&lt;FeatureScopeEnum&gt;**](#List&lt;FeatureScopeEnum&gt;) |  |  [optional]
-**consentToken** | **String** |  |  [optional]
-**state** | **String** |  |  [optional]
-**authorizedAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
-**institutionConsentId** | **String** |  |  [optional]
-
-
-<a name="StatusEnum"></a>
-## Enum: StatusEnum
-Name | Value
----- | -----
-AWAITING_AUTHORIZATION | &quot;AWAITING_AUTHORIZATION&quot;
-AWAITING_FURTHER_AUTHORIZATION | &quot;AWAITING_FURTHER_AUTHORIZATION&quot;
-AWAITING_RE_AUTHORIZATION | &quot;AWAITING_RE_AUTHORIZATION&quot;
-AUTHORIZED | &quot;AUTHORIZED&quot;
-CONSUMED | &quot;CONSUMED&quot;
-REJECTED | &quot;REJECTED&quot;
-REVOKED | &quot;REVOKED&quot;
-FAILED | &quot;FAILED&quot;
-EXPIRED | &quot;EXPIRED&quot;
-UNKNOWN | &quot;UNKNOWN&quot;
-INVALID | &quot;INVALID&quot;
-AWAITING_PRE_AUTHORIZATION | &quot;AWAITING_PRE_AUTHORIZATION&quot;
-AWAITING_DECOUPLED_PRE_AUTHORIZATION | &quot;AWAITING_DECOUPLED_PRE_AUTHORIZATION&quot;
-PRE_AUTHORIZED | &quot;PRE_AUTHORIZED&quot;
-AWAITING_DECOUPLED_AUTHORIZATION | &quot;AWAITING_DECOUPLED_AUTHORIZATION&quot;
-AWAITING_SCA_METHOD | &quot;AWAITING_SCA_METHOD&quot;
-AWAITING_SCA_CODE | &quot;AWAITING_SCA_CODE&quot;
+**userUuid** | **String** |  |  [optional]
 
 
 <a name="List<FeatureScopeEnum>"></a>
@@ -77,6 +54,7 @@ EXISTING_PAYMENTS_DETAILS | &quot;EXISTING_PAYMENTS_DETAILS&quot;
 INITIATE_DOMESTIC_SINGLE_PAYMENT | &quot;INITIATE_DOMESTIC_SINGLE_PAYMENT&quot;
 INITIATE_EMBEDDED_DOMESTIC_SINGLE_PAYMENT | &quot;INITIATE_EMBEDDED_DOMESTIC_SINGLE_PAYMENT&quot;
 CREATE_DOMESTIC_SINGLE_PAYMENT | &quot;CREATE_DOMESTIC_SINGLE_PAYMENT&quot;
+INITIATE_EMBEDDED_BULK_PAYMENT | &quot;INITIATE_EMBEDDED_BULK_PAYMENT&quot;
 INITIATE_DOMESTIC_SINGLE_INSTANT_PAYMENT | &quot;INITIATE_DOMESTIC_SINGLE_INSTANT_PAYMENT&quot;
 CREATE_DOMESTIC_SINGLE_INSTANT_PAYMENT | &quot;CREATE_DOMESTIC_SINGLE_INSTANT_PAYMENT&quot;
 INITIATE_DOMESTIC_VARIABLE_RECURRING_PAYMENT | &quot;INITIATE_DOMESTIC_VARIABLE_RECURRING_PAYMENT&quot;
@@ -96,7 +74,6 @@ INITIATE_INTERNATIONAL_SINGLE_PAYMENT | &quot;INITIATE_INTERNATIONAL_SINGLE_PAYM
 CREATE_INTERNATIONAL_SINGLE_PAYMENT | &quot;CREATE_INTERNATIONAL_SINGLE_PAYMENT&quot;
 INITIATE_BULK_PAYMENT | &quot;INITIATE_BULK_PAYMENT&quot;
 CREATE_BULK_PAYMENT | &quot;CREATE_BULK_PAYMENT&quot;
-INITIATE_EMBEDDED_BULK_PAYMENT | &quot;INITIATE_EMBEDDED_BULK_PAYMENT&quot;
 TRANSFER | &quot;TRANSFER&quot;
 OPEN_DATA_PERSONAL_CURRENT_ACCOUNTS | &quot;OPEN_DATA_PERSONAL_CURRENT_ACCOUNTS&quot;
 OPEN_DATA_ATMS | &quot;OPEN_DATA_ATMS&quot;
@@ -106,6 +83,28 @@ READ_DOMESTIC_PERIODIC_PAYMENT_REFUND | &quot;READ_DOMESTIC_PERIODIC_PAYMENT_REF
 READ_INTERNATIONAL_SINGLE_REFUND | &quot;READ_INTERNATIONAL_SINGLE_REFUND&quot;
 READ_INTERNATIONAL_SCHEDULED_REFUND | &quot;READ_INTERNATIONAL_SCHEDULED_REFUND&quot;
 ACCOUNT_BENEFICIARIES | &quot;ACCOUNT_BENEFICIARIES&quot;
+
+
+<a name="StatusEnum"></a>
+## Enum: StatusEnum
+Name | Value
+---- | -----
+AWAITING_AUTHORIZATION | &quot;AWAITING_AUTHORIZATION&quot;
+AWAITING_FURTHER_AUTHORIZATION | &quot;AWAITING_FURTHER_AUTHORIZATION&quot;
+AWAITING_RE_AUTHORIZATION | &quot;AWAITING_RE_AUTHORIZATION&quot;
+AUTHORIZED | &quot;AUTHORIZED&quot;
+CONSUMED | &quot;CONSUMED&quot;
+REJECTED | &quot;REJECTED&quot;
+REVOKED | &quot;REVOKED&quot;
+FAILED | &quot;FAILED&quot;
+EXPIRED | &quot;EXPIRED&quot;
+UNKNOWN | &quot;UNKNOWN&quot;
+INVALID | &quot;INVALID&quot;
+AWAITING_PRE_AUTHORIZATION | &quot;AWAITING_PRE_AUTHORIZATION&quot;
+PRE_AUTHORIZED | &quot;PRE_AUTHORIZED&quot;
+AWAITING_DECOUPLED_AUTHORIZATION | &quot;AWAITING_DECOUPLED_AUTHORIZATION&quot;
+AWAITING_SCA_METHOD | &quot;AWAITING_SCA_METHOD&quot;
+AWAITING_SCA_CODE | &quot;AWAITING_SCA_CODE&quot;
 
 
 
