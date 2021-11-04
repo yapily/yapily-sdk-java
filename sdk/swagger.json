@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "To access endpoints that require authentication, use your application key and secret created in the Dashboard (https://dashboard.yapily.com)",
-    "version": "1.159.0",
+    "version": "1.167.0",
     "title": "Yapily API"
   },
   "host": "api.yapily.com",
@@ -5566,7 +5566,27 @@
           "type": "string"
         },
         "payee": {
-          "$ref": "#/definitions/Payee"
+          "$ref": "#/definitions/BeneficiaryPayee"
+        }
+      }
+    },
+    "BeneficiaryPayee": {
+      "type": "object",
+      "required": [
+        "accountIdentifications"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "address": {
+          "$ref": "#/definitions/Address"
+        },
+        "accountIdentifications": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AccountIdentification"
+          }
         }
       }
     },

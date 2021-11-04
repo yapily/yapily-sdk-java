@@ -20,28 +20,25 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+import yapily.sdk.AccountIdentification;
+import yapily.sdk.Address;
 
 /**
- * TransferRequest
+ * BeneficiaryPayee
  */
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class TransferRequest {
-  @JsonProperty("accountId")
-  private String accountId = null;
+public class BeneficiaryPayee {
+  @JsonProperty("name")
+  private String name = null;
 
-  @JsonProperty("amount")
-  private BigDecimal amount = null;
+  @JsonProperty("address")
+  private Address address = null;
 
-  @JsonProperty("currency")
-  private String currency = null;
-
-  @JsonProperty("reference")
-  private String reference = null;
-
-  @JsonProperty("transferReferenceId")
-  private String transferReferenceId = null;
+  @JsonProperty("accountIdentifications")
+  private List<AccountIdentification> accountIdentifications = new ArrayList<>();
 
 }
 
