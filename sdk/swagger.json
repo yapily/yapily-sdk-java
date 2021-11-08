@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "To access endpoints that require authentication, use your application key and secret created in the Dashboard (https://dashboard.yapily.com)",
-    "version": "1.167.0",
+    "version": "1.157.0",
     "title": "Yapily API"
   },
   "host": "api.yapily.com",
@@ -5571,22 +5571,37 @@
       }
     },
     "BeneficiaryPayee": {
-      "type": "object",
+      "description": "__Mandatory__. The `BeneficiaryPayee` object contains details of the beneficiary [person or business]. You must define this in your payment request along with all of the nested mandatory properties.",
       "required": [
         "accountIdentifications"
       ],
+      "type": "object",
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "description": "The account holder name of the beneficiary.",
+          "example": "Jane Doe"
         },
         "address": {
           "$ref": "#/definitions/Address"
         },
         "accountIdentifications": {
           "type": "array",
+          "description": "__Mandatory__. The account identifications that identify the `BeneficiaryPayee` bank account.",
+          "example": [
+            {
+              "identification": "401016",
+              "type": "SORT_CODE"
+            },
+            {
+              "identification": "71518920",
+              "type": "ACCOUNT_NUMBER"
+            }
+          ],
           "items": {
             "$ref": "#/definitions/AccountIdentification"
-          }
+          },
+          "uniqueItems": true
         }
       }
     },
