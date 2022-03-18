@@ -22,7 +22,7 @@ import java.util.Map;
 import java.util.List;
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2022-03-14T13:28:39.253Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2022-03-17T10:03:03.399Z")
 public class HttpBasicAuth implements Authentication {
   private String username;
   private String password;
