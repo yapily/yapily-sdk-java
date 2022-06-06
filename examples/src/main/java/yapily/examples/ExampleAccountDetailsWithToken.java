@@ -3,29 +3,29 @@ package yapily.examples;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import yapily.ApiClient;
-import yapily.ApiException;
+import yapily.sdk.ApiClient;
+import yapily.sdk.ApiException;
 import static yapily.examples.Constants.APPLICATION_USER_ID;
 import static yapily.examples.Constants.STARLING_PERSONAL_ACCESS_TOKEN;
-import yapily.sdk.Account;
-import yapily.sdk.AccountsApi;
-import yapily.sdk.ApiListResponseOfAccount;
-import yapily.sdk.ApiListResponseOfTransaction;
-import yapily.sdk.ApiResponseOfIdentity;
-import yapily.sdk.ApplicationUser;
-import yapily.sdk.Consent;
-import yapily.sdk.ConsentsApi;
-import yapily.sdk.CreateConsentAccessToken;
-import yapily.sdk.Identity;
-import yapily.sdk.IdentityApi;
-import yapily.sdk.Institution;
-import yapily.sdk.InstitutionsApi;
-import yapily.sdk.Transaction;
-import yapily.sdk.TransactionsApi;
+import yapily.sdk.api.FinancialDataApi;
+import yapily.sdk.models.Account;
+import yapily.sdk.models.AccountApiListResponse;
+import yapily.sdk.models.ApiListResponseOfTransaction;
+import yapily.sdk.models.ApiResponseOfIdentity;
+import yapily.sdk.models.ApplicationUser;
+import yapily.sdk.models.AuthorisationStatus;
+import yapily.sdk.models.Consent;
+import yapily.sdk.api.ConsentsApi;
+import yapily.sdk.models.FeatureEnum;
+import yapily.sdk.models.Identity;
+import yapily.sdk.models.Institution;
+import yapily.sdk.api.InstitutionsApi;
+import yapily.sdk.models.Transaction;
 
 /**
  * This example simulates creating and adding a personal access token for an institution user, returning normalised data
@@ -60,52 +60,46 @@ public class ExampleAccountDetailsWithToken {
                     "filter[applicationUserId]=" + APPLICATION_USER_ID + "&filter[institution]=" + INSTITUTION_ID);
             System.out.println("Validating that the consent is AUTHORIZED");
 
-            CreateConsentAccessToken createConsentApiKey = new CreateConsentAccessToken();
-            createConsentApiKey.setAccessToken(STARLING_PERSONAL_ACCESS_TOKEN);
-            createConsentApiKey.setInstitutionId(INSTITUTION_ID);
-
-            consentsApi.addConsentUsingPOST(applicationUser.getUuid(), createConsentApiKey);
-
-            Consent consent = consentsApi.getConsentsUsingGET(
-                    Collections.singletonList(APPLICATION_USER_ID),
-                    Collections.emptyList(),
-                    Collections.singletonList(INSTITUTION_ID),
-                    Collections.emptyList(),
-                    null,
-                    null,
-                    1,
-                    null).getData().stream()
-                    .filter(c -> c.getStatus().equals(Consent.StatusEnum.AUTHORIZED))
+            Consent consent = consentsApi.getConsents(
+                                                 Set.of(APPLICATION_USER_ID),
+                                                 Set.of(),
+                                                 Set.of(INSTITUTION_ID),
+                                                 Set.of(),
+                                                 null,
+                                                 null,
+                                                 1,
+                                                 null).getData().stream()
+                    .filter(c -> c.getStatus().equals(AuthorisationStatus.AUTHORIZED))
                     .findFirst()
                     .orElseThrow(() -> new RuntimeException(String.format("No consent token present for application user %s", APPLICATION_USER_ID)));
 
             // Get accounts
-            final AccountsApi accountsApi = new AccountsApi(defaultClient);
+            final FinancialDataApi accountsApi = new FinancialDataApi(defaultClient);
 
             System.out.println("Request banking accounts with GET /accounts");
-            ApiListResponseOfAccount accountsResponse = accountsApi.getAccountsUsingGET(consent.getConsentToken());
+            AccountApiListResponse accountsResponse = accountsApi.getAccounts(consent.getConsentToken(), null, null, null, false);
             List<Account> accounts = accountsResponse.getData();
 
             System.out.println("Accounts:");
             System.out.println(gson.toJson(accounts));
 
             // Get transactions
-            final TransactionsApi transactionsApi = new TransactionsApi(defaultClient);
-
             Optional<Account> accountOpt = accounts.stream().findFirst();
             if (accountOpt.isPresent()) {
                 System.out.println("Request account transactions with GET /accounts/{accountId}/transactions");
                 ApiListResponseOfTransaction transactionsResponse =
-                        transactionsApi.getTransactionsUsingGET(
-                                consent.getConsentToken(),
+                        accountsApi.getTransactions(
                                 accountOpt.get().getId(),
+                                consent.getConsentToken(),
+                                "", "",
+                                "",
                                 Collections.emptyList(),
                                 "1980-01-01T00:00:00.000Z",
-                                "2100-01-01T00:00:00.000Z",
+                                "2020-01-01T00:00:00.000Z",
                                 10,
                                 null,
                                 0,
-                                null);
+                                null, false);
 
                 List<Transaction> transactions = transactionsResponse.getData();
 
@@ -115,16 +109,18 @@ public class ExampleAccountDetailsWithToken {
                 // Get transactions with merchant details
                 System.out.println("Request account transactions (with merchants) using GET /accounts/{accountId}/transactions");
                 ApiListResponseOfTransaction transactionsWithMerchantsResponse =
-                        transactionsApi.getTransactionsUsingGET(
-                                consent.getConsentToken(),
+                        accountsApi.getTransactions(
                                 accountOpt.get().getId(),
-                                Collections.singletonList("merchant"),
+                                consent.getConsentToken(),
+                                "", "",
+                                "",
+                                List.of("merchant"),
                                 "1980-01-01T00:00:00.000Z",
-                                "2100-01-01T00:00:00.000Z",
+                                "2020-01-01T00:00:00.000Z",
                                 10,
                                 null,
                                 0,
-                                null);
+                                null, false);
 
                 List<Transaction> transactionsWithMerchants = transactionsWithMerchantsResponse.getData();
 
@@ -134,17 +130,17 @@ public class ExampleAccountDetailsWithToken {
 
             // Check if identity is supported
             InstitutionsApi institutionsApi = new InstitutionsApi(defaultClient);
-            Institution institution = institutionsApi.getInstitutionUsingGET(INSTITUTION_ID);
+            Institution institution = institutionsApi.getInstitution(INSTITUTION_ID);
             Boolean supportsIdentity = institution.getFeatures().stream()
-                    .anyMatch(featuresEnum -> featuresEnum!= null && featuresEnum.equals(Institution.FeaturesEnum.IDENTITY));
+                    .anyMatch(featuresEnum -> featuresEnum!= null && featuresEnum.equals(FeatureEnum.IDENTITY));
 
             if (supportsIdentity) {
                 // Get identity
-                final IdentityApi identityApi = new IdentityApi(defaultClient);
+                 final FinancialDataApi identityApi = new FinancialDataApi(defaultClient);
 
                 try {
                     System.out.println("Request user identity with GET /identity");
-                    ApiResponseOfIdentity identityResp = identityApi.getIdentityUsingGET(consent.getConsentToken());
+                    ApiResponseOfIdentity identityResp = identityApi.getIdentity(consent.getConsentToken(), false);
                     Identity identity = identityResp.getData();
 
                     System.out.println("Identity:");

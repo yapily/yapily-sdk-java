@@ -6,11 +6,7 @@
         <repository>
             <id>yapily-repo</id>
             <name>yapily-repo</name>
-            <url>http://maven.yapily.com/</url>
-        </repository>
-        <repository>
-            <id>Maven Central</id>
-            <url>http://central.maven.org/maven2</url>
+            <url>https://maven.yapily.com/</url>
         </repository>
     </repositories>
 
@@ -22,10 +18,10 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>1.8</java.version>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <yapily-sdk-version>0.0.218</yapily-sdk-version>
+        <java.version>11</java.version>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <yapily-sdk-version>2.2.0</yapily-sdk-version>
     </properties>
 
     <dependencies>

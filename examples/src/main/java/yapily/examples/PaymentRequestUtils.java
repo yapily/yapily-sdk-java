@@ -1,13 +1,14 @@
 package yapily.examples;
 
-import yapily.sdk.AccountIdentification;
-import yapily.sdk.Amount;
-import yapily.sdk.Payee;
-import yapily.sdk.PaymentRequest;
+import yapily.sdk.models.AccountIdentification;
+import yapily.sdk.models.AccountIdentificationType;
+import yapily.sdk.models.Amount;
+import yapily.sdk.models.Payee;
+import yapily.sdk.models.PaymentRequest;
+import yapily.sdk.models.PaymentType;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
 
 public class PaymentRequestUtils {
 
@@ -30,7 +31,7 @@ public class PaymentRequestUtils {
         paymentRequest.setAmount(amount);
 
         // Set the type to domestic to indicate we're sending from one UK account to another UK account
-        paymentRequest.setType(PaymentRequest.TypeEnum.DOMESTIC_PAYMENT);
+        paymentRequest.setType(PaymentType.DOMESTIC_PAYMENT);
 
         // Set the reference for the payment to be seen in the payment statement
         paymentRequest.setReference(reference);
@@ -45,22 +46,21 @@ public class PaymentRequestUtils {
         payee.setName(recipientName);
 
         // Define how you would like to identify the recipients account e.g. a sort code and account number
-        List<AccountIdentification> payeeAccountIdentifications = new ArrayList<>();
-        createNewAccountIdentification(payeeAccountIdentifications, AccountIdentification.TypeEnum.SORT_CODE, sortCode);
-        createNewAccountIdentification(payeeAccountIdentifications, AccountIdentification.TypeEnum.ACCOUNT_NUMBER, accountNumber);
+        Set<AccountIdentification> payeeAccountIdentifications = Set.of(
+                createNewAccountIdentification(AccountIdentificationType.SORT_CODE, sortCode),
+                createNewAccountIdentification(AccountIdentificationType.ACCOUNT_NUMBER, accountNumber));
 
         payee.setAccountIdentifications(payeeAccountIdentifications);
         paymentRequest.setPayee(payee);
         return paymentRequest;
     }
 
-    private static void createNewAccountIdentification(
-            List<AccountIdentification> payeeAccountIdentifications,
-            AccountIdentification.TypeEnum type,
+    private static AccountIdentification createNewAccountIdentification(
+            AccountIdentificationType type,
             String value) {
         AccountIdentification payeeAccountIdentification = new AccountIdentification();
         payeeAccountIdentification.setType(type);
         payeeAccountIdentification.setIdentification(value);
-        payeeAccountIdentifications.add(payeeAccountIdentification);
+        return payeeAccountIdentification;
     }
 }

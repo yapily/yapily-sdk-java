@@ -1,7 +1,7 @@
 package yapily.examples;
 
-import yapily.ApiClient;
-import yapily.auth.HttpBasicAuth;
+import yapily.sdk.ApiClient;
+import yapily.sdk.auth.HttpBasicAuth;
 import static yapily.examples.Constants.APPLICATION_ID;
 import static yapily.examples.Constants.APPLICATION_SECRET;
 
