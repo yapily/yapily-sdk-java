@@ -4,51 +4,57 @@ All URIs are relative to *https://api.yapily.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getApplicationMeUsingGET**](ApplicationApi.md#getApplicationMeUsingGET) | **GET** /me | Returns the details of the application that owns the request credentials
+[**getApplicationMe**](ApplicationApi.md#getApplicationMe) | **GET** /me | Get Application Self
 
 
-<a name="getApplicationMeUsingGET"></a>
-# **getApplicationMeUsingGET**
-> Application getApplicationMeUsingGET(xYapilyApiVersion)
 
-Returns the details of the application that owns the request credentials
+## getApplicationMe
+
+> Application getApplicationMe()
+
+Get Application Self
+
+Get the information about the institutions configured in your application
 
 ### Example
+
 ```java
 // Import classes:
-//import yapily.ApiClient;
-//import yapily.ApiException;
-//import yapily.Configuration;
-//import yapily.auth.*;
-//import yapily.sdk.ApplicationApi;
+import yapily.sdk.ApiClient;
+import yapily.sdk.ApiException;
+import yapily.sdk.Configuration;
+import yapily.sdk.auth.*;
+import yapily.sdk.model.*;
+import yapily.sdk.api.ApplicationApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.yapily.com");
+        
+        // Configure HTTP basic authorization: basicAuth
+        HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
 
-// Configure HTTP basic authorization: basicAuth
-HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-basicAuth.setUsername("YOUR USERNAME");
-basicAuth.setPassword("YOUR PASSWORD");
-
-// Configure OAuth2 access token for authorization: tokenAuth
-OAuth tokenAuth = (OAuth) defaultClient.getAuthentication("tokenAuth");
-tokenAuth.setAccessToken("YOUR ACCESS TOKEN");
-
-ApplicationApi apiInstance = new ApplicationApi();
-String xYapilyApiVersion = "xYapilyApiVersion_example"; // String | __Optional__. Determines the API version to use. Valid values are `1.0` or `2.0-ALPHA`. Defaults to `1.0`
-try {
-    Application result = apiInstance.getApplicationMeUsingGET(xYapilyApiVersion);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ApplicationApi#getApplicationMeUsingGET");
-    e.printStackTrace();
+        ApplicationApi apiInstance = new ApplicationApi(defaultClient);
+        try {
+            Application result = apiInstance.getApplicationMe();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ApplicationApi#getApplicationMe");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
 }
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **xYapilyApiVersion** | **String**| __Optional__. Determines the API version to use. Valid values are &#x60;1.0&#x60; or &#x60;2.0-ALPHA&#x60;. Defaults to &#x60;1.0&#x60; | [optional]
+This endpoint does not need any parameter.
 
 ### Return type
 
@@ -56,10 +62,16 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[basicAuth](../README.md#basicAuth), [tokenAuth](../README.md#tokenAuth)
+[basicAuth](../README.md#basicAuth)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json;charset=UTF-8
+- **Content-Type**: Not defined
+- **Accept**: application/json;charset=UTF-8
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Ok |  -  |
+| **0** | Error Response |  -  |
 

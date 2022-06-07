@@ -1,61 +1,25 @@
 
+
 # Account
 
+
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** | Account Id returned by the institution if present |  [optional]
-**type** | **String** |  |  [optional]
+**id** | **String** | Unique identifier of the account. |  [optional]
+**type** | **String** | Specifies the type of account e.g. (BUSINESS_CURRENT). |  [optional]
 **description** | **String** | Product name as defined by the financial institution for this account |  [optional]
-**balance** | [**BigDecimal**](BigDecimal.md) |  |  [optional]
-**currency** | **String** | ISO 4217 currency code |  [optional]
-**usageType** | [**UsageTypeEnum**](#UsageTypeEnum) |  |  [optional]
-**accountType** | [**AccountTypeEnum**](#AccountTypeEnum) |  |  [optional]
-**nickname** | **String** | Name of the account as defined by the financial institution or the end user |  [optional]
-**details** | **String** | Specifications that might be provided by the institution - characteristics of the account - characteristics of the relevant card |  [optional]
+**balance** | **BigDecimal** | Main / headline balance for the account. &lt;br&gt;&lt;br&gt; Use of this field is recommended as fallback only. Instead, use of the typed balances (accountBalances) is recommended. |  [optional]
+**currency** | **String** | Currency the bank account balance is denoted in. &lt;br&gt;&lt;br&gt; Specified as a 3-letter ISO 4217 currency code |  [optional]
+**usageType** | **UsageType** |  |  [optional]
+**accountType** | **AccountType** |  |  [optional]
+**nickname** | **String** | Nickname of the account that was provided by the account owner. &lt;br&gt;&lt;br&gt; May be used to aid identification of the account. |  [optional]
+**details** | **String** | Supplementary specifications that might be provided by the Bank. These provide further characteristics about the account. |  [optional]
 **accountNames** | [**List&lt;AccountName&gt;**](AccountName.md) |  |  [optional]
-**accountIdentifications** | [**List&lt;AccountIdentification&gt;**](AccountIdentification.md) |  |  [optional]
+**accountIdentifications** | [**Set&lt;AccountIdentification&gt;**](AccountIdentification.md) |  |  [optional]
 **accountBalances** | [**List&lt;AccountBalance&gt;**](AccountBalance.md) |  |  [optional]
-
-
-<a name="UsageTypeEnum"></a>
-## Enum: UsageTypeEnum
-Name | Value
----- | -----
-PERSONAL | &quot;PERSONAL&quot;
-BUSINESS | &quot;BUSINESS&quot;
-OTHER | &quot;OTHER&quot;
-UNKNOWN | &quot;UNKNOWN&quot;
-
-
-<a name="AccountTypeEnum"></a>
-## Enum: AccountTypeEnum
-Name | Value
----- | -----
-CASH_TRADING | &quot;CASH_TRADING&quot;
-CASH_INCOME | &quot;CASH_INCOME&quot;
-CASH_PAYMENT | &quot;CASH_PAYMENT&quot;
-CHARGE_CARD | &quot;CHARGE_CARD&quot;
-CHARGES | &quot;CHARGES&quot;
-COMMISSION | &quot;COMMISSION&quot;
-CREDIT_CARD | &quot;CREDIT_CARD&quot;
-CURRENT | &quot;CURRENT&quot;
-E_MONEY | &quot;E_MONEY&quot;
-LIMITED_LIQUIDITY_SAVINGS_ACCOUNT | &quot;LIMITED_LIQUIDITY_SAVINGS_ACCOUNT&quot;
-LOAN | &quot;LOAN&quot;
-MARGINAL_LENDING | &quot;MARGINAL_LENDING&quot;
-MONEY_MARKET | &quot;MONEY_MARKET&quot;
-MORTGAGE | &quot;MORTGAGE&quot;
-NON_RESIDENT_EXTERNAL | &quot;NON_RESIDENT_EXTERNAL&quot;
-OTHER | &quot;OTHER&quot;
-OVERDRAFT | &quot;OVERDRAFT&quot;
-OVERNIGHT_DEPOSIT | &quot;OVERNIGHT_DEPOSIT&quot;
-PREPAID_CARD | &quot;PREPAID_CARD&quot;
-SALARY | &quot;SALARY&quot;
-SAVINGS | &quot;SAVINGS&quot;
-SETTLEMENT | &quot;SETTLEMENT&quot;
-TAX | &quot;TAX&quot;
-UNKNOWN | &quot;UNKNOWN&quot;
+**consolidatedAccountInformation** | [**ConsolidatedAccountInformation**](ConsolidatedAccountInformation.md) |  |  [optional]
 
 
 

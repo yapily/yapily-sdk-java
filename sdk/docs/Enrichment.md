@@ -1,16 +1,19 @@
 
+
 # Enrichment
 
+
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**categorisation** | [**Categorisation**](Categorisation.md) | Categorisation |  [optional]
-**transactionHash** | [**TransactionHash**](TransactionHash.md) | TransactionHash |  [optional]
-**cleansedDescription** | **String** | CleansedDescription |  [optional]
-**merchant** | [**EnrichmentMerchant**](EnrichmentMerchant.md) | Merchant |  [optional]
-**location** | **String** | Location |  [optional]
-**paymentProcessor** | **String** | PaymentProcessor |  [optional]
-**correctedDate** | [**OffsetDateTime**](OffsetDateTime.md) | CorrectedDate |  [optional]
+**categorisation** | [**Categorisation**](Categorisation.md) |  |  [optional]
+**transactionHash** | [**TransactionHash**](TransactionHash.md) |  |  [optional]
+**cleansedDescription** | **String** |  |  [optional]
+**merchant** | [**EnrichmentMerchant**](EnrichmentMerchant.md) |  |  [optional]
+**location** | **String** |  |  [optional]
+**paymentProcessor** | **String** |  |  [optional]
+**correctedDate** | **OffsetDateTime** |  |  [optional]
 
 
 

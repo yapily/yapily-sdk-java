@@ -1,23 +1,18 @@
 
+
 # FilterAndSort
 
+
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**before** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
-**cursor** | **String** |  |  [optional]
-**from** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
+**from** | **OffsetDateTime** |  |  [optional]
+**before** | **OffsetDateTime** |  |  [optional]
 **limit** | **Integer** |  |  [optional]
+**sort** | **SortEnum** |  |  [optional]
 **offset** | **Integer** |  |  [optional]
-**sort** | [**SortEnum**](#SortEnum) |  |  [optional]
-
-
-<a name="SortEnum"></a>
-## Enum: SortEnum
-Name | Value
----- | -----
-DATE | &quot;date&quot;
-_DATE | &quot;-date&quot;
+**cursor** | **String** |  |  [optional]
 
 
 

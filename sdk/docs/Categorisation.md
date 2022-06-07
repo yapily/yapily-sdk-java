@@ -1,11 +1,14 @@
 
+
 # Categorisation
 
+
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**categories** | **List&lt;String&gt;** | Categories |  [optional]
-**source** | **String** | Source |  [optional]
+**categories** | **List&lt;String&gt;** |  |  [optional]
+**source** | **String** |  |  [optional]
 
 
 

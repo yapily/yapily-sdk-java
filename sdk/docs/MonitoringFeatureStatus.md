@@ -1,23 +1,15 @@
 
+
 # MonitoringFeatureStatus
 
+
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**lastTested** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
+**lastTested** | **OffsetDateTime** |  |  [optional]
 **span** | **String** |  |  [optional]
-**status** | [**StatusEnum**](#StatusEnum) |  |  [optional]
-
-
-<a name="StatusEnum"></a>
-## Enum: StatusEnum
-Name | Value
----- | -----
-UP | &quot;Up&quot;
-DOWN | &quot;Down&quot;
-WARNING | &quot;Warning&quot;
-UNKNOWN | &quot;Unknown&quot;
-EXPIRED | &quot;Expired&quot;
+**status** | **MonitoringStatusEnum** |  |  [optional]
 
 
 

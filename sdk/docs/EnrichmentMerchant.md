@@ -1,11 +1,14 @@
 
+
 # EnrichmentMerchant
 
+
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**merchantName** | **String** | MerchantName |  [optional]
-**parentGroup** | **String** | ParentGroup |  [optional]
+**merchantName** | **String** |  |  [optional]
+**parentGroup** | **String** |  |  [optional]
 
 
 

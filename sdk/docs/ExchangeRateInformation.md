@@ -1,22 +1,17 @@
 
+
 # ExchangeRateInformation
 
+__Optional__. Used to provide details on the currency exchange rate and contract.
+
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**foreignExchangeContractReference** | **String** |  |  [optional]
-**rate** | [**BigDecimal**](BigDecimal.md) |  |  [optional]
-**rateType** | [**RateTypeEnum**](#RateTypeEnum) |  |  [optional]
-**unitCurrency** | **String** |  |  [optional]
-
-
-<a name="RateTypeEnum"></a>
-## Enum: RateTypeEnum
-Name | Value
----- | -----
-ACTUAL | &quot;ACTUAL&quot;
-AGREED | &quot;AGREED&quot;
-INDICATIVE | &quot;INDICATIVE&quot;
+**unitCurrency** | **String** | __Mandatory__. The currency in which the rate of exchange is expressed in a currency exchange. In the example 1GBP &#x3D; xxxCUR, the unit currency is &#x60;GBP&#x60;. | 
+**rate** | **BigDecimal** | __Optional__. The factor used for conversion of an amount from one currency to another. This reflects the price at which one currency was bought with another currency. |  [optional]
+**rateType** | **RateTypeEnum** |  | 
+**foreignExchangeContractReference** | **String** | __Optional__. The unique and unambiguous reference to the foreign exchange contract agreed between the initiating party/creditor and the debtor agent. |  [optional]
 
 
 

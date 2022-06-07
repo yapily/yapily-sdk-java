@@ -1,14 +1,17 @@
 
+
 # ApplicationUser
 
+
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**uuid** | **UUID** |  |  [optional]
+**applicationUuid** | **UUID** |  |  [optional]
 **applicationUserId** | **String** |  |  [optional]
-**applicationUuid** | **String** |  |  [optional]
-**institutionConsents** | [**List&lt;InstitutionConsent&gt;**](InstitutionConsent.md) |  |  [optional]
 **referenceId** | **String** |  |  [optional]
-**uuid** | **String** |  |  [optional]
+**institutionConsents** | [**List&lt;InstitutionConsent&gt;**](InstitutionConsent.md) |  |  [optional]
 
 
 

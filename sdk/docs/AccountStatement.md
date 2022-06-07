@@ -1,13 +1,17 @@
 
+
 # AccountStatement
 
+Statement information belonging to the account.
+
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** |  |  [optional]
-**startDateTime** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
-**endDateTime** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
-**creationDateTime** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
+**id** | **String** | Unique identifier for the statement. |  [optional]
+**startDateTime** | **OffsetDateTime** | Date and time of when the statement period starts. |  [optional]
+**endDateTime** | **OffsetDateTime** | Date and time of when the statement period ends. |  [optional]
+**creationDateTime** | **OffsetDateTime** | Date and time of when the statement was created. |  [optional]
 
 
 

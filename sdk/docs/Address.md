@@ -1,34 +1,23 @@
 
+
 # Address
 
+__Conditional__. The address of the `Payee` or `Payer`.<ul><li>`payee.address` is mandatory when the `paymentType` is an `INTERNATIONAL` payment</li><li>An `Institution` may require you to specify the `country` when used in the context ofthe `Payee` to be able to make a payment.</li></ul>
+
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**addressLines** | **List&lt;String&gt;** |  |  [optional]
-**streetName** | **String** |  |  [optional]
-**buildingNumber** | **String** |  |  [optional]
-**postCode** | **String** |  |  [optional]
-**townName** | **String** |  |  [optional]
-**county** | **List&lt;String&gt;** |  |  [optional]
-**addressType** | [**AddressTypeEnum**](#AddressTypeEnum) |  |  [optional]
-**country** | **String** |  |  [optional]
-**department** | **String** |  |  [optional]
-**subDepartment** | **String** |  |  [optional]
-
-
-<a name="AddressTypeEnum"></a>
-## Enum: AddressTypeEnum
-Name | Value
----- | -----
-BUSINESS | &quot;BUSINESS&quot;
-CORRESPONDENCE | &quot;CORRESPONDENCE&quot;
-DELIVERY_TO | &quot;DELIVERY_TO&quot;
-MAIL_TO | &quot;MAIL_TO&quot;
-PO_BOX | &quot;PO_BOX&quot;
-POSTAL | &quot;POSTAL&quot;
-RESIDENTIAL | &quot;RESIDENTIAL&quot;
-STATEMENT | &quot;STATEMENT&quot;
-UNKNOWN | &quot;UNKNOWN&quot;
+**addressLines** | **List&lt;String&gt;** | __Optional__. The address line of the address |  [optional]
+**streetName** | **String** | __Optional__. The street name of the address |  [optional]
+**buildingNumber** | **String** | __Optional__. The building number of the address |  [optional]
+**postCode** | **String** | __Optional__. The post code of the address |  [optional]
+**townName** | **String** | __Optional__. The town name of the address |  [optional]
+**county** | **List&lt;String&gt;** | __Optional__. The list of counties for the address |  [optional]
+**country** | **String** | __Conditional__. The 2-letter country code for the address. &lt;br&gt;&lt;br&gt;An &#x60;Institution&#x60; may require you to specify the &#x60;country&#x60; when used in the context of the &#x60;Payee&#x60; to be able to make a payment |  [optional]
+**department** | **String** | __Optional__. The department for the address |  [optional]
+**subDepartment** | **String** | __Optional__. The sub-department for the address |  [optional]
+**addressType** | **AddressTypeEnum** |  |  [optional]
 
 
 

@@ -1,12 +1,15 @@
 
+
 # Pagination
 
+
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**next** | [**Next**](Next.md) |  |  [optional]
-**self** | [**FilterAndSort**](FilterAndSort.md) |  |  [optional]
 **totalCount** | **Long** |  |  [optional]
+**self** | [**FilterAndSort**](FilterAndSort.md) |  |  [optional]
+**next** | [**Next**](Next.md) |  |  [optional]
 
 
 
