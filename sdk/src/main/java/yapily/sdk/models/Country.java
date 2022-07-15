@@ -32,7 +32,7 @@ import io.swagger.annotations.ApiModelProperty;
         Country.JSON_PROPERTY_DISPLAY_NAME,
         Country.JSON_PROPERTY_COUNTRY_CODE2
     })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-06T10:23:44.837Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-15T13:40:46.583Z[Etc/UTC]")
 @lombok.Builder(toBuilder=true) 
 @lombok.Data
 @lombok.NoArgsConstructor

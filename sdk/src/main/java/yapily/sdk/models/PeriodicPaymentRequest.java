@@ -39,7 +39,7 @@ import yapily.sdk.models.FrequencyRequest;
         PeriodicPaymentRequest.JSON_PROPERTY_FINAL_PAYMENT_DATE_TIME,
         PeriodicPaymentRequest.JSON_PROPERTY_FINAL_PAYMENT_AMOUNT
     })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-06T10:23:44.837Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-15T13:40:46.583Z[Etc/UTC]")
 @lombok.Builder(toBuilder=true) 
 @lombok.Data
 @lombok.NoArgsConstructor

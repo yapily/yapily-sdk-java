@@ -41,7 +41,7 @@ import java.util.Map;
         RawRequest.JSON_PROPERTY_START_TIME,
         RawRequest.JSON_PROPERTY_STARTED_AT
     })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-06-06T10:23:44.837Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-15T13:40:46.583Z[Etc/UTC]")
 @lombok.Builder(toBuilder=true) 
 @lombok.Data
 @lombok.NoArgsConstructor

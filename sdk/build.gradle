@@ -3,7 +3,7 @@ apply plugin: 'eclipse'
 apply plugin: 'com.diffplug.spotless'
 
 group = 'yapily'
-version = '1.408.0'
+version = '1.411.0'
 
 buildscript {
     repositories {

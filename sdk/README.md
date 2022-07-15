@@ -4,7 +4,7 @@ Yapily API
 
 - API version: 2.2.0
 
-- Build date: 2022-06-06T10:23:44.837Z[Etc/UTC]
+- Build date: 2022-07-15T13:40:46.583Z[Etc/UTC]
 
 The Yapily API enables connections between your application and users' banks. For more information check out our [documentation](https://docs.yapily.com/).<br><br>In particular, make sure to view our [Getting Started](https://docs.yapily.com/pages/home/getting-started/) steps if this is your first time here.<br><br>While testing the API, our list of [sandbox credentials](https://docs.yapily.com/pages/key-concepts/sandbox-credentials/) maybe useful.
 
@@ -43,7 +43,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>yapily</groupId>
   <artifactId>yapily-sdk</artifactId>
-  <version>1.408.0</version>
+  <version>1.411.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -59,7 +59,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "yapily:yapily-sdk:1.408.0"
+     implementation "yapily:yapily-sdk:1.411.0"
   }
 ```
 
@@ -73,7 +73,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/yapily-sdk-1.408.0.jar`
+- `target/yapily-sdk-1.411.0.jar`
 - `target/lib/*.jar`
 
 ## Usage
