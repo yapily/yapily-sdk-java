@@ -12,14 +12,13 @@ import yapily.sdk.models.ApiListResponseOfEventSubscriptionResponse;
 import yapily.sdk.models.ApiResponseOfEventSubscriptionDeleteResponse;
 import yapily.sdk.models.ApiResponseOfEventSubscriptionResponse;
 import yapily.sdk.models.EventSubscriptionRequest;
-import yapily.sdk.models.EventTypesResponse;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-07-15T13:40:46.583Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-08-17T11:34:20.056Z[Etc/UTC]")
 public class NotificationsApi {
   private ApiClient apiClient;
 
@@ -50,8 +49,8 @@ public class NotificationsApi {
   }
 
   /**
-   * post event subscription
-   * create a event subscription
+   * Create Event Subscription
+   * Used to subscribe to notifications relating to a specified event type.
    * @param eventSubscriptionRequest  (required)
    * @return ApiResponseOfEventSubscriptionResponse
    * @throws ApiException if fails to make API call
@@ -69,8 +68,8 @@ public class NotificationsApi {
   }
 
   /**
-   * post event subscription
-   * create a event subscription
+   * Create Event Subscription
+   * Used to subscribe to notifications relating to a specified event type.
    * @param eventSubscriptionRequest  (required)
    * @return ApiResponse&lt;ApiResponseOfEventSubscriptionResponse&gt;
    * @throws ApiException if fails to make API call
@@ -123,9 +122,9 @@ public class NotificationsApi {
                                localVarAuthNames, localVarReturnType, false);
   }
   /**
-   * delete event subscription by event type id
-   * delete a event subscription within the data matching the id in the path
-   * @param eventTypeId Event type Id (required)
+   * Delete Event Subscription
+   * Used to unsubscribe to notifications relating to a specified event type.
+   * @param eventTypeId Unique identifier of the event type (for which notifications will be sent) (required)
    * @return ApiResponseOfEventSubscriptionDeleteResponse
    * @throws ApiException if fails to make API call
    * @http.response.details
@@ -141,9 +140,9 @@ public class NotificationsApi {
   }
 
   /**
-   * delete event subscription by event type id
-   * delete a event subscription within the data matching the id in the path
-   * @param eventTypeId Event type Id (required)
+   * Delete Event Subscription
+   * Used to unsubscribe to notifications relating to a specified event type.
+   * @param eventTypeId Unique identifier of the event type (for which notifications will be sent) (required)
    * @return ApiResponse&lt;ApiResponseOfEventSubscriptionDeleteResponse&gt;
    * @throws ApiException if fails to make API call
    * @http.response.details
@@ -195,9 +194,9 @@ public class NotificationsApi {
                                localVarAuthNames, localVarReturnType, false);
   }
   /**
-   * get event subscription by event type id
-   * find an event subscription within the data matching the id in the path
-   * @param eventTypeId Event type Id (required)
+   * Get Event Subscription
+   * Used to get details of your subscription to a specified event type.
+   * @param eventTypeId Unique identifier of the event type (for which notifications will be sent) (required)
    * @return ApiResponseOfEventSubscriptionResponse
    * @throws ApiException if fails to make API call
    * @http.response.details
@@ -213,9 +212,9 @@ public class NotificationsApi {
   }
 
   /**
-   * get event subscription by event type id
-   * find an event subscription within the data matching the id in the path
-   * @param eventTypeId Event type Id (required)
+   * Get Event Subscription
+   * Used to get details of your subscription to a specified event type.
+   * @param eventTypeId Unique identifier of the event type (for which notifications will be sent) (required)
    * @return ApiResponse&lt;ApiResponseOfEventSubscriptionResponse&gt;
    * @throws ApiException if fails to make API call
    * @http.response.details
@@ -267,8 +266,8 @@ public class NotificationsApi {
                                localVarAuthNames, localVarReturnType, false);
   }
   /**
-   * get event subscriptions
-   * get all event subscriptions that your application is subscribed to
+   * Get Event Subscriptions
+   * Get all event subscriptions that your application is subscribed to
    * @return ApiListResponseOfEventSubscriptionResponse
    * @throws ApiException if fails to make API call
    * @http.response.details
@@ -283,8 +282,8 @@ public class NotificationsApi {
   }
 
   /**
-   * get event subscriptions
-   * get all event subscriptions that your application is subscribed to
+   * Get Event Subscriptions
+   * Get all event subscriptions that your application is subscribed to
    * @return ApiResponse&lt;ApiListResponseOfEventSubscriptionResponse&gt;
    * @throws ApiException if fails to make API call
    * @http.response.details
@@ -325,70 +324,6 @@ public class NotificationsApi {
     GenericType<ApiListResponseOfEventSubscriptionResponse> localVarReturnType = new GenericType<ApiListResponseOfEventSubscriptionResponse>() {};
 
     return apiClient.invokeAPI("NotificationsApi.getEventSubscriptions", localVarPath, "GET", localVarQueryParams, localVarPostBody,
-                               localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType,
-                               localVarAuthNames, localVarReturnType, false);
-  }
-  /**
-   * get event types
-   * get all event types that Yapily support
-   * @return List&lt;EventTypesResponse&gt;
-   * @throws ApiException if fails to make API call
-   * @http.response.details
-     <table summary="Response Details" border="1">
-       <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-       <tr><td> 200 </td><td> Event types found </td><td>  -  </td></tr>
-       <tr><td> 400 </td><td> Bad request for missing required properties </td><td>  -  </td></tr>
-       <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-     </table>
-   */
-  public List<EventTypesResponse> getEventTypes() throws ApiException {
-    return getEventTypesWithHttpInfo().getData();
-  }
-
-  /**
-   * get event types
-   * get all event types that Yapily support
-   * @return ApiResponse&lt;List&lt;EventTypesResponse&gt;&gt;
-   * @throws ApiException if fails to make API call
-   * @http.response.details
-     <table summary="Response Details" border="1">
-       <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-       <tr><td> 200 </td><td> Event types found </td><td>  -  </td></tr>
-       <tr><td> 400 </td><td> Bad request for missing required properties </td><td>  -  </td></tr>
-       <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-     </table>
-   */
-  public ApiResponse<List<EventTypesResponse>> getEventTypesWithHttpInfo() throws ApiException {
-    Object localVarPostBody = null;
-    
-    // create path and map variables
-    String localVarPath = "/notifications/event-types";
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "basicAuth" };
-
-    GenericType<List<EventTypesResponse>> localVarReturnType = new GenericType<List<EventTypesResponse>>() {};
-
-    return apiClient.invokeAPI("NotificationsApi.getEventTypes", localVarPath, "GET", localVarQueryParams, localVarPostBody,
                                localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType,
                                localVarAuthNames, localVarReturnType, false);
   }

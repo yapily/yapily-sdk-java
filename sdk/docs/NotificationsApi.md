@@ -4,11 +4,10 @@ All URIs are relative to *https://api.yapily.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createEventSubscription**](NotificationsApi.md#createEventSubscription) | **POST** /notifications/event-subscriptions | post event subscription
-[**deleteEventSubscriptionById**](NotificationsApi.md#deleteEventSubscriptionById) | **DELETE** /notifications/event-subscriptions/{eventTypeId} | delete event subscription by event type id
-[**getEventSubscriptionById**](NotificationsApi.md#getEventSubscriptionById) | **GET** /notifications/event-subscriptions/{eventTypeId} | get event subscription by event type id
-[**getEventSubscriptions**](NotificationsApi.md#getEventSubscriptions) | **GET** /notifications/event-subscriptions | get event subscriptions
-[**getEventTypes**](NotificationsApi.md#getEventTypes) | **GET** /notifications/event-types | get event types
+[**createEventSubscription**](NotificationsApi.md#createEventSubscription) | **POST** /notifications/event-subscriptions | Create Event Subscription
+[**deleteEventSubscriptionById**](NotificationsApi.md#deleteEventSubscriptionById) | **DELETE** /notifications/event-subscriptions/{eventTypeId} | Delete Event Subscription
+[**getEventSubscriptionById**](NotificationsApi.md#getEventSubscriptionById) | **GET** /notifications/event-subscriptions/{eventTypeId} | Get Event Subscription
+[**getEventSubscriptions**](NotificationsApi.md#getEventSubscriptions) | **GET** /notifications/event-subscriptions | Get Event Subscriptions
 
 
 
@@ -16,9 +15,9 @@ Method | HTTP request | Description
 
 > ApiResponseOfEventSubscriptionResponse createEventSubscription(eventSubscriptionRequest)
 
-post event subscription
+Create Event Subscription
 
-create a event subscription
+Used to subscribe to notifications relating to a specified event type.
 
 ### Example
 
@@ -90,9 +89,9 @@ Name | Type | Description  | Notes
 
 > ApiResponseOfEventSubscriptionDeleteResponse deleteEventSubscriptionById(eventTypeId)
 
-delete event subscription by event type id
+Delete Event Subscription
 
-delete a event subscription within the data matching the id in the path
+Used to unsubscribe to notifications relating to a specified event type.
 
 ### Example
 
@@ -116,7 +115,7 @@ public class Example {
         basicAuth.setPassword("YOUR PASSWORD");
 
         NotificationsApi apiInstance = new NotificationsApi(defaultClient);
-        String eventTypeId = "eventTypeId_example"; // String | Event type Id
+        String eventTypeId = "eventTypeId_example"; // String | Unique identifier of the event type (for which notifications will be sent)
         try {
             ApiResponseOfEventSubscriptionDeleteResponse result = apiInstance.deleteEventSubscriptionById(eventTypeId);
             System.out.println(result);
@@ -136,7 +135,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **eventTypeId** | **String**| Event type Id |
+ **eventTypeId** | **String**| Unique identifier of the event type (for which notifications will be sent) |
 
 ### Return type
 
@@ -163,9 +162,9 @@ Name | Type | Description  | Notes
 
 > ApiResponseOfEventSubscriptionResponse getEventSubscriptionById(eventTypeId)
 
-get event subscription by event type id
+Get Event Subscription
 
-find an event subscription within the data matching the id in the path
+Used to get details of your subscription to a specified event type.
 
 ### Example
 
@@ -189,7 +188,7 @@ public class Example {
         basicAuth.setPassword("YOUR PASSWORD");
 
         NotificationsApi apiInstance = new NotificationsApi(defaultClient);
-        String eventTypeId = "eventTypeId_example"; // String | Event type Id
+        String eventTypeId = "eventTypeId_example"; // String | Unique identifier of the event type (for which notifications will be sent)
         try {
             ApiResponseOfEventSubscriptionResponse result = apiInstance.getEventSubscriptionById(eventTypeId);
             System.out.println(result);
@@ -209,7 +208,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **eventTypeId** | **String**| Event type Id |
+ **eventTypeId** | **String**| Unique identifier of the event type (for which notifications will be sent) |
 
 ### Return type
 
@@ -236,9 +235,9 @@ Name | Type | Description  | Notes
 
 > ApiListResponseOfEventSubscriptionResponse getEventSubscriptions()
 
-get event subscriptions
+Get Event Subscriptions
 
-get all event subscriptions that your application is subscribed to
+Get all event subscriptions that your application is subscribed to
 
 ### Example
 
@@ -297,74 +296,5 @@ This endpoint does not need any parameter.
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Event subscriptions for the application |  -  |
-| **401** | Unauthorized |  -  |
-
-
-## getEventTypes
-
-> List&lt;EventTypesResponse&gt; getEventTypes()
-
-get event types
-
-get all event types that Yapily support
-
-### Example
-
-```java
-// Import classes:
-import yapily.sdk.ApiClient;
-import yapily.sdk.ApiException;
-import yapily.sdk.Configuration;
-import yapily.sdk.auth.*;
-import yapily.sdk.model.*;
-import yapily.sdk.api.NotificationsApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.yapily.com");
-        
-        // Configure HTTP basic authorization: basicAuth
-        HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("YOUR USERNAME");
-        basicAuth.setPassword("YOUR PASSWORD");
-
-        NotificationsApi apiInstance = new NotificationsApi(defaultClient);
-        try {
-            List<EventTypesResponse> result = apiInstance.getEventTypes();
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling NotificationsApi#getEventTypes");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**List&lt;EventTypesResponse&gt;**](EventTypesResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Event types found |  -  |
-| **400** | Bad request for missing required properties |  -  |
 | **401** | Unauthorized |  -  |
 

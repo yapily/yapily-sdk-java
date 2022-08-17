@@ -2,9 +2,9 @@
 
 Yapily API
 
-- API version: 2.2.0
+- API version: 2.5.0
 
-- Build date: 2022-07-15T13:40:46.583Z[Etc/UTC]
+- Build date: 2022-08-17T11:34:20.056Z[Etc/UTC]
 
 The Yapily API enables connections between your application and users' banks. For more information check out our [documentation](https://docs.yapily.com/).<br><br>In particular, make sure to view our [Getting Started](https://docs.yapily.com/pages/home/getting-started/) steps if this is your first time here.<br><br>While testing the API, our list of [sandbox credentials](https://docs.yapily.com/pages/key-concepts/sandbox-credentials/) maybe useful.
 
@@ -43,7 +43,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>yapily</groupId>
   <artifactId>yapily-sdk</artifactId>
-  <version>1.411.0</version>
+  <version>1.412.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -59,7 +59,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "yapily:yapily-sdk:1.411.0"
+     implementation "yapily:yapily-sdk:1.412.0"
   }
 ```
 
@@ -73,7 +73,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/yapily-sdk-1.411.0.jar`
+- `target/yapily-sdk-1.412.0.jar`
 - `target/lib/*.jar`
 
 ## Usage
@@ -185,11 +185,10 @@ Class | Method | HTTP request | Description
 *InstitutionsApi* | [**getFeatureDetails**](docs/InstitutionsApi.md#getFeatureDetails) | **GET** /features | Get Features
 *InstitutionsApi* | [**getInstitution**](docs/InstitutionsApi.md#getInstitution) | **GET** /institutions/{institutionId} | Get Institution
 *InstitutionsApi* | [**getInstitutions**](docs/InstitutionsApi.md#getInstitutions) | **GET** /institutions | Get Institutions
-*NotificationsApi* | [**createEventSubscription**](docs/NotificationsApi.md#createEventSubscription) | **POST** /notifications/event-subscriptions | post event subscription
-*NotificationsApi* | [**deleteEventSubscriptionById**](docs/NotificationsApi.md#deleteEventSubscriptionById) | **DELETE** /notifications/event-subscriptions/{eventTypeId} | delete event subscription by event type id
-*NotificationsApi* | [**getEventSubscriptionById**](docs/NotificationsApi.md#getEventSubscriptionById) | **GET** /notifications/event-subscriptions/{eventTypeId} | get event subscription by event type id
-*NotificationsApi* | [**getEventSubscriptions**](docs/NotificationsApi.md#getEventSubscriptions) | **GET** /notifications/event-subscriptions | get event subscriptions
-*NotificationsApi* | [**getEventTypes**](docs/NotificationsApi.md#getEventTypes) | **GET** /notifications/event-types | get event types
+*NotificationsApi* | [**createEventSubscription**](docs/NotificationsApi.md#createEventSubscription) | **POST** /notifications/event-subscriptions | Create Event Subscription
+*NotificationsApi* | [**deleteEventSubscriptionById**](docs/NotificationsApi.md#deleteEventSubscriptionById) | **DELETE** /notifications/event-subscriptions/{eventTypeId} | Delete Event Subscription
+*NotificationsApi* | [**getEventSubscriptionById**](docs/NotificationsApi.md#getEventSubscriptionById) | **GET** /notifications/event-subscriptions/{eventTypeId} | Get Event Subscription
+*NotificationsApi* | [**getEventSubscriptions**](docs/NotificationsApi.md#getEventSubscriptions) | **GET** /notifications/event-subscriptions | Get Event Subscriptions
 *PaymentsApi* | [**createBulkPayment**](docs/PaymentsApi.md#createBulkPayment) | **POST** /bulk-payments | Create Bulk Payment
 *PaymentsApi* | [**createPayment**](docs/PaymentsApi.md#createPayment) | **POST** /payments | Create Payment
 *PaymentsApi* | [**getPayments**](docs/PaymentsApi.md#getPayments) | **GET** /payments/{paymentId}/details | Get Payment Details
@@ -197,6 +196,24 @@ Class | Method | HTTP request | Description
 *UsersApi* | [**deleteUser**](docs/UsersApi.md#deleteUser) | **DELETE** /users/{userUuid} | Delete User
 *UsersApi* | [**getUser**](docs/UsersApi.md#getUser) | **GET** /users/{userUuid} | Get User
 *UsersApi* | [**getUsers**](docs/UsersApi.md#getUsers) | **GET** /users | Get Users
+*VariableRecurringPaymentsApi* | [**createNonSweepingAuthorisation**](docs/VariableRecurringPaymentsApi.md#createNonSweepingAuthorisation) | **POST** /variable-recurring-payments/non-sweeping/consents | Create Non-Sweeping Variable Recurring Payment Authorisation
+*VariableRecurringPaymentsApi* | [**createSweepingAuthorisation**](docs/VariableRecurringPaymentsApi.md#createSweepingAuthorisation) | **POST** /variable-recurring-payments/sweeping/consents | Create Sweeping Variable Recurring Payment Authorisation
+*VariableRecurringPaymentsApi* | [**createVrpFundsConfirmation**](docs/VariableRecurringPaymentsApi.md#createVrpFundsConfirmation) | **POST** /variable-recurring-payments/funds-confirmation | Confirm Funds for Variable Recurring Payment
+*VariableRecurringPaymentsApi* | [**createVrpPayment**](docs/VariableRecurringPaymentsApi.md#createVrpPayment) | **POST** /variable-recurring-payments/payments | Create Variable Recurring Payment
+*VariableRecurringPaymentsApi* | [**getSweepingVrpConsentById**](docs/VariableRecurringPaymentsApi.md#getSweepingVrpConsentById) | **GET** /variable-recurring-payments/sweeping/consents/{consentId} | Get Sweeping Variable Recurring Payment Consent Details
+*VariableRecurringPaymentsApi* | [**getVrpPaymentDetails**](docs/VariableRecurringPaymentsApi.md#getVrpPaymentDetails) | **GET** /variable-recurring-payments/payments/{paymentId}/details | Get Variable Recurring Payment Details
+*VariableRecurringPaymentsApi* | [**getpNonSweepingVrpConsentById**](docs/VariableRecurringPaymentsApi.md#getpNonSweepingVrpConsentById) | **GET** /variable-recurring-payments/non-sweeping/consents/{consentId} | Get Non-Sweeping Variable Recurring Payment Consent Details
+*VirtualAccountsApi* | [**createVirtualAccount**](docs/VirtualAccountsApi.md#createVirtualAccount) | **POST** /virtual-accounts/accounts | Create Account
+*VirtualAccountsApi* | [**createVirtualAccountBeneficiary**](docs/VirtualAccountsApi.md#createVirtualAccountBeneficiary) | **POST** /virtual-accounts/beneficiaries | Create Beneficiary
+*VirtualAccountsApi* | [**createVirtualAccountPayOut**](docs/VirtualAccountsApi.md#createVirtualAccountPayOut) | **POST** /virtual-accounts/payments/pay-outs | Create Pay Out
+*VirtualAccountsApi* | [**createVirtualAccountTransfer**](docs/VirtualAccountsApi.md#createVirtualAccountTransfer) | **POST** /virtual-accounts/payments/transfers | Create Virtual Account Transfer
+*VirtualAccountsApi* | [**getPayInDetails**](docs/VirtualAccountsApi.md#getPayInDetails) | **GET** /virtual-accounts/payments/{paymentId}/pay-in-details | Get Pay-In Details
+*VirtualAccountsApi* | [**getPaymentsById**](docs/VirtualAccountsApi.md#getPaymentsById) | **GET** /virtual-accounts/payments/{id} | Get Payment
+*VirtualAccountsApi* | [**getVirtualAccountBeneficiaries**](docs/VirtualAccountsApi.md#getVirtualAccountBeneficiaries) | **GET** /virtual-accounts/beneficiaries | Get List Of Beneficiaries
+*VirtualAccountsApi* | [**getVirtualAccountBeneficiary**](docs/VirtualAccountsApi.md#getVirtualAccountBeneficiary) | **GET** /virtual-accounts/beneficiaries/{beneficiaryId} | Get Beneficiary
+*VirtualAccountsApi* | [**getVirtualAccountById**](docs/VirtualAccountsApi.md#getVirtualAccountById) | **GET** /virtual-accounts/accounts/{accountId} | Get Account
+*VirtualAccountsApi* | [**getVirtualAccountPayments**](docs/VirtualAccountsApi.md#getVirtualAccountPayments) | **GET** /virtual-accounts/payments | Get Payments
+*VirtualAccountsApi* | [**getVirtualAccounts**](docs/VirtualAccountsApi.md#getVirtualAccounts) | **GET** /virtual-accounts/accounts | Get Accounts
 
 
 ## Documentation for Models
@@ -229,6 +246,9 @@ Class | Method | HTTP request | Description
  - [ApiListResponseOfInstitution](docs/ApiListResponseOfInstitution.md)
  - [ApiListResponseOfPaymentResponse](docs/ApiListResponseOfPaymentResponse.md)
  - [ApiListResponseOfTransaction](docs/ApiListResponseOfTransaction.md)
+ - [ApiListResponseOfVirtualAccount](docs/ApiListResponseOfVirtualAccount.md)
+ - [ApiListResponseOfVirtualAccountBeneficiary](docs/ApiListResponseOfVirtualAccountBeneficiary.md)
+ - [ApiListResponseOfVirtualAccountPayment](docs/ApiListResponseOfVirtualAccountPayment.md)
  - [ApiResponseError](docs/ApiResponseError.md)
  - [ApiResponseOfAccount](docs/ApiResponseOfAccount.md)
  - [ApiResponseOfAccountAuthorisationResponse](docs/ApiResponseOfAccountAuthorisationResponse.md)
@@ -239,12 +259,20 @@ Class | Method | HTTP request | Description
  - [ApiResponseOfEmbeddedAccountAuthorisationResponse](docs/ApiResponseOfEmbeddedAccountAuthorisationResponse.md)
  - [ApiResponseOfEventSubscriptionDeleteResponse](docs/ApiResponseOfEventSubscriptionDeleteResponse.md)
  - [ApiResponseOfEventSubscriptionResponse](docs/ApiResponseOfEventSubscriptionResponse.md)
+ - [ApiResponseOfFundsConfirmationResponse](docs/ApiResponseOfFundsConfirmationResponse.md)
  - [ApiResponseOfIdentity](docs/ApiResponseOfIdentity.md)
+ - [ApiResponseOfNonSweepingAuthorisationResponse](docs/ApiResponseOfNonSweepingAuthorisationResponse.md)
  - [ApiResponseOfPaymentAuthorisationRequestResponse](docs/ApiResponseOfPaymentAuthorisationRequestResponse.md)
  - [ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse](docs/ApiResponseOfPaymentEmbeddedAuthorisationRequestResponse.md)
  - [ApiResponseOfPaymentResponse](docs/ApiResponseOfPaymentResponse.md)
  - [ApiResponseOfPaymentResponses](docs/ApiResponseOfPaymentResponses.md)
+ - [ApiResponseOfSubmissionResponse](docs/ApiResponseOfSubmissionResponse.md)
+ - [ApiResponseOfSweepingAuthorisationResponse](docs/ApiResponseOfSweepingAuthorisationResponse.md)
  - [ApiResponseOfUserDeleteResponse](docs/ApiResponseOfUserDeleteResponse.md)
+ - [ApiResponseOfVirtualAccount](docs/ApiResponseOfVirtualAccount.md)
+ - [ApiResponseOfVirtualAccountBeneficiary](docs/ApiResponseOfVirtualAccountBeneficiary.md)
+ - [ApiResponseOfVirtualAccountPayInDetails](docs/ApiResponseOfVirtualAccountPayInDetails.md)
+ - [ApiResponseOfVirtualAccountPayment](docs/ApiResponseOfVirtualAccountPayment.md)
  - [Application](docs/Application.md)
  - [ApplicationUser](docs/ApplicationUser.md)
  - [AuthorisationStatus](docs/AuthorisationStatus.md)
@@ -276,10 +304,11 @@ Class | Method | HTTP request | Description
  - [Enrichment](docs/Enrichment.md)
  - [EnrichmentMerchant](docs/EnrichmentMerchant.md)
  - [EnvironmentType](docs/EnvironmentType.md)
+ - [ErrorDetails](docs/ErrorDetails.md)
+ - [ErrorIssue](docs/ErrorIssue.md)
  - [EventSubscriptionDeleteResponse](docs/EventSubscriptionDeleteResponse.md)
  - [EventSubscriptionRequest](docs/EventSubscriptionRequest.md)
  - [EventSubscriptionResponse](docs/EventSubscriptionResponse.md)
- - [EventTypesResponse](docs/EventTypesResponse.md)
  - [ExchangeRateInformation](docs/ExchangeRateInformation.md)
  - [ExchangeRateInformationResponse](docs/ExchangeRateInformationResponse.md)
  - [FeatureDetails](docs/FeatureDetails.md)
@@ -298,14 +327,19 @@ Class | Method | HTTP request | Description
  - [FrequencyEnumExtended](docs/FrequencyEnumExtended.md)
  - [FrequencyRequest](docs/FrequencyRequest.md)
  - [FrequencyResponse](docs/FrequencyResponse.md)
+ - [FundsAvailable](docs/FundsAvailable.md)
+ - [FundsConfirmationRequest](docs/FundsConfirmationRequest.md)
+ - [FundsConfirmationResponse](docs/FundsConfirmationResponse.md)
  - [Identity](docs/Identity.md)
  - [IdentityAddress](docs/IdentityAddress.md)
+ - [InitiationDetails](docs/InitiationDetails.md)
  - [Institution](docs/Institution.md)
  - [InstitutionConsent](docs/InstitutionConsent.md)
  - [InstitutionError](docs/InstitutionError.md)
  - [InternationalPaymentRequest](docs/InternationalPaymentRequest.md)
  - [IsoBankTransactionCode](docs/IsoBankTransactionCode.md)
  - [IsoCodeDetails](docs/IsoCodeDetails.md)
+ - [Links](docs/Links.md)
  - [Media](docs/Media.md)
  - [Merchant](docs/Merchant.md)
  - [MonitoringEndpointStatus](docs/MonitoringEndpointStatus.md)
@@ -314,6 +348,10 @@ Class | Method | HTTP request | Description
  - [MultiAuthorisation](docs/MultiAuthorisation.md)
  - [NewApplicationUser](docs/NewApplicationUser.md)
  - [Next](docs/Next.md)
+ - [NonSweepingAuthorisationRequest](docs/NonSweepingAuthorisationRequest.md)
+ - [NonSweepingAuthorisationResponse](docs/NonSweepingAuthorisationResponse.md)
+ - [NonSweepingControlParameters](docs/NonSweepingControlParameters.md)
+ - [NonSweepingPeriodicLimits](docs/NonSweepingPeriodicLimits.md)
  - [Notification](docs/Notification.md)
  - [OneTimeTokenRequest](docs/OneTimeTokenRequest.md)
  - [Pagination](docs/Pagination.md)
@@ -353,6 +391,13 @@ Class | Method | HTTP request | Description
  - [SortEnum](docs/SortEnum.md)
  - [StatementReference](docs/StatementReference.md)
  - [Subcategory](docs/Subcategory.md)
+ - [SubmissionDetails](docs/SubmissionDetails.md)
+ - [SubmissionRequest](docs/SubmissionRequest.md)
+ - [SubmissionResponse](docs/SubmissionResponse.md)
+ - [SweepingAuthorisationRequest](docs/SweepingAuthorisationRequest.md)
+ - [SweepingAuthorisationResponse](docs/SweepingAuthorisationResponse.md)
+ - [SweepingControlParameters](docs/SweepingControlParameters.md)
+ - [SweepingPeriodicLimits](docs/SweepingPeriodicLimits.md)
  - [TerminatedTransactionStream](docs/TerminatedTransactionStream.md)
  - [Transaction](docs/Transaction.md)
  - [TransactionBalance](docs/TransactionBalance.md)
@@ -365,6 +410,23 @@ Class | Method | HTTP request | Description
  - [UsageType](docs/UsageType.md)
  - [UserCredentials](docs/UserCredentials.md)
  - [UserDeleteResponse](docs/UserDeleteResponse.md)
+ - [VirtualAccount](docs/VirtualAccount.md)
+ - [VirtualAccountBalance](docs/VirtualAccountBalance.md)
+ - [VirtualAccountBalanceType](docs/VirtualAccountBalanceType.md)
+ - [VirtualAccountBankAccount](docs/VirtualAccountBankAccount.md)
+ - [VirtualAccountBeneficiary](docs/VirtualAccountBeneficiary.md)
+ - [VirtualAccountBeneficiaryAccount](docs/VirtualAccountBeneficiaryAccount.md)
+ - [VirtualAccountBeneficiaryAddress](docs/VirtualAccountBeneficiaryAddress.md)
+ - [VirtualAccountBeneficiaryRequest](docs/VirtualAccountBeneficiaryRequest.md)
+ - [VirtualAccountPayInDetails](docs/VirtualAccountPayInDetails.md)
+ - [VirtualAccountPayOutRequest](docs/VirtualAccountPayOutRequest.md)
+ - [VirtualAccountPayment](docs/VirtualAccountPayment.md)
+ - [VirtualAccountPaymentDestination](docs/VirtualAccountPaymentDestination.md)
+ - [VirtualAccountPaymentSource](docs/VirtualAccountPaymentSource.md)
+ - [VirtualAccountRequest](docs/VirtualAccountRequest.md)
+ - [VirtualAccountTransferDestination](docs/VirtualAccountTransferDestination.md)
+ - [VirtualAccountTransferRequest](docs/VirtualAccountTransferRequest.md)
+ - [VirtualAccountTransferSource](docs/VirtualAccountTransferSource.md)
 
 
 ## Documentation for Authorization

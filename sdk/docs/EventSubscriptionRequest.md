@@ -7,7 +7,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**eventTypeId** | **String** | Used to identify event subscription | 
+**eventTypeId** | **String** | Unique identifier of the event type (for which notifications will be sent) | 
 **notification** | [**Notification**](Notification.md) |  | 
 
 

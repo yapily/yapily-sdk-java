@@ -35,5 +35,15 @@
 
 * `ROLL_NUMBER` (value: `"ROLL_NUMBER"`)
 
+* `BLZ` (value: `"BLZ"`)
+
+* `IFS` (value: `"IFS"`)
+
+* `CLABE` (value: `"CLABE"`)
+
+* `CTN` (value: `"CTN"`)
+
+* `BRANCH_CODE` (value: `"BRANCH_CODE"`)
+
 
 
