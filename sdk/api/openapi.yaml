@@ -11,7 +11,7 @@ info:
     of [sandbox credentials](https://docs.yapily.com/pages/key-concepts/sandbox-credentials/)
     maybe useful.
   title: Yapily API
-  version: 2.5.0
+  version: 2.6.0
 servers:
 - url: https://api.yapily.com
 security:
@@ -12672,36 +12672,17 @@ components:
             address:
               country: GB
             name: John Doe
-          amount: 0.8008281904610115
-          payeeDetails:
-            accountIdentifications:
-            - identification: "401016"
-              type: SORT_CODE
-            - identification: "71518920"
-              type: ACCOUNT_NUMBER
-            address:
-              country: GB
-            merchantId: "24589303"
-            merchantCategoryCode: "5551"
-            name: Jane Doe
           bookingDateTime: 2000-01-23T04:56:07.000+00:00
           statementReferences:
           - value: value
           - value: value
           description: description
-          merchant:
-            merchantCategoryCode: merchantCategoryCode
-            merchantName: merchantName
           addressDetails:
             addressLine: addressLine
-          grossAmount:
-            amount: 10
-            currency: GBP
           chargeDetails:
             chargeAmount:
               amount: 10
               currency: GBP
-          supplementaryData: '{}'
           currencyExchange:
             targetCurrency: targetCurrency
             exchangeRate: 6.027456183070403
@@ -12730,12 +12711,32 @@ components:
           transactionAmount:
             amount: 10
             currency: GBP
-          proprietaryBankTransactionCode:
-            code: code
-            issuer: issuer
           valueDateTime: 2000-01-23T04:56:07.000+00:00
           currency: currency
           id: id
+          amount: 0.8008281904610115
+          payeeDetails:
+            accountIdentifications:
+            - identification: "401016"
+              type: SORT_CODE
+            - identification: "71518920"
+              type: ACCOUNT_NUMBER
+            address:
+              country: GB
+            merchantId: "24589303"
+            merchantCategoryCode: "5551"
+            name: Jane Doe
+          merchant:
+            merchantCategoryCode: merchantCategoryCode
+            merchantName: merchantName
+          grossAmount:
+            amount: 10
+            currency: GBP
+          supplementaryData: '{}'
+          transactionMutability: Mutable
+          proprietaryBankTransactionCode:
+            code: code
+            issuer: issuer
           transactionInformation:
           - transactionInformation
           - transactionInformation
@@ -12759,36 +12760,17 @@ components:
             address:
               country: GB
             name: John Doe
-          amount: 0.8008281904610115
-          payeeDetails:
-            accountIdentifications:
-            - identification: "401016"
-              type: SORT_CODE
-            - identification: "71518920"
-              type: ACCOUNT_NUMBER
-            address:
-              country: GB
-            merchantId: "24589303"
-            merchantCategoryCode: "5551"
-            name: Jane Doe
           bookingDateTime: 2000-01-23T04:56:07.000+00:00
           statementReferences:
           - value: value
           - value: value
           description: description
-          merchant:
-            merchantCategoryCode: merchantCategoryCode
-            merchantName: merchantName
           addressDetails:
             addressLine: addressLine
-          grossAmount:
-            amount: 10
-            currency: GBP
           chargeDetails:
             chargeAmount:
               amount: 10
               currency: GBP
-          supplementaryData: '{}'
           currencyExchange:
             targetCurrency: targetCurrency
             exchangeRate: 6.027456183070403
@@ -12817,12 +12799,32 @@ components:
           transactionAmount:
             amount: 10
             currency: GBP
-          proprietaryBankTransactionCode:
-            code: code
-            issuer: issuer
           valueDateTime: 2000-01-23T04:56:07.000+00:00
           currency: currency
           id: id
+          amount: 0.8008281904610115
+          payeeDetails:
+            accountIdentifications:
+            - identification: "401016"
+              type: SORT_CODE
+            - identification: "71518920"
+              type: ACCOUNT_NUMBER
+            address:
+              country: GB
+            merchantId: "24589303"
+            merchantCategoryCode: "5551"
+            name: Jane Doe
+          merchant:
+            merchantCategoryCode: merchantCategoryCode
+            merchantName: merchantName
+          grossAmount:
+            amount: 10
+            currency: GBP
+          supplementaryData: '{}'
+          transactionMutability: Mutable
+          proprietaryBankTransactionCode:
+            code: code
+            issuer: issuer
           transactionInformation:
           - transactionInformation
           - transactionInformation
@@ -16515,36 +16517,17 @@ components:
           address:
             country: GB
           name: John Doe
-        amount: 0.8008281904610115
-        payeeDetails:
-          accountIdentifications:
-          - identification: "401016"
-            type: SORT_CODE
-          - identification: "71518920"
-            type: ACCOUNT_NUMBER
-          address:
-            country: GB
-          merchantId: "24589303"
-          merchantCategoryCode: "5551"
-          name: Jane Doe
         bookingDateTime: 2000-01-23T04:56:07.000+00:00
         statementReferences:
         - value: value
         - value: value
         description: description
-        merchant:
-          merchantCategoryCode: merchantCategoryCode
-          merchantName: merchantName
         addressDetails:
           addressLine: addressLine
-        grossAmount:
-          amount: 10
-          currency: GBP
         chargeDetails:
           chargeAmount:
             amount: 10
             currency: GBP
-        supplementaryData: '{}'
         currencyExchange:
           targetCurrency: targetCurrency
           exchangeRate: 6.027456183070403
@@ -16573,12 +16556,32 @@ components:
         transactionAmount:
           amount: 10
           currency: GBP
-        proprietaryBankTransactionCode:
-          code: code
-          issuer: issuer
         valueDateTime: 2000-01-23T04:56:07.000+00:00
         currency: currency
         id: id
+        amount: 0.8008281904610115
+        payeeDetails:
+          accountIdentifications:
+          - identification: "401016"
+            type: SORT_CODE
+          - identification: "71518920"
+            type: ACCOUNT_NUMBER
+          address:
+            country: GB
+          merchantId: "24589303"
+          merchantCategoryCode: "5551"
+          name: Jane Doe
+        merchant:
+          merchantCategoryCode: merchantCategoryCode
+          merchantName: merchantName
+        grossAmount:
+          amount: 10
+          currency: GBP
+        supplementaryData: '{}'
+        transactionMutability: Mutable
+        proprietaryBankTransactionCode:
+          code: code
+          issuer: issuer
         transactionInformation:
         - transactionInformation
         - transactionInformation
@@ -16648,6 +16651,17 @@ components:
           $ref: '#/components/schemas/Enrichment'
         supplementaryData:
           type: object
+        transactionMutability:
+          description: __Optional__. Specifies the Mutability of the Transaction record.<ul><li>A
+            transaction with a `Status` of `Pending` is mutable.</li><li>A transaction
+            with a `Status` of `Booked` where the `TransactionMutability` flag is
+            not specified is not guaranteed to be immutable (although in most instances
+            it will be).</li><li>A transaction with a `Status` of `Booked` with the
+            `TransactionMutability` flag set to `Immutable` is immutable.</li><li>A
+            transaction with a `Status` of `Booked` with the `TransactionMutability`
+            flag set to `Mutable` is mutable.</li></ul>
+          example: Mutable
+          type: string
       type: object
     ApiListResponseOfTransaction:
       example:
@@ -16663,36 +16677,17 @@ components:
             address:
               country: GB
             name: John Doe
-          amount: 0.8008281904610115
-          payeeDetails:
-            accountIdentifications:
-            - identification: "401016"
-              type: SORT_CODE
-            - identification: "71518920"
-              type: ACCOUNT_NUMBER
-            address:
-              country: GB
-            merchantId: "24589303"
-            merchantCategoryCode: "5551"
-            name: Jane Doe
           bookingDateTime: 2000-01-23T04:56:07.000+00:00
           statementReferences:
           - value: value
           - value: value
           description: description
-          merchant:
-            merchantCategoryCode: merchantCategoryCode
-            merchantName: merchantName
           addressDetails:
             addressLine: addressLine
-          grossAmount:
-            amount: 10
-            currency: GBP
           chargeDetails:
             chargeAmount:
               amount: 10
               currency: GBP
-          supplementaryData: '{}'
           currencyExchange:
             targetCurrency: targetCurrency
             exchangeRate: 6.027456183070403
@@ -16721,12 +16716,32 @@ components:
           transactionAmount:
             amount: 10
             currency: GBP
-          proprietaryBankTransactionCode:
-            code: code
-            issuer: issuer
           valueDateTime: 2000-01-23T04:56:07.000+00:00
           currency: currency
           id: id
+          amount: 0.8008281904610115
+          payeeDetails:
+            accountIdentifications:
+            - identification: "401016"
+              type: SORT_CODE
+            - identification: "71518920"
+              type: ACCOUNT_NUMBER
+            address:
+              country: GB
+            merchantId: "24589303"
+            merchantCategoryCode: "5551"
+            name: Jane Doe
+          merchant:
+            merchantCategoryCode: merchantCategoryCode
+            merchantName: merchantName
+          grossAmount:
+            amount: 10
+            currency: GBP
+          supplementaryData: '{}'
+          transactionMutability: Mutable
+          proprietaryBankTransactionCode:
+            code: code
+            issuer: issuer
           transactionInformation:
           - transactionInformation
           - transactionInformation
@@ -16750,36 +16765,17 @@ components:
             address:
               country: GB
             name: John Doe
-          amount: 0.8008281904610115
-          payeeDetails:
-            accountIdentifications:
-            - identification: "401016"
-              type: SORT_CODE
-            - identification: "71518920"
-              type: ACCOUNT_NUMBER
-            address:
-              country: GB
-            merchantId: "24589303"
-            merchantCategoryCode: "5551"
-            name: Jane Doe
           bookingDateTime: 2000-01-23T04:56:07.000+00:00
           statementReferences:
           - value: value
           - value: value
           description: description
-          merchant:
-            merchantCategoryCode: merchantCategoryCode
-            merchantName: merchantName
           addressDetails:
             addressLine: addressLine
-          grossAmount:
-            amount: 10
-            currency: GBP
           chargeDetails:
             chargeAmount:
               amount: 10
               currency: GBP
-          supplementaryData: '{}'
           currencyExchange:
             targetCurrency: targetCurrency
             exchangeRate: 6.027456183070403
@@ -16808,12 +16804,32 @@ components:
           transactionAmount:
             amount: 10
             currency: GBP
-          proprietaryBankTransactionCode:
-            code: code
-            issuer: issuer
           valueDateTime: 2000-01-23T04:56:07.000+00:00
           currency: currency
           id: id
+          amount: 0.8008281904610115
+          payeeDetails:
+            accountIdentifications:
+            - identification: "401016"
+              type: SORT_CODE
+            - identification: "71518920"
+              type: ACCOUNT_NUMBER
+            address:
+              country: GB
+            merchantId: "24589303"
+            merchantCategoryCode: "5551"
+            name: Jane Doe
+          merchant:
+            merchantCategoryCode: merchantCategoryCode
+            merchantName: merchantName
+          grossAmount:
+            amount: 10
+            currency: GBP
+          supplementaryData: '{}'
+          transactionMutability: Mutable
+          proprietaryBankTransactionCode:
+            code: code
+            issuer: issuer
           transactionInformation:
           - transactionInformation
           - transactionInformation
@@ -16897,36 +16913,17 @@ components:
               address:
                 country: GB
               name: John Doe
-            amount: 0.8008281904610115
-            payeeDetails:
-              accountIdentifications:
-              - identification: "401016"
-                type: SORT_CODE
-              - identification: "71518920"
-                type: ACCOUNT_NUMBER
-              address:
-                country: GB
-              merchantId: "24589303"
-              merchantCategoryCode: "5551"
-              name: Jane Doe
             bookingDateTime: 2000-01-23T04:56:07.000+00:00
             statementReferences:
             - value: value
             - value: value
             description: description
-            merchant:
-              merchantCategoryCode: merchantCategoryCode
-              merchantName: merchantName
             addressDetails:
               addressLine: addressLine
-            grossAmount:
-              amount: 10
-              currency: GBP
             chargeDetails:
               chargeAmount:
                 amount: 10
                 currency: GBP
-            supplementaryData: '{}'
             currencyExchange:
               targetCurrency: targetCurrency
               exchangeRate: 6.027456183070403
@@ -16955,12 +16952,32 @@ components:
             transactionAmount:
               amount: 10
               currency: GBP
-            proprietaryBankTransactionCode:
-              code: code
-              issuer: issuer
             valueDateTime: 2000-01-23T04:56:07.000+00:00
             currency: currency
             id: id
+            amount: 0.8008281904610115
+            payeeDetails:
+              accountIdentifications:
+              - identification: "401016"
+                type: SORT_CODE
+              - identification: "71518920"
+                type: ACCOUNT_NUMBER
+              address:
+                country: GB
+              merchantId: "24589303"
+              merchantCategoryCode: "5551"
+              name: Jane Doe
+            merchant:
+              merchantCategoryCode: merchantCategoryCode
+              merchantName: merchantName
+            grossAmount:
+              amount: 10
+              currency: GBP
+            supplementaryData: '{}'
+            transactionMutability: Mutable
+            proprietaryBankTransactionCode:
+              code: code
+              issuer: issuer
             transactionInformation:
             - transactionInformation
             - transactionInformation
@@ -16984,36 +17001,17 @@ components:
               address:
                 country: GB
               name: John Doe
-            amount: 0.8008281904610115
-            payeeDetails:
-              accountIdentifications:
-              - identification: "401016"
-                type: SORT_CODE
-              - identification: "71518920"
-                type: ACCOUNT_NUMBER
-              address:
-                country: GB
-              merchantId: "24589303"
-              merchantCategoryCode: "5551"
-              name: Jane Doe
             bookingDateTime: 2000-01-23T04:56:07.000+00:00
             statementReferences:
             - value: value
             - value: value
             description: description
-            merchant:
-              merchantCategoryCode: merchantCategoryCode
-              merchantName: merchantName
             addressDetails:
               addressLine: addressLine
-            grossAmount:
-              amount: 10
-              currency: GBP
             chargeDetails:
               chargeAmount:
                 amount: 10
                 currency: GBP
-            supplementaryData: '{}'
             currencyExchange:
               targetCurrency: targetCurrency
               exchangeRate: 6.027456183070403
@@ -17042,12 +17040,32 @@ components:
             transactionAmount:
               amount: 10
               currency: GBP
-            proprietaryBankTransactionCode:
-              code: code
-              issuer: issuer
             valueDateTime: 2000-01-23T04:56:07.000+00:00
             currency: currency
             id: id
+            amount: 0.8008281904610115
+            payeeDetails:
+              accountIdentifications:
+              - identification: "401016"
+                type: SORT_CODE
+              - identification: "71518920"
+                type: ACCOUNT_NUMBER
+              address:
+                country: GB
+              merchantId: "24589303"
+              merchantCategoryCode: "5551"
+              name: Jane Doe
+            merchant:
+              merchantCategoryCode: merchantCategoryCode
+              merchantName: merchantName
+            grossAmount:
+              amount: 10
+              currency: GBP
+            supplementaryData: '{}'
+            transactionMutability: Mutable
+            proprietaryBankTransactionCode:
+              code: code
+              issuer: issuer
             transactionInformation:
             - transactionInformation
             - transactionInformation
@@ -17694,36 +17712,17 @@ components:
               address:
                 country: GB
               name: John Doe
-            amount: 0.8008281904610115
-            payeeDetails:
-              accountIdentifications:
-              - identification: "401016"
-                type: SORT_CODE
-              - identification: "71518920"
-                type: ACCOUNT_NUMBER
-              address:
-                country: GB
-              merchantId: "24589303"
-              merchantCategoryCode: "5551"
-              name: Jane Doe
             bookingDateTime: 2000-01-23T04:56:07.000+00:00
             statementReferences:
             - value: value
             - value: value
             description: description
-            merchant:
-              merchantCategoryCode: merchantCategoryCode
-              merchantName: merchantName
             addressDetails:
               addressLine: addressLine
-            grossAmount:
-              amount: 10
-              currency: GBP
             chargeDetails:
               chargeAmount:
                 amount: 10
                 currency: GBP
-            supplementaryData: '{}'
             currencyExchange:
               targetCurrency: targetCurrency
               exchangeRate: 6.027456183070403
@@ -17752,12 +17751,32 @@ components:
             transactionAmount:
               amount: 10
               currency: GBP
-            proprietaryBankTransactionCode:
-              code: code
-              issuer: issuer
             valueDateTime: 2000-01-23T04:56:07.000+00:00
             currency: currency
             id: id
+            amount: 0.8008281904610115
+            payeeDetails:
+              accountIdentifications:
+              - identification: "401016"
+                type: SORT_CODE
+              - identification: "71518920"
+                type: ACCOUNT_NUMBER
+              address:
+                country: GB
+              merchantId: "24589303"
+              merchantCategoryCode: "5551"
+              name: Jane Doe
+            merchant:
+              merchantCategoryCode: merchantCategoryCode
+              merchantName: merchantName
+            grossAmount:
+              amount: 10
+              currency: GBP
+            supplementaryData: '{}'
+            transactionMutability: Mutable
+            proprietaryBankTransactionCode:
+              code: code
+              issuer: issuer
             transactionInformation:
             - transactionInformation
             - transactionInformation
@@ -17781,36 +17800,17 @@ components:
               address:
                 country: GB
               name: John Doe
-            amount: 0.8008281904610115
-            payeeDetails:
-              accountIdentifications:
-              - identification: "401016"
-                type: SORT_CODE
-              - identification: "71518920"
-                type: ACCOUNT_NUMBER
-              address:
-                country: GB
-              merchantId: "24589303"
-              merchantCategoryCode: "5551"
-              name: Jane Doe
             bookingDateTime: 2000-01-23T04:56:07.000+00:00
             statementReferences:
             - value: value
             - value: value
             description: description
-            merchant:
-              merchantCategoryCode: merchantCategoryCode
-              merchantName: merchantName
             addressDetails:
               addressLine: addressLine
-            grossAmount:
-              amount: 10
-              currency: GBP
             chargeDetails:
               chargeAmount:
                 amount: 10
                 currency: GBP
-            supplementaryData: '{}'
             currencyExchange:
               targetCurrency: targetCurrency
               exchangeRate: 6.027456183070403
@@ -17839,12 +17839,32 @@ components:
             transactionAmount:
               amount: 10
               currency: GBP
-            proprietaryBankTransactionCode:
-              code: code
-              issuer: issuer
             valueDateTime: 2000-01-23T04:56:07.000+00:00
             currency: currency
             id: id
+            amount: 0.8008281904610115
+            payeeDetails:
+              accountIdentifications:
+              - identification: "401016"
+                type: SORT_CODE
+              - identification: "71518920"
+                type: ACCOUNT_NUMBER
+              address:
+                country: GB
+              merchantId: "24589303"
+              merchantCategoryCode: "5551"
+              name: Jane Doe
+            merchant:
+              merchantCategoryCode: merchantCategoryCode
+              merchantName: merchantName
+            grossAmount:
+              amount: 10
+              currency: GBP
+            supplementaryData: '{}'
+            transactionMutability: Mutable
+            proprietaryBankTransactionCode:
+              code: code
+              issuer: issuer
             transactionInformation:
             - transactionInformation
             - transactionInformation

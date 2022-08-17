@@ -15,7 +15,7 @@ import java.util.Set;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.ext.ContextResolver;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-08-17T11:34:20.056Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-08-17T11:55:38.294Z[Etc/UTC]")
 public class JSON implements ContextResolver<ObjectMapper> {
   private ObjectMapper mapper;
 
