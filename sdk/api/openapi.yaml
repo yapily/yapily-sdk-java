@@ -11,7 +11,7 @@ info:
     of [sandbox credentials](https://docs.yapily.com/pages/key-concepts/sandbox-credentials/)
     maybe useful.
   title: Yapily API
-  version: 2.6.0
+  version: 2.13.1
 servers:
 - url: https://api.yapily.com
 security:
@@ -80,7 +80,7 @@ tags:
     the payment. Once a `consent-token` is obtained, you can call the Payments endpoint
     to execute the Sweeping Variable Recurring Payments transaction. Before executing
     the payment, you have the option to confirm availability of funds in the user''s
-    account by calling the Funds Confirmation endpoint. <br><br>See [VRP Payments](https://docs.yapily.com/guides/payments/payment-execution/vrps/)
+    account by calling the Funds Confirmation endpoint. <br><br>See [VRP Payments](https://docs.yapily.com/pages/key-concepts/payments/payment-execution/variable-recurring-payments/)
     for more information. '
   name: Variable Recurring Payments
 paths:
@@ -1712,6 +1712,66 @@ paths:
       tags:
       - Consents
       x-accepts: application/json;charset=UTF-8
+  /consents/{consentId}/extend:
+    post:
+      description: Used to indicate to Yapily that reconfirmation has occurred for
+        a given Consent, and to update lastUpdatedAt and reconfirmBy for that Consent.
+        Returns the Consent.
+      operationId: extendConsent
+      parameters:
+      - description: __Mandatory__. The consent Id of the `Consent` to update.
+        explode: false
+        in: path
+        name: consentId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json;charset=UTF-8:
+            examples:
+              Example Request:
+                $ref: '#/components/examples/consent-extend-example-request'
+            schema:
+              $ref: '#/components/schemas/ExtendConsentRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json;charset=UTF-8:
+              examples:
+                Example Response:
+                  $ref: '#/components/examples/consent-get-example-response'
+              schema:
+                $ref: '#/components/schemas/ApiResponseOfConsent'
+          description: Created
+        "400":
+          content:
+            application/json;charset=UTF-8:
+              examples:
+                Error Response:
+                  $ref: '#/components/examples/extend-consent-error-response-code-400'
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+          description: Error Response. The supplied lastConfirmedAt date, Consent
+            type, or Consent status is invalid.
+        default:
+          content:
+            application/json;charset=UTF-8:
+              examples:
+                Error Response:
+                  $ref: '#/components/examples/error-response-code-401'
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+          description: Error Response
+      summary: Extend Consent
+      tags:
+      - Consents
+      x-beta: true
+      x-contentType: application/json;charset=UTF-8
+      x-accepts: application/json;charset=UTF-8
   /embedded-account-auth-requests:
     post:
       description: 'Used to initiate the embedded authorisation process for an `Institution`
@@ -3047,12 +3107,12 @@ paths:
           type: string
         style: simple
       responses:
-        "200":
+        "201":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ProfileConsent'
-          description: A successful response, returning a ProfileConsent.
+                $ref: '#/components/schemas/ApiResponseOfFinancialProfileAuthorisationResponse'
+          description: A successful response, returning a ApiResponseOfFinancialProfileAuthorisationResponse.
         "400":
           content:
             application/json:
@@ -3101,6 +3161,10 @@ paths:
         style: simple
       responses:
         "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseOfFinancialProfileConsentRemoveResponse'
           description: The ProfileConsent was deleted.
         "400":
           content:
@@ -3152,8 +3216,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ProfileConsent'
-          description: A successful response, returning a ProfileConsent.
+                $ref: '#/components/schemas/ApiResponseOfFinancialProfileConsent'
+          description: A successful response, returning a ApiResponseOfFinancialProfileConsent.
         "400":
           content:
             application/json:
@@ -3198,8 +3262,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/FinancialProfile'
-          description: A successful response, returning a FinancialProfile.
+                $ref: '#/components/schemas/ApiResponseOfFinancialProfile'
+          description: A successful response, returning a ApiResponseOfFinancialProfile.
         "400":
           content:
             application/json:
@@ -3220,6 +3284,102 @@ paths:
                 $ref: '#/components/schemas/ApiResponseError'
           description: Not Found.  Returned if the userUuid is not found for the `Application`.
       summary: Get User Profile
+      tags:
+      - Financial Profile
+      x-accepts: application/json
+  /users/{userUuid}/profile/predicted-balances:
+    get:
+      description: Used to retrieve a `Balance Prediction Profile` for a `User`.  Status
+        will be `PENDING` until all ProfileConsents are `COMPLETED`.
+      operationId: getBalancePrediction
+      parameters:
+      - description: __Mandatory__. The Yapily generated UUID for the user.
+        explode: false
+        in: path
+        name: userUuid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                Balance Prediction Example Response:
+                  description: Balance Prediction Example Response
+                  value:
+                    status: COMPLETED
+                    profileConsents:
+                    - id: eb2ad083-a111-4143-8756-a3a3cef4031c
+                      status: COMPLETED
+                      userId: 3ddf5dd0-aa48-4d0f-baa7-fa057e9e911d
+                      referenceConsentId: 1e2e5167-8519-4c19-b016-8f2f0c6e38b6
+                      institutionId: mock-sandbox
+                    enrichedBalances:
+                    - accountIds:
+                      - abc123
+                      - xyz456
+                      institutions:
+                      - llyods
+                      - monzo_ab
+                      historic:
+                      - date: 2021-03-01
+                        balance: 20
+                      - date: 2021-03-02
+                        balance: 60
+                      - date: 2021-03-03
+                        balance: 0
+                      - date: 2021-03-04
+                        balance: 0
+                      - date: 2021-03-05
+                        balance: 100
+                      predicted:
+                      - date: 2021-03-24
+                        medianBalance: 28.48
+                        "90percentileBalance": 49.26
+                        "10percentileBalance": 5.96
+                      - date: 2021-03-25
+                        medianBalance: 28.88
+                        "90percentileBalance": 46.38
+                        "10percentileBalance": -2.39
+                      - date: 2021-03-26
+                        medianBalance: 22.07
+                        "90percentileBalance": 41.48
+                        "10percentileBalance": 0.82
+                      - date: 2021-03-27
+                        medianBalance: 20.91
+                        "90percentileBalance": 38.25
+                        "10percentileBalance": -1.24
+                      - date: 2021-03-28
+                        medianBalance: 14.99
+                        "90percentileBalance": 35.98
+                        "10percentileBalance": -14.64
+              schema:
+                $ref: '#/components/schemas/ApiResponseOfFinancialProfileBalancePrediction'
+          description: A successful response, returning a Balance Prediction Profile.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseError'
+          description: Bad Request.  Returned if the userUuid is not a valid UUID.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseError'
+          description: Either authentication credentials were not supplied, or they
+            were invalid.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseError'
+          description: Not Found.  Returned if the userUuid is not found for the `Application`,
+            or data not found for the userUuid.
+      summary: Get Predicted Balances
       tags:
       - Financial Profile
       x-accepts: application/json
@@ -3406,31 +3566,31 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Bad Request
         "401":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Unauthorised. Credentials are missing or invalid
         "403":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Forbidden. Permission to access this endpoint is not granted.
         "424":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: A failure occured during interaction with a third party provider
         "500":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Unexpected Error
       summary: Get List Of Beneficiaries
       tags:
@@ -3528,31 +3688,31 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Bad Request
         "401":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Unauthorised. Credentials are missing or invalid
         "403":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Forbidden. Permission to access this endpoint is not granted.
         "424":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: A failure occured during interaction with a third party provider
         "500":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Unexpected Error
       summary: Create Beneficiary
       tags:
@@ -3626,37 +3786,37 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Bad Request
         "401":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Unauthorised. Credentials are missing or invalid
         "403":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Forbidden. Permission to access this endpoint is not granted.
         "404":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Not Found. Requested beneficiary is not found.
         "424":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: A failure occured during interaction with a third party provider
         "500":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Unexpected Error
       summary: Get Beneficiary
       tags:
@@ -3684,7 +3844,7 @@ paths:
         name: currency
         required: false
         schema:
-          pattern: '[A-Z]{3}'
+          pattern: ^[A-Z]{3}$
           type: string
         style: form
       - description: __Optional__. Filter accounts based on their current state. One
@@ -3766,31 +3926,31 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Bad Request
         "401":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Unauthorised. Credentials are missing or invalid
         "403":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Forbidden. Permission to access this endpoint is not granted.
         "424":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: A failure occured during interaction with a third party provider
         "500":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Unexpected Error
       summary: Get Accounts
       tags:
@@ -3858,31 +4018,31 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Bad Request
         "401":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Unauthorised. Credentials are missing or invalid
         "403":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Forbidden. Permission to access this endpoint is not granted.
         "424":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: A failure occured during interaction with a third party provider
         "500":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Unexpected Error
       summary: Create Account
       tags:
@@ -3971,31 +4131,31 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Bad Request
         "401":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Unauthorised. Credentials are missing or invalid
         "403":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Forbidden. Permission to access this endpoint is not granted.
         "424":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: A failure occured during interaction with a third party provider
         "500":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Unexpected Error
       summary: Create Pay Out
       tags:
@@ -4072,42 +4232,159 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Bad Request
         "401":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Unauthorised. Credentials are missing or invalid
         "403":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Forbidden. Permission to access this endpoint is not granted.
         "404":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Not Found. Resource requested is not found.
         "424":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: A failure occured during interaction with a third party provider
         "500":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Unexpected Error
       summary: Get Account
       tags:
       - Virtual Accounts
       x-beta: true
+      x-accepts: application/json
+    patch:
+      description: Update the details of a specific account using its Id
+      operationId: updateVirtualAccountById
+      parameters:
+      - description: __Mandatory__. The Id of the account.
+        explode: false
+        in: path
+        name: accountId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: __Mandatory__. The customer or sub-customer id for which the
+          request will be done
+        example: 5a7294ab-6b7d-4681-835a-f9b9775c75db
+        explode: false
+        in: header
+        name: client-id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json;charset=UTF-8:
+            examples:
+              Update Account Example Request:
+                description: Update Account Example Request
+                value:
+                  nickname: MyAccount456
+                  status: CLOSED
+            schema:
+              $ref: '#/components/schemas/UpdateVirtualAccountRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                Update Accounts Example Response:
+                  description: Update Account By Id Example Response
+                  value:
+                    meta:
+                      tracingId: sd2ad0343-a141-4143-8756-a3a3cefrt31c
+                      count: 1
+                    data:
+                      id: eb2ad083-a111-4143-8756-a3a3cef4031c
+                      createdDateTime: 2020-04-24T00:30:19.951Z
+                      status: ACTIVE
+                      nickname: MyAccount123
+                      currency: GBP
+                      balances:
+                      - type: INTERIM_AVAILABLE
+                        balanceAmount:
+                          amount: 10.5
+                          currency: GBP
+                      - type: INTERIM_BOOKED
+                        balanceAmount:
+                          amount: 10.5
+                          currency: GBP
+                      bankAccount:
+                        currency: GBP
+                        bankName: Lloyds Bank
+                        bankAddress: WE12 ABC
+                        bankCountry: GB
+                        accountIdentifications:
+                        - identification: "401016"
+                          type: SORT_CODE
+                        - identification: "71518920"
+                          type: ACCOUNT_NUMBER
+                        payInReference: Ref1249944
+                    forwardedData: []
+              schema:
+                $ref: '#/components/schemas/ApiResponseOfVirtualAccount'
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+          description: Unauthorised. Credentials are missing or invalid
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+          description: Forbidden. Permission to access this endpoint is not granted.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+          description: Not Found. Resource requested is not found.
+        "424":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+          description: A failure occured during interaction with a third party provider
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+          description: Unexpected Error
+      summary: Update Account
+      tags:
+      - Virtual Accounts
+      x-contentType: application/json;charset=UTF-8
       x-accepts: application/json
   /virtual-accounts/payments:
     get:
@@ -4234,31 +4511,31 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Bad Request
         "401":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Unauthorised. Credentials are missing or invalid
         "403":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Forbidden. Permission to access this endpoint is not granted.
         "424":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: A failure occured during interaction with a third party provider
         "500":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Unexpected Error
       summary: Get Payments
       tags:
@@ -4323,37 +4600,37 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Bad Request
         "401":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Unauthorised. Credentials are missing or invalid
         "403":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Forbidden. Permission to access this endpoint is not granted.
         "404":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Not Found. Requested payment is not found.
         "424":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: A failure occured during interaction with a third party provider
         "500":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Unexpected Error
       summary: Get Payment
       tags:
@@ -4437,31 +4714,31 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Bad Request
         "401":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Unauthorised. Credentials are missing or invalid
         "403":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Forbidden. Permission to access this endpoint is not granted.
         "424":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: A failure occured during interaction with a third party provider
         "500":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Unexpected Error
       summary: Create Virtual Account Transfer
       tags:
@@ -4518,42 +4795,320 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Bad Request
         "401":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Unauthorised. Credentials are missing or invalid
         "403":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Forbidden. Permission to access this endpoint is not granted.
         "404":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Not Found. Requested beneficiary is not found.
         "424":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: A failure occured during interaction with a third party provider
         "500":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Unexpected Error
       summary: Get Pay-In Details
       tags:
       - Virtual Accounts
       x-beta: true
+      x-accepts: application/json
+  /virtual-accounts/clients:
+    get:
+      description: Get Virtual Account Clients (individual or business client).
+      operationId: getVirtualAccountClients
+      parameters:
+      - description: __Mandatory__. This must be your master / parent client-id (and
+          not one associated with one of your clients)
+        example: 5a7294ab-6b7d-4681-835a-f9b9775c75db
+        explode: false
+        in: header
+        name: client-id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: __Optional__.  Filter clients based on client type. One of BUSINESS
+          or INDIVIDUAL
+        example: BUSINESS
+        explode: true
+        in: query
+        name: type
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: __Optional__.  Filter clients based on client status. One of
+          ACTIVE, PENDING or SUSPENDED
+        example: ACTIVE
+        explode: true
+        in: query
+        name: status
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: __Optional__. Data required to provide pagination
+        explode: true
+        in: query
+        name: cursor
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                Get Virtual Account Clients Example Response:
+                  description: Get Virtual Account Clients Example Response
+                  value:
+                    meta:
+                      tracingId: 96169af01d394ad39658f17d53b49a5d
+                    links:
+                      self: https://api.yapily.com/virtual-accounts/clients?cursor=cGFnZT0wJnNpemU9MTAwMCZzb3J0PWNyZWF0ZWREYXRlLGRlc2M=
+                      first: https://api.yapily.com/virtual-accounts/clients?cursor=cGFnZT0wJnNpemU9MTAwMCZzb3J0PWNyZWF0ZWREYXRlLGRlc2M=
+                      last: https://api.yapily.com/virtual-accounts/clients?cursor=cGFnZT0wJnNpemU9MTAwMCZzb3J0PWNyZWF0ZWREYXRlLGRlc2M=
+                      next: https://api.yapily.com/virtual-accounts/clients?cursor=cGFnZT0wJnNpemU9MTAwMCZzb3J0PWNyZWF0ZWREYXRlLGRlc2M=
+                      previous: https://api.yapily.com/virtual-accounts/clients?cursor=cGFnZT0wJnNpemU9MTAwMCZzb3J0PWNyZWF0ZWREYXRlLGRlc2M=
+                    data:
+                    - id: a2d43be3-972a-4458-9b6b-84ac15ae5287
+                      type: BUSINESS
+                      business:
+                        name: Payments ltd company
+                        type: LIMITED_LIABILITY
+                        registrationNumber: "1234567"
+                        contactName: James Edward Rhodes
+                        email: james.rhodes@example.com
+                        phone: "447006783009"
+                        registeredAddress:
+                          addressLine1: 123 Queens Street
+                          addressLine2: Unit 13
+                          townName: York
+                          postCode: "12345"
+                          country: GB
+                        tradingAddress:
+                          addressLine1: 123 Queens Street
+                          addressLine2: Unit 13
+                          townName: York
+                          postCode: "12345"
+                          country: GB
+                      status: ACTIVE
+                      kycStatus: VERIFIED
+                      createdDateTime: 2022-08-11T00:00:00Z
+                    - id: a2d43be3-972a-4458-9b6b-84ac15ae5283
+                      type: INDIVIDUAL
+                      individual:
+                        firstName: James
+                        middleName: Edward
+                        lastName: Rhodes
+                        email: james.rhodes@example.com
+                        phone: "447006783009"
+                        birthDate: 1970-07-10
+                        address:
+                          addressLine1: 123 Queens Street
+                          addressLine2: Unit 13
+                          townName: York
+                          postCode: "12345"
+                          country: GB
+                      status: ACTIVE
+                      kycStatus: VERIFIED
+                      createdDateTime: 2022-08-11T00:00:00Z
+              schema:
+                $ref: '#/components/schemas/ApiListResponseOfVirtualAccountClient'
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+          description: Unauthorised. Credentials are missing or invalid
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+          description: Forbidden. Permission to access this endpoint is not granted.
+        "424":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+          description: A failure occured during interaction with a third party provider
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+          description: Unexpected Error
+      summary: Get List of Virtual Account Clients
+      tags:
+      - Virtual Accounts
+      x-beta: true
+      x-accepts: application/json
+    post:
+      description: Create a new virtual account client (individual or business client).
+        Available for clients who have direct onboarding permissions only. Please
+        contact your CSM to enquire about access
+      operationId: createVirtualAccountClient
+      parameters:
+      - description: __Mandatory__. This must be your master / parent client-id (and
+          not one associated with one of your clients)
+        example: 5a7294ab-6b7d-4681-835a-f9b9775c75db
+        explode: false
+        in: header
+        name: client-id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json;charset=UTF-8:
+            examples:
+              Create Virtual Account Business Client Example Request:
+                description: Create Virtual Account Business Client Example Request
+                value:
+                  type: BUSINESS
+                  business:
+                    name: Payments ltd company
+                    type: LIMITED_LIABILITY
+                    registrationNumber: "1234567"
+                    contactName: James Edward Rhodes
+                    email: james.rhodes@example.com
+                    phone: "447006783009"
+                    registeredAddress:
+                      addressLine1: 123 Queens Street
+                      addressLine2: Unit 13
+                      townName: York
+                      postCode: "12345"
+                      country: GB
+                    tradingAddress:
+                      addressLine1: 123 Queens Street
+                      addressLine2: Unit 13
+                      townName: York
+                      postCode: "12345"
+                      country: GB
+              Create Virtual Account Individual Client Example Request:
+                description: Create Virtual Account Individual Client Example Request
+                value:
+                  type: INDIVIDUAL
+                  individual:
+                    firstName: James
+                    lastName: Rhodes
+                    address:
+                      addressLine1: 123 Queens Street
+                      addressLine2: Unit 13
+                      townName: York
+                      postCode: "12345"
+                      country: GB
+                    birthDate: 1970-07-10
+                    email: james.rhodes@example.com
+                    phone: "447006783009"
+            schema:
+              $ref: '#/components/schemas/VirtualAccountClientRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              examples:
+                Create Virtual Account Business Example Response:
+                  description: Create Virtual Account Business Example Response
+                  value:
+                    meta:
+                      tracingId: 96169af01d394ad39658f17d53b49a5d
+                    data:
+                      id: a2d43be3-972a-4458-9b6b-84ac15ae5287
+                      type: BUSINESS
+                      business:
+                        name: Payments ltd company
+                        type: LIMITED_LIABILITY
+                        registrationNumber: "1234567"
+                        contactName: James Edward Rhodes
+                        email: james.rhodes@example.com
+                        phone: "447006783009"
+                        registeredAddress:
+                          addressLine1: 123 Queens Street
+                          addressLine2: Unit 13
+                          townName: York
+                          postCode: "12345"
+                          country: GB
+                        tradingAddress:
+                          addressLine1: 123 Queens Street
+                          addressLine2: Unit 13
+                          townName: York
+                          postCode: "12345"
+                          country: GB
+                      status: ACTIVE
+                      kycStatus: VERIFIED
+                      createdDateTime: 2022-08-11T00:00:00Z
+              schema:
+                $ref: '#/components/schemas/ApiResponseOfVirtualAccountClient'
+          description: Created
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+          description: Unauthorised. Credentials are missing or invalid
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+          description: Forbidden. Permission to access this endpoint is not granted.
+        "424":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+          description: A failure occured during interaction with a third party provider
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+          description: Unexpected Error
+      summary: Create Virtual Account Client
+      tags:
+      - Virtual Accounts
+      x-beta: true
+      x-contentType: application/json;charset=UTF-8
       x-accepts: application/json
   /variable-recurring-payments/sweeping/consents:
     post:
@@ -4690,7 +5245,7 @@ paths:
                         code: CREDENTIALS_MISING
                         message: Authentication header not present
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Error Response
         default:
           content:
@@ -4711,7 +5266,7 @@ paths:
                         message: The server could not understand the request due to
                           invalid syntax
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Error Response
       summary: Create Sweeping Variable Recurring Payment Authorisation
       tags:
@@ -4865,7 +5420,7 @@ paths:
                         code: CREDENTIALS_MISING
                         message: Authentication header not present
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Error Response
         default:
           content:
@@ -4886,7 +5441,7 @@ paths:
                         message: The server could not understand the request due to
                           invalid syntax
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Error Response
       summary: Create Non-Sweeping Variable Recurring Payment Authorisation
       tags:
@@ -5012,7 +5567,7 @@ paths:
                         code: CREDENTIALS_MISING
                         message: Authentication header not present
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Error Response
         default:
           content:
@@ -5033,7 +5588,7 @@ paths:
                         message: The server could not understand the request due to
                           invalid syntax
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Error Response
       summary: Create Variable Recurring Payment
       tags:
@@ -5141,7 +5696,7 @@ paths:
                         code: CREDENTIALS_MISING
                         message: Authentication header not present
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Error Response
         default:
           content:
@@ -5162,7 +5717,7 @@ paths:
                         message: The server could not understand the request due to
                           invalid syntax
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Error Response
       summary: Get Sweeping Variable Recurring Payment Consent Details
       tags:
@@ -5274,7 +5829,7 @@ paths:
                         code: CREDENTIALS_MISING
                         message: Authentication header not present
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Error Response
         default:
           content:
@@ -5295,7 +5850,7 @@ paths:
                         message: The server could not understand the request due to
                           invalid syntax
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Error Response
       summary: Get Non-Sweeping Variable Recurring Payment Consent Details
       tags:
@@ -5372,7 +5927,7 @@ paths:
                         code: CREDENTIALS_MISING
                         message: Authentication header not present
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Error Response
         default:
           content:
@@ -5393,7 +5948,7 @@ paths:
                         message: The server could not understand the request due to
                           invalid syntax
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Error Response
       summary: Confirm Funds for Variable Recurring Payment
       tags:
@@ -5413,7 +5968,6 @@ paths:
         name: paymentId
         required: true
         schema:
-          format: uuid
           type: string
         style: simple
       - description: __Mandatory__. The consent token containing the user's authorisation
@@ -5510,7 +6064,7 @@ paths:
                         code: CREDENTIALS_MISING
                         message: Authentication header not present
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Error Response
         default:
           content:
@@ -5531,7 +6085,7 @@ paths:
                         message: The server could not understand the request due to
                           invalid syntax
               schema:
-                $ref: '#/components/schemas/ApiResponseError'
+                $ref: '#/components/schemas/ApiErrorResponse'
           description: Error Response
       summary: Get Variable Recurring Payment Details
       tags:
@@ -6363,6 +6917,7 @@ components:
           - ACCOUNT
           state: 0623e536c5044b4aa3f6c66e7537bee0
           authorizedAt: 2021-06-09T08:23:03.944Z
+          lastConfirmedAt: 2021-06-09T08:23:03.944Z
           institutionConsentId: aac-f7847e99-7c66-4bb8-8641-61a24057f2e8
           authorisationUrl: https://ob19-auth1-ui.o3bank.co.uk/auth?client_id=e7f6b95b-5f35-419b-b301-8b08bcd946de&response_type=code+id_token&state=0623e536c5044b4aa3f6c66e7537bee0&nonce=0623e536c5044b4aa3f6c66e7537bee0&scope=openid+accounts&redirect_uri=https%3A%2F%2Fauth.yapily.com%2F&request=eyJraWQiOiJnRTRvU3VaZDl4TVpUNXZDdTNWYy1mdktNak0iLCJhbGciOiJQUzI1NiJ9.eyJhdWQiOiJodHRwczovL29iMTktYXV0aDEtdWkubzNiYW5rLmNvLnVrIiwic2NvcGUiOiJvcGVuaWQgYWNjb3VudHMiLCJpc3MiOiJlN2Y2Yjk1Yi01ZjM1LTQxOWItYjMwMS04YjA4YmNkOTQ2ZGUiLCJjbGllbnRfaWQiOiJlN2Y2Yjk1Yi01ZjM1LTQxOWItYjMwMS04YjA4YmNkOTQ2ZGUiLCJyZXNwb25zZV90eXBlIjoiY29kZSBpZF90b2tlbiIsInJlZGlyZWN0X3VyaSI6Imh0dHBzOi8vYXV0aC55YXBpbHkuY29tLyIsInN0YXRlIjoiMDYyM2U1MzZjNTA0NGI0YWEzZjZjNjZlNzUzN2JlZTAiLCJjbGFpbXMiOnsiaWRfdG9rZW4iOnsiYWNyIjp7InZhbHVlIjoidXJuOm9wZW5iYW5raW5nOnBzZDI6c2NhIiwiZXNzZW50aWFsIjp0cnVlfSwib3BlbmJhbmtpbmdfaW50ZW50X2lkIjp7InZhbHVlIjoiYWFjLWY3ODQ3ZTk5LTdjNjYtNGJiOC04NjQxLTYxYTI0MDU3ZjJlOCIsImVzc2VudGlhbCI6dHJ1ZX19LCJ1c2VyaW5mbyI6eyJvcGVuYmFua2luZ19pbnRlbnRfaWQiOnsidmFsdWUiOiJhYWMtZjc4NDdlOTktN2M2Ni00YmI4LTg2NDEtNjFhMjQwNTdmMmU4IiwiZXNzZW50aWFsIjp0cnVlfX19LCJub25jZSI6IjA2MjNlNTM2YzUwNDRiNGFhM2Y2YzY2ZTc1MzdiZWUwIiwianRpIjoiMjEyM2E1OGMtMTExYi00OGY2LTg2ODAtZTViYTNiMzI3MjM5IiwiaWF0IjoxNjIzMjI3MDAxLCJleHAiOjE2MjMyMjg4MDF9.JG5lc5TWjCucWZPfcyd34trk0QcGNzhYXfhHTlVrcfu1zjrAtSUI8i0o4yKqS19cOGKHq1HtuQac2hhO8gCr_vd5n7eIuIrWfjEM1MuIwsJ85jOpMBkEiSOurLRIgW77VmqHpVUVj5-0-1Tk-N-vaC_4nIdtSi576sOb4rjLQvs2EX_sFODGjyMxHXiZlnr2p71gA3nRy8M2Vv_At4-NPW8OLULS8zXclWoK797HFAGtsNLCy8tz0YCsnEaFhcLhZSliy3a7DRfxvBmIzhY23M4uQ6bpM1zCyqTPsOhqR-qdgnZorBrax_2CQ37yIeV4becUJWvZSdnjYX7gDtNltA
           qrCodeUrl: https://images.yapily.com/image/4ef6e16c-dbe2-4d90-9e1b-868d946082ef/1623227001?size=0
@@ -7108,6 +7663,7 @@ components:
         consentToken: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJJTlNUSVRVVElPTiI6Im1vZGVsby1zYW5kYm94IiwiQ09OU0VOVCI6IjU2YTQyMjQ0LTQxNGEtNGI1Mi04YzRmLTRhZDJhNTBlODJmZSIsIkFQUExJQ0FUSU9OX1VTRVJfSUQiOiJtb2ZlLTIiLCJVU0VSIjoiY2E0MTJmZGYtNWEzMC00M2EyLTg4YjctNTk2NGEyNGE4ZTU1In0.gorwpnUjSr5dzQJLR32M2geWOj7yK9xMsZmq27ssY9xP_xGmWfUL_aqVHYyQ4r5KWw6Xb6RjvO839st8chJLtg
         state: a09f8ff9c1284444aa635267e05f76e1
         authorizedAt: 2021-06-08T10:59:53.288Z
+        lastConfirmedAt: 2021-06-08T10:59:53.288Z
         institutionConsentId: aac-605d48f2-2a0e-4594-81a9-996524fa3b2a
     consent-one-time-token-example-response:
       description: Example Response
@@ -7135,6 +7691,7 @@ components:
         consentToken: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJJTlNUSVRVVElPTiI6Im1vZGVsby1zYW5kYm94IiwiQ09OU0VOVCI6IjU2YTQyMjQ0LTQxNGEtNGI1Mi04YzRmLTRhZDJhNTBlODJmZSIsIkFQUExJQ0FUSU9OX1VTRVJfSUQiOiJtb2ZlLTIiLCJVU0VSIjoiY2E0MTJmZGYtNWEzMC00M2EyLTg4YjctNTk2NGEyNGE4ZTU1In0.gorwpnUjSr5dzQJLR32M2geWOj7yK9xMsZmq27ssY9xP_xGmWfUL_aqVHYyQ4r5KWw6Xb6RjvO839st8chJLtg
         state: a09f8ff9c1284444aa635267e05f76e1
         authorizedAt: 2021-06-08T10:59:53.288Z
+        lastConfirmedAt: 2021-07-08T10:59:53.288Z
         institutionConsentId: aac-605d48f2-2a0e-4594-81a9-996524fa3b2a
     consents-example-response:
       description: Example Response
@@ -7212,7 +7769,13 @@ components:
           consentToken: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJJTlNUSVRVVElPTiI6Im1vZGVsby1zYW5kYm94IiwiQ09OU0VOVCI6IjU2YTQyMjQ0LTQxNGEtNGI1Mi04YzRmLTRhZDJhNTBlODJmZSIsIkFQUExJQ0FUSU9OX1VTRVJfSUQiOiJtb2ZlLTIiLCJVU0VSIjoiY2E0MTJmZGYtNWEzMC00M2EyLTg4YjctNTk2NGEyNGE4ZTU1In0.gorwpnUjSr5dzQJLR32M2geWOj7yK9xMsZmq27ssY9xP_xGmWfUL_aqVHYyQ4r5KWw6Xb6RjvO839st8chJLtg
           state: a09f8ff9c1284444aa635267e05f76e1
           authorizedAt: 2021-06-08T10:59:53.288Z
+          lastConfirmedAt: 2021-07-08T10:59:53.288Z
+          reconfirmBy: 2021-10-06T10:59:53.288Z
           institutionConsentId: aac-605d48f2-2a0e-4594-81a9-996524fa3b2a
+    consent-extend-example-request:
+      description: Extend Consent Example Request
+      value:
+        lastConfirmedAt: 2021-07-08T10:59:53.288Z
     features-example-response:
       description: Example Response
       value:
@@ -7604,6 +8167,13 @@ components:
           code: 401
           status: UNAUTHORIZED
           message: Full authentication is required to access this resource
+    extend-consent-error-response-code-400:
+      description: Error Response
+      value:
+        error:
+          code: 400
+          status: BAD_REQUEST
+          message: lastConfirmedAt cannot be a future date and time
   parameters:
     EventTypeId:
       description: Unique identifier of the event type (for which notifications will
@@ -8359,6 +8929,19 @@ components:
             $ref: '#/components/schemas/CreditLine'
           type: array
       type: object
+    ExtendConsentRequest:
+      example:
+        lastConfirmedAt: 2022-08-16T10:59:53.288Z
+      properties:
+        lastConfirmedAt:
+          description: __Mandatory__. The time that the user confirmed access to their
+            account information
+          example: 2022-08-16T10:59:53.288Z
+          format: date-time
+          type: string
+      required:
+      - lastConfirmedAt
+      type: object
     EmbeddedAccountAuthorisationRequest:
       example:
         redirect:
@@ -9068,6 +9651,48 @@ components:
             $ref: '#/components/schemas/RawResponse'
           type: array
       type: object
+    ApiErrorResponse:
+      description: Used to return errors from the bank from each request<ul><li>`400`
+        - Returned by any `POST` endpoint when the body does not conform to the contract</li><li>`401`
+        - Returned by any endpoint when an invalid `authToken` is used for authentication</li><li>`403`
+        - Returned by any [Financial Data](https://docs.yapily.com/api/#yapily-api-financial-data)
+        and any [Payments](https://docs.yapily.com/api/#yapily-api-payments) endpoint
+        when the `Consent` is no longer authorised to access financial data or to
+        make a payment</li><li>`404` - Returned by any endpoint where there are path
+        parameters and the path parameters supplied are unable to find the desired
+        resource</li><li>`409` - Returned by any `POST` endpoint when creating a resource
+        that conflicts with any other existing resource e.g. [Create User](https://docs.yapily.com/api/#create-user)</li><li>`424`
+        - Returned by any [Financial Data](https://docs.yapily.com/api/#yapily-api-financial-data)
+        and any [Payments](https://docs.yapily.com/api/#yapily-api-payments) endpoint
+        when the feature to be accessed is not supported by the `Institution`.</li><li>`500`
+        - Returned by any endpoint when Yapily is down. If you encounter any false
+        positives, please <a href="mailto:support@yapily.com">notify us</a></li></ul>
+      example:
+        error:
+          tracingId: 0c2d0973bdd24224a65e5d0f7d1b6154
+          code: 400
+          status: BAD_REQUEST
+          supportUrl: https://support.yapily.com/
+          source: YAPILY
+          issues:
+          - type: INVALID_REQUEST
+            code: INVALID_PROPERTY_UNEXPECTED_VALUE
+            parameter: $.payer.accountidentifications.type
+            message: Type Should be one of [PAN, SORT_CODE, ACCOUNT_NUMBER]
+            institutionError:
+              errorMessage: '{"Code":"400 BadRequest","Id":"3517bfc2-c3ee-4f2f-b4f8-12f62478e0d1","Message":"No
+                Resource found","Errors":[{"ErrorCode":"UK.OBIE.Resource.NotFound","Message":"No
+                resource found corresponding to the consent id"}]}'
+              httpStatusCode: 400
+        monitoring: []
+      properties:
+        error:
+          $ref: '#/components/schemas/ErrorDetails'
+        monitoring:
+          items:
+            $ref: '#/components/schemas/MonitoringEndpointStatus'
+          type: array
+      type: object
     Application:
       description: Information about the application.
       example:
@@ -9419,6 +10044,7 @@ components:
     AccountAuthorisationResponse:
       example:
         institutionId: institutionId
+        reconfirmBy: 2000-01-23T04:56:07.000+00:00
         authorizedAt: 2000-01-23T04:56:07.000+00:00
         transactionFrom: 2000-01-23T04:56:07.000+00:00
         consentToken: consentToken
@@ -9427,6 +10053,7 @@ components:
         transactionTo: 2000-01-23T04:56:07.000+00:00
         expiresAt: 2000-01-23T04:56:07.000+00:00
         createdAt: 2000-01-23T04:56:07.000+00:00
+        lastConfirmedAt: 2000-01-23T04:56:07.000+00:00
         timeToExpire: timeToExpire
         timeToExpireInMillis: 0
         qrCodeUrl: qrCodeUrl
@@ -9484,6 +10111,17 @@ components:
         authorizedAt:
           format: date-time
           type: string
+        lastConfirmedAt:
+          description: The time that the PSU last confirmed access to their account
+            information, either through full authentication with the institution,
+            or through reconfirmation with the TPP.
+          format: date-time
+          type: string
+        reconfirmBy:
+          description: The time by which the consent should be reconfirmed to ensure
+            continued access to the account information.
+          format: date-time
+          type: string
         institutionConsentId:
           type: string
         authorisationUrl:
@@ -9517,6 +10155,7 @@ components:
         tracingId: tracingId
         data:
           institutionId: institutionId
+          reconfirmBy: 2000-01-23T04:56:07.000+00:00
           authorizedAt: 2000-01-23T04:56:07.000+00:00
           transactionFrom: 2000-01-23T04:56:07.000+00:00
           consentToken: consentToken
@@ -9525,6 +10164,7 @@ components:
           transactionTo: 2000-01-23T04:56:07.000+00:00
           expiresAt: 2000-01-23T04:56:07.000+00:00
           createdAt: 2000-01-23T04:56:07.000+00:00
+          lastConfirmedAt: 2000-01-23T04:56:07.000+00:00
           timeToExpire: timeToExpire
           timeToExpireInMillis: 0
           qrCodeUrl: qrCodeUrl
@@ -10579,6 +11219,7 @@ components:
     Consent:
       example:
         institutionId: institutionId
+        reconfirmBy: 2000-01-23T04:56:07.000+00:00
         authorizedAt: 2000-01-23T04:56:07.000+00:00
         transactionFrom: 2000-01-23T04:56:07.000+00:00
         consentToken: consentToken
@@ -10586,6 +11227,7 @@ components:
         transactionTo: 2000-01-23T04:56:07.000+00:00
         expiresAt: 2000-01-23T04:56:07.000+00:00
         createdAt: 2000-01-23T04:56:07.000+00:00
+        lastConfirmedAt: 2000-01-23T04:56:07.000+00:00
         timeToExpire: timeToExpire
         timeToExpireInMillis: 0
         userUuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -10642,6 +11284,17 @@ components:
         authorizedAt:
           format: date-time
           type: string
+        lastConfirmedAt:
+          description: The time that the PSU last confirmed access to their account
+            information, either through full authentication with the institution,
+            or through reconfirmation with the TPP.
+          format: date-time
+          type: string
+        reconfirmBy:
+          description: The time by which the consent should be reconfirmed to ensure
+            continued access to the account information.
+          format: date-time
+          type: string
         institutionConsentId:
           type: string
       type: object
@@ -10650,6 +11303,7 @@ components:
         tracingId: tracingId
         data:
         - institutionId: institutionId
+          reconfirmBy: 2000-01-23T04:56:07.000+00:00
           authorizedAt: 2000-01-23T04:56:07.000+00:00
           transactionFrom: 2000-01-23T04:56:07.000+00:00
           consentToken: consentToken
@@ -10657,6 +11311,7 @@ components:
           transactionTo: 2000-01-23T04:56:07.000+00:00
           expiresAt: 2000-01-23T04:56:07.000+00:00
           createdAt: 2000-01-23T04:56:07.000+00:00
+          lastConfirmedAt: 2000-01-23T04:56:07.000+00:00
           timeToExpire: timeToExpire
           timeToExpireInMillis: 0
           userUuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -10668,6 +11323,7 @@ components:
           - null
           institutionConsentId: institutionConsentId
         - institutionId: institutionId
+          reconfirmBy: 2000-01-23T04:56:07.000+00:00
           authorizedAt: 2000-01-23T04:56:07.000+00:00
           transactionFrom: 2000-01-23T04:56:07.000+00:00
           consentToken: consentToken
@@ -10675,6 +11331,7 @@ components:
           transactionTo: 2000-01-23T04:56:07.000+00:00
           expiresAt: 2000-01-23T04:56:07.000+00:00
           createdAt: 2000-01-23T04:56:07.000+00:00
+          lastConfirmedAt: 2000-01-23T04:56:07.000+00:00
           timeToExpire: timeToExpire
           timeToExpireInMillis: 0
           userUuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -10746,6 +11403,7 @@ components:
         paging:
           data:
           - institutionId: institutionId
+            reconfirmBy: 2000-01-23T04:56:07.000+00:00
             authorizedAt: 2000-01-23T04:56:07.000+00:00
             transactionFrom: 2000-01-23T04:56:07.000+00:00
             consentToken: consentToken
@@ -10753,6 +11411,7 @@ components:
             transactionTo: 2000-01-23T04:56:07.000+00:00
             expiresAt: 2000-01-23T04:56:07.000+00:00
             createdAt: 2000-01-23T04:56:07.000+00:00
+            lastConfirmedAt: 2000-01-23T04:56:07.000+00:00
             timeToExpire: timeToExpire
             timeToExpireInMillis: 0
             userUuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -10764,6 +11423,7 @@ components:
             - null
             institutionConsentId: institutionConsentId
           - institutionId: institutionId
+            reconfirmBy: 2000-01-23T04:56:07.000+00:00
             authorizedAt: 2000-01-23T04:56:07.000+00:00
             transactionFrom: 2000-01-23T04:56:07.000+00:00
             consentToken: consentToken
@@ -10771,6 +11431,7 @@ components:
             transactionTo: 2000-01-23T04:56:07.000+00:00
             expiresAt: 2000-01-23T04:56:07.000+00:00
             createdAt: 2000-01-23T04:56:07.000+00:00
+            lastConfirmedAt: 2000-01-23T04:56:07.000+00:00
             timeToExpire: timeToExpire
             timeToExpireInMillis: 0
             userUuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -10822,6 +11483,7 @@ components:
         tracingId: tracingId
         data:
           institutionId: institutionId
+          reconfirmBy: 2000-01-23T04:56:07.000+00:00
           authorizedAt: 2000-01-23T04:56:07.000+00:00
           transactionFrom: 2000-01-23T04:56:07.000+00:00
           consentToken: consentToken
@@ -10829,6 +11491,7 @@ components:
           transactionTo: 2000-01-23T04:56:07.000+00:00
           expiresAt: 2000-01-23T04:56:07.000+00:00
           createdAt: 2000-01-23T04:56:07.000+00:00
+          lastConfirmedAt: 2000-01-23T04:56:07.000+00:00
           timeToExpire: timeToExpire
           timeToExpireInMillis: 0
           userUuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -11109,6 +11772,7 @@ components:
       - UNKNOWN
       type: string
     CurrencyExchange:
+      description: Provides details on the currrency exchange.
       example:
         targetCurrency: targetCurrency
         exchangeRate: 6.027456183070403
@@ -11116,15 +11780,24 @@ components:
         sourceCurrency: sourceCurrency
       properties:
         sourceCurrency:
+          description: Currency from which an amount is to be converted.
           type: string
         targetCurrency:
+          description: Currency to which an amount is to be converted.
           type: string
         unitCurrency:
+          description: The currency in which the rate of exchange is expressed in
+            a currency exchange. In the example 1GBP = xxxCUR, the unit currency is
+            GBP.
           type: string
         exchangeRate:
+          description: The factor used for conversion of an amount from one currency
+            to another. This reflects the price at which one currency was bought with
+            another currency.
           type: number
       type: object
     DeleteStatusEnum:
+      description: Indicates the outcome of the delete request.
       enum:
       - SUCCESS
       - FAILED
@@ -12190,6 +12863,7 @@ components:
       example:
         data:
         - institutionId: institutionId
+          reconfirmBy: 2000-01-23T04:56:07.000+00:00
           authorizedAt: 2000-01-23T04:56:07.000+00:00
           transactionFrom: 2000-01-23T04:56:07.000+00:00
           consentToken: consentToken
@@ -12197,6 +12871,7 @@ components:
           transactionTo: 2000-01-23T04:56:07.000+00:00
           expiresAt: 2000-01-23T04:56:07.000+00:00
           createdAt: 2000-01-23T04:56:07.000+00:00
+          lastConfirmedAt: 2000-01-23T04:56:07.000+00:00
           timeToExpire: timeToExpire
           timeToExpireInMillis: 0
           userUuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -12208,6 +12883,7 @@ components:
           - null
           institutionConsentId: institutionConsentId
         - institutionId: institutionId
+          reconfirmBy: 2000-01-23T04:56:07.000+00:00
           authorizedAt: 2000-01-23T04:56:07.000+00:00
           transactionFrom: 2000-01-23T04:56:07.000+00:00
           consentToken: consentToken
@@ -12215,6 +12891,7 @@ components:
           transactionTo: 2000-01-23T04:56:07.000+00:00
           expiresAt: 2000-01-23T04:56:07.000+00:00
           createdAt: 2000-01-23T04:56:07.000+00:00
+          lastConfirmedAt: 2000-01-23T04:56:07.000+00:00
           timeToExpire: timeToExpire
           timeToExpireInMillis: 0
           userUuid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -13057,15 +13734,21 @@ components:
             amountConsistencyScore: 0.74
             mostRecentTransactionDate: 2019-10-03T00:00:00.000+0000
         profileConsents:
-        - referenceConsentId: 1e2e5167-8519-4c19-b016-8f2f0c6e38b6
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          referenceConsentId: 1e2e5167-8519-4c19-b016-8f2f0c6e38b6
           institutionId: mock-sandbox
           id: eb2ad083-a111-4143-8756-a3a3cef4031c
+          dataInsertedAt: 2000-01-23T04:56:07.000+00:00
           userId: 3ddf5dd0-aa48-4d0f-baa7-fa057e9e911d
+          expiresAt: 2000-01-23T04:56:07.000+00:00
           status: PENDING
-        - referenceConsentId: 1e2e5167-8519-4c19-b016-8f2f0c6e38b6
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          referenceConsentId: 1e2e5167-8519-4c19-b016-8f2f0c6e38b6
           institutionId: mock-sandbox
           id: eb2ad083-a111-4143-8756-a3a3cef4031c
+          dataInsertedAt: 2000-01-23T04:56:07.000+00:00
           userId: 3ddf5dd0-aa48-4d0f-baa7-fa057e9e911d
+          expiresAt: 2000-01-23T04:56:07.000+00:00
           status: PENDING
         status: COMPLETED
       properties:
@@ -16249,13 +16932,310 @@ components:
       - NORMAL
       - URGENT
       type: string
+    ApiResponseOfFinancialProfileAuthorisationResponse:
+      example:
+        data:
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          referenceConsentId: 1e2e5167-8519-4c19-b016-8f2f0c6e38b6
+          institutionId: mock-sandbox
+          id: eb2ad083-a111-4143-8756-a3a3cef4031c
+          dataInsertedAt: 2000-01-23T04:56:07.000+00:00
+          userId: 3ddf5dd0-aa48-4d0f-baa7-fa057e9e911d
+          expiresAt: 2000-01-23T04:56:07.000+00:00
+          status: PENDING
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          referenceConsentId: 1e2e5167-8519-4c19-b016-8f2f0c6e38b6
+          institutionId: mock-sandbox
+          id: eb2ad083-a111-4143-8756-a3a3cef4031c
+          dataInsertedAt: 2000-01-23T04:56:07.000+00:00
+          userId: 3ddf5dd0-aa48-4d0f-baa7-fa057e9e911d
+          expiresAt: 2000-01-23T04:56:07.000+00:00
+          status: PENDING
+        meta:
+          tracingId: tracingId
+        links:
+          key: links
+      properties:
+        meta:
+          $ref: '#/components/schemas/ResponseMeta'
+        data:
+          items:
+            $ref: '#/components/schemas/ProfileConsent'
+          type: array
+        links:
+          additionalProperties:
+            type: string
+          type: object
+      type: object
+    ApiResponseOfFinancialProfileConsent:
+      example:
+        data:
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          referenceConsentId: 1e2e5167-8519-4c19-b016-8f2f0c6e38b6
+          institutionId: mock-sandbox
+          id: eb2ad083-a111-4143-8756-a3a3cef4031c
+          dataInsertedAt: 2000-01-23T04:56:07.000+00:00
+          userId: 3ddf5dd0-aa48-4d0f-baa7-fa057e9e911d
+          expiresAt: 2000-01-23T04:56:07.000+00:00
+          status: PENDING
+        meta:
+          tracingId: tracingId
+        links:
+          key: links
+      properties:
+        meta:
+          $ref: '#/components/schemas/ResponseMeta'
+        data:
+          $ref: '#/components/schemas/ProfileConsent'
+        links:
+          additionalProperties:
+            type: string
+          type: object
+      type: object
+    ApiResponseOfFinancialProfileConsentRemoveResponse:
+      example:
+        meta:
+          tracingId: tracingId
+        links:
+          key: links
+      properties:
+        meta:
+          $ref: '#/components/schemas/ResponseMeta'
+        links:
+          additionalProperties:
+            type: string
+          type: object
+      type: object
+    ApiResponseOfFinancialProfile:
+      example:
+        data:
+          enrichment:
+            recentlyTerminatedIncomeStreams:
+            - earliestTransactionDate: 2020-04-24T00:00:00.000+0000
+              scheduleConsistencyScore: 0.44
+              missedTransactions: 3
+              averageAmount: 19.708
+              name: Amazon Marketplace
+              transactions:
+              - institution: starling
+                amount: 21.99
+                bookingDateTime: 2020-04-24T00:30:19.951Z
+                transactionInformation: Amazon Marketplace
+                transactionId: c51e3bee-36fb-4c0a-8441-d6ba2056fe87
+              - institution: starling
+                amount: 21.99
+                bookingDateTime: 2020-04-24T00:30:19.951Z
+                transactionInformation: Amazon Marketplace
+                transactionId: c51e3bee-36fb-4c0a-8441-d6ba2056fe87
+              transactionSchedule:
+                detailedFrequency: Daily
+                detailedFrequencyParameter: 1
+                frequency: Daily
+              nextExpectedTransactionDate: 2019-10-04T00:00:00.000+0000
+              amountConsistencyScore: 0.74
+              mostRecentTransactionDate: 2019-10-03T00:00:00.000+0000
+            - earliestTransactionDate: 2020-04-24T00:00:00.000+0000
+              scheduleConsistencyScore: 0.44
+              missedTransactions: 3
+              averageAmount: 19.708
+              name: Amazon Marketplace
+              transactions:
+              - institution: starling
+                amount: 21.99
+                bookingDateTime: 2020-04-24T00:30:19.951Z
+                transactionInformation: Amazon Marketplace
+                transactionId: c51e3bee-36fb-4c0a-8441-d6ba2056fe87
+              - institution: starling
+                amount: 21.99
+                bookingDateTime: 2020-04-24T00:30:19.951Z
+                transactionInformation: Amazon Marketplace
+                transactionId: c51e3bee-36fb-4c0a-8441-d6ba2056fe87
+              transactionSchedule:
+                detailedFrequency: Daily
+                detailedFrequencyParameter: 1
+                frequency: Daily
+              nextExpectedTransactionDate: 2019-10-04T00:00:00.000+0000
+              amountConsistencyScore: 0.74
+              mostRecentTransactionDate: 2019-10-03T00:00:00.000+0000
+            recentlyTerminatedExpenditureStreams:
+            - earliestTransactionDate: 2020-04-24T00:00:00.000+0000
+              scheduleConsistencyScore: 0.44
+              missedTransactions: 3
+              averageAmount: 19.708
+              name: Amazon Marketplace
+              transactions:
+              - institution: starling
+                amount: 21.99
+                bookingDateTime: 2020-04-24T00:30:19.951Z
+                transactionInformation: Amazon Marketplace
+                transactionId: c51e3bee-36fb-4c0a-8441-d6ba2056fe87
+              - institution: starling
+                amount: 21.99
+                bookingDateTime: 2020-04-24T00:30:19.951Z
+                transactionInformation: Amazon Marketplace
+                transactionId: c51e3bee-36fb-4c0a-8441-d6ba2056fe87
+              transactionSchedule:
+                detailedFrequency: Daily
+                detailedFrequencyParameter: 1
+                frequency: Daily
+              nextExpectedTransactionDate: 2019-10-04T00:00:00.000+0000
+              amountConsistencyScore: 0.74
+              mostRecentTransactionDate: 2019-10-03T00:00:00.000+0000
+            - earliestTransactionDate: 2020-04-24T00:00:00.000+0000
+              scheduleConsistencyScore: 0.44
+              missedTransactions: 3
+              averageAmount: 19.708
+              name: Amazon Marketplace
+              transactions:
+              - institution: starling
+                amount: 21.99
+                bookingDateTime: 2020-04-24T00:30:19.951Z
+                transactionInformation: Amazon Marketplace
+                transactionId: c51e3bee-36fb-4c0a-8441-d6ba2056fe87
+              - institution: starling
+                amount: 21.99
+                bookingDateTime: 2020-04-24T00:30:19.951Z
+                transactionInformation: Amazon Marketplace
+                transactionId: c51e3bee-36fb-4c0a-8441-d6ba2056fe87
+              transactionSchedule:
+                detailedFrequency: Daily
+                detailedFrequencyParameter: 1
+                frequency: Daily
+              nextExpectedTransactionDate: 2019-10-04T00:00:00.000+0000
+              amountConsistencyScore: 0.74
+              mostRecentTransactionDate: 2019-10-03T00:00:00.000+0000
+            expenditureStreams:
+            - earliestTransactionDate: 2020-04-24T00:00:00.000+0000
+              scheduleConsistencyScore: 0.44
+              averageAmount: 19.708
+              name: Amazon Marketplace
+              transactions:
+              - institution: starling
+                amount: 21.99
+                bookingDateTime: 2020-04-24T00:30:19.951Z
+                transactionInformation: Amazon Marketplace
+                transactionId: c51e3bee-36fb-4c0a-8441-d6ba2056fe87
+              - institution: starling
+                amount: 21.99
+                bookingDateTime: 2020-04-24T00:30:19.951Z
+                transactionInformation: Amazon Marketplace
+                transactionId: c51e3bee-36fb-4c0a-8441-d6ba2056fe87
+              transactionSchedule:
+                detailedFrequency: Daily
+                detailedFrequencyParameter: 1
+                frequency: Daily
+              nextExpectedTransactionDate: 2019-10-04T00:00:00.000+0000
+              amountConsistencyScore: 0.74
+              mostRecentTransactionDate: 2019-10-03T00:00:00.000+0000
+            - earliestTransactionDate: 2020-04-24T00:00:00.000+0000
+              scheduleConsistencyScore: 0.44
+              averageAmount: 19.708
+              name: Amazon Marketplace
+              transactions:
+              - institution: starling
+                amount: 21.99
+                bookingDateTime: 2020-04-24T00:30:19.951Z
+                transactionInformation: Amazon Marketplace
+                transactionId: c51e3bee-36fb-4c0a-8441-d6ba2056fe87
+              - institution: starling
+                amount: 21.99
+                bookingDateTime: 2020-04-24T00:30:19.951Z
+                transactionInformation: Amazon Marketplace
+                transactionId: c51e3bee-36fb-4c0a-8441-d6ba2056fe87
+              transactionSchedule:
+                detailedFrequency: Daily
+                detailedFrequencyParameter: 1
+                frequency: Daily
+              nextExpectedTransactionDate: 2019-10-04T00:00:00.000+0000
+              amountConsistencyScore: 0.74
+              mostRecentTransactionDate: 2019-10-03T00:00:00.000+0000
+            incomeStreams:
+            - earliestTransactionDate: 2020-04-24T00:00:00.000+0000
+              scheduleConsistencyScore: 0.44
+              averageAmount: 19.708
+              name: Amazon Marketplace
+              transactions:
+              - institution: starling
+                amount: 21.99
+                bookingDateTime: 2020-04-24T00:30:19.951Z
+                transactionInformation: Amazon Marketplace
+                transactionId: c51e3bee-36fb-4c0a-8441-d6ba2056fe87
+              - institution: starling
+                amount: 21.99
+                bookingDateTime: 2020-04-24T00:30:19.951Z
+                transactionInformation: Amazon Marketplace
+                transactionId: c51e3bee-36fb-4c0a-8441-d6ba2056fe87
+              transactionSchedule:
+                detailedFrequency: Daily
+                detailedFrequencyParameter: 1
+                frequency: Daily
+              nextExpectedTransactionDate: 2019-10-04T00:00:00.000+0000
+              amountConsistencyScore: 0.74
+              mostRecentTransactionDate: 2019-10-03T00:00:00.000+0000
+            - earliestTransactionDate: 2020-04-24T00:00:00.000+0000
+              scheduleConsistencyScore: 0.44
+              averageAmount: 19.708
+              name: Amazon Marketplace
+              transactions:
+              - institution: starling
+                amount: 21.99
+                bookingDateTime: 2020-04-24T00:30:19.951Z
+                transactionInformation: Amazon Marketplace
+                transactionId: c51e3bee-36fb-4c0a-8441-d6ba2056fe87
+              - institution: starling
+                amount: 21.99
+                bookingDateTime: 2020-04-24T00:30:19.951Z
+                transactionInformation: Amazon Marketplace
+                transactionId: c51e3bee-36fb-4c0a-8441-d6ba2056fe87
+              transactionSchedule:
+                detailedFrequency: Daily
+                detailedFrequencyParameter: 1
+                frequency: Daily
+              nextExpectedTransactionDate: 2019-10-04T00:00:00.000+0000
+              amountConsistencyScore: 0.74
+              mostRecentTransactionDate: 2019-10-03T00:00:00.000+0000
+          profileConsents:
+          - createdAt: 2000-01-23T04:56:07.000+00:00
+            referenceConsentId: 1e2e5167-8519-4c19-b016-8f2f0c6e38b6
+            institutionId: mock-sandbox
+            id: eb2ad083-a111-4143-8756-a3a3cef4031c
+            dataInsertedAt: 2000-01-23T04:56:07.000+00:00
+            userId: 3ddf5dd0-aa48-4d0f-baa7-fa057e9e911d
+            expiresAt: 2000-01-23T04:56:07.000+00:00
+            status: PENDING
+          - createdAt: 2000-01-23T04:56:07.000+00:00
+            referenceConsentId: 1e2e5167-8519-4c19-b016-8f2f0c6e38b6
+            institutionId: mock-sandbox
+            id: eb2ad083-a111-4143-8756-a3a3cef4031c
+            dataInsertedAt: 2000-01-23T04:56:07.000+00:00
+            userId: 3ddf5dd0-aa48-4d0f-baa7-fa057e9e911d
+            expiresAt: 2000-01-23T04:56:07.000+00:00
+            status: PENDING
+          status: COMPLETED
+        meta:
+          tracingId: tracingId
+        links:
+          key: links
+      properties:
+        meta:
+          $ref: '#/components/schemas/ResponseMeta'
+        data:
+          $ref: '#/components/schemas/FinancialProfile'
+        links:
+          additionalProperties:
+            type: string
+          type: object
+      type: object
     ProfileConsent:
       description: Object returned when creating a User Profile.
       example:
+        createdAt: 2000-01-23T04:56:07.000+00:00
         referenceConsentId: 1e2e5167-8519-4c19-b016-8f2f0c6e38b6
         institutionId: mock-sandbox
         id: eb2ad083-a111-4143-8756-a3a3cef4031c
+        dataInsertedAt: 2000-01-23T04:56:07.000+00:00
         userId: 3ddf5dd0-aa48-4d0f-baa7-fa057e9e911d
+        expiresAt: 2000-01-23T04:56:07.000+00:00
         status: PENDING
       properties:
         id:
@@ -16281,6 +17261,266 @@ components:
           description: The id of the Institution.
           example: mock-sandbox
           type: string
+        createdAt:
+          description: When a profile consent is created.
+          format: date-time
+          type: string
+        expiresAt:
+          description: When a profile consent is expired after created + X.
+          format: date-time
+          type: string
+        dataInsertedAt:
+          description: After data retrieval from aggregated profile consent is completed.
+          format: date-time
+          type: string
+      type: object
+    BalancePredictionProfile:
+      description: A Balance Prediction profile for a User.
+      example:
+        profileConsents:
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          referenceConsentId: 1e2e5167-8519-4c19-b016-8f2f0c6e38b6
+          institutionId: mock-sandbox
+          id: eb2ad083-a111-4143-8756-a3a3cef4031c
+          dataInsertedAt: 2000-01-23T04:56:07.000+00:00
+          userId: 3ddf5dd0-aa48-4d0f-baa7-fa057e9e911d
+          expiresAt: 2000-01-23T04:56:07.000+00:00
+          status: PENDING
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          referenceConsentId: 1e2e5167-8519-4c19-b016-8f2f0c6e38b6
+          institutionId: mock-sandbox
+          id: eb2ad083-a111-4143-8756-a3a3cef4031c
+          dataInsertedAt: 2000-01-23T04:56:07.000+00:00
+          userId: 3ddf5dd0-aa48-4d0f-baa7-fa057e9e911d
+          expiresAt: 2000-01-23T04:56:07.000+00:00
+          status: PENDING
+        enrichedBalances:
+        - institutions:
+          - institutions
+          - institutions
+          historic:
+          - date: 2021-10-01T00:00:00.000+0000
+            balance: 20
+          - date: 2021-10-01T00:00:00.000+0000
+            balance: 20
+          accountIds:
+          - accountIds
+          - accountIds
+          predicted:
+          - date: 2021-11-01T00:00:00.000+0000
+            medianBalance: 49.26
+            "90percentileBalance": 49.26
+            "10percentileBalance": 5.96
+          - date: 2021-11-01T00:00:00.000+0000
+            medianBalance: 49.26
+            "90percentileBalance": 49.26
+            "10percentileBalance": 5.96
+        - institutions:
+          - institutions
+          - institutions
+          historic:
+          - date: 2021-10-01T00:00:00.000+0000
+            balance: 20
+          - date: 2021-10-01T00:00:00.000+0000
+            balance: 20
+          accountIds:
+          - accountIds
+          - accountIds
+          predicted:
+          - date: 2021-11-01T00:00:00.000+0000
+            medianBalance: 49.26
+            "90percentileBalance": 49.26
+            "10percentileBalance": 5.96
+          - date: 2021-11-01T00:00:00.000+0000
+            medianBalance: 49.26
+            "90percentileBalance": 49.26
+            "10percentileBalance": 5.96
+        status: COMPLETED
+      properties:
+        status:
+          description: The status, will be COMPLETED which represents successful retreival
+            of profile.
+          example: COMPLETED
+          type: string
+        profileConsents:
+          description: A list of ProfileConsents used in the Balance Prediction profile.
+          items:
+            $ref: '#/components/schemas/ProfileConsent'
+          type: array
+        enrichedBalances:
+          description: A list of Balances returned by Balance Prediction profile.
+          items:
+            $ref: '#/components/schemas/EnrichedBalances'
+          type: array
+      type: object
+    ApiResponseOfFinancialProfileBalancePrediction:
+      example:
+        data:
+          profileConsents:
+          - createdAt: 2000-01-23T04:56:07.000+00:00
+            referenceConsentId: 1e2e5167-8519-4c19-b016-8f2f0c6e38b6
+            institutionId: mock-sandbox
+            id: eb2ad083-a111-4143-8756-a3a3cef4031c
+            dataInsertedAt: 2000-01-23T04:56:07.000+00:00
+            userId: 3ddf5dd0-aa48-4d0f-baa7-fa057e9e911d
+            expiresAt: 2000-01-23T04:56:07.000+00:00
+            status: PENDING
+          - createdAt: 2000-01-23T04:56:07.000+00:00
+            referenceConsentId: 1e2e5167-8519-4c19-b016-8f2f0c6e38b6
+            institutionId: mock-sandbox
+            id: eb2ad083-a111-4143-8756-a3a3cef4031c
+            dataInsertedAt: 2000-01-23T04:56:07.000+00:00
+            userId: 3ddf5dd0-aa48-4d0f-baa7-fa057e9e911d
+            expiresAt: 2000-01-23T04:56:07.000+00:00
+            status: PENDING
+          enrichedBalances:
+          - institutions:
+            - institutions
+            - institutions
+            historic:
+            - date: 2021-10-01T00:00:00.000+0000
+              balance: 20
+            - date: 2021-10-01T00:00:00.000+0000
+              balance: 20
+            accountIds:
+            - accountIds
+            - accountIds
+            predicted:
+            - date: 2021-11-01T00:00:00.000+0000
+              medianBalance: 49.26
+              "90percentileBalance": 49.26
+              "10percentileBalance": 5.96
+            - date: 2021-11-01T00:00:00.000+0000
+              medianBalance: 49.26
+              "90percentileBalance": 49.26
+              "10percentileBalance": 5.96
+          - institutions:
+            - institutions
+            - institutions
+            historic:
+            - date: 2021-10-01T00:00:00.000+0000
+              balance: 20
+            - date: 2021-10-01T00:00:00.000+0000
+              balance: 20
+            accountIds:
+            - accountIds
+            - accountIds
+            predicted:
+            - date: 2021-11-01T00:00:00.000+0000
+              medianBalance: 49.26
+              "90percentileBalance": 49.26
+              "10percentileBalance": 5.96
+            - date: 2021-11-01T00:00:00.000+0000
+              medianBalance: 49.26
+              "90percentileBalance": 49.26
+              "10percentileBalance": 5.96
+          status: COMPLETED
+        meta:
+          tracingId: tracingId
+        links:
+          key: links
+      properties:
+        meta:
+          $ref: '#/components/schemas/ResponseMeta'
+        data:
+          $ref: '#/components/schemas/BalancePredictionProfile'
+        links:
+          additionalProperties:
+            type: string
+          type: object
+      type: object
+    EnrichedBalances:
+      description: Enriched Balance information generated which include historic aggregated
+        balances and predicted balances
+      example:
+        institutions:
+        - institutions
+        - institutions
+        historic:
+        - date: 2021-10-01T00:00:00.000+0000
+          balance: 20
+        - date: 2021-10-01T00:00:00.000+0000
+          balance: 20
+        accountIds:
+        - accountIds
+        - accountIds
+        predicted:
+        - date: 2021-11-01T00:00:00.000+0000
+          medianBalance: 49.26
+          "90percentileBalance": 49.26
+          "10percentileBalance": 5.96
+        - date: 2021-11-01T00:00:00.000+0000
+          medianBalance: 49.26
+          "90percentileBalance": 49.26
+          "10percentileBalance": 5.96
+      properties:
+        accountIds:
+          description: A list of Account Ids used to generate Balance Prediction Profile.
+          items:
+            type: string
+          type: array
+        institutions:
+          description: A list of Institution Ids associated with the accounts used
+            to generate Balance Prediction Profile.
+          items:
+            type: string
+          type: array
+        historic:
+          description: A list of historic balances. Each balance in the list is an
+            aggregation (sum) of the reported balance for each account within the
+            profile at a point in time.
+          items:
+            $ref: '#/components/schemas/EnrichedHistoricBalance'
+          type: array
+        predicted:
+          description: A list of predicted balances. Each balance in the list is a
+            projected balance of the profile at a future point in time.
+          items:
+            $ref: '#/components/schemas/EnrichedPredictedBalance'
+          type: array
+      type: object
+    EnrichedHistoricBalance:
+      description: A list of Aggregated Account Balances for historic date range.
+      example:
+        date: 2021-10-01T00:00:00.000+0000
+        balance: 20
+      properties:
+        date:
+          description: The date for which Aggregated Balance amount across Bank accounts
+            is calculated.
+          example: 2021-10-01
+          format: date
+          type: string
+        balance:
+          description: The Aggregated Balance amount for a specific date.
+          example: 20
+          type: number
+      type: object
+    EnrichedPredictedBalance:
+      description: A list of Predicted Account Balances for future date range.
+      example:
+        date: 2021-11-01T00:00:00.000+0000
+        medianBalance: 49.26
+        "90percentileBalance": 49.26
+        "10percentileBalance": 5.96
+      properties:
+        date:
+          description: The date for which Balance amount is predicted.
+          example: 2021-11-01
+          format: date
+          type: string
+        medianBalance:
+          description: The median Balance amount for a future date.
+          example: 49.26
+          type: number
+        "90percentileBalance":
+          description: The 90th percentile Balance amount for a future date.
+          example: 49.26
+          type: number
+        "10percentileBalance":
+          description: The 10th percentile Balance amount for a future date.
+          example: 5.96
+          type: number
       type: object
     ProprietaryBankTransactionCode:
       example:
@@ -18183,11 +19423,28 @@ components:
       - currency
       - nickname
       type: object
+    UpdateVirtualAccountRequest:
+      example:
+        nickname: MyAccount123
+        status: CLOSED
+      properties:
+        nickname:
+          description: New reference that can be provided in order to help with identification
+            of the account
+          example: MyAccount123
+          type: string
+        status:
+          description: 'New state of the Account: CLOSED - The account has been permanently
+            closed and cannot be used'
+          example: CLOSED
+          type: string
+      type: object
     VirtualAccountPayment:
       example:
         reference: Invoice 1267765
         paymentScheme: FASTER_PAYMENTS
         amount: ""
+        originalPaymentId: za2ad0234-a333-5435-8787-a3a3cef4031c
         destination:
           accountIdentifications:
           - identification: "401016"
@@ -18258,6 +19515,10 @@ components:
           $ref: '#/components/schemas/VirtualAccountPaymentSource'
         destination:
           $ref: '#/components/schemas/VirtualAccountPaymentDestination'
+        originalPaymentId:
+          description: Unique id of the original payment that was refunded
+          example: za2ad0234-a333-5435-8787-a3a3cef4031c
+          type: string
       type: object
     VirtualAccountPayInDetails:
       example:
@@ -18582,6 +19843,232 @@ components:
       - reference
       - source
       type: object
+    VirtualAccountClientRequest:
+      example:
+        individual:
+          firstName: firstName
+          lastName: lastName
+          address:
+            country: ES
+            townName: 'Barcelona '
+            addressLine1: 12 New Street
+            addressLine2: Barcelona CA 08005
+            postCode: "08005"
+          phone: phone
+          middleName: middleName
+          birthDate: 2000-01-23
+          email: email
+        business:
+          registeredAddress:
+            country: ES
+            townName: 'Barcelona '
+            addressLine1: 12 New Street
+            addressLine2: Barcelona CA 08005
+            postCode: "08005"
+          phone: phone
+          registrationNumber: registrationNumber
+          contactName: contactName
+          name: name
+          tradingAddress:
+            country: ES
+            townName: 'Barcelona '
+            addressLine1: 12 New Street
+            addressLine2: Barcelona CA 08005
+            postCode: "08005"
+          email: email
+      properties:
+        type:
+          $ref: '#/components/schemas/VirtualAccountClientType'
+        individual:
+          $ref: '#/components/schemas/VirtualAccountIndividualClient'
+        business:
+          $ref: '#/components/schemas/VirtualAccountBusinessClient'
+      required:
+      - type
+      type: object
+    VirtualAccountClient:
+      example:
+        individual:
+          firstName: firstName
+          lastName: lastName
+          address:
+            country: ES
+            townName: 'Barcelona '
+            addressLine1: 12 New Street
+            addressLine2: Barcelona CA 08005
+            postCode: "08005"
+          phone: phone
+          middleName: middleName
+          birthDate: 2000-01-23
+          email: email
+        business:
+          registeredAddress:
+            country: ES
+            townName: 'Barcelona '
+            addressLine1: 12 New Street
+            addressLine2: Barcelona CA 08005
+            postCode: "08005"
+          phone: phone
+          registrationNumber: registrationNumber
+          contactName: contactName
+          name: name
+          tradingAddress:
+            country: ES
+            townName: 'Barcelona '
+            addressLine1: 12 New Street
+            addressLine2: Barcelona CA 08005
+            postCode: "08005"
+          email: email
+        createdDateTime: 2000-01-23T04:56:07.000+00:00
+        id: cf996ecc-8720-4bb3-8dbb-fe9018e0db12
+      properties:
+        id:
+          description: The id generated in the on-boarding process, it will be used
+            as client-id for virtual accounts request
+          example: cf996ecc-8720-4bb3-8dbb-fe9018e0db12
+          type: string
+        type:
+          $ref: '#/components/schemas/VirtualAccountClientType'
+        kycStatus:
+          $ref: '#/components/schemas/VirtualAccountKycStatus'
+        status:
+          $ref: '#/components/schemas/VirtualAccountClientStatus'
+        createdDateTime:
+          format: date-time
+          type: string
+        individual:
+          $ref: '#/components/schemas/VirtualAccountIndividualClient'
+        business:
+          $ref: '#/components/schemas/VirtualAccountBusinessClient'
+      type: object
+    VirtualAccountIndividualClient:
+      example:
+        firstName: firstName
+        lastName: lastName
+        address:
+          country: ES
+          townName: 'Barcelona '
+          addressLine1: 12 New Street
+          addressLine2: Barcelona CA 08005
+          postCode: "08005"
+        phone: phone
+        middleName: middleName
+        birthDate: 2000-01-23
+        email: email
+      properties:
+        firstName:
+          type: string
+        middleName:
+          type: string
+        lastName:
+          type: string
+        address:
+          $ref: '#/components/schemas/VirtualAccountAddress'
+        birthDate:
+          format: date
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+      required:
+      - birthDate
+      - email
+      - firstName
+      - lastName
+      type: object
+    VirtualAccountBusinessClient:
+      example:
+        registeredAddress:
+          country: ES
+          townName: 'Barcelona '
+          addressLine1: 12 New Street
+          addressLine2: Barcelona CA 08005
+          postCode: "08005"
+        phone: phone
+        registrationNumber: registrationNumber
+        contactName: contactName
+        name: name
+        tradingAddress:
+          country: ES
+          townName: 'Barcelona '
+          addressLine1: 12 New Street
+          addressLine2: Barcelona CA 08005
+          postCode: "08005"
+        email: email
+      properties:
+        name:
+          type: string
+        type:
+          $ref: '#/components/schemas/VirtualAccountClientBusinessType'
+        registrationNumber:
+          type: string
+        registeredAddress:
+          $ref: '#/components/schemas/VirtualAccountAddress'
+        tradingAddress:
+          $ref: '#/components/schemas/VirtualAccountAddress'
+        contactName:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+      required:
+      - contactName
+      - email
+      - name
+      - phone
+      - registeredAddress
+      - registrationNumber
+      - type
+      type: object
+    VirtualAccountAddress:
+      example:
+        country: ES
+        townName: 'Barcelona '
+        addressLine1: 12 New Street
+        addressLine2: Barcelona CA 08005
+        postCode: "08005"
+      properties:
+        addressLine1:
+          description: __Mandatory__. AddressLine1 of the sub-client
+          example: 12 New Street
+          type: string
+        addressLine2:
+          description: __Optional__. AddressLine2 of the sub-client
+          example: Barcelona CA 08005
+          type: string
+        townName:
+          description: __Mandatory__. Town name of the sub-client
+          example: 'Barcelona '
+          type: string
+        postCode:
+          description: __Optional__. Address postcode of the sub-client
+          example: "08005"
+          type: string
+        country:
+          description: __Optional__. Country of the sub-client
+          example: ES
+          type: string
+      required:
+      - addressLine1
+      - country
+      - townName
+      type: object
+    VirtualAccountClientType:
+      enum:
+      - INDIVIDUAL
+      - BUSINESS
+      type: string
+    VirtualAccountClientBusinessType:
+      enum:
+      - SOLE_TRADER
+      - LIMITED_LIABILITY
+      - CHARITY
+      - PUBLIC_LIMITED_COMPANY
+      - ORDINARY_PARTNERSHIP
+      - LIMITED_PARTNERSHIP
+      type: string
     VirtualAccountTransferSource:
       example:
         accountId: eb2ad083-a111-4143-8756-a3a3cef4031c
@@ -18605,6 +20092,17 @@ components:
       required:
       - accountId
       type: object
+    VirtualAccountKycStatus:
+      enum:
+      - UNVERIFIED
+      - VERIFIED
+      type: string
+    VirtualAccountClientStatus:
+      enum:
+      - PENDING
+      - ACTIVE
+      - SUSPENDED
+      type: string
     ErrorIssue:
       description: Detailed information regarding the issue that was experienced during
         processing of the request
@@ -18816,6 +20314,7 @@ components:
           reference: Invoice 1267765
           paymentScheme: FASTER_PAYMENTS
           amount: ""
+          originalPaymentId: za2ad0234-a333-5435-8787-a3a3cef4031c
           destination:
             accountIdentifications:
             - identification: "401016"
@@ -19058,6 +20557,7 @@ components:
         - reference: Invoice 1267765
           paymentScheme: FASTER_PAYMENTS
           amount: ""
+          originalPaymentId: za2ad0234-a333-5435-8787-a3a3cef4031c
           destination:
             accountIdentifications:
             - identification: "401016"
@@ -19083,6 +20583,7 @@ components:
         - reference: Invoice 1267765
           paymentScheme: FASTER_PAYMENTS
           amount: ""
+          originalPaymentId: za2ad0234-a333-5435-8787-a3a3cef4031c
           destination:
             accountIdentifications:
             - identification: "401016"
@@ -19143,6 +20644,181 @@ components:
           items:
             $ref: '#/components/schemas/VirtualAccountPayment'
           type: array
+        forwardedData:
+          items:
+            $ref: '#/components/schemas/ResponseForwardedData'
+          type: array
+        tracingId:
+          type: string
+          writeOnly: true
+      type: object
+    ApiResponseOfVirtualAccountClient:
+      example:
+        tracingId: tracingId
+        data:
+          individual:
+            firstName: firstName
+            lastName: lastName
+            address:
+              country: ES
+              townName: 'Barcelona '
+              addressLine1: 12 New Street
+              addressLine2: Barcelona CA 08005
+              postCode: "08005"
+            phone: phone
+            middleName: middleName
+            birthDate: 2000-01-23
+            email: email
+          business:
+            registeredAddress:
+              country: ES
+              townName: 'Barcelona '
+              addressLine1: 12 New Street
+              addressLine2: Barcelona CA 08005
+              postCode: "08005"
+            phone: phone
+            registrationNumber: registrationNumber
+            contactName: contactName
+            name: name
+            tradingAddress:
+              country: ES
+              townName: 'Barcelona '
+              addressLine1: 12 New Street
+              addressLine2: Barcelona CA 08005
+              postCode: "08005"
+            email: email
+          createdDateTime: 2000-01-23T04:56:07.000+00:00
+          id: cf996ecc-8720-4bb3-8dbb-fe9018e0db12
+        meta:
+          tracingId: tracingId
+        forwardedData:
+        - headers:
+            key: headers
+          url: url
+        - headers:
+            key: headers
+          url: url
+      properties:
+        meta:
+          $ref: '#/components/schemas/ResponseMeta'
+        data:
+          $ref: '#/components/schemas/VirtualAccountClient'
+        forwardedData:
+          items:
+            $ref: '#/components/schemas/ResponseForwardedData'
+          type: array
+        tracingId:
+          type: string
+          writeOnly: true
+      type: object
+    ApiListResponseOfVirtualAccountClient:
+      example:
+        tracingId: tracingId
+        data:
+        - individual:
+            firstName: firstName
+            lastName: lastName
+            address:
+              country: ES
+              townName: 'Barcelona '
+              addressLine1: 12 New Street
+              addressLine2: Barcelona CA 08005
+              postCode: "08005"
+            phone: phone
+            middleName: middleName
+            birthDate: 2000-01-23
+            email: email
+          business:
+            registeredAddress:
+              country: ES
+              townName: 'Barcelona '
+              addressLine1: 12 New Street
+              addressLine2: Barcelona CA 08005
+              postCode: "08005"
+            phone: phone
+            registrationNumber: registrationNumber
+            contactName: contactName
+            name: name
+            tradingAddress:
+              country: ES
+              townName: 'Barcelona '
+              addressLine1: 12 New Street
+              addressLine2: Barcelona CA 08005
+              postCode: "08005"
+            email: email
+          createdDateTime: 2000-01-23T04:56:07.000+00:00
+          id: cf996ecc-8720-4bb3-8dbb-fe9018e0db12
+        - individual:
+            firstName: firstName
+            lastName: lastName
+            address:
+              country: ES
+              townName: 'Barcelona '
+              addressLine1: 12 New Street
+              addressLine2: Barcelona CA 08005
+              postCode: "08005"
+            phone: phone
+            middleName: middleName
+            birthDate: 2000-01-23
+            email: email
+          business:
+            registeredAddress:
+              country: ES
+              townName: 'Barcelona '
+              addressLine1: 12 New Street
+              addressLine2: Barcelona CA 08005
+              postCode: "08005"
+            phone: phone
+            registrationNumber: registrationNumber
+            contactName: contactName
+            name: name
+            tradingAddress:
+              country: ES
+              townName: 'Barcelona '
+              addressLine1: 12 New Street
+              addressLine2: Barcelona CA 08005
+              postCode: "08005"
+            email: email
+          createdDateTime: 2000-01-23T04:56:07.000+00:00
+          id: cf996ecc-8720-4bb3-8dbb-fe9018e0db12
+        meta:
+          tracingId: tracingId
+          pagination:
+            next:
+              cursor: cursor
+              before: 2000-01-23T04:56:07.000+00:00
+              limit: 5
+              from: 2000-01-23T04:56:07.000+00:00
+            self:
+              cursor: cursor
+              offset: 5
+              before: 2000-01-23T04:56:07.000+00:00
+              limit: 1
+              from: 2000-01-23T04:56:07.000+00:00
+            totalCount: 6
+          count: 0
+        links:
+          next: next
+          last: last
+          previous: previous
+          self: self
+          first: first
+        forwardedData:
+        - headers:
+            key: headers
+          url: url
+        - headers:
+            key: headers
+          url: url
+      properties:
+        meta:
+          $ref: '#/components/schemas/ResponseListMeta'
+        data:
+          items:
+            $ref: '#/components/schemas/VirtualAccountClient'
+          type: array
+        links:
+          $ref: '#/components/schemas/Links'
         forwardedData:
           items:
             $ref: '#/components/schemas/ResponseForwardedData'

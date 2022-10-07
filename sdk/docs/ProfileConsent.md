@@ -13,6 +13,9 @@ Name | Type | Description | Notes
 **userId** | **UUID** | The userUuid. |  [optional]
 **referenceConsentId** | **UUID** | The referenceConsentId. |  [optional]
 **institutionId** | **String** | The id of the Institution. |  [optional]
+**createdAt** | **OffsetDateTime** | When a profile consent is created. |  [optional]
+**expiresAt** | **OffsetDateTime** | When a profile consent is expired after created + X. |  [optional]
+**dataInsertedAt** | **OffsetDateTime** | After data retrieval from aggregated profile consent is completed. |  [optional]
 
 
 

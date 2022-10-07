@@ -8,7 +8,7 @@ import yapily.sdk.Pair;
 
 import javax.ws.rs.core.GenericType;
 
-import yapily.sdk.models.ApiResponseError;
+import yapily.sdk.models.ApiErrorResponse;
 import yapily.sdk.models.ApiResponseOfFundsConfirmationResponse;
 import yapily.sdk.models.ApiResponseOfNonSweepingAuthorisationResponse;
 import yapily.sdk.models.ApiResponseOfSubmissionResponse;
@@ -24,7 +24,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-08-17T11:55:38.294Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-10-07T11:29:02.836Z[Etc/UTC]")
 public class VariableRecurringPaymentsApi {
   private ApiClient apiClient;
 
@@ -443,7 +443,7 @@ public class VariableRecurringPaymentsApi {
        <tr><td> 0 </td><td> Error Response </td><td>  -  </td></tr>
      </table>
    */
-  public ApiResponseOfSubmissionResponse getVrpPaymentDetails(UUID paymentId, String consent) throws ApiException {
+  public ApiResponseOfSubmissionResponse getVrpPaymentDetails(String paymentId, String consent) throws ApiException {
     return getVrpPaymentDetailsWithHttpInfo(paymentId, consent).getData();
   }
 
@@ -462,7 +462,7 @@ public class VariableRecurringPaymentsApi {
        <tr><td> 0 </td><td> Error Response </td><td>  -  </td></tr>
      </table>
    */
-  public ApiResponse<ApiResponseOfSubmissionResponse> getVrpPaymentDetailsWithHttpInfo(UUID paymentId, String consent) throws ApiException {
+  public ApiResponse<ApiResponseOfSubmissionResponse> getVrpPaymentDetailsWithHttpInfo(String paymentId, String consent) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'paymentId' is set

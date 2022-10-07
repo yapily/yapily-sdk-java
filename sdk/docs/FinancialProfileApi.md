@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createProfileConsent**](FinancialProfileApi.md#createProfileConsent) | **POST** /users/{userUuid}/profile/consents | Create Profile Consent
 [**deleteProfileConsent**](FinancialProfileApi.md#deleteProfileConsent) | **DELETE** /users/{userUuid}/profile/consents/{profileConsentId} | Delete Profile Consent
+[**getBalancePrediction**](FinancialProfileApi.md#getBalancePrediction) | **GET** /users/{userUuid}/profile/predicted-balances | Get Predicted Balances
 [**getProfileConsent**](FinancialProfileApi.md#getProfileConsent) | **GET** /users/{userUuid}/profile/consents/{profileConsentId} | Get Profile Consent
 [**getUserProfile**](FinancialProfileApi.md#getUserProfile) | **GET** /users/{userUuid}/profile | Get User Profile
 
@@ -13,7 +14,7 @@ Method | HTTP request | Description
 
 ## createProfileConsent
 
-> ProfileConsent createProfileConsent(userUuid, consent)
+> ApiResponseOfFinancialProfileAuthorisationResponse createProfileConsent(userUuid, consent)
 
 Create Profile Consent
 
@@ -45,7 +46,7 @@ public class Example {
         UUID userUuid = UUID.randomUUID(); // UUID | __Mandatory__. The Yapily generated UUID for the user.
         String consent = "consent_example"; // String | __Mandatory__. The `consent-token` obtained from the original authorisation.
         try {
-            ProfileConsent result = apiInstance.createProfileConsent(userUuid, consent);
+            ApiResponseOfFinancialProfileAuthorisationResponse result = apiInstance.createProfileConsent(userUuid, consent);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling FinancialProfileApi#createProfileConsent");
@@ -68,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ProfileConsent**](ProfileConsent.md)
+[**ApiResponseOfFinancialProfileAuthorisationResponse**](ApiResponseOfFinancialProfileAuthorisationResponse.md)
 
 ### Authorization
 
@@ -82,7 +83,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | A successful response, returning a ProfileConsent. |  -  |
+| **201** | A successful response, returning a ApiResponseOfFinancialProfileAuthorisationResponse. |  -  |
 | **400** | Bad Request.  Returned if the userUuid is not a valid UUID. |  -  |
 | **401** | Either authentication credentials were not supplied, or they were invalid. |  -  |
 | **404** | Not Found.  Returned if the userUuid is not found for the &#x60;Application&#x60;. |  -  |
@@ -90,7 +91,7 @@ Name | Type | Description  | Notes
 
 ## deleteProfileConsent
 
-> deleteProfileConsent(userUuid, profileConsentId)
+> ApiResponseOfFinancialProfileConsentRemoveResponse deleteProfileConsent(userUuid, profileConsentId)
 
 Delete Profile Consent
 
@@ -122,7 +123,8 @@ public class Example {
         UUID userUuid = UUID.randomUUID(); // UUID | __Mandatory__. The Yapily generated UUID for the user.
         String profileConsentId = "profileConsentId_example"; // String | __Mandatory__. The ID of the ProfileConsent
         try {
-            apiInstance.deleteProfileConsent(userUuid, profileConsentId);
+            ApiResponseOfFinancialProfileConsentRemoveResponse result = apiInstance.deleteProfileConsent(userUuid, profileConsentId);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling FinancialProfileApi#deleteProfileConsent");
             System.err.println("Status code: " + e.getCode());
@@ -144,7 +146,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**ApiResponseOfFinancialProfileConsentRemoveResponse**](ApiResponseOfFinancialProfileConsentRemoveResponse.md)
 
 ### Authorization
 
@@ -164,9 +166,84 @@ null (empty response body)
 | **404** | Not Found.  Returned if the userUuid or ProfileConsent is not found for the &#x60;Application&#x60;. |  -  |
 
 
+## getBalancePrediction
+
+> ApiResponseOfFinancialProfileBalancePrediction getBalancePrediction(userUuid)
+
+Get Predicted Balances
+
+Used to retrieve a `Balance Prediction Profile` for a `User`.  Status will be `PENDING` until all ProfileConsents are `COMPLETED`.
+
+### Example
+
+```java
+import java.util.UUID;
+// Import classes:
+import yapily.sdk.ApiClient;
+import yapily.sdk.ApiException;
+import yapily.sdk.Configuration;
+import yapily.sdk.auth.*;
+import yapily.sdk.model.*;
+import yapily.sdk.api.FinancialProfileApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.yapily.com");
+        
+        // Configure HTTP basic authorization: basicAuth
+        HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
+
+        FinancialProfileApi apiInstance = new FinancialProfileApi(defaultClient);
+        UUID userUuid = UUID.randomUUID(); // UUID | __Mandatory__. The Yapily generated UUID for the user.
+        try {
+            ApiResponseOfFinancialProfileBalancePrediction result = apiInstance.getBalancePrediction(userUuid);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling FinancialProfileApi#getBalancePrediction");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userUuid** | **UUID**| __Mandatory__. The Yapily generated UUID for the user. |
+
+### Return type
+
+[**ApiResponseOfFinancialProfileBalancePrediction**](ApiResponseOfFinancialProfileBalancePrediction.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | A successful response, returning a Balance Prediction Profile. |  -  |
+| **400** | Bad Request.  Returned if the userUuid is not a valid UUID. |  -  |
+| **401** | Either authentication credentials were not supplied, or they were invalid. |  -  |
+| **404** | Not Found.  Returned if the userUuid is not found for the &#x60;Application&#x60;, or data not found for the userUuid. |  -  |
+
+
 ## getProfileConsent
 
-> ProfileConsent getProfileConsent(userUuid, profileConsentId)
+> ApiResponseOfFinancialProfileConsent getProfileConsent(userUuid, profileConsentId)
 
 Get Profile Consent
 
@@ -198,7 +275,7 @@ public class Example {
         UUID userUuid = UUID.randomUUID(); // UUID | __Mandatory__. The Yapily generated UUID for the user.
         String profileConsentId = "profileConsentId_example"; // String | __Mandatory__. The ID of the ProfileConsent
         try {
-            ProfileConsent result = apiInstance.getProfileConsent(userUuid, profileConsentId);
+            ApiResponseOfFinancialProfileConsent result = apiInstance.getProfileConsent(userUuid, profileConsentId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling FinancialProfileApi#getProfileConsent");
@@ -221,7 +298,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ProfileConsent**](ProfileConsent.md)
+[**ApiResponseOfFinancialProfileConsent**](ApiResponseOfFinancialProfileConsent.md)
 
 ### Authorization
 
@@ -235,7 +312,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | A successful response, returning a ProfileConsent. |  -  |
+| **200** | A successful response, returning a ApiResponseOfFinancialProfileConsent. |  -  |
 | **400** | Bad Request.  Returned if the userUuid is not a valid UUID. |  -  |
 | **401** | Either authentication credentials were not supplied, or they were invalid. |  -  |
 | **404** | Not Found.  Returned if the userUuid or ProfileConsent is not found for the &#x60;Application&#x60;. |  -  |
@@ -243,7 +320,7 @@ Name | Type | Description  | Notes
 
 ## getUserProfile
 
-> FinancialProfile getUserProfile(userUuid)
+> ApiResponseOfFinancialProfile getUserProfile(userUuid)
 
 Get User Profile
 
@@ -274,7 +351,7 @@ public class Example {
         FinancialProfileApi apiInstance = new FinancialProfileApi(defaultClient);
         UUID userUuid = UUID.randomUUID(); // UUID | __Mandatory__. The Yapily generated UUID for the user.
         try {
-            FinancialProfile result = apiInstance.getUserProfile(userUuid);
+            ApiResponseOfFinancialProfile result = apiInstance.getUserProfile(userUuid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling FinancialProfileApi#getUserProfile");
@@ -296,7 +373,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**FinancialProfile**](FinancialProfile.md)
+[**ApiResponseOfFinancialProfile**](ApiResponseOfFinancialProfile.md)
 
 ### Authorization
 
@@ -310,7 +387,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | A successful response, returning a FinancialProfile. |  -  |
+| **200** | A successful response, returning a ApiResponseOfFinancialProfile. |  -  |
 | **400** | Bad Request.  Returned if the userUuid is not a valid UUID. |  -  |
 | **401** | Either authentication credentials were not supplied, or they were invalid. |  -  |
 | **404** | Not Found.  Returned if the userUuid is not found for the &#x60;Application&#x60;. |  -  |

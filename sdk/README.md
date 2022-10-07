@@ -2,9 +2,9 @@
 
 Yapily API
 
-- API version: 2.6.0
+- API version: 2.13.1
 
-- Build date: 2022-08-17T11:55:38.294Z[Etc/UTC]
+- Build date: 2022-10-07T11:29:02.836Z[Etc/UTC]
 
 The Yapily API enables connections between your application and users' banks. For more information check out our [documentation](https://docs.yapily.com/).<br><br>In particular, make sure to view our [Getting Started](https://docs.yapily.com/pages/home/getting-started/) steps if this is your first time here.<br><br>While testing the API, our list of [sandbox credentials](https://docs.yapily.com/pages/key-concepts/sandbox-credentials/) maybe useful.
 
@@ -43,7 +43,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>yapily</groupId>
   <artifactId>yapily-sdk</artifactId>
-  <version>1.412.0</version>
+  <version>2.13.1</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -59,7 +59,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "yapily:yapily-sdk:1.412.0"
+     implementation "yapily:yapily-sdk:2.13.1"
   }
 ```
 
@@ -73,7 +73,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/yapily-sdk-1.412.0.jar`
+- `target/yapily-sdk-2.13.1.jar`
 - `target/lib/*.jar`
 
 ## Usage
@@ -162,6 +162,7 @@ Class | Method | HTTP request | Description
 *AuthorisationsApi* | [**updatePreAuthoriseAccountConsent**](docs/AuthorisationsApi.md#updatePreAuthoriseAccountConsent) | **PUT** /account-auth-requests | Update Account Pre-authorisation
 *ConsentsApi* | [**createConsentWithCode**](docs/ConsentsApi.md#createConsentWithCode) | **POST** /consent-auth-code | Exchange OAuth2 Code
 *ConsentsApi* | [**delete**](docs/ConsentsApi.md#delete) | **DELETE** /consents/{consentId} | Delete Consent
+*ConsentsApi* | [**extendConsent**](docs/ConsentsApi.md#extendConsent) | **POST** /consents/{consentId}/extend | Extend Consent
 *ConsentsApi* | [**getConsentById**](docs/ConsentsApi.md#getConsentById) | **GET** /consents/{consentId} | Get Consent
 *ConsentsApi* | [**getConsentBySingleAccessConsent**](docs/ConsentsApi.md#getConsentBySingleAccessConsent) | **POST** /consent-one-time-token | Exchange One Time Token
 *ConsentsApi* | [**getConsents**](docs/ConsentsApi.md#getConsents) | **GET** /consents | Get Consents
@@ -180,6 +181,7 @@ Class | Method | HTTP request | Description
 *FinancialDataApi* | [**getTransactions**](docs/FinancialDataApi.md#getTransactions) | **GET** /accounts/{accountId}/transactions | Get Account Transactions
 *FinancialProfileApi* | [**createProfileConsent**](docs/FinancialProfileApi.md#createProfileConsent) | **POST** /users/{userUuid}/profile/consents | Create Profile Consent
 *FinancialProfileApi* | [**deleteProfileConsent**](docs/FinancialProfileApi.md#deleteProfileConsent) | **DELETE** /users/{userUuid}/profile/consents/{profileConsentId} | Delete Profile Consent
+*FinancialProfileApi* | [**getBalancePrediction**](docs/FinancialProfileApi.md#getBalancePrediction) | **GET** /users/{userUuid}/profile/predicted-balances | Get Predicted Balances
 *FinancialProfileApi* | [**getProfileConsent**](docs/FinancialProfileApi.md#getProfileConsent) | **GET** /users/{userUuid}/profile/consents/{profileConsentId} | Get Profile Consent
 *FinancialProfileApi* | [**getUserProfile**](docs/FinancialProfileApi.md#getUserProfile) | **GET** /users/{userUuid}/profile | Get User Profile
 *InstitutionsApi* | [**getFeatureDetails**](docs/InstitutionsApi.md#getFeatureDetails) | **GET** /features | Get Features
@@ -205,6 +207,7 @@ Class | Method | HTTP request | Description
 *VariableRecurringPaymentsApi* | [**getpNonSweepingVrpConsentById**](docs/VariableRecurringPaymentsApi.md#getpNonSweepingVrpConsentById) | **GET** /variable-recurring-payments/non-sweeping/consents/{consentId} | Get Non-Sweeping Variable Recurring Payment Consent Details
 *VirtualAccountsApi* | [**createVirtualAccount**](docs/VirtualAccountsApi.md#createVirtualAccount) | **POST** /virtual-accounts/accounts | Create Account
 *VirtualAccountsApi* | [**createVirtualAccountBeneficiary**](docs/VirtualAccountsApi.md#createVirtualAccountBeneficiary) | **POST** /virtual-accounts/beneficiaries | Create Beneficiary
+*VirtualAccountsApi* | [**createVirtualAccountClient**](docs/VirtualAccountsApi.md#createVirtualAccountClient) | **POST** /virtual-accounts/clients | Create Virtual Account Client
 *VirtualAccountsApi* | [**createVirtualAccountPayOut**](docs/VirtualAccountsApi.md#createVirtualAccountPayOut) | **POST** /virtual-accounts/payments/pay-outs | Create Pay Out
 *VirtualAccountsApi* | [**createVirtualAccountTransfer**](docs/VirtualAccountsApi.md#createVirtualAccountTransfer) | **POST** /virtual-accounts/payments/transfers | Create Virtual Account Transfer
 *VirtualAccountsApi* | [**getPayInDetails**](docs/VirtualAccountsApi.md#getPayInDetails) | **GET** /virtual-accounts/payments/{paymentId}/pay-in-details | Get Pay-In Details
@@ -212,8 +215,10 @@ Class | Method | HTTP request | Description
 *VirtualAccountsApi* | [**getVirtualAccountBeneficiaries**](docs/VirtualAccountsApi.md#getVirtualAccountBeneficiaries) | **GET** /virtual-accounts/beneficiaries | Get List Of Beneficiaries
 *VirtualAccountsApi* | [**getVirtualAccountBeneficiary**](docs/VirtualAccountsApi.md#getVirtualAccountBeneficiary) | **GET** /virtual-accounts/beneficiaries/{beneficiaryId} | Get Beneficiary
 *VirtualAccountsApi* | [**getVirtualAccountById**](docs/VirtualAccountsApi.md#getVirtualAccountById) | **GET** /virtual-accounts/accounts/{accountId} | Get Account
+*VirtualAccountsApi* | [**getVirtualAccountClients**](docs/VirtualAccountsApi.md#getVirtualAccountClients) | **GET** /virtual-accounts/clients | Get List of Virtual Account Clients
 *VirtualAccountsApi* | [**getVirtualAccountPayments**](docs/VirtualAccountsApi.md#getVirtualAccountPayments) | **GET** /virtual-accounts/payments | Get Payments
 *VirtualAccountsApi* | [**getVirtualAccounts**](docs/VirtualAccountsApi.md#getVirtualAccounts) | **GET** /virtual-accounts/accounts | Get Accounts
+*VirtualAccountsApi* | [**updateVirtualAccountById**](docs/VirtualAccountsApi.md#updateVirtualAccountById) | **PATCH** /virtual-accounts/accounts/{accountId} | Update Account
 
 
 ## Documentation for Models
@@ -236,6 +241,7 @@ Class | Method | HTTP request | Description
  - [AddressTypeEnum](docs/AddressTypeEnum.md)
  - [Amount](docs/Amount.md)
  - [ApiError](docs/ApiError.md)
+ - [ApiErrorResponse](docs/ApiErrorResponse.md)
  - [ApiListResponseOfAccountStatement](docs/ApiListResponseOfAccountStatement.md)
  - [ApiListResponseOfBeneficiary](docs/ApiListResponseOfBeneficiary.md)
  - [ApiListResponseOfCategory](docs/ApiListResponseOfCategory.md)
@@ -248,6 +254,7 @@ Class | Method | HTTP request | Description
  - [ApiListResponseOfTransaction](docs/ApiListResponseOfTransaction.md)
  - [ApiListResponseOfVirtualAccount](docs/ApiListResponseOfVirtualAccount.md)
  - [ApiListResponseOfVirtualAccountBeneficiary](docs/ApiListResponseOfVirtualAccountBeneficiary.md)
+ - [ApiListResponseOfVirtualAccountClient](docs/ApiListResponseOfVirtualAccountClient.md)
  - [ApiListResponseOfVirtualAccountPayment](docs/ApiListResponseOfVirtualAccountPayment.md)
  - [ApiResponseError](docs/ApiResponseError.md)
  - [ApiResponseOfAccount](docs/ApiResponseOfAccount.md)
@@ -259,6 +266,11 @@ Class | Method | HTTP request | Description
  - [ApiResponseOfEmbeddedAccountAuthorisationResponse](docs/ApiResponseOfEmbeddedAccountAuthorisationResponse.md)
  - [ApiResponseOfEventSubscriptionDeleteResponse](docs/ApiResponseOfEventSubscriptionDeleteResponse.md)
  - [ApiResponseOfEventSubscriptionResponse](docs/ApiResponseOfEventSubscriptionResponse.md)
+ - [ApiResponseOfFinancialProfile](docs/ApiResponseOfFinancialProfile.md)
+ - [ApiResponseOfFinancialProfileAuthorisationResponse](docs/ApiResponseOfFinancialProfileAuthorisationResponse.md)
+ - [ApiResponseOfFinancialProfileBalancePrediction](docs/ApiResponseOfFinancialProfileBalancePrediction.md)
+ - [ApiResponseOfFinancialProfileConsent](docs/ApiResponseOfFinancialProfileConsent.md)
+ - [ApiResponseOfFinancialProfileConsentRemoveResponse](docs/ApiResponseOfFinancialProfileConsentRemoveResponse.md)
  - [ApiResponseOfFundsConfirmationResponse](docs/ApiResponseOfFundsConfirmationResponse.md)
  - [ApiResponseOfIdentity](docs/ApiResponseOfIdentity.md)
  - [ApiResponseOfNonSweepingAuthorisationResponse](docs/ApiResponseOfNonSweepingAuthorisationResponse.md)
@@ -271,11 +283,13 @@ Class | Method | HTTP request | Description
  - [ApiResponseOfUserDeleteResponse](docs/ApiResponseOfUserDeleteResponse.md)
  - [ApiResponseOfVirtualAccount](docs/ApiResponseOfVirtualAccount.md)
  - [ApiResponseOfVirtualAccountBeneficiary](docs/ApiResponseOfVirtualAccountBeneficiary.md)
+ - [ApiResponseOfVirtualAccountClient](docs/ApiResponseOfVirtualAccountClient.md)
  - [ApiResponseOfVirtualAccountPayInDetails](docs/ApiResponseOfVirtualAccountPayInDetails.md)
  - [ApiResponseOfVirtualAccountPayment](docs/ApiResponseOfVirtualAccountPayment.md)
  - [Application](docs/Application.md)
  - [ApplicationUser](docs/ApplicationUser.md)
  - [AuthorisationStatus](docs/AuthorisationStatus.md)
+ - [BalancePredictionProfile](docs/BalancePredictionProfile.md)
  - [Balances](docs/Balances.md)
  - [Beneficiary](docs/Beneficiary.md)
  - [BeneficiaryPayee](docs/BeneficiaryPayee.md)
@@ -299,6 +313,9 @@ Class | Method | HTTP request | Description
  - [DirectDebitResponse](docs/DirectDebitResponse.md)
  - [EmbeddedAccountAuthorisationRequest](docs/EmbeddedAccountAuthorisationRequest.md)
  - [EmbeddedAccountAuthorisationResponse](docs/EmbeddedAccountAuthorisationResponse.md)
+ - [EnrichedBalances](docs/EnrichedBalances.md)
+ - [EnrichedHistoricBalance](docs/EnrichedHistoricBalance.md)
+ - [EnrichedPredictedBalance](docs/EnrichedPredictedBalance.md)
  - [EnrichedTransaction](docs/EnrichedTransaction.md)
  - [EnrichedWrapper](docs/EnrichedWrapper.md)
  - [Enrichment](docs/Enrichment.md)
@@ -311,6 +328,7 @@ Class | Method | HTTP request | Description
  - [EventSubscriptionResponse](docs/EventSubscriptionResponse.md)
  - [ExchangeRateInformation](docs/ExchangeRateInformation.md)
  - [ExchangeRateInformationResponse](docs/ExchangeRateInformationResponse.md)
+ - [ExtendConsentRequest](docs/ExtendConsentRequest.md)
  - [FeatureDetails](docs/FeatureDetails.md)
  - [FeatureEnum](docs/FeatureEnum.md)
  - [FilterAndSort](docs/FilterAndSort.md)
@@ -407,10 +425,12 @@ Class | Method | HTTP request | Description
  - [TransactionStatusEnum](docs/TransactionStatusEnum.md)
  - [TransactionStream](docs/TransactionStream.md)
  - [Type](docs/Type.md)
+ - [UpdateVirtualAccountRequest](docs/UpdateVirtualAccountRequest.md)
  - [UsageType](docs/UsageType.md)
  - [UserCredentials](docs/UserCredentials.md)
  - [UserDeleteResponse](docs/UserDeleteResponse.md)
  - [VirtualAccount](docs/VirtualAccount.md)
+ - [VirtualAccountAddress](docs/VirtualAccountAddress.md)
  - [VirtualAccountBalance](docs/VirtualAccountBalance.md)
  - [VirtualAccountBalanceType](docs/VirtualAccountBalanceType.md)
  - [VirtualAccountBankAccount](docs/VirtualAccountBankAccount.md)
@@ -418,6 +438,14 @@ Class | Method | HTTP request | Description
  - [VirtualAccountBeneficiaryAccount](docs/VirtualAccountBeneficiaryAccount.md)
  - [VirtualAccountBeneficiaryAddress](docs/VirtualAccountBeneficiaryAddress.md)
  - [VirtualAccountBeneficiaryRequest](docs/VirtualAccountBeneficiaryRequest.md)
+ - [VirtualAccountBusinessClient](docs/VirtualAccountBusinessClient.md)
+ - [VirtualAccountClient](docs/VirtualAccountClient.md)
+ - [VirtualAccountClientBusinessType](docs/VirtualAccountClientBusinessType.md)
+ - [VirtualAccountClientRequest](docs/VirtualAccountClientRequest.md)
+ - [VirtualAccountClientStatus](docs/VirtualAccountClientStatus.md)
+ - [VirtualAccountClientType](docs/VirtualAccountClientType.md)
+ - [VirtualAccountIndividualClient](docs/VirtualAccountIndividualClient.md)
+ - [VirtualAccountKycStatus](docs/VirtualAccountKycStatus.md)
  - [VirtualAccountPayInDetails](docs/VirtualAccountPayInDetails.md)
  - [VirtualAccountPayOutRequest](docs/VirtualAccountPayOutRequest.md)
  - [VirtualAccountPayment](docs/VirtualAccountPayment.md)

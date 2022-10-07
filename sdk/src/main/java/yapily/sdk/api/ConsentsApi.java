@@ -8,12 +8,14 @@ import yapily.sdk.Pair;
 
 import javax.ws.rs.core.GenericType;
 
+import yapily.sdk.models.ApiErrorResponse;
 import yapily.sdk.models.ApiListResponseOfConsent;
 import yapily.sdk.models.ApiResponseError;
 import yapily.sdk.models.ApiResponseOfConsent;
 import yapily.sdk.models.ApiResponseOfConsentDeleteResponse;
 import yapily.sdk.models.Consent;
 import yapily.sdk.models.ConsentAuthCodeRequest;
+import yapily.sdk.models.ExtendConsentRequest;
 import yapily.sdk.models.OneTimeTokenRequest;
 import java.util.Set;
 import java.util.UUID;
@@ -23,7 +25,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-08-17T11:55:38.294Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-10-07T11:29:02.836Z[Etc/UTC]")
 public class ConsentsApi {
   private ApiClient apiClient;
 
@@ -192,6 +194,85 @@ public class ConsentsApi {
     GenericType<ApiResponseOfConsentDeleteResponse> localVarReturnType = new GenericType<ApiResponseOfConsentDeleteResponse>() {};
 
     return apiClient.invokeAPI("ConsentsApi.delete", localVarPath, "DELETE", localVarQueryParams, localVarPostBody,
+                               localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType,
+                               localVarAuthNames, localVarReturnType, false);
+  }
+  /**
+   * Extend Consent
+   * Used to indicate to Yapily that reconfirmation has occurred for a given Consent, and to update lastUpdatedAt and reconfirmBy for that Consent. Returns the Consent.
+   * @param consentId __Mandatory__. The consent Id of the &#x60;Consent&#x60; to update. (required)
+   * @param extendConsentRequest  (required)
+   * @return ApiResponseOfConsent
+   * @throws ApiException if fails to make API call
+   * @http.response.details
+     <table summary="Response Details" border="1">
+       <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+       <tr><td> 200 </td><td> Created </td><td>  -  </td></tr>
+       <tr><td> 400 </td><td> Error Response. The supplied lastConfirmedAt date, Consent type, or Consent status is invalid. </td><td>  -  </td></tr>
+       <tr><td> 0 </td><td> Error Response </td><td>  -  </td></tr>
+     </table>
+   */
+  public ApiResponseOfConsent extendConsent(UUID consentId, ExtendConsentRequest extendConsentRequest) throws ApiException {
+    return extendConsentWithHttpInfo(consentId, extendConsentRequest).getData();
+  }
+
+  /**
+   * Extend Consent
+   * Used to indicate to Yapily that reconfirmation has occurred for a given Consent, and to update lastUpdatedAt and reconfirmBy for that Consent. Returns the Consent.
+   * @param consentId __Mandatory__. The consent Id of the &#x60;Consent&#x60; to update. (required)
+   * @param extendConsentRequest  (required)
+   * @return ApiResponse&lt;ApiResponseOfConsent&gt;
+   * @throws ApiException if fails to make API call
+   * @http.response.details
+     <table summary="Response Details" border="1">
+       <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+       <tr><td> 200 </td><td> Created </td><td>  -  </td></tr>
+       <tr><td> 400 </td><td> Error Response. The supplied lastConfirmedAt date, Consent type, or Consent status is invalid. </td><td>  -  </td></tr>
+       <tr><td> 0 </td><td> Error Response </td><td>  -  </td></tr>
+     </table>
+   */
+  public ApiResponse<ApiResponseOfConsent> extendConsentWithHttpInfo(UUID consentId, ExtendConsentRequest extendConsentRequest) throws ApiException {
+    Object localVarPostBody = extendConsentRequest;
+    
+    // verify the required parameter 'consentId' is set
+    if (consentId == null) {
+      throw new ApiException(400, "Missing the required parameter 'consentId' when calling extendConsent");
+    }
+    
+    // verify the required parameter 'extendConsentRequest' is set
+    if (extendConsentRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'extendConsentRequest' when calling extendConsent");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/consents/{consentId}/extend"
+      .replaceAll("\\{" + "consentId" + "\\}", apiClient.escapeString(consentId.toString()));
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+
+    
+    
+    
+    final String[] localVarAccepts = {
+      "application/json;charset=UTF-8"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json;charset=UTF-8"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "basicAuth" };
+
+    GenericType<ApiResponseOfConsent> localVarReturnType = new GenericType<ApiResponseOfConsent>() {};
+
+    return apiClient.invokeAPI("ConsentsApi.extendConsent", localVarPath, "POST", localVarQueryParams, localVarPostBody,
                                localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType,
                                localVarAuthNames, localVarReturnType, false);
   }

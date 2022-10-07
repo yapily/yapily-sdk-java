@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createConsentWithCode**](ConsentsApi.md#createConsentWithCode) | **POST** /consent-auth-code | Exchange OAuth2 Code
 [**delete**](ConsentsApi.md#delete) | **DELETE** /consents/{consentId} | Delete Consent
+[**extendConsent**](ConsentsApi.md#extendConsent) | **POST** /consents/{consentId}/extend | Extend Consent
 [**getConsentById**](ConsentsApi.md#getConsentById) | **GET** /consents/{consentId} | Get Consent
 [**getConsentBySingleAccessConsent**](ConsentsApi.md#getConsentBySingleAccessConsent) | **POST** /consent-one-time-token | Exchange One Time Token
 [**getConsents**](ConsentsApi.md#getConsents) | **GET** /consents | Get Consents
@@ -156,6 +157,82 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
+| **0** | Error Response |  -  |
+
+
+## extendConsent
+
+> ApiResponseOfConsent extendConsent(consentId, extendConsentRequest)
+
+Extend Consent
+
+Used to indicate to Yapily that reconfirmation has occurred for a given Consent, and to update lastUpdatedAt and reconfirmBy for that Consent. Returns the Consent.
+
+### Example
+
+```java
+import java.util.UUID;
+// Import classes:
+import yapily.sdk.ApiClient;
+import yapily.sdk.ApiException;
+import yapily.sdk.Configuration;
+import yapily.sdk.auth.*;
+import yapily.sdk.model.*;
+import yapily.sdk.api.ConsentsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.yapily.com");
+        
+        // Configure HTTP basic authorization: basicAuth
+        HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
+
+        ConsentsApi apiInstance = new ConsentsApi(defaultClient);
+        UUID consentId = UUID.randomUUID(); // UUID | __Mandatory__. The consent Id of the `Consent` to update.
+        ExtendConsentRequest extendConsentRequest = new ExtendConsentRequest(); // ExtendConsentRequest | 
+        try {
+            ApiResponseOfConsent result = apiInstance.extendConsent(consentId, extendConsentRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ConsentsApi#extendConsent");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **consentId** | **UUID**| __Mandatory__. The consent Id of the &#x60;Consent&#x60; to update. |
+ **extendConsentRequest** | [**ExtendConsentRequest**](ExtendConsentRequest.md)|  |
+
+### Return type
+
+[**ApiResponseOfConsent**](ApiResponseOfConsent.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json;charset=UTF-8
+- **Accept**: application/json;charset=UTF-8
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Created |  -  |
+| **400** | Error Response. The supplied lastConfirmedAt date, Consent type, or Consent status is invalid. |  -  |
 | **0** | Error Response |  -  |
 
 

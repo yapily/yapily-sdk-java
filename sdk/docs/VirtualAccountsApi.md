@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createVirtualAccount**](VirtualAccountsApi.md#createVirtualAccount) | **POST** /virtual-accounts/accounts | Create Account
 [**createVirtualAccountBeneficiary**](VirtualAccountsApi.md#createVirtualAccountBeneficiary) | **POST** /virtual-accounts/beneficiaries | Create Beneficiary
+[**createVirtualAccountClient**](VirtualAccountsApi.md#createVirtualAccountClient) | **POST** /virtual-accounts/clients | Create Virtual Account Client
 [**createVirtualAccountPayOut**](VirtualAccountsApi.md#createVirtualAccountPayOut) | **POST** /virtual-accounts/payments/pay-outs | Create Pay Out
 [**createVirtualAccountTransfer**](VirtualAccountsApi.md#createVirtualAccountTransfer) | **POST** /virtual-accounts/payments/transfers | Create Virtual Account Transfer
 [**getPayInDetails**](VirtualAccountsApi.md#getPayInDetails) | **GET** /virtual-accounts/payments/{paymentId}/pay-in-details | Get Pay-In Details
@@ -13,8 +14,10 @@ Method | HTTP request | Description
 [**getVirtualAccountBeneficiaries**](VirtualAccountsApi.md#getVirtualAccountBeneficiaries) | **GET** /virtual-accounts/beneficiaries | Get List Of Beneficiaries
 [**getVirtualAccountBeneficiary**](VirtualAccountsApi.md#getVirtualAccountBeneficiary) | **GET** /virtual-accounts/beneficiaries/{beneficiaryId} | Get Beneficiary
 [**getVirtualAccountById**](VirtualAccountsApi.md#getVirtualAccountById) | **GET** /virtual-accounts/accounts/{accountId} | Get Account
+[**getVirtualAccountClients**](VirtualAccountsApi.md#getVirtualAccountClients) | **GET** /virtual-accounts/clients | Get List of Virtual Account Clients
 [**getVirtualAccountPayments**](VirtualAccountsApi.md#getVirtualAccountPayments) | **GET** /virtual-accounts/payments | Get Payments
 [**getVirtualAccounts**](VirtualAccountsApi.md#getVirtualAccounts) | **GET** /virtual-accounts/accounts | Get Accounts
+[**updateVirtualAccountById**](VirtualAccountsApi.md#updateVirtualAccountById) | **PATCH** /virtual-accounts/accounts/{accountId} | Update Account
 
 
 
@@ -155,6 +158,85 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ApiResponseOfVirtualAccountBeneficiary**](ApiResponseOfVirtualAccountBeneficiary.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json;charset=UTF-8
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorised. Credentials are missing or invalid |  -  |
+| **403** | Forbidden. Permission to access this endpoint is not granted. |  -  |
+| **424** | A failure occured during interaction with a third party provider |  -  |
+| **500** | Unexpected Error |  -  |
+
+
+## createVirtualAccountClient
+
+> ApiResponseOfVirtualAccountClient createVirtualAccountClient(clientId, virtualAccountClientRequest)
+
+Create Virtual Account Client
+
+Create a new virtual account client (individual or business client). Available for clients who have direct onboarding permissions only. Please contact your CSM to enquire about access
+
+### Example
+
+```java
+import java.util.UUID;
+// Import classes:
+import yapily.sdk.ApiClient;
+import yapily.sdk.ApiException;
+import yapily.sdk.Configuration;
+import yapily.sdk.auth.*;
+import yapily.sdk.model.*;
+import yapily.sdk.api.VirtualAccountsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.yapily.com");
+        
+        // Configure HTTP basic authorization: basicAuth
+        HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
+
+        VirtualAccountsApi apiInstance = new VirtualAccountsApi(defaultClient);
+        UUID clientId = UUID.fromString("5a7294ab-6b7d-4681-835a-f9b9775c75db"); // UUID | __Mandatory__. This must be your master / parent client-id (and not one associated with one of your clients)
+        VirtualAccountClientRequest virtualAccountClientRequest = new VirtualAccountClientRequest(); // VirtualAccountClientRequest | 
+        try {
+            ApiResponseOfVirtualAccountClient result = apiInstance.createVirtualAccountClient(clientId, virtualAccountClientRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling VirtualAccountsApi#createVirtualAccountClient");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **clientId** | **UUID**| __Mandatory__. This must be your master / parent client-id (and not one associated with one of your clients) |
+ **virtualAccountClientRequest** | [**VirtualAccountClientRequest**](VirtualAccountClientRequest.md)|  |
+
+### Return type
+
+[**ApiResponseOfVirtualAccountClient**](ApiResponseOfVirtualAccountClient.md)
 
 ### Authorization
 
@@ -734,6 +816,89 @@ Name | Type | Description  | Notes
 | **500** | Unexpected Error |  -  |
 
 
+## getVirtualAccountClients
+
+> ApiListResponseOfVirtualAccountClient getVirtualAccountClients(clientId, type, status, cursor)
+
+Get List of Virtual Account Clients
+
+Get Virtual Account Clients (individual or business client).
+
+### Example
+
+```java
+import java.util.UUID;
+// Import classes:
+import yapily.sdk.ApiClient;
+import yapily.sdk.ApiException;
+import yapily.sdk.Configuration;
+import yapily.sdk.auth.*;
+import yapily.sdk.model.*;
+import yapily.sdk.api.VirtualAccountsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.yapily.com");
+        
+        // Configure HTTP basic authorization: basicAuth
+        HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
+
+        VirtualAccountsApi apiInstance = new VirtualAccountsApi(defaultClient);
+        UUID clientId = UUID.fromString("5a7294ab-6b7d-4681-835a-f9b9775c75db"); // UUID | __Mandatory__. This must be your master / parent client-id (and not one associated with one of your clients)
+        String type = "BUSINESS"; // String | __Optional__.  Filter clients based on client type. One of BUSINESS or INDIVIDUAL
+        String status = "ACTIVE"; // String | __Optional__.  Filter clients based on client status. One of ACTIVE, PENDING or SUSPENDED
+        String cursor = "cursor_example"; // String | __Optional__. Data required to provide pagination
+        try {
+            ApiListResponseOfVirtualAccountClient result = apiInstance.getVirtualAccountClients(clientId, type, status, cursor);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling VirtualAccountsApi#getVirtualAccountClients");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **clientId** | **UUID**| __Mandatory__. This must be your master / parent client-id (and not one associated with one of your clients) |
+ **type** | **String**| __Optional__.  Filter clients based on client type. One of BUSINESS or INDIVIDUAL | [optional]
+ **status** | **String**| __Optional__.  Filter clients based on client status. One of ACTIVE, PENDING or SUSPENDED | [optional]
+ **cursor** | **String**| __Optional__. Data required to provide pagination | [optional]
+
+### Return type
+
+[**ApiListResponseOfVirtualAccountClient**](ApiListResponseOfVirtualAccountClient.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorised. Credentials are missing or invalid |  -  |
+| **403** | Forbidden. Permission to access this endpoint is not granted. |  -  |
+| **424** | A failure occured during interaction with a third party provider |  -  |
+| **500** | Unexpected Error |  -  |
+
+
 ## getVirtualAccountPayments
 
 > ApiListResponseOfVirtualAccountPayment getVirtualAccountPayments(clientId, accountId, createdDateTimeFrom, createdDateTimeTo, status, type, cursor)
@@ -905,6 +1070,88 @@ Name | Type | Description  | Notes
 | **400** | Bad Request |  -  |
 | **401** | Unauthorised. Credentials are missing or invalid |  -  |
 | **403** | Forbidden. Permission to access this endpoint is not granted. |  -  |
+| **424** | A failure occured during interaction with a third party provider |  -  |
+| **500** | Unexpected Error |  -  |
+
+
+## updateVirtualAccountById
+
+> ApiResponseOfVirtualAccount updateVirtualAccountById(accountId, clientId, updateVirtualAccountRequest)
+
+Update Account
+
+Update the details of a specific account using its Id
+
+### Example
+
+```java
+import java.util.UUID;
+// Import classes:
+import yapily.sdk.ApiClient;
+import yapily.sdk.ApiException;
+import yapily.sdk.Configuration;
+import yapily.sdk.auth.*;
+import yapily.sdk.model.*;
+import yapily.sdk.api.VirtualAccountsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.yapily.com");
+        
+        // Configure HTTP basic authorization: basicAuth
+        HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
+
+        VirtualAccountsApi apiInstance = new VirtualAccountsApi(defaultClient);
+        String accountId = "accountId_example"; // String | __Mandatory__. The Id of the account.
+        UUID clientId = UUID.fromString("5a7294ab-6b7d-4681-835a-f9b9775c75db"); // UUID | __Mandatory__. The customer or sub-customer id for which the request will be done
+        UpdateVirtualAccountRequest updateVirtualAccountRequest = new UpdateVirtualAccountRequest(); // UpdateVirtualAccountRequest | 
+        try {
+            ApiResponseOfVirtualAccount result = apiInstance.updateVirtualAccountById(accountId, clientId, updateVirtualAccountRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling VirtualAccountsApi#updateVirtualAccountById");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **accountId** | **String**| __Mandatory__. The Id of the account. |
+ **clientId** | **UUID**| __Mandatory__. The customer or sub-customer id for which the request will be done |
+ **updateVirtualAccountRequest** | [**UpdateVirtualAccountRequest**](UpdateVirtualAccountRequest.md)|  |
+
+### Return type
+
+[**ApiResponseOfVirtualAccount**](ApiResponseOfVirtualAccount.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json;charset=UTF-8
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorised. Credentials are missing or invalid |  -  |
+| **403** | Forbidden. Permission to access this endpoint is not granted. |  -  |
+| **404** | Not Found. Resource requested is not found. |  -  |
 | **424** | A failure occured during interaction with a third party provider |  -  |
 | **500** | Unexpected Error |  -  |
 

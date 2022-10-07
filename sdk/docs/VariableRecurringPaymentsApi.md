@@ -395,7 +395,6 @@ Get Variable Recurring Payment details using the Payment Id
 ### Example
 
 ```java
-import java.util.UUID;
 // Import classes:
 import yapily.sdk.ApiClient;
 import yapily.sdk.ApiException;
@@ -415,7 +414,7 @@ public class Example {
         basicAuth.setPassword("YOUR PASSWORD");
 
         VariableRecurringPaymentsApi apiInstance = new VariableRecurringPaymentsApi(defaultClient);
-        UUID paymentId = UUID.randomUUID(); // UUID | __Mandatory__. The Payment Id of the `Variable Recurring Payments` to retrieve.
+        String paymentId = "paymentId_example"; // String | __Mandatory__. The Payment Id of the `Variable Recurring Payments` to retrieve.
         String consent = "consent_example"; // String | __Mandatory__. The consent token containing the user's authorisation to make the `Variable Recurring Payments` request.
         try {
             ApiResponseOfSubmissionResponse result = apiInstance.getVrpPaymentDetails(paymentId, consent);
@@ -436,7 +435,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **paymentId** | **UUID**| __Mandatory__. The Payment Id of the &#x60;Variable Recurring Payments&#x60; to retrieve. |
+ **paymentId** | **String**| __Mandatory__. The Payment Id of the &#x60;Variable Recurring Payments&#x60; to retrieve. |
  **consent** | **String**| __Mandatory__. The consent token containing the user&#39;s authorisation to make the &#x60;Variable Recurring Payments&#x60; request. |
 
 ### Return type

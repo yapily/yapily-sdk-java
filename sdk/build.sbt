@@ -2,7 +2,7 @@ lazy val root = (project in file(".")).
   settings(
     organization := "yapily",
     name := "yapily-sdk",
-    version := "1.412.0",
+    version := "2.13.1",
     scalaVersion := "2.11.4",
     scalacOptions ++= Seq("-feature"),
     Compile / javacOptions ++= Seq("-Xlint:deprecation"),

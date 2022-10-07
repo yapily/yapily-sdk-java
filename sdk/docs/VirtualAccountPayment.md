@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **status** | **String** | The current state of the transaction &lt;br&gt; INITIATED - The transaction request is acknowledged and will not undergo validation checks &lt;br&gt; PROCESSING - Initial checks succeeded and the transaction request is now being processed &lt;br&gt; COMPLETED - The transaction has been successfully processed (terminal status) &lt;br&gt; FAILED - An failure occured during transaction processing (terminal status) |  [optional]
 **source** | [**VirtualAccountPaymentSource**](VirtualAccountPaymentSource.md) |  |  [optional]
 **destination** | [**VirtualAccountPaymentDestination**](VirtualAccountPaymentDestination.md) |  |  [optional]
+**originalPaymentId** | **String** | Unique id of the original payment that was refunded |  [optional]
 
 
 

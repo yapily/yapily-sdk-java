@@ -23,6 +23,8 @@ Name | Type | Description | Notes
 **consentToken** | **String** |  |  [optional]
 **state** | **String** |  |  [optional]
 **authorizedAt** | **OffsetDateTime** |  |  [optional]
+**lastConfirmedAt** | **OffsetDateTime** | The time that the PSU last confirmed access to their account information, either through full authentication with the institution, or through reconfirmation with the TPP. |  [optional]
+**reconfirmBy** | **OffsetDateTime** | The time by which the consent should be reconfirmed to ensure continued access to the account information. |  [optional]
 **institutionConsentId** | **String** |  |  [optional]
 
 

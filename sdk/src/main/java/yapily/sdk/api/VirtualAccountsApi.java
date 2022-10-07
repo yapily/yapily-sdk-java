@@ -8,17 +8,21 @@ import yapily.sdk.Pair;
 
 import javax.ws.rs.core.GenericType;
 
+import yapily.sdk.models.ApiErrorResponse;
 import yapily.sdk.models.ApiListResponseOfVirtualAccount;
 import yapily.sdk.models.ApiListResponseOfVirtualAccountBeneficiary;
+import yapily.sdk.models.ApiListResponseOfVirtualAccountClient;
 import yapily.sdk.models.ApiListResponseOfVirtualAccountPayment;
-import yapily.sdk.models.ApiResponseError;
 import yapily.sdk.models.ApiResponseOfVirtualAccount;
 import yapily.sdk.models.ApiResponseOfVirtualAccountBeneficiary;
+import yapily.sdk.models.ApiResponseOfVirtualAccountClient;
 import yapily.sdk.models.ApiResponseOfVirtualAccountPayInDetails;
 import yapily.sdk.models.ApiResponseOfVirtualAccountPayment;
 import java.time.OffsetDateTime;
 import java.util.UUID;
+import yapily.sdk.models.UpdateVirtualAccountRequest;
 import yapily.sdk.models.VirtualAccountBeneficiaryRequest;
+import yapily.sdk.models.VirtualAccountClientRequest;
 import yapily.sdk.models.VirtualAccountPayOutRequest;
 import yapily.sdk.models.VirtualAccountRequest;
 import yapily.sdk.models.VirtualAccountTransferRequest;
@@ -28,7 +32,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-08-17T11:55:38.294Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-10-07T11:29:02.836Z[Etc/UTC]")
 public class VirtualAccountsApi {
   private ApiClient apiClient;
 
@@ -227,6 +231,92 @@ public class VirtualAccountsApi {
     GenericType<ApiResponseOfVirtualAccountBeneficiary> localVarReturnType = new GenericType<ApiResponseOfVirtualAccountBeneficiary>() {};
 
     return apiClient.invokeAPI("VirtualAccountsApi.createVirtualAccountBeneficiary", localVarPath, "POST", localVarQueryParams, localVarPostBody,
+                               localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType,
+                               localVarAuthNames, localVarReturnType, false);
+  }
+  /**
+   * Create Virtual Account Client
+   * Create a new virtual account client (individual or business client). Available for clients who have direct onboarding permissions only. Please contact your CSM to enquire about access
+   * @param clientId __Mandatory__. This must be your master / parent client-id (and not one associated with one of your clients) (required)
+   * @param virtualAccountClientRequest  (required)
+   * @return ApiResponseOfVirtualAccountClient
+   * @throws ApiException if fails to make API call
+   * @http.response.details
+     <table summary="Response Details" border="1">
+       <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+       <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+       <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+       <tr><td> 401 </td><td> Unauthorised. Credentials are missing or invalid </td><td>  -  </td></tr>
+       <tr><td> 403 </td><td> Forbidden. Permission to access this endpoint is not granted. </td><td>  -  </td></tr>
+       <tr><td> 424 </td><td> A failure occured during interaction with a third party provider </td><td>  -  </td></tr>
+       <tr><td> 500 </td><td> Unexpected Error </td><td>  -  </td></tr>
+     </table>
+   */
+  public ApiResponseOfVirtualAccountClient createVirtualAccountClient(UUID clientId, VirtualAccountClientRequest virtualAccountClientRequest) throws ApiException {
+    return createVirtualAccountClientWithHttpInfo(clientId, virtualAccountClientRequest).getData();
+  }
+
+  /**
+   * Create Virtual Account Client
+   * Create a new virtual account client (individual or business client). Available for clients who have direct onboarding permissions only. Please contact your CSM to enquire about access
+   * @param clientId __Mandatory__. This must be your master / parent client-id (and not one associated with one of your clients) (required)
+   * @param virtualAccountClientRequest  (required)
+   * @return ApiResponse&lt;ApiResponseOfVirtualAccountClient&gt;
+   * @throws ApiException if fails to make API call
+   * @http.response.details
+     <table summary="Response Details" border="1">
+       <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+       <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+       <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+       <tr><td> 401 </td><td> Unauthorised. Credentials are missing or invalid </td><td>  -  </td></tr>
+       <tr><td> 403 </td><td> Forbidden. Permission to access this endpoint is not granted. </td><td>  -  </td></tr>
+       <tr><td> 424 </td><td> A failure occured during interaction with a third party provider </td><td>  -  </td></tr>
+       <tr><td> 500 </td><td> Unexpected Error </td><td>  -  </td></tr>
+     </table>
+   */
+  public ApiResponse<ApiResponseOfVirtualAccountClient> createVirtualAccountClientWithHttpInfo(UUID clientId, VirtualAccountClientRequest virtualAccountClientRequest) throws ApiException {
+    Object localVarPostBody = virtualAccountClientRequest;
+    
+    // verify the required parameter 'clientId' is set
+    if (clientId == null) {
+      throw new ApiException(400, "Missing the required parameter 'clientId' when calling createVirtualAccountClient");
+    }
+    
+    // verify the required parameter 'virtualAccountClientRequest' is set
+    if (virtualAccountClientRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'virtualAccountClientRequest' when calling createVirtualAccountClient");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/virtual-accounts/clients";
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+
+    if (clientId != null)
+      localVarHeaderParams.put("client-id", apiClient.parameterToString(clientId));
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json;charset=UTF-8"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "basicAuth" };
+
+    GenericType<ApiResponseOfVirtualAccountClient> localVarReturnType = new GenericType<ApiResponseOfVirtualAccountClient>() {};
+
+    return apiClient.invokeAPI("VirtualAccountsApi.createVirtualAccountClient", localVarPath, "POST", localVarQueryParams, localVarPostBody,
                                localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType,
                                localVarAuthNames, localVarReturnType, false);
   }
@@ -850,6 +940,94 @@ if (clientId != null)
                                localVarAuthNames, localVarReturnType, false);
   }
   /**
+   * Get List of Virtual Account Clients
+   * Get Virtual Account Clients (individual or business client).
+   * @param clientId __Mandatory__. This must be your master / parent client-id (and not one associated with one of your clients) (required)
+   * @param type __Optional__.  Filter clients based on client type. One of BUSINESS or INDIVIDUAL (optional)
+   * @param status __Optional__.  Filter clients based on client status. One of ACTIVE, PENDING or SUSPENDED (optional)
+   * @param cursor __Optional__. Data required to provide pagination (optional)
+   * @return ApiListResponseOfVirtualAccountClient
+   * @throws ApiException if fails to make API call
+   * @http.response.details
+     <table summary="Response Details" border="1">
+       <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+       <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+       <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+       <tr><td> 401 </td><td> Unauthorised. Credentials are missing or invalid </td><td>  -  </td></tr>
+       <tr><td> 403 </td><td> Forbidden. Permission to access this endpoint is not granted. </td><td>  -  </td></tr>
+       <tr><td> 424 </td><td> A failure occured during interaction with a third party provider </td><td>  -  </td></tr>
+       <tr><td> 500 </td><td> Unexpected Error </td><td>  -  </td></tr>
+     </table>
+   */
+  public ApiListResponseOfVirtualAccountClient getVirtualAccountClients(UUID clientId, String type, String status, String cursor) throws ApiException {
+    return getVirtualAccountClientsWithHttpInfo(clientId, type, status, cursor).getData();
+  }
+
+  /**
+   * Get List of Virtual Account Clients
+   * Get Virtual Account Clients (individual or business client).
+   * @param clientId __Mandatory__. This must be your master / parent client-id (and not one associated with one of your clients) (required)
+   * @param type __Optional__.  Filter clients based on client type. One of BUSINESS or INDIVIDUAL (optional)
+   * @param status __Optional__.  Filter clients based on client status. One of ACTIVE, PENDING or SUSPENDED (optional)
+   * @param cursor __Optional__. Data required to provide pagination (optional)
+   * @return ApiResponse&lt;ApiListResponseOfVirtualAccountClient&gt;
+   * @throws ApiException if fails to make API call
+   * @http.response.details
+     <table summary="Response Details" border="1">
+       <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+       <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+       <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+       <tr><td> 401 </td><td> Unauthorised. Credentials are missing or invalid </td><td>  -  </td></tr>
+       <tr><td> 403 </td><td> Forbidden. Permission to access this endpoint is not granted. </td><td>  -  </td></tr>
+       <tr><td> 424 </td><td> A failure occured during interaction with a third party provider </td><td>  -  </td></tr>
+       <tr><td> 500 </td><td> Unexpected Error </td><td>  -  </td></tr>
+     </table>
+   */
+  public ApiResponse<ApiListResponseOfVirtualAccountClient> getVirtualAccountClientsWithHttpInfo(UUID clientId, String type, String status, String cursor) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'clientId' is set
+    if (clientId == null) {
+      throw new ApiException(400, "Missing the required parameter 'clientId' when calling getVirtualAccountClients");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/virtual-accounts/clients";
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "type", type));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "status", status));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "cursor", cursor));
+
+    if (clientId != null)
+      localVarHeaderParams.put("client-id", apiClient.parameterToString(clientId));
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "basicAuth" };
+
+    GenericType<ApiListResponseOfVirtualAccountClient> localVarReturnType = new GenericType<ApiListResponseOfVirtualAccountClient>() {};
+
+    return apiClient.invokeAPI("VirtualAccountsApi.getVirtualAccountClients", localVarPath, "GET", localVarQueryParams, localVarPostBody,
+                               localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType,
+                               localVarAuthNames, localVarReturnType, false);
+  }
+  /**
    * Get Payments
    * Retrieve a list of virtual account payments
    * @param clientId __Mandatory__. The customer or sub-customer id for which the request will be done (required)
@@ -1034,6 +1212,102 @@ if (clientId != null)
     GenericType<ApiListResponseOfVirtualAccount> localVarReturnType = new GenericType<ApiListResponseOfVirtualAccount>() {};
 
     return apiClient.invokeAPI("VirtualAccountsApi.getVirtualAccounts", localVarPath, "GET", localVarQueryParams, localVarPostBody,
+                               localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType,
+                               localVarAuthNames, localVarReturnType, false);
+  }
+  /**
+   * Update Account
+   * Update the details of a specific account using its Id
+   * @param accountId __Mandatory__. The Id of the account. (required)
+   * @param clientId __Mandatory__. The customer or sub-customer id for which the request will be done (required)
+   * @param updateVirtualAccountRequest  (required)
+   * @return ApiResponseOfVirtualAccount
+   * @throws ApiException if fails to make API call
+   * @http.response.details
+     <table summary="Response Details" border="1">
+       <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+       <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+       <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+       <tr><td> 401 </td><td> Unauthorised. Credentials are missing or invalid </td><td>  -  </td></tr>
+       <tr><td> 403 </td><td> Forbidden. Permission to access this endpoint is not granted. </td><td>  -  </td></tr>
+       <tr><td> 404 </td><td> Not Found. Resource requested is not found. </td><td>  -  </td></tr>
+       <tr><td> 424 </td><td> A failure occured during interaction with a third party provider </td><td>  -  </td></tr>
+       <tr><td> 500 </td><td> Unexpected Error </td><td>  -  </td></tr>
+     </table>
+   */
+  public ApiResponseOfVirtualAccount updateVirtualAccountById(String accountId, UUID clientId, UpdateVirtualAccountRequest updateVirtualAccountRequest) throws ApiException {
+    return updateVirtualAccountByIdWithHttpInfo(accountId, clientId, updateVirtualAccountRequest).getData();
+  }
+
+  /**
+   * Update Account
+   * Update the details of a specific account using its Id
+   * @param accountId __Mandatory__. The Id of the account. (required)
+   * @param clientId __Mandatory__. The customer or sub-customer id for which the request will be done (required)
+   * @param updateVirtualAccountRequest  (required)
+   * @return ApiResponse&lt;ApiResponseOfVirtualAccount&gt;
+   * @throws ApiException if fails to make API call
+   * @http.response.details
+     <table summary="Response Details" border="1">
+       <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+       <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+       <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+       <tr><td> 401 </td><td> Unauthorised. Credentials are missing or invalid </td><td>  -  </td></tr>
+       <tr><td> 403 </td><td> Forbidden. Permission to access this endpoint is not granted. </td><td>  -  </td></tr>
+       <tr><td> 404 </td><td> Not Found. Resource requested is not found. </td><td>  -  </td></tr>
+       <tr><td> 424 </td><td> A failure occured during interaction with a third party provider </td><td>  -  </td></tr>
+       <tr><td> 500 </td><td> Unexpected Error </td><td>  -  </td></tr>
+     </table>
+   */
+  public ApiResponse<ApiResponseOfVirtualAccount> updateVirtualAccountByIdWithHttpInfo(String accountId, UUID clientId, UpdateVirtualAccountRequest updateVirtualAccountRequest) throws ApiException {
+    Object localVarPostBody = updateVirtualAccountRequest;
+    
+    // verify the required parameter 'accountId' is set
+    if (accountId == null) {
+      throw new ApiException(400, "Missing the required parameter 'accountId' when calling updateVirtualAccountById");
+    }
+    
+    // verify the required parameter 'clientId' is set
+    if (clientId == null) {
+      throw new ApiException(400, "Missing the required parameter 'clientId' when calling updateVirtualAccountById");
+    }
+    
+    // verify the required parameter 'updateVirtualAccountRequest' is set
+    if (updateVirtualAccountRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'updateVirtualAccountRequest' when calling updateVirtualAccountById");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/virtual-accounts/accounts/{accountId}"
+      .replaceAll("\\{" + "accountId" + "\\}", apiClient.escapeString(accountId.toString()));
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+
+    if (clientId != null)
+      localVarHeaderParams.put("client-id", apiClient.parameterToString(clientId));
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json;charset=UTF-8"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "basicAuth" };
+
+    GenericType<ApiResponseOfVirtualAccount> localVarReturnType = new GenericType<ApiResponseOfVirtualAccount>() {};
+
+    return apiClient.invokeAPI("VirtualAccountsApi.updateVirtualAccountById", localVarPath, "PATCH", localVarQueryParams, localVarPostBody,
                                localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType,
                                localVarAuthNames, localVarReturnType, false);
   }
